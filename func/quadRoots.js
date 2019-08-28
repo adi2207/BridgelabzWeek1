@@ -1,7 +1,3 @@
-
-
-
-
 var readline = require('readline-sync');
 var a = readline.question("input a");
 var b = readline.question("input b");

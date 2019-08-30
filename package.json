@@ -1,11 +1,17 @@
 {
   "name": "ap",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "dependencies": {
+    "arraylist": "^0.1.0",
     "hashmap": "^2.3.0",
-    "readline-sync": "^1.4.10"
+    "list": "^2.0.18",
+    "queue": "^6.0.1",
+    "queue-fifo": "^0.2.6",
+    "queuejs": "^0.1.0",
+    "readline-sync": "^1.4.10",
+    "stack-lifo": "^0.1.6",
+    "stackjs": "^0.1.0"
   },
   "devDependencies": {
     "chai": "^4.2.0"
@@ -14,5 +20,14 @@
     "test": "mocha"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adi2207/BridgelabzWeek1.git"
+  },
+  "bugs": {
+    "url": "https://github.com/adi2207/BridgelabzWeek1/issues"
+  },
+  "homepage": "https://github.com/adi2207/BridgelabzWeek1#readme",
+  "description": ""
 }

@@ -29,3 +29,18 @@ module.exports.toBinary = function (decimalNo) {
     return num;
 }
 
+function intDev(n1, n2) {
+    return (n1 - (n1 % n2)) / n2;
+}
+module.exports.dayOfWeek=function(m, d, y) {
+    var k = 14 - m;
+    var y0 = y - intDev(k, 12);
+    var x = y0 + intDev(y0, 4) - intDev(y0, 100) + intDev(y0, 400);
+    var m0 = m - 2 + ((intDev(k, 12)) * 12);
+    var i = 31 * m0;
+    var dnew = intDev(i, 12);
+    var dnewnew = parseInt(dnew) + parseInt(d) + parseInt(x);
+    var d0 = dnewnew % 7;
+    return d0;
+}
+

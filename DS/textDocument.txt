@@ -1,0 +1,1 @@
+In this article, you will be taken through a quick but extensive guide on how Mocha can be used for testing software functionality written in JavaScript. You will learn how to write your own test suites and how to run the tests with Mocha.

@@ -1,17 +1,33 @@
-var readline=require('readline-sync');
+/******************************************************************************
+ * Execution    :   default node            terminal> node calender.js
+ * 
+ * Purpose      :   To print the calender of the month and year entered
+ * 
+ * @description
+ * 
+ * @file        :   calender.js
+ * @overview    :   To print the calender of the month and year entered
+ * @author      :   Aditi Pal
+ * @version     :   1.0
+ * @since       :   26-08-2019
+*******************************************************************************/
 
-var month=readline.question("Enter month");
-var year=readline.question("Enter year");
+/*
+* @describe var readline used to hold the readline-sync package instant/object
+*/
+var readline = require('readline-sync');
 
-var daysOfWeek=['Su','M','T','W','Th','F','Sa'];
-var heading='Javascript Calender';
-var months=['January','February','March','April','May','June','July','August','September','October','Novermber','December'];
-var calenderStartsFrom=require('../Utility/utilityForAlgos').dayOfWeek(month,1,year);
+/*
+* @describe var month used to hold the month entered by user.
+*/
+var month = readline.question("Enter month");
+/*
+* @describe var year used to hold the year entered by user.
+*/
+var year = readline.question("Enter year");
 
-function printCalender(){
-    console.log(heading);
-    console.log(months[month-1]+" "+year);
-    //console.log(daysOfWeek);
-    //process.stdout.write(daysOfWeek);
-}
-printCalender();
+/*
+* @describe var obj used to hold the utoility object
+*/
+var obj=require('../DS/utilityDS');
+obj.printCalender(month,year);

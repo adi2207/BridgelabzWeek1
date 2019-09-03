@@ -6,29 +6,28 @@ class Node {
     }
 };
 
-class StackLL{
+class QueueLL{
     constructor(){
         this.front = null;
         this.back=null;
         this.size = 0;
     }
 
-    push(data){
+    enqueue(data){
         let node=new Node(data);
-        if(this.front==null){
+        if(this.back==null){
             this.front=node;
             this.back=node;
             
         }
         else{
-            
-            node.next=this.front;   //check this
-            this.front=this.node;
+            this.back.next=node;
+            this.back=this.back.next;
         }
 
     }
 
-    pop(){
+    dequeue(){
         if(this.front!=null){
             var frontElement=this.front;
             this.front=this.front.next;
@@ -43,17 +42,17 @@ class StackLL{
         }
     }
 
-    printStackLL(){
+    printQueueLL(){
         var current=this.front;
-        let slist="";
+        let qlist="";
         while(current)
         {
-            slist=slist + " " + current.data;
+            qlist=qlist + " " + current.data;
             current=current.next;
         }
-        return slist;
+        return qlist;
     }
 }
-module.exports=StackLL;
+module.exports=QueueLL;
 
 

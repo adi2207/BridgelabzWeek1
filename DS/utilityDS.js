@@ -5,9 +5,8 @@
 
 var readline = require('readline-sync');
 
-
 /*
-* @description fun
+* @description function used to check whether the input number is prime or not
 */
 
 function isPrime(number) {
@@ -57,7 +56,13 @@ module.exports.isBalanced = function (expression) {
         return false;
 }
 
+/*
+* @describe function to countthe no of BSTs that can be created using numbers 1to n
+*/
 module.exports.countNoOfBSTs = function (nodeCount) {
+    /*
+    * @describe var T storres all the values of number of BSTs possible
+    */
     var T = [];
     T[0] = 1;
     T[1] = 1;
@@ -74,6 +79,9 @@ module.exports.countNoOfBSTs = function (nodeCount) {
     }
     return T[nodeCount];
 }
+/*
+* @describe function to return the prime numbers between 0 and 1000 
+*/
 
 function primeNoBetween0And1000() {
     var arr = new Array();
@@ -86,6 +94,10 @@ function primeNoBetween0And1000() {
     }
     return arr;
 }
+
+/*
+* @describe function to print the prime numbers ina 2d array
+*/
 module.exports.print2dPrime = function () {
     var i, j = 0, r = 0, c = 0, flag = 0, arr = [], arr2d = [], k = -1;
     arr = this.primeNoBetween0And1000();
@@ -103,11 +115,11 @@ module.exports.print2dPrime = function () {
 /*
 * @description function printCalender to print the calender of the user suplied month and year.
 */
-module.exports.printCalender=function (month,year) {
+module.exports.printCalender = function (month, year) {
     /*
     * @describe var show used to hold the util class object
     */
-    var show=require('util');
+    var show = require('util');
     /*
     * @describe var heading used to hold the heading of the calender
     */
@@ -119,31 +131,95 @@ module.exports.printCalender=function (month,year) {
     /*
     * @describe var noOfDaysInEachMonth used to hold the number of days in each month
     */
-    var noOfDaysInEachMonth=[31,28,31,30,31,30,31,31,30,31,30,31];
+    var noOfDaysInEachMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
     /*
     * @describe var calenderStartsFrom stores the day of the week fro m which the calender starts 
     */
     var calenderStartsFrom = require('../Utility/utilityForAlgos').dayOfWeek(month, 1, year);
-    
+
     console.log(heading);
     console.log(months[month - 1] + " " + year);
     console.log(' Su  Mo  Tu  We  Th  Fr  Sa ');
-    var count=0;
-    for(var j=0;j<calenderStartsFrom;j++){
+    var count = 0;
+    for (var j = 0; j < calenderStartsFrom; j++) {
         show.print("    ");
         count++;
     }
-    for(var i =1;i<=9;i++){
-        show.print("  "+i+" ");
+    for (var i = 1; i <= 9; i++) {
+        show.print("  " + i + " ");
         count++;
-        if(count%7==0){
+        if (count % 7 == 0) {
             console.log();
         }
     }
-    for(var i =10;i<=noOfDaysInEachMonth[month-1];i++){
-        show.print(" "+i+" ");
+    for (var i = 10; i <= noOfDaysInEachMonth[month - 1]; i++) {
+        show.print(" " + i + " ");
         count++;
-        if(count%7==0){
+        if (count % 7 == 0) {
+            console.log();
+        }
+    }
+}
+
+module.exports.printCalenderUsingQueueLL = function (month, year) {
+    /*
+    * @describe var show used to hold the util class object
+    */
+    var show = require('util');
+    /*
+    * @describe var heading used to hold the heading of the calender
+    */
+    var heading = 'Javascript Calender';
+    /*
+    * @describe var months used to hold the months of a year
+    */
+    var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'Novermber', 'December'];
+    /*
+    * @describe var noOfDaysInEachMonth used to hold the number of days in each month
+    */
+    var noOfDaysInEachMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    
+    /*
+    * @describe var QueueLL used to hold the Queue uisng LL class
+    */
+    var QueueLL = require('../DS/DataStructures/queueUsingLL');
+    /*
+    * @describe var dayQueue used to store the days of the week in a queue
+    */
+    var dayQueue = new QueueLL();
+    
+        dayQueue.enqueue(' Su');
+        dayQueue.enqueue(' Mo');
+        dayQueue.enqueue(' Tu');
+        dayQueue.enqueue(' We');
+        dayQueue.enqueue(' Th');
+        dayQueue.enqueue(' Fr');
+        dayQueue.enqueue(' Sa');
+
+    /*
+    * @describe var calenderStartsFrom stores the day of the week fro m which the calender starts 
+    */
+    var calenderStartsFrom = require('../Utility/utilityForAlgos').dayOfWeek(month, 1, year);
+
+    console.log(heading);
+    console.log(months[month - 1] + " " + year);
+    console.log(dayQueue.printQueueLL());
+    var count = 0;
+    for (var j = 0; j < calenderStartsFrom; j++) {
+        show.print("    ");
+        count++;
+    }
+    for (var i = 1; i <= 9; i++) {
+        show.print("  " + i + " ");
+        count++;
+        if (count % 7 == 0) {
+            console.log();
+        }
+    }
+    for (var i = 10; i <= noOfDaysInEachMonth[month - 1]; i++) {
+        show.print(" " + i + " ");
+        count++;
+        if (count % 7 == 0) {
             console.log();
         }
     }
@@ -151,7 +227,7 @@ module.exports.printCalender=function (month,year) {
 /*
 * @description function bankingCahsCounter created to return the account balance of the cashier after a series of withdrawals/deposits by customers in a queue.
 */
-module.exports.bankingCashCounter=function() {
+module.exports.bankingCashCounter = function () {
     /*
     * @describe var Queue used to hold the Queue package instant/object
     */
@@ -190,4 +266,90 @@ module.exports.bankingCashCounter=function() {
     return accountBalance;
 
 }
+/*
+        * @describe function isPalindrome to check whether the given word i a palindrome
+        */
+module.exports.isPalindrome = function (word) {
+    /*
+        * @describe var Dequeue used to import Dequeue class
+        */
+    var Dequeue = require('../DS/DataStructures/Dequeue');
+    /*
+        * @describe var Dequeue used to create a new queue
+        */
+    var dequeue = new Dequeue;
+    /*
+        * @describe var wordArray used to convert the input word into an array of letters
+        */
+    var wordArray = word.split("");
 
+    /*
+        * @describe adding the word into dequeue
+        */
+    for (var i = 0; i < wordArray.length; i++) {
+        dequeue.addRear(wordArray[i]);
+    }
+    /*
+        * @describe var bool used to store whether the word is a palindrome or not
+        */
+    var bool = true;
+    while (!dequeue.isEmpty()) {
+        if (dequeue.front() == dequeue.rear()) {
+            dequeue.RemoveFront();
+            dequeue.RemoveBack();
+        }
+        else if (dequeue.front() != dequeue.rear()) {
+            bool = false;
+            break;
+        }
+    }
+    return bool;
+}
+
+module.exports.insertNumber=function(){
+    var fs=require('fs');
+    var file=fs.readFileSync('fileContainingNumbers.txt','utf-8');
+    var numArray=file.split(',');
+    var LinkedList=require('../DS/DataStructures/LinkedList');
+    var LL=new Array(10);
+    for(var i=0;i<10;i++){
+         LL[i]=new LinkedList();
+         LL[i].add(i);
+    }
+     for(var i=0;i<numArray.length;i++){
+         var r=numArray[i]%10;
+         LL[r].add(numArray[i]);
+     }
+
+    return LL;
+}
+
+function readFile() {
+    const fs = require('fs')
+    var text = fs.readFileSync('textDocument.txt', 'utf-8');
+    var textArray = text.split(' ');
+    return textArray;
+}
+
+module.exports.searchWordInLL=function(wordToBeSearched) {
+    var LinkedList = require('../DS/DataStructures/LinkedList');
+    var LL = new LinkedList();
+    var textArray = readFile();
+    for (var i = 0; i < textArray.length; i++) {
+        LL.add(textArray[i]);
+    }
+    var curr = LL.head;
+    while(curr){
+        if (curr.element == wordToBeSearched) {
+            LL.remove(wordToBeSearched);
+            LL.printList();
+            return true;
+        }
+        if (curr.next == null) {
+            LL.add(wordToBeSearched);
+            LL.printList();
+            return false;
+        }
+        curr = curr.next;
+    }
+}

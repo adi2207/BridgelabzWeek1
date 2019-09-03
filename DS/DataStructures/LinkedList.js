@@ -1,3 +1,5 @@
+
+
 class Node {
 
     constructor(element) {
@@ -27,6 +29,18 @@ class LinkedList {
         }
         this.size++;
     }
+    remove(dataToBeRemoved) {
+        var current=this.head;
+        while(current.next.next){
+            if (current.next.element==dataToBeRemoved){
+                current.next=current.next.next;
+                this.size--;
+            }
+            else {
+                current = current.next;    
+            }
+        }  
+    }
 
     isEmpty() {
         return this.size == 0;
@@ -36,9 +50,11 @@ class LinkedList {
         var curr = this.head;
         var str = "";
         while (curr) {
-            str += curr.element + " ";
+            str += curr.element + "-->";
             curr = curr.next;
         }
         console.log(str);
     }
 }
+
+module.exports=LinkedList;

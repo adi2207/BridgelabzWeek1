@@ -306,7 +306,7 @@ module.exports.isPalindrome = function (word) {
     return bool;
 }
 
-module.exports.insertNumber=function(){
+module.exports.insertNumber = function(){
     var fs=require('fs');
     var file=fs.readFileSync('fileContainingNumbers.txt','utf-8');
     var numArray=file.split(',');
@@ -320,7 +320,9 @@ module.exports.insertNumber=function(){
          var r=numArray[i]%10;
          LL[r].add(numArray[i]);
      }
-
+     for(var i=0;i<LL.length;i++){
+        LL[i].printList();  
+    }
     return LL;
 }
 

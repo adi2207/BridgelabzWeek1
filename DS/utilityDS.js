@@ -340,18 +340,15 @@ module.exports.searchWordInLL=function(wordToBeSearched) {
     for (var i = 0; i < textArray.length; i++) {
         LL.add(textArray[i]);
     }
-    var curr = LL.head;
-    while(curr){
-        if (curr.element == wordToBeSearched) {
-            LL.remove(wordToBeSearched);
-            LL.printList();
-            return true;
-        }
-        if (curr.next == null) {
-            LL.add(wordToBeSearched);
-            LL.printList();
-            return false;
-        }
-        curr = curr.next;
+    var bool;
+    if(LL.search(wordToBeSearched)){
+        LL.remove(wordToBeSearched);
+        bool=true;
     }
+    else{
+        LL.add(wordToBeSearched);
+        bool=false;
+    }
+    LL.printList();
+    return bool;
 }

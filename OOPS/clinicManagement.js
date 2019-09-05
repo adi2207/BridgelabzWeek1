@@ -8,46 +8,55 @@ class Doctor {
         this.id = id;
         this.specialization = specialization;
         this.time = time;
+        return this;
     }
     searchDocByName(nameToBeSearched) {
+        var bool=false;
         let rawdata = fs.readFileSync('doctorsList.json');    
         let doctorsList = JSON.parse(rawdata);
         for(var i=0;i<doctorsList.length;i++){
-            if(doctorsList[i].name==nameToBeSearched)
-                return doctorsList[i];
+            if(doctorsList[i].name==nameToBeSearched){
+            bool=true;
+                console.log(doctorsList[i]);
+            }
         }
-        return false;
+        return bool;
     }
     searchDocById(idToBeSearched){
+        var bool=false;
         let rawdata = fs.readFileSync('doctorsList.json');    
         let doctorsList = JSON.parse(rawdata);
         for(var i=0;i<doctorsList.length;i++){
-            if(doctorsList[i].id==idToBeSearched)
-                return doctorsList[i];
+            if(doctorsList[i].id==idToBeSearched){
+                bool=true;
+                console.log(doctorsList[i]);
+            }
         }
-        return false;
+        return bool;
     }
     searchDocBySpecialization(specializationToBeSearched){
+        var bool=false;
         let rawdata = fs.readFileSync('doctorsList.json');    
         let doctorsList = JSON.parse(rawdata);
         for(var i=0;i<doctorsList.length;i++){
-            if((doctorsList[i].specialization==specializationToBeSearched))
-                return doctorsList[i];
+            if((doctorsList[i].specialization==specializationToBeSearched)){
+            bool=true;
+                console.log(doctorsList[i]);
+            }
         }
-        return false;
+        return bool;
     }
     searchDocByAvailability(timeToBeSearched){
+        var bool=false;
         let rawdata = fs.readFileSync('doctorsList.json');    
         let doctorsList = JSON.parse(rawdata);
         for(var i=0;i<doctorsList.length;i++){
-            if(doctorsList[i].time===timeToBeSearched||doctorsList[i].time=='both')
-                return doctorsList[i];
+            if(doctorsList[i].time===timeToBeSearched||doctorsList[i].time=='both'){
+            bool=true;
+                console.log(doctorsList[i]);
+            }
         }
-        return false;
-    }
-    displayDoc(){
-        console.log("The doctors details are");
-        console.log("NAME: "+this.name+", SPECIALIZATION: "+this.specialization+", AVAILABILTY: "+this.timeSlot);
+        return bool;
     }
 }
 
@@ -58,44 +67,68 @@ class Patient {
         this.mobile = mobile;
         this.id = id;
         this.age = age;
+        return this;
     }
     searchPatientByName(nameToBeSearched) {
+        var bool=false;
         let rawdata = fs.readFileSync('patientsList.json');    
         let patientsList = JSON.parse(rawdata);
         for(var i=0;i<patientsList.length;i++){
             if(patientsList[i].name==nameToBeSearched)
-                return patientsList[i];
+            {
+                bool=true;
+                console.log(patientsList[i]);
+            }
         }
-        return false;
+        return bool;
     }
     searchPatientById(idToBeSearched){
+        var bool=false;
         let rawdata = fs.readFileSync('patientsList.json');    
         let patientsList = JSON.parse(rawdata);
         for(var i=0;i<patientsList.length;i++){
-            if(patientsList[i].id==idToBeSearched)
-                return patientsList[i];
+            if(patientsList[i].id==idToBeSearched){
+                bool=true;
+                console.log(patientsList[i]);
+            }
         }
-        return false;
+        return bool;
     }
     searchPatientByMobile(mobileToBeSearched){
+        var bool=false;
         let rawdata = fs.readFileSync('patientsList.json');    
         let patientsList = JSON.parse(rawdata);
         for(var i=0;i<patientsList.length;i++){
-            if(patientsList[i].id==mobileToBeSearched)
-                return patientsList[i];
+            if(patientsList[i].mobile==mobileToBeSearched){
+                bool=true;
+                console.log(patientsList[i]);
+            }
         }
-        return false;
+        return bool;
     }
     searchPatientByAge(ageToBeSearched){
+        var bool=false;
         let rawdata = fs.readFileSync('patientsList.json');    
         let patientsList = JSON.parse(rawdata);
         for(var i=0;i<patientsList.length;i++){
-            if(patientsList[i].id==ageToBeSearched)
-                return patientsList[i];
+            if(patientsList[i].age==ageToBeSearched){
+                bool=true;
+                console.log(patientsList[i]);
+            }
         }
-        return false;
+        return bool;
     }
 
 }
 
-module.exports = { Doctor, Patient }
+class Appointment{
+    createAppointment({appointmentId,patientId,doctorId,time}) {
+        this.appointmentId=appointmentId;
+        this.patientId = patientId;
+        this.doctorId =doctorId;
+        this.time=time;
+        return this;
+    }
+}
+
+module.exports = { Doctor, Patient ,Appointment}

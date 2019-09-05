@@ -53,11 +53,47 @@ class Doctor {
 
 class Patient {
 
-    createPatient(name, mobile, id, age) {
-
+    createPatient({name, mobile, id, age}) {
+        this.name = name;
+        this.mobile = mobile;
+        this.id = id;
+        this.age = age;
     }
-    searchPatientByName() {
-
+    searchPatientByName(nameToBeSearched) {
+        let rawdata = fs.readFileSync('patientsList.json');    
+        let patientsList = JSON.parse(rawdata);
+        for(var i=0;i<patientsList.length;i++){
+            if(patientsList[i].name==nameToBeSearched)
+                return patientsList[i];
+        }
+        return false;
+    }
+    searchPatientById(idToBeSearched){
+        let rawdata = fs.readFileSync('patientsList.json');    
+        let patientsList = JSON.parse(rawdata);
+        for(var i=0;i<patientsList.length;i++){
+            if(patientsList[i].id==idToBeSearched)
+                return patientsList[i];
+        }
+        return false;
+    }
+    searchPatientByMobile(mobileToBeSearched){
+        let rawdata = fs.readFileSync('patientsList.json');    
+        let patientsList = JSON.parse(rawdata);
+        for(var i=0;i<patientsList.length;i++){
+            if(patientsList[i].id==mobileToBeSearched)
+                return patientsList[i];
+        }
+        return false;
+    }
+    searchPatientByAge(ageToBeSearched){
+        let rawdata = fs.readFileSync('patientsList.json');    
+        let patientsList = JSON.parse(rawdata);
+        for(var i=0;i<patientsList.length;i++){
+            if(patientsList[i].id==ageToBeSearched)
+                return patientsList[i];
+        }
+        return false;
     }
 
 }

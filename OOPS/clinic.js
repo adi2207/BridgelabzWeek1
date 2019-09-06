@@ -5,8 +5,6 @@ var appointment = require('../OOPS/clinicManagement').Appointment;
 const fs = require('fs');
 var readline = require('readline-sync');
 
-
-
 function takeUserInputForDoc() {
     var name = readline.question("Enter name of the doctor ");
     var id = readline.question("Enter id of the doctor ");
@@ -27,7 +25,7 @@ function docCreation() {
         if (askToExit == 'n')
             break;
     }
-    let data = JSON.stringify(doc);
+    let data = JSON.stringify(doc,null,2);
     fs.writeFileSync('doctorsList.json', data);
 }
 
@@ -147,10 +145,10 @@ function bookAppointment(){
 
 
 
-//docCreation();
+docCreation();
 //searchDoc();
 //patientCreation();
 //searchPatient();
-bookAppointment();
+//bookAppointment();
 
 

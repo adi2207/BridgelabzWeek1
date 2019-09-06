@@ -1,1 +1,38 @@
-[{"name":"Aditi","id":"2345","specialization":"Cardio","time":"am"},{"name":"Adarsh","id":"4567","specialization":"Ortho","time":"both"},{"name":"Aditi","id":"1234","specialization":"Cardio","time":"both"},{"name":"Ishika","id":"678","specialization":"Ortho","time":"am"},{"name":"Aish","id":"000","specialization":"General","time":"pm"}]
+[
+  {
+    "name": "Aditi",
+    "id": "2345",
+    "specialization": "Cardio",
+    "time": "am"
+  },
+  {
+    "name": "Adarsh",
+    "id": "4567",
+    "specialization": "Ortho",
+    "time": "both"
+  },
+  {
+    "name": "Aditi",
+    "id": "1234",
+    "specialization": "Cardio",
+    "time": "both"
+  },
+  {
+    "name": "Ishika",
+    "id": "678",
+    "specialization": "Ortho",
+    "time": "am"
+  },
+  {
+    "name": "Aish",
+    "id": "000",
+    "specialization": "General",
+    "time": "pm"
+  },
+  {
+    "name": "GK",
+    "id": "999",
+    "specialization": "general",
+    "time": "both"
+  }
+]

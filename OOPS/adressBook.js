@@ -45,20 +45,69 @@ class addressBookMember{
         }
         return defaultAddressBook;
     }
-    searchMember(memberIdToBeSearched){
-        
+    searchMember(memberIdToBeSearched,defaultAddressBook){
+        var bool=false;
+        var len=defaultAddressBook.length;
+        for(var i=0;i<len;i++){
+            if(defaultAddressBook[i].memberId==memberIdToBeSearched){
+                bool=true;
+                return defaultAddressBook[i];
+            }
+        }
+        return bool;
     }
-    editMember(){
 
+    editMember(memberIdToBeSearched,defaultAddressBook,propertyToBeEdited,newPropertyValue){
+        var len=defaultAddressBook.length;
+        for(var i=0;i<len;i++){
+            if(defaultAddressBook[i].memberId==memberIdToBeSearched){
+                defaultAddressBook[i][propertyToBeEdited]=newPropertyValue;
+            }
+        }
+        return defaultAddressBook;
     }
-    sortEntriesByLastName(){
 
+    sortEntriesByLastName(defaultAddressBook){
+        var len=defaultAddressBook.length;
+        var array=[];
+        var finalArray=[]
+        for(var i=0;i<len;i++){
+            array.push(defaultAddressBook[i].lastName);
+        }
+        for(var i=0;i<len;i++){
+            array.sort();
+        }
+        for(var i=0;i<len;i++){
+            for(var j=0;j<len;j++){
+                if(defaultAddressBook[j].lastName==array[i]){
+                    finalArray.push(defaultAddressBook[j]);
+                }
+            }
+        }
+        return finalArray;
     }
     printInMailingLabelFormat(){
+        //COMPLETE THIS
 
     }
-    sortEntriesByZip(){
-
+    sortEntriesByZip(defaultAddressBook){
+        var len=defaultAddressBook.length;
+        var array=[];
+        var finalArray=[]
+        for(var i=0;i<len;i++){
+            array.push(defaultAddressBook[i].zip);
+        }
+        for(var i=0;i<len;i++){
+            array.sort();
+        }
+        for(var i=0;i<len;i++){
+            for(var j=0;j<len;j++){
+                if(defaultAddressBook[j].zip==array[i]){
+                    finalArray.push(defaultAddressBook[j]);
+                }
+            }
+        }
+        return finalArray;
     }
 
 }

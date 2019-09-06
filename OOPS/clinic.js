@@ -119,6 +119,7 @@ function appointmentCreation(appointmentId,patientId,doctorId,time) {
 }
 
 function bookAppointment(){
+    //COMPLETE THIS
     console.log("THIS IS THE APPOINTMENT BOOKING PORTAL\n");
     var patientFound=searchPatient();
     if(patientFound==false){

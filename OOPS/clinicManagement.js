@@ -16,7 +16,7 @@ class Doctor {
         let doctorsList = JSON.parse(rawdata);
         for(var i=0;i<doctorsList.length;i++){
             if(doctorsList[i].name==nameToBeSearched){
-            bool=true;
+                bool=true;
                 console.log(doctorsList[i]);
             }
         }
@@ -40,7 +40,7 @@ class Doctor {
         let doctorsList = JSON.parse(rawdata);
         for(var i=0;i<doctorsList.length;i++){
             if((doctorsList[i].specialization==specializationToBeSearched)){
-            bool=true;
+                bool=true;
                 console.log(doctorsList[i]);
             }
         }
@@ -52,7 +52,7 @@ class Doctor {
         let doctorsList = JSON.parse(rawdata);
         for(var i=0;i<doctorsList.length;i++){
             if(doctorsList[i].time===timeToBeSearched||doctorsList[i].time=='both'){
-            bool=true;
+                bool=true;
                 console.log(doctorsList[i]);
             }
         }
@@ -74,8 +74,7 @@ class Patient {
         let rawdata = fs.readFileSync('patientsList.json');    
         let patientsList = JSON.parse(rawdata);
         for(var i=0;i<patientsList.length;i++){
-            if(patientsList[i].name==nameToBeSearched)
-            {
+            if(patientsList[i].name==nameToBeSearched){
                 bool=true;
                 console.log(patientsList[i]);
             }
@@ -122,7 +121,7 @@ class Patient {
 }
 
 class Appointment{
-    createAppointment({appointmentId,patientId,doctorId,time}) {
+    createAppointment(appointmentId,patientId,doctorId,time) {
         this.appointmentId=appointmentId;
         this.patientId = patientId;
         this.doctorId =doctorId;

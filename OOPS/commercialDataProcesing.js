@@ -7,7 +7,7 @@ class General {
         return array;
     }
     writeFile(array, fileName) {
-        let data = JSON.stringify(array,null,2);
+        let data = JSON.stringify(array, null, 2);
         fs.writeFileSync(fileName, data);
     }
 }
@@ -18,14 +18,14 @@ class StockAccount {
     stockAccount(filename) {
 
     }
-    valueOf(customer,symbol) {
+    valueOf(customer, symbol) {
         var customersArray = general.readFile('customers.json');
         for (var i = 0; i < customersArray.length; i++) {
-            if(customersArray[i].name==customer)
-            for (var j = 0; j < (customersArray[i].companies).length; j++) {
-                if(customersArray[i].companies[j].symbol==symbol)
-                    return customersArray[i].companies[j].noOfShares;
-            }
+            if (customersArray[i].name == customer)
+                for (var j = 0; j < (customersArray[i].companies).length; j++) {
+                    if (customersArray[i].companies[j].symbol == symbol)
+                        return customersArray[i].companies[j].noOfShares;
+                }
         }
 
     }
@@ -47,26 +47,26 @@ class StockAccount {
                 if (companiesArray[i].noOfShares < amount)
                     throw "Insufficient Shares with company";
             }
-        for (var i = 0; i < customersArray.length; i++) {
-            var bool = true;
-            if (customersArray[i].name == customer) {
-                var count = 0;
-                for (var j = 0; j < (customersArray[i].companies).length; j++) {
-                    if (customersArray[i].companies[j].symbol == symbol) {
-                        customersArray[i].companies[j].noOfShares = (parseInt(customersArray[i].companies[j].noOfShares) + parseInt(amount)).toString();
-                        bool = false;
-                        break;
+            for (var i = 0; i < customersArray.length; i++) {
+                var bool = true;
+                if (customersArray[i].name == customer) {
+                    var count = 0;
+                    for (var j = 0; j < (customersArray[i].companies).length; j++) {
+                        if (customersArray[i].companies[j].symbol == symbol) {
+                            customersArray[i].companies[j].noOfShares = (parseInt(customersArray[i].companies[j].noOfShares) + parseInt(amount)).toString();
+                            bool = false;
+                            break;
+                        }
+                        count++;
                     }
-                    count++;
+                    if (bool)
+                        customersArray[i].companies[count] = { symbol, amount };
+                    break;
                 }
-                if (bool)
-                    customersArray[i].companies[count] = { symbol, amount };
-                break;
             }
+        } catch (err) {
+            console.log(err);
         }
-    } catch (err) {
-        console.log(err);
-    }
         general.writeFile(companiesArray, 'companies.json');
         general.writeFile(customersArray, 'customers.json');
         general.writeFile(transactionsArray, 'transactions.json');
@@ -113,8 +113,8 @@ class StockAccount {
         var transactionsArray = general.readFile('transactions.json');
         var length = transactionsArray.length;
         console.log("----------------------------------------STOCK REPORT------------------------------------------")
-        for(var i=0;i<length;i++){
-            console.log("In the transaction with id "+i+" the customer "+transactionsArray[i].customer+" "+transactionsArray[i].typeOfTransaction+"s "+transactionsArray[i].noOfShares+" stocks of "+transactionsArray[i].symbol+" at a price of "+transactionsArray[i].priceOfShares);
+        for (var i = 0; i < length; i++) {
+            console.log("In the transaction with id " + i + " the customer " + transactionsArray[i].customer + " " + transactionsArray[i].typeOfTransaction + "s " + transactionsArray[i].noOfShares + " stocks of " + transactionsArray[i].symbol + " at a price of " + transactionsArray[i].priceOfShares);
         }
     }
 
@@ -122,24 +122,31 @@ class StockAccount {
         console.log("ADDING CUSTOMERS\n");
         var array = general.readFile('customers.json');
         var i = array.length;
-        while (1) {
-            var name = readline.question("Enter your name ");
-            var companies = [];
+        try {
             while (1) {
-                var symbol = readline.question("Enter the symbol of the company you own the shares of ");
-                var noOfShares = readline.question("Enter the no of shares you of the above company ");
-                //console.log(typeof(noOfShares));
-                companies.push({ symbol, noOfShares });
-                var askToExit = readline.question("Press any button to continue adding more companies, Press n to exit ");
+                var name = readline.question("Enter your name ");
+                var companies = [];
+                while (1) {
+                    var symbol = readline.question("Enter the symbol of the company you own the shares of ");
+                    if (!isNaN(symbol))
+                        throw "Symbol must be a string";
+                    var noOfShares = readline.question("Enter the no of shares you of the above company ");
+                    if (isNaN(noOfShares))
+                        throw "Number of shares must be a number";
+                    companies.push({ symbol, noOfShares });
+                    var askToExit = readline.question("Press any button to continue adding more companies, Press n to exit ");
+                    if (askToExit == 'n') {
+                        break;
+                    }
+                }
+                array.push({ name, companies });
+                var askToExit = readline.question("Press any button to continue adding more customers, Press n to exit ");
                 if (askToExit == 'n') {
                     break;
                 }
             }
-            array.push({ name, companies });
-            var askToExit = readline.question("Press any button to continue adding more customers, Press n to exit ");
-            if (askToExit == 'n') {
-                break;
-            }
+        } catch (err) {
+            console.log(err);
         }
         general.writeFile(array, 'customers.json');
     }
@@ -148,22 +155,31 @@ class StockAccount {
         console.log("ADDING COMPANIES\n");
         var array = general.readFile('companies.json');
         var i = array.length;
-        while (1) {
-            var symbol = readline.question("Enter the symbol ");
-            var noOfShares = readline.question("Enter the no of shares available ");
-            var priceOfShares = readline.question("Enter the price of company share in market ")
-            array.push({ symbol, noOfShares, priceOfShares });
-            var askToExit = readline.question("Press any button to continue, Press n to exit ");
-            if (askToExit == 'n') {
-                break;
+        try {
+            while (1) {
+                var symbol = readline.question("Enter the symbol ");
+                if (!isNaN(symbol))
+                    throw "Symbol must be a string";
+                var noOfShares = readline.question("Enter the no of shares available ");
+                if (isNaN(noOfShares))
+                    throw "Number of shares must be a number";
+                var priceOfShares = readline.question("Enter the price of company share in market ")
+                if (isNaN(priceOfShares))
+                    throw "Price of share must be a number";
+                array.push({ symbol, noOfShares, priceOfShares });
+                var askToExit = readline.question("Press any button to continue, Press n to exit ");
+                if (askToExit == 'n') {
+                    break;
+                }
             }
+            console.log(array);
+            general.writeFile(array, 'companies.json');
+        } catch (err) {
+            console.log(err);
         }
-        console.log(array);
-        general.writeFile(array, 'companies.json');
+
     }
-
 }
-
 var stockAccount = new StockAccount();
 
 

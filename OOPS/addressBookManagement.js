@@ -9,7 +9,7 @@ function readFile(filename) {
     return array;
 }
 function writeFile(array, fileName) {
-    let data = JSON.stringify(array,null,2);
+    let data = JSON.stringify(array, null, 2);
     fs.writeFileSync(fileName, data);
 }
 
@@ -19,14 +19,23 @@ function createAddressBook() {
     var i = addressBookArray.length;
 
     addressBookArray[i] = new addressBook();
-    var name = readline.question("Enter the name of the address book");
-    var addressBookId = readline.question("Enter the id of the address book");
-    addressBookArray[i].createNewAddressBook(addressBookId, name);
-    i++;
+    try {
+        var name = readline.question("Enter the name of the address book");
+        if (!isNaN(name))
+            throw "Name of the address book must be a string";
+        var addressBookId = readline.question("Enter the id of the address book");
+        if (isNaN(addressBookId))
+            throw "Id of the address book must be a number";
+        addressBookArray[i].createNewAddressBook(addressBookId, name);
+        i++;
+        let data = JSON.stringify(addressBookArray);
+        fs.writeFileSync('addressBookList.json', data);
+        console.log("NEW ADDRESS BOOK CREATED");
+    }
+    catch (err) {
+        console.log(err);
+    }
 
-    let data = JSON.stringify(addressBookArray);
-    fs.writeFileSync('addressBookList.json', data);
-    console.log("NEW ADDRESS BOOK CREATED");
 }
 function createNewMember() {
     console.log("ENTER DETAILS TO ADD NEW MEMBER TO DEFAULT ADDRESS BOOK")
@@ -38,25 +47,49 @@ function createNewMember() {
     var len = defaultAddressBook.length;
     defaultAddressBook[len] = new addressBookMember();
 
-    var memberId = readline.question("Enter the id of the member ");
-    var firstName = readline.question("Enter the first name of the member ");
-    var lastName = readline.question("Enter the last name of the member ");
-    var address = readline.question("Enter the address of the member ");
-    var city = readline.question("Enter the city of the member ");
-    var state = readline.question("Enter the state of the member ")
-    var zip = readline.question("Enter the zip of the member ")
-    var phoneNo = readline.question("Enter the phone number of the member ")
-    defaultAddressBook[len].addMember(memberId, firstName, lastName, address, city, state, zip, phoneNo, addressBookId);
-    len++;
-    writeFile(defaultAddressBook, 'defaultAddressBook.json');
-    console.log("MEMBER ADDED");
+    try {
+        var memberId = readline.question("Enter the id of the member ");
+        if (isNaN(memberId))
+            throw "The id of the member must be a number";
+        var firstName = readline.question("Enter the first name of the member ");
+        var lastName = readline.question("Enter the last name of the member ");
+        if (!isNaN(firstName)||!isNaN(lastName))
+            throw "The name of the member must be a string";
+        var address = readline.question("Enter the address of the member ");
+        if (!isNaN(address))
+            throw "The address of the member must be a string";
+        var city = readline.question("Enter the city of the member ");
+        if (!isNaN(city))
+            throw "The name of the city must be a string";
+        var state = readline.question("Enter the state of the member ")
+        if (!isNaN(state))
+            throw "The name of the state must be a string";
+        var zip = readline.question("Enter the zip of the member ")
+        if (isNaN(zip) || zip.toString().length != 6)
+            throw "The zip code must be a 6 digit number";
+        var phoneNo = readline.question("Enter the phone number of the member ")
+        if (isNaN(phoneNo) || phoneNo.toString().length != 10)
+            throw "The phone number must be a 10 digit number";
+        defaultAddressBook[len].addMember(memberId, firstName, lastName, address, city, state, zip, phoneNo, addressBookId);
+        len++;
+        writeFile(defaultAddressBook, 'defaultAddressBook.json');
+        console.log("MEMBER ADDED");
+    } catch (err) {
+        console.log(err);
+    }
+
 }
 function deleteMember() {
     console.log("ENTER DETAILS OF THE MEMBER TO BE DELETED FROM THE DEFAULT ADDRESS BOOK");
 
     var defaultAddressBook = readFile('defaultAddressBook.json')
-
-    var memberIdToBeFound = readline.question("Enter the id of the member to be deleted ");
+    try {
+        var memberIdToBeFound = readline.question("Enter the id of the member to be deleted ");
+        if (isNaN(memberIdToBeFound))
+            throw "The id of the member must be a number";
+    } catch (err) {
+        console.log(err);
+    }
 
     var obj = new addressBookMember();
     var defaultAddressBook = obj.deleteMember(memberIdToBeFound, defaultAddressBook);
@@ -68,9 +101,13 @@ function searchMember() {
     console.log("ENTER DETAILS OF THE MEMBER TO BE SEARCHED FROM THE DEFAULT ADDRESS BOOK");
 
     var defaultAddressBook = readFile('defaultAddressBook.json')
-
-    var memberIdToBeFound = readline.question("Enter the id of the member to be searched ");
-
+    try {
+        var memberIdToBeFound = readline.question("Enter the id of the member to be searched ");
+        if (isNaN(memberIdToBeFound))
+            throw "The id of the member must be a number";
+    } catch (err) {
+        console.log(err);
+    }
     var obj = new addressBookMember();
     var objFound = obj.searchMember(memberIdToBeFound, defaultAddressBook);
     if (objFound) {
@@ -85,24 +122,28 @@ function editMember() {
     console.log("ENTER DETAILS OF THE MEMBER TO BE EDITED FROM THE DEFAULT ADDRESS BOOK");
 
     var defaultAddressBook = readFile('defaultAddressBook.json')
-
-    var memberIdToBeFound = readline.question("Enter the id of the member to be edited ");
-
+    try {
+        var memberIdToBeFound = readline.question("Enter the id of the member to be edited ");
+        if (isNaN(memberIdToBeFound))
+            throw "The id of the member must be a number";
+    } catch (err) {
+        console.log(err);
+    }
     var obj = new addressBookMember();
-    var objFound=obj.searchMember(memberIdToBeFound,defaultAddressBook);
-    if (objFound){
+    var objFound = obj.searchMember(memberIdToBeFound, defaultAddressBook);
+    if (objFound) {
         console.log("MEMBER FOUND");
         console.log(objFound);
-        var memberId=objFound.memberId;
+        var memberId = objFound.memberId;
         var propertyToBeEdited = readline.question("Enter the property of the member that needs to be edited ");
         var newPropertyValue = readline.question("Enter the new value of that property ");
-        defaultAddressBook=obj.editMember(memberId,defaultAddressBook,propertyToBeEdited,newPropertyValue);
+        defaultAddressBook = obj.editMember(memberId, defaultAddressBook, propertyToBeEdited, newPropertyValue);
         writeFile(defaultAddressBook, 'defaultAddressBook.json');
         console.log("MEMBER EDITED");
     }
     else
         console.log("MEMBER NOT FOUND");
-        
+
 }
 function sortMembersByLastName() {
     //ADD THE SECONDARY CRITERIA FOR SORTING
@@ -111,12 +152,12 @@ function sortMembersByLastName() {
     var defaultAddressBook = readFile('defaultAddressBook.json')
 
     var obj = new addressBookMember();
-    var objArray=obj.sortEntriesByLastName(defaultAddressBook);
+    var objArray = obj.sortEntriesByLastName(defaultAddressBook);
     writeFile(objArray, 'sortedAddressBook.json');
     console.log("MEMBER SORTED ON THE BASIS OF LASTNAME");
-        
+
 }
-function printInMailingLabelFormat(){
+function printInMailingLabelFormat() {
     console.log("PRINTING THE DEFAULT ADDRESS BOOK IN MAILING LABEL FORMAT\n");
     var defaultAddressBook = readFile('defaultAddressBook.json');
 
@@ -130,10 +171,10 @@ function sortMembersByZip() {
     var defaultAddressBook = readFile('defaultAddressBook.json');
 
     var obj = new addressBookMember();
-    var objArray=obj.sortEntriesByZip(defaultAddressBook);
+    var objArray = obj.sortEntriesByZip(defaultAddressBook);
     writeFile(objArray, 'sortedAddressBook.json');
     console.log("MEMBER SORTED ON THE BASIS OF ZIP");
-        
+
 }
 
 
@@ -141,7 +182,7 @@ function sortMembersByZip() {
 //createNewMember();
 //deleteMember()
 //searchMember();
-editMember();
+//editMember();
 //sortMembersByLastName();
 //sortMembersByZip();
 //printInMailingLabelFormat();

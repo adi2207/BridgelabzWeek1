@@ -181,7 +181,7 @@ function sortMembersByZip() {
 //createAddressBook();
 //createNewMember();
 //deleteMember()
-//searchMember();
+searchMember();
 //editMember();
 //sortMembersByLastName();
 //sortMembersByZip();

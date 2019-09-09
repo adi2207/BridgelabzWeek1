@@ -1,0 +1,54 @@
+[
+  {
+    "name": "Aditi",
+    "companies": [
+      {
+        "symbol": "Facebook",
+        "noOfShares": "410"
+      },
+      {
+        "symbol": "Google",
+        "noOfShares": "78"
+      }
+    ]
+  },
+  {
+    "name": "Ishika",
+    "companies": [
+      {
+        "symbol": "Amazon",
+        "noOfShares": "12"
+      },
+      {
+        "symbol": "Microsoft",
+        "noOfShares": "520"
+      },
+      {
+        "symbol": "Google",
+        "noOfShares": "580"
+      }
+    ]
+  },
+  {
+    "name": "Aadit",
+    "companies": [
+      {
+        "symbol": "Capgemini",
+        "noOfShares": "45"
+      },
+      {
+        "symbol": "Verizon",
+        "noOfShares": "789"
+      }
+    ]
+  },
+  {
+    "name": "Mukul",
+    "companies": [
+      {
+        "symbol": "Facebook",
+        "noOfShares": "97"
+      }
+    ]
+  }
+]

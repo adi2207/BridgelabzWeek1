@@ -9,7 +9,7 @@ function readFile(filename) {
     return array;
 }
 function writeFile(array, fileName) {
-    let data = JSON.stringify(array);
+    let data = JSON.stringify(array,null,2);
     fs.writeFileSync(fileName, data);
 }
 
@@ -117,13 +117,17 @@ function sortMembersByLastName() {
         
 }
 function printInMailingLabelFormat(){
-    //COMPLETE THIS
+    console.log("PRINTING THE DEFAULT ADDRESS BOOK IN MAILING LABEL FORMAT\n");
+    var defaultAddressBook = readFile('defaultAddressBook.json');
+
+    var obj = new addressBookMember();
+    obj.printInMailingLabelFormat(defaultAddressBook);
 }
 function sortMembersByZip() {
     //ADD THE SECONDARY CRITERIA AS WELL
     console.log("FUNCTION TO SORT THE DEFAULT ADDRESS BOOK");
 
-    var defaultAddressBook = readFile('defaultAddressBook.json')
+    var defaultAddressBook = readFile('defaultAddressBook.json');
 
     var obj = new addressBookMember();
     var objArray=obj.sortEntriesByZip(defaultAddressBook);
@@ -137,6 +141,7 @@ function sortMembersByZip() {
 //createNewMember();
 //deleteMember()
 //searchMember();
-//editMember();
+editMember();
 //sortMembersByLastName();
 //sortMembersByZip();
+//printInMailingLabelFormat();

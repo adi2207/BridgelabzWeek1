@@ -1,0 +1,22 @@
+[
+  {
+    "symbol": "Facebook",
+    "noOfShares": "8100",
+    "priceOfShares": "200"
+  },
+  {
+    "symbol": "Microsoft",
+    "noOfShares": "80000",
+    "priceOfShares": "500"
+  },
+  {
+    "symbol": "Google",
+    "noOfShares": "5000",
+    "priceOfShares": "400"
+  },
+  {
+    "symbol": "Amazon",
+    "noOfShares": "10000",
+    "priceOfShares": "100"
+  }
+]

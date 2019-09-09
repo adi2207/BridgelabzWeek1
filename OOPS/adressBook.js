@@ -86,9 +86,13 @@ class addressBookMember{
         }
         return finalArray;
     }
-    printInMailingLabelFormat(){
-        //COMPLETE THIS
-
+    printInMailingLabelFormat(defaultAddressBook){
+        var len=defaultAddressBook.length;
+        for(var i=0;i<len;i++){
+            console.log(defaultAddressBook[i].firstName+" "+defaultAddressBook[i].lastName);
+            console.log(defaultAddressBook[i].address+", "+defaultAddressBook[i].city);
+            console.log(defaultAddressBook[i].state+"-"+defaultAddressBook[i].zip+"\n");
+        }
     }
     sortEntriesByZip(defaultAddressBook){
         var len=defaultAddressBook.length;
@@ -109,7 +113,6 @@ class addressBookMember{
         }
         return finalArray;
     }
-
 }
 
 module.exports={addressBookMember,addressBook}

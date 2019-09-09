@@ -1,0 +1,30 @@
+[
+  {
+    "customer": "Aditi",
+    "noOfShares": "100",
+    "symbol": "Facebook",
+    "priceOfShares": "200",
+    "typeOfTransaction": "buy"
+  },
+  {
+    "customer": "Aditi",
+    "noOfShares": "100",
+    "symbol": "Facebook",
+    "priceOfShares": "200",
+    "typeOfTransaction": "buy"
+  },
+  {
+    "customer": "Aditi",
+    "noOfShares": "100",
+    "symbol": "Facebook",
+    "priceOfShares": "200",
+    "typeOfTransaction": "buy"
+  },
+  {
+    "customer": "Aditi",
+    "noOfShares": "100",
+    "symbol": "Facebook",
+    "priceOfShares": "200",
+    "typeOfTransaction": "sell"
+  }
+]

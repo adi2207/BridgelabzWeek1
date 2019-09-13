@@ -4,7 +4,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "author": "Aditi Pal",
   "license": "ISC",
@@ -17,9 +17,12 @@
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-validator": "^6.2.0",
     "js": "^0.1.0",
     "mongoose": "^5.7.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^1.19.2"
+  },
   "description": ""
 }

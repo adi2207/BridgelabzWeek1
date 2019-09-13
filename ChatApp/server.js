@@ -1,6 +1,6 @@
 const express = require('express'); //building APIs
 const bodyParser = require('body-parser');  //creates a req.body object 
-
+const route=require('./app/routes/user.routes');
 // create express app
 const app = express();
 
@@ -22,18 +22,24 @@ mongoose.connect(dbConfig.url, {
 }).then(() => {
     console.log("Successfully connected to the database");    
 }).catch(err => {
-    console.log('Could not connect to the database. Exiting now...', err);
+    console.log('Could not connect to the database. Exiting now...'+JSON.stringify(err,undefined,2));
     process.exit();
 });
 
-
-
-// define a simple route
-app.get('/', (req, res) => {
-    res.json({"message": "Welcome to the chat application. "});
-});
-
-require('./app/routes/user.routes')(app);
+app.use("/",route);
+app.use((req,res,next)=>{
+    const error=new Error("Page not found");
+    error.status=404;
+    next(error);
+})
+app.use((error,req,res,callback)=>{
+    res.status(error.status||500);
+    res.json({
+        error:{
+            message:error.message
+        }
+    })
+})
 
 // listen for requests for incoming connections
 app.listen(3000, () => {

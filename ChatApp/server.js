@@ -12,8 +12,10 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 //importing the database configuration in server.js
 const dbConfig = require('./config/database.config');
+//importing mongoose tool used for interacting with db
 const mongoose = require('mongoose');
 
+//WHAT IS THIS DOING??
 mongoose.Promise = global.Promise;
 
 // Connecting to the database
@@ -26,13 +28,14 @@ mongoose.connect(dbConfig.url, {
     process.exit();
 });
 
+//adding middlewares
 app.use("/",route);
 app.use((req,res,next)=>{
     const error=new Error("Page not found");
     error.status=404;
     next(error);
 })
-app.use((error,req,res,callback)=>{
+app.use((error,req,res,next)=>{
     res.status(error.status||500);
     res.json({
         error:{

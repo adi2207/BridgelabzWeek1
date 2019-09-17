@@ -1,6 +1,8 @@
 const express = require('express'); //building APIs
 const bodyParser = require('body-parser');  //creates a req.body object 
 const route=require('./app/routes/user.routes');
+const expressvalidator = require('express-validator');
+
 // create express app
 const app = express();
 
@@ -29,6 +31,7 @@ mongoose.connect(dbConfig.url, {
 });
 
 //adding middlewares
+app.use(expressvalidator());
 app.use("/",route);
 app.use((req,res,next)=>{
     const error=new Error("Page not found");

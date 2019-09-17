@@ -3,6 +3,8 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const dbConfig = require('../../config/database.config')
 const nodemailer = require('nodemailer');
+var events = require('events');
+//var eventEmitter = new events.EventEmitter();
 
 const userSchema = mongoose.Schema({
     name: {
@@ -37,15 +39,6 @@ userSchema.pre('save', function (next) {
     })
 })
 
-userSchema.pre('save', function (next) {
-    bcrypt.genSalt(10, (err, salt) => {
-        bcrypt.hash(this.password, salt, (err, hash) => {
-            this.password = hash;
-            this.saltSecret = salt;
-            next();
-        })
-    })
-})
 
 let User = mongoose.model('UserCollection', userSchema);
 
@@ -78,14 +71,7 @@ class userModel {
                 callback({ message: 'Passwords dont match' })
             }
             else {
-                var loginToken = jwt.sign({ _id: user._id, name: user.name, email: user.email }, dbConfig.JWT_SECRET, { expiresIn: '10m' });
-                User.update({email:user.email},{token:loginToken},(err,user) => {
-                    if (err) {
-                        callback(err);
-                    } else {
-                        callback(null, user);
-                    }
-                });
+                callback(null, user);
             }
         });
     }
@@ -96,7 +82,7 @@ class userModel {
             }
             else {
                 var forgotToken = jwt.sign({ _id: user._id, name: user.name, email: user.email }, dbConfig.JWT_SECRET, { expiresIn: '10m' });
-                User.update({email:user.email},{token:forgotToken},(err,user) => {
+                User.update({ email: user.email }, { token: forgotToken }, (err, user) => {
                     if (err) {
                         callback(err);
                     } else {
@@ -130,6 +116,7 @@ class userModel {
     reset(body, callback) {
 
     }
+
 
 }
 

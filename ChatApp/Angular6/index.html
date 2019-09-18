@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="chatapp">
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.js">  </script>
+    <script src="app.js"> </script>
+    <title>ChatApp</title>
+</head>
+
+<body>
+
+    <div ng-controller="registerController">
+        <p>Name <input ng-model="name"></input></p>
+        <p>Email <input ng-model="email"></input></p>
+        <p>Password <input ng-model="password"></input></p>
+        <p><input type="button" value="SignUp"></input></p>
+        <p>The name of the user is : {{name}}</p>
+
+    </div>
+</body>
+
+</html>

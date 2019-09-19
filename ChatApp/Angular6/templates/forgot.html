@@ -1,3 +1,6 @@
-<p>Email <input ng-model="email"></input></p>
-<p><input type="button" value="Send Link"></input></p>
-<p><input type="button" value="Sign In"></input></p>
+<div>
+    <h1>Enter email to receive link</h1>
+    <p>Email <input ng-model="email"></input></p>
+    <p><button ng-click="forgotController()">Send Link</button> 
+        <button ng-click="loginController()">Sign In</button></p>
+</div>

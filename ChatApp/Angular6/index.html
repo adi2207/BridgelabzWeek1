@@ -1,22 +1,39 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="chatapp">
+<html lang="en" >
 
 <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.js">  </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.22/angular-ui-router.js"></script>
     <script src="app.js"> </script>
+
+    <script src='./controllers/userController.js'></script> 
+    <script src='./services/userServices.js'></script> 
+
+
     <title>ChatApp</title>
 </head>
 
-<body>
+<body  ng-app="chatapp" >
+    <div ui-view>
+    </div> 
+    <!-- <div>
+        <div class col-sm-12 well>
+            header|<a href='#/'>Home</a>
 
-    <div ng-controller="registerController">
-        <p>Name <input ng-model="name"></input></p>
-        <p>Email <input ng-model="email"></input></p>
-        <p>Password <input ng-model="password"></input></p>
-        <p><input type="button" value="SignUp"></input></p>
-        <p>The name of the user is : {{name}}</p>
-
+        </div>
     </div>
+    <div>
+        <div class col-sm-12 well>
+            <ul>
+                <li>
+                    <a href='#/link'>link name</a>
+                </li>
+            </ul>
+        </div>
+        <div class col-sm-9 well>
+            <div ui-view></div>
+        </div>
+    </div> -->
 </body>
 
 </html>

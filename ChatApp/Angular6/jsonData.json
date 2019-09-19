@@ -1,0 +1,14 @@
+[
+    {
+        "name": "anamika",
+        "email": "athakur95@gmail.com",
+        "password": "faafa",
+        "confirmPassword":"faafa"
+    },
+    {
+        "name": "swagata",
+        "email": "swagi95@gmail.com",
+        "password": "frrfa",
+        "confirmPassword":"frrfa"
+    }
+]

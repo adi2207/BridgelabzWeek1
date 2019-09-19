@@ -1,6 +1,6 @@
 const express = require('express'); //building APIs
 const bodyParser = require('body-parser');  //creates a req.body object 
-const route=require('./app/routes/user.routes');
+const route=require('./Nodejs/app/routes/user.routes');
 const expressvalidator = require('express-validator');
 
 // create express app
@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 // parse requests of content-type - application/json
 app.use(bodyParser.json())
 //importing the database configuration in server.js
-const dbConfig = require('./config/database.config');
+const dbConfig = require('./Nodejs/config/database.config');
 //importing mongoose tool used for interacting with db
 const mongoose = require('mongoose');
 
@@ -33,6 +33,7 @@ mongoose.connect(dbConfig.url, {
 //adding middlewares
 app.use(expressvalidator());
 app.use("/",route);
+app.use(express.static('./Angular6'));
 app.use((req,res,next)=>{
     const error=new Error("Page not found");
     error.status=404;

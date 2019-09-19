@@ -1,17 +1,20 @@
 <div>
     <h1>Register new user</h1>
-    <form name="registerForm" novalidate>
-        <p>Name <input ng-model="name"></input></p>
-        <p>Email <input type="email" ng-model="email" name="emailField" required></input></p>
-        <ng-messages for="registerForm.registerField.$error" ng-show="registerForm.registerField.$invalid && registerForm.registerField.$dirty">
-
-            <ng-message when="required">This field is required</ng-message>
-            <ng-message when="email">Please enter proper email address</ng-message>
-        </ng-messages>
-        <p>Password <input type="password" ng-model="password"></input></p>
-        <p>Confirm Password <input type="password" ng-model="confirmpassword"></input></p>
-        <p><button ng-click="registerController()">SignUp</button>
+    <form name="registerForm" novalidate >
+        <p>Name <input ng-model="name" required></input></p>
+        <span style="color:red" ng-show="registerForm.name.$dirty&&registerForm.name.$invalid">
+            <span ng-show="registerForm.name.$error.required">Name is required</span>
+        </span>
+        <p>Email <input type="email" ng-model="email" required></input></p>
+        <p>Password <input type="password" ng-model="password" required></input></p>
+        <p>Confirm Password <input type="password" ng-model="confirmpassword" required></input></p>
+        <p><button ng-click="registerController()" ng-disabled="registerForm.name.$dirty && registerForm.name.$invalid">SignUp</button>
             <button ng-click="registerController()">Sign In</button></p>
     </form>
 
 </div>
+
+<!-- <ng-messages for="registerForm.registerField.$error" ng-show="registerForm.registerField.$invalid && registerForm.registerField.$dirty">
+            <ng-message when="required">This field is required</ng-message>
+            <ng-message when="email">Please enter proper email address</ng-message> 
+        </ng-messages>-->

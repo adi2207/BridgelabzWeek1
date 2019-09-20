@@ -70,11 +70,15 @@ exports.forgotController = (req, res) => {
 
 exports.resetController = (req, res) => {
     let responseResult = {};
+
+
+
     const extractedData = {
         email: req.user.email,
-        token: req.headers.token,
+        token: req.headers.authorization,
         password: req.body.password
     }
+    console.log(extractedData)
     req.check("password", 'Password is required').not().isEmpty();
     req.check("password", 'Password must be atleast 6 characters long').isLength({ min: 6 });
     var error = req.validationErrors();

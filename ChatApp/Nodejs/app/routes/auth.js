@@ -8,10 +8,10 @@ module.exports.authorise=function(req,res,next){
         res.status(402).send({message: "Token not provided"});
     }
     try {
-        console.log("DFGDFG");
         const decodedToken=jwt.verify(tokenReceived,dbConfig.JWT_SECRET);
         console.log(decodedToken)
         req.user=decodedToken;
+        console.log(req.user.email);
         next();
     }catch(err){
         console.log(2);

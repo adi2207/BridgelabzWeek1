@@ -28,6 +28,7 @@ exports.forgotService = (userInput,callback)=>{
     })
 }
 exports.resetService = (extractedData,callback)=>{
+    console.log("in services");
     userModel.reset(extractedData , (err , result) => {
         if(err ){
             callback(err,null);

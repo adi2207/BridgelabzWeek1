@@ -81,7 +81,7 @@ class userModel {
             }
             else {
                 var forgotToken = jwt.sign({ _id: user._id, name: user.name, email: user.email }, dbConfig.JWT_SECRET, { expiresIn: '2d' });
-                User.update({ email: user.email }, { token: forgotToken }, (err, user) => {
+                User.update({email:extractedData.email},{ token: forgotToken }, (err, user) => {
                     if (err) {
                         callback(err);
                     } else {
@@ -99,7 +99,7 @@ class userModel {
                     to: user.email,
                     from: 'aditipal96@gmail.com',
                     subject: 'Password Reset',
-                    text: 'Please click on the given link to reset your password http://localhost:3000/#!/reset/' + forgotToken + '\n'
+                    text: 'Please click on the given link to reset your password http://localhost:3000/?#!/reset/' + forgotToken + '\n'
                 }
                 smtpTransport.sendMail(mailOptions, (err, result) => {
                     if (err) {
@@ -111,12 +111,16 @@ class userModel {
             }
         })
     }
-    verify(extractedData, callback) {
+    reset(extractedData, callback) {
+        console.log("in model")
         User.findOne({email:extractedData.email}, (err, user) => {
+            console.log(user);
             if(!user){
                 callback({ message: 'Email is not registered' })
             }
             else{
+                console.log(extractedData.token);
+                console.log(user.token);
                 if(extractedData.token==user.token){
                     user.update({ password: extractedData.password }, (err, user) => {
                         if (err) {

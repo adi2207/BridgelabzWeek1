@@ -29,29 +29,6 @@ const userSchema = mongoose.Schema({
 
 });
 
-const messageSchema = mongoose.Schema({
-    senderName: {
-        type: String,
-        required: true,
-    },
-    receiverName: {
-        type: String,
-        required: true,
-    },
-    message: {
-        type: String,
-        required: true,
-    },
-    senderId: {
-        type: String,
-        required: true,
-    },
-    receiverId: {
-        type: String,
-        required: true,
-    }
-});
-
 userSchema.pre('save', function (next) {
     bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(this.password, salt, (err, hash) => {
@@ -64,8 +41,6 @@ userSchema.pre('save', function (next) {
 
 
 let User = mongoose.model('UserCollection', userSchema);
-let Messages = mongoose.model('MessageCollection', messageSchema);
-
 
 class userModel {
     register(body, callback) {

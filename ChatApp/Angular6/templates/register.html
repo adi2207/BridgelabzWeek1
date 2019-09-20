@@ -4,28 +4,33 @@
         <p>Name <input type="text" ng-model="name" name="name" required></input></p>
         <span style="color:red" ng-show="registerForm.name.$dirty && registerForm.name.$invalid">
             <span ng-show="registerForm.name.$error.required">Name is required</span>
-            <span ng-show="registerForm.name.$error.type">Name must be a text</span>
+            <!-- type of name must be text-->
         </span>
         <p>Email <input type="email" name="email" ng-model="email" required></input></p>
         <span style="color:red" ng-show="registerForm.email.$dirty && registerForm.email.$invalid">
             <span ng-show="registerForm.email.$error.required">Email is required</span>
-            <span ng-show="registerForm.email.$error.email">Email is invalid</span> 
+            <span ng-show="registerForm.email.$error.email">Email is invalid</span>
+            <!-- email cant be dupliacted--> 
         </span>
-        <p>Password <input type="password" ng-model="password" name="password" required ng-minlength="6"></input></p>
+        <p>Password <input type="password" ng-model="password" name="password" required ng-pattern="confirmpassword" ng-minlength="6"></input></p>
         <span style="color:red" ng-show="registerForm.password.$dirty && registerForm.password.$invalid">
             <span ng-show="registerForm.password.$error.required">Password is required</span>
             <span ng-show="registerForm.password.$error.minlength">Password is too short, min length is 6
                 characters</span>
+            <span ng-show="registerForm.password.$error.pattern">Passwords mismatch</span>
+    
         </span>
-        <p>Confirm Password <input type="password" name="confirmpassword" ng-model="confirmpassword" required></input>
+        <p>Confirm Password <input type="password" name="confirmpassword" ng-model="confirmpassword" ng-pattern="password" required></input>
         </p>
         <span style="color:red" ng-show="registerForm.confirmpassword.$dirty && registerForm.confirmpassword.$invalid">
             <span ng-show="registerForm.confirmpassword.$error.required">Confirm password is required</span>
-            <!-- <span ng-show="registerForm.confirmpassword!==registerForm.password">Passwords mismatch</span> -->
+            <span ng-show="registerForm.password.$error.minlength">Password is too short, min length is 6
+                characters</span>
+            <span ng-show="registerForm.confirmpassword.$error.pattern">Passwords mismatch</span>
         </span>
         <p><button ng-click="registerController()"
-                ng-disabled="(registerForm.name.$dirty && registerForm.name.$invalid)||(registerForm.email.$dirty && registerForm.email.$invalid)||(registerForm.password.$dirty && registerForm.password.$invalid)||(registerForm.confirmpassword.$dirty && registerForm.confirmpassword.$invalid)">SignUp</button>
-            <button ng-click="registerController()">Sign In</button></p>
+                ng-disabled="(registerForm.name.$invalid)||( registerForm.email.$invalid)||(registerForm.password.$invalid)||( registerForm.confirmpassword.$invalid)">SignUp</button>
+            <button ui-sref="loginState">Sign In</button></p>
     </form>
 
 </div>

@@ -1,5 +1,6 @@
 const userServices = require('../services/userServices');
 const jwt = require('jsonwebtoken');
+
 const dbConfig = require('../config/database.config')
 
 exports.registerController = (req, res) => {
@@ -42,7 +43,7 @@ exports.loginController = (req, res) => {
         } else if (result) {
             responseResult.success = true;
             responseResult.result = result;
-            responseResult.token=jwt.sign({ _id: result._id,email: result.email }, dbConfig.JWT_SECRET, { expiresIn: '10m' });
+            responseResult.token=jwt.sign({ _id: result._id,email: result.email }, dbConfig.JWT_SECRET, { expiresIn: '2d' });
             return res.status(200).send(responseResult);
         }
     })
@@ -69,15 +70,26 @@ exports.forgotController = (req, res) => {
 
 exports.resetController = (req, res) => {
     let responseResult = {};
-    const userInput = {
+    const extractedData = {
+        email: req.user.email,
+        token: req.headers.token,
         password: req.body.password
     }
-    userServices.resetService(userInput, (err, result) => {
-        if (err) {
+    req.check("password", 'Password is required').not().isEmpty();
+    req.check("password", 'Password must be atleast 6 characters long').isLength({ min: 6 });
+    var error = req.validationErrors();
+    userServices.resetService(extractedData, (err, result) => {
+        if(error){
+            responseResult.success = false;
+            responseResult.errors = error;
+            responseResult.message="Validation error";
+            return res.status(500).send(responseResult);
+        }
+        else if (err) {
             responseResult.success = false;
             responseResult.errors = err;
             return res.status(400).send(responseResult);
-        } else if (result) {
+        } else {
             responseResult.success = true;
             responseResult.result = result;
             return res.status(200).send(responseResult);

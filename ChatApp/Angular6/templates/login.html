@@ -1,7 +1,19 @@
 <div>
     <h1>User login</h1>
-    <p>Email <input ng-model="email"></input></p>
-    <p>Password <input type="password" ng-model="password"></input></p>
-    <p><button ng-click="registerController()" >Sign Up</button> 
-        <button ng-click="loginController()" >Sign In</button></p>
+    <form novalidate name="loginForm">
+        <p>Email <input type="email" name="email" ng-model="email" required></input></p>
+        <span style="color:red" ng-show="loginForm.email.$dirty && loginForm.email.$invalid">
+            <span ng-show="loginForm.email.$error.required">Email is required</span>
+            <span ng-show="loginForm.email.$error.email">Email is invalid</span>
+            <!-- email must be registered-->
+        </span>
+        <p>Password <input type="password" ng-model="password" name="password" required ></input></p>
+        <span style="color:red" ng-show="loginForm.password.$dirty && loginForm.password.$invalid">
+            <span ng-show="loginForm.password.$error.required">Password is required</span>
+        </span>
+            <button ng-click="loginController()" ng-disabled="(loginForm.email.$invalid)||(loginForm.password.$invalid)">Sign In</button></p>
+            <p><button ui-sref="registerState">Sign Up</button></p>
+            <p><button ui-sref="forgotState">Forgot password?</button></p>
+
+    </form>
 </div>

@@ -5,7 +5,6 @@ app.controller('userController', function ($scope, services) {
         data.email = $scope.email;
         data.name = $scope.name;
         data.password = $scope.password;
-        //password validation
         console.log("data--", data);
 
         services.register(data);
@@ -28,7 +27,6 @@ app.controller('userController', function ($scope, services) {
     $scope.resetController = function () {
         let data = {}
         data.password = $scope.password;
-        //password validation
         console.log("data--", data);
 
         services.reset(data);

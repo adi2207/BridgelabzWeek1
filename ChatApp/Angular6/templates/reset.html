@@ -1,8 +1,24 @@
 <div>
     <h1>Reset Password</h1>
-    <p>Password <input type="password" ng-model="password"></input></p>
-    <p>Confirm Password <input type="password" ng-model="confirmpassword"></input></p>
-    <p><button ng-click="resetController()">Reset</button> 
-        <button ng-click="loginController()">Sign In</button></p>
-</div>
+    <form novalidate name="resetForm">
+        <p>Password <input type="password" ng-model="password" name="password" required ng-pattern="confirmpassword"
+                ng-minlength="6"></input></p>
+        <span style="color:red" ng-show="resetForm.password.$dirty && resetForm.password.$invalid">
+            <span ng-show="resetForm.password.$error.required">Password is required</span>
+            <span ng-show="resetForm.password.$error.minlength">Password is too short, min length is 6
+                characters</span>
+            <span ng-show="resetForm.password.$error.pattern">Passwords mismatch</span>
 
+        </span>
+        <p>Confirm Password <input type="password" name="confirmpassword" ng-model="confirmpassword"
+                ng-pattern="password" required></input>
+        </p>
+        <span style="color:red" ng-show="resetForm.confirmpassword.$dirty && resetForm.confirmpassword.$invalid">
+            <span ng-show="resetForm.confirmpassword.$error.required">Confirm password is required</span>
+            <span ng-show="resetForm.password.$error.minlength">Password is too short, min length is 6
+                characters</span>
+            <span ng-show="resetForm.confirmpassword.$error.pattern">Passwords mismatch</span>
+        </span>
+        <p><button ng-click="resetController()" ng-disabled="(resetForm.password.$invalid)||( resetForm.confirmpassword.$invalid)">Reset</button>
+    </form>
+</div>

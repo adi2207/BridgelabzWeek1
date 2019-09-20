@@ -27,8 +27,8 @@ exports.forgotService = (userInput,callback)=>{
         }
     })
 }
-exports.resetService = (userInput,callback)=>{
-    userModel.reset(userInput , (err , result) => {
+exports.resetService = (extractedData,callback)=>{
+    userModel.reset(extractedData , (err , result) => {
         if(err ){
             callback(err,null);
         }else{

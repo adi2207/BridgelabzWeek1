@@ -9,5 +9,7 @@ router.post('/login', userCtrl.loginController);
 router.post('/forgot', userCtrl.forgotController);
 router.post('/reset',auth.authorise,userCtrl.resetController);
 router.post('/sendMessage',messageCtrl.sendMessageController);
+router.get('/getAllUsers',userCtrl.getUsersController);
+router.get('/getUserWithId',userCtrl.getUserWithIdController);
 
 module.exports=router;

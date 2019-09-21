@@ -71,14 +71,11 @@ exports.forgotController = (req, res) => {
 exports.resetController = (req, res) => {
     let responseResult = {};
 
-
-
     const extractedData = {
         email: req.user.email,
         token: req.headers.authorization,
         password: req.body.password
     }
-    console.log(extractedData)
     req.check("password", 'Password is required').not().isEmpty();
     req.check("password", 'Password must be atleast 6 characters long').isLength({ min: 6 });
     var error = req.validationErrors();
@@ -90,6 +87,52 @@ exports.resetController = (req, res) => {
             return res.status(500).send(responseResult);
         }
         else if (err) {
+            responseResult.success = false;
+            responseResult.errors = err;
+            return res.status(400).send(responseResult);
+        } else {
+            responseResult.success = true;
+            responseResult.result = result;
+            return res.status(200).send(responseResult);
+        }
+    })
+}
+
+exports.getUsersController = (req,res) => {
+    let responseResult = {};
+    userServices.getUsersService(req,(err, result) => {
+        if (err) {
+            responseResult.success = false;
+            responseResult.errors = err;
+            return res.status(400).send(responseResult);
+        } else {
+            responseResult.success = true;
+            responseResult.result = result;
+            return res.status(200).send(responseResult);
+        }
+    })
+}
+exports.getUsersController = (req,res) => {
+    let responseResult = {};
+    userServices.getUsersService(req,(err, result) => {
+        if (err) {
+            responseResult.success = false;
+            responseResult.errors = err;
+            return res.status(400).send(responseResult);
+        } else {
+            responseResult.success = true;
+            responseResult.result = result;
+            return res.status(200).send(responseResult);
+        }
+    })
+}
+exports.getUserWithIdController = (req,res) => {
+    const userInput = {
+        _id: req.body._id,
+    }
+    let responseResult = {};
+    userServices.getUserWithIdService(userInput,(err, result) => {
+        if (err) {
             responseResult.success = false;
             responseResult.errors = err;
             return res.status(400).send(responseResult);

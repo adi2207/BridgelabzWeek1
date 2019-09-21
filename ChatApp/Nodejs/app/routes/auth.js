@@ -9,12 +9,9 @@ module.exports.authorise=function(req,res,next){
     }
     try {
         const decodedToken=jwt.verify(tokenReceived,dbConfig.JWT_SECRET);
-        console.log(decodedToken)
         req.user=decodedToken;
-        console.log(req.user.email);
         next();
     }catch(err){
-        console.log(2);
         res.status(402).send({message: "Invalid token"});
     }
 }

@@ -40,9 +40,16 @@ userSchema.pre('save', function (next) {
 })
 
 
+
 let User = mongoose.model('UserCollection', userSchema);
 
 class userModel {
+    hash(password){
+        const saltRounds = 10;
+        var salt = bcrypt.genSaltSync(saltRounds);
+        var hash = bcrypt.hashSync(password, salt);
+        return hash;
+    }
     register(body, callback) {
         const user = new User({
             name: body.name,
@@ -81,7 +88,7 @@ class userModel {
             }
             else {
                 var forgotToken = jwt.sign({ _id: user._id, name: user.name, email: user.email }, dbConfig.JWT_SECRET, { expiresIn: '2d' });
-                User.update({email:extractedData.email},{ token: forgotToken }, (err, user) => {
+                User.updateOne({email:userInput.email},{ token: forgotToken }, (err, user) => {
                     if (err) {
                         callback(err);
                     } else {
@@ -112,17 +119,13 @@ class userModel {
         })
     }
     reset(extractedData, callback) {
-        console.log("in model")
         User.findOne({email:extractedData.email}, (err, user) => {
-            console.log(user);
             if(!user){
                 callback({ message: 'Email is not registered' })
             }
             else{
-                console.log(extractedData.token);
-                console.log(user.token);
                 if(extractedData.token==user.token){
-                    user.update({ password: extractedData.password }, (err, user) => {
+                    User.updateOne({email:extractedData.email},{ password: this.hash(extractedData.password) }, (err, user) => {
                         if (err) {
                             callback(err);
                         } else {
@@ -137,8 +140,31 @@ class userModel {
         })
 
     }
+    getUsers(req,callback){
+        User.find({},(err,users)=>{
+            if(err){
+                callback({message: "No users in the DB" });
+            }
+            else{
+                callback(null,users);
+            }
+        }).select('_id').select('name').select('email');
 
+    }
+    getUserWithId(req,callback){
+        User.findOne({_id:req._id}, (err, user) => {
+            if(!user){
+                callback({ message: 'Email is not registered' })
+            }
+            else if (err) {
+                callback(err);
+            }
+            else{
+                callback(null,user);
+            }
+        }).select('_id').select('name').select('email');
 
+    }
 }
 
 module.exports = new userModel();

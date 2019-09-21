@@ -28,8 +28,27 @@ exports.forgotService = (userInput,callback)=>{
     })
 }
 exports.resetService = (extractedData,callback)=>{
-    console.log("in services");
     userModel.reset(extractedData , (err , result) => {
+        if(err ){
+            callback(err,null);
+        }else{
+            callback(null ,result);
+        }
+    })
+}
+exports.getUsersService = (req,callback)=>{
+
+    userModel.getUsers(req,(err , result) => {
+        if(err ){
+            callback(err,null);
+        }else{
+            callback(null ,result);
+        }
+    })
+}
+exports.getUserWithIdService = (req,callback)=>{
+
+    userModel.getUserWithId(req,(err , result) => {
         if(err ){
             callback(err,null);
         }else{

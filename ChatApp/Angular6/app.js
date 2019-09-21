@@ -17,10 +17,15 @@ app.config(function($stateProvider , $urlRouterProvider){
         controller: 'userController'
     })
     .state('resetState',{
-        url: '/reset/:id',
+        url: '/reset/:token',
         templateUrl: './templates/reset.html',
         controller: 'userController'
     })
-    //$urlRouterProvider.otherwise('register')
+    .state('getUsersState',{
+        url: '/getAllUsers',
+        templateUrl: './templates/getAllUsers.html',
+        controller: 'userController'
+    })
+    $urlRouterProvider.otherwise('login')
     
 });

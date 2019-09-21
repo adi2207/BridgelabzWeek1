@@ -1,4 +1,4 @@
-app.controller('userController', function ($scope, services) {
+app.controller('userController', function ($scope, services,$stateParams) {
 
     $scope.registerController = function () {
         let data = {}
@@ -27,10 +27,15 @@ app.controller('userController', function ($scope, services) {
     $scope.resetController = function () {
         let data = {}
         data.password = $scope.password;
+        $scope.id=$stateParams.token;
         console.log("data--", data);
-
-        services.reset(data);
+        services.reset(data,$scope.id);
     }
+    $scope.getUsersController = function () {
+        $scope.bookList = [];
+        $scope.loadData(services.getUsers(bookList));
+    }
+    
 })
 
 

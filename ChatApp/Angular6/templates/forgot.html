@@ -1,6 +1,6 @@
-<div>
-    <h1>Enter email to receive link</h1>
-    <form name="forgotForm" novalidate>
+<div class="container">
+    <h2>Enter email to receive link</h2>
+    <form name="forgotForm" class="my-form" novalidate>
         <p>Email <input type="email" name="email" ng-model="email" required></input></p>
         <span style="color:red" ng-show="forgotForm.email.$dirty && forgotForm.email.$invalid">
             <span ng-show="forgotForm.email.$error.required">Email is required</span>

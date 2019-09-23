@@ -1,4 +1,4 @@
-app.service('services',function($http,$state,$scope){
+app.service('services',function($http,$state){
 
     this.register=function(dataObj){
         console.log("dataObj",dataObj);
@@ -67,18 +67,20 @@ app.service('services',function($http,$state,$scope){
             
         })
     }
-    this.getUsers=function(){
+    this.getUsers=function(callback){
         $http({
             method:'GET',
             url:'http://localhost:3000/getAllUsers',
         })
-        .then(function(success){
-            console.log("data after api call", success);
-            $scope.bookList=success.data;
-            //console.log(bookList);
+        .then(function(response){
+            console.log("data after api call", response);
+            callback(null,response.data.result);
 
-        },function(error){
-            console.log("data after api call", error);
+        },function(response){
+            response.success=false;
+            response.message="failed"
+            console.log("failed to load data");
+            callback(response);
             
         })
     }

@@ -3,7 +3,7 @@ const dbConfig = require('../../config/database.config');
 
 
 module.exports.authorise=function(req,res,next){
-    const tokenReceived=req.headers["authorization"];
+    const tokenReceived=req.header("token");
     if(!tokenReceived){
         res.status(402).send({message: "Token not provided"});
     }

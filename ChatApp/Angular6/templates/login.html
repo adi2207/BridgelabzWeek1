@@ -1,6 +1,6 @@
-<div>
-    <h1>User login</h1>
-    <form novalidate name="loginForm">
+<div class="container">
+    <h2>User login</h2>
+    <form novalidate name="loginForm" class="my-form">
         <p>Email <input type="email" name="email" ng-model="email" required></input></p>
         <span style="color:red" ng-show="loginForm.email.$dirty && loginForm.email.$invalid">
             <span ng-show="loginForm.email.$error.required">Email is required</span>

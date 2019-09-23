@@ -23,8 +23,8 @@ app.config(function($stateProvider , $urlRouterProvider){
     })
     .state('getUsersState',{
         url: '/getAllUsers',
-        templateUrl: './templates/getAllUsers.html',
-        controller: 'userController'
+        templateUrl: './templates/getUsers.html',
+        controller: 'getUsersController'
     })
     $urlRouterProvider.otherwise('login')
     

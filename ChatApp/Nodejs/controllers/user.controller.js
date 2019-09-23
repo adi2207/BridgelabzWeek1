@@ -80,13 +80,7 @@ exports.resetController = (req, res) => {
     req.check("password", 'Password must be atleast 6 characters long').isLength({ min: 6 });
     var error = req.validationErrors();
     userServices.resetService(extractedData, (err, result) => {
-        if(error){
-            responseResult.success = false;
-            responseResult.errors = error;
-            responseResult.message="Validation error";
-            return res.status(500).send(responseResult);
-        }
-        else if (err) {
+        if (err) {
             responseResult.success = false;
             responseResult.errors = err;
             return res.status(400).send(responseResult);

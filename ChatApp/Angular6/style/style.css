@@ -1,0 +1,27 @@
+
+body{
+    background-color:white;
+    font-family: "Bookman Old Style",serif;
+}
+.container{
+    width:80%;
+    color:black;
+    margin:auto;
+}
+.my-form{
+    background-color:grey;
+    color:white;
+    font-family: "Bookman Old Style",serif;
+    padding: 15px;
+    margin:30px;
+
+}
+.my-form .form-group{
+    padding:15px
+}  
+.my-form label{
+    display:block
+} 
+.my-form input, .my-form textarea{
+    width: 100%;
+} 

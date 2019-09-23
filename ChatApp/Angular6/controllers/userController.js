@@ -27,13 +27,10 @@ app.controller('userController', function ($scope, services,$stateParams) {
     $scope.resetController = function () {
         let data = {}
         data.password = $scope.password;
-        $scope.id=$stateParams.token;
+        $scope.token=$stateParams.token;
+        console.log($scope.token);
         console.log("data--", data);
-        services.reset(data,$scope.id);
-    }
-    $scope.getUsersController = function () {
-        $scope.bookList = [];
-        $scope.loadData(services.getUsers(bookList));
+        services.reset(data,$scope.token);
     }
     
 })

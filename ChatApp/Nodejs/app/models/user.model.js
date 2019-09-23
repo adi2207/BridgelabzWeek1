@@ -44,7 +44,7 @@ userSchema.pre('save', function (next) {
 let User = mongoose.model('UserCollection', userSchema);
 
 class userModel {
-    hash(password){
+    hash(password) {
         const saltRounds = 10;
         var salt = bcrypt.genSaltSync(saltRounds);
         var hash = bcrypt.hashSync(password, salt);
@@ -88,7 +88,7 @@ class userModel {
             }
             else {
                 var forgotToken = jwt.sign({ _id: user._id, name: user.name, email: user.email }, dbConfig.JWT_SECRET, { expiresIn: '2d' });
-                User.updateOne({email:userInput.email},{ token: forgotToken }, (err, user) => {
+                User.updateOne({ email: userInput.email }, { token: forgotToken }, (err, user) => {
                     if (err) {
                         callback(err);
                     } else {
@@ -118,49 +118,45 @@ class userModel {
             }
         })
     }
-    reset(extractedData, callback) {
-        User.findOne({email:extractedData.email}, (err, user) => {
-            if(!user){
-                callback({ message: 'Email is not registered' })
+    reset(req, callback) {
+        User.findOne({ email: req.email }, (err, res) => {
+            if (err) {
+                callback(err)
             }
-            else{
-                if(extractedData.token==user.token){
-                    User.updateOne({email:extractedData.email},{ password: this.hash(extractedData.password) }, (err, user) => {
-                        if (err) {
-                            callback(err);
-                        } else {
-                            callback(null, user);
-                        }
-                    });
-                }
-                else{
-                    callback({message:'Token mismatch or expired'});
-                }
-            }
+            else {
+                if(res.token==req.token)
+                {
+                User.updateOne({ email: res.email }, { password:this.hash( req.password) }, (err, info) => {
+                    if (err)
+                        callback(err)
+                    else
+                        callback(null, res);
+                })
+           
+             } }
         })
-
     }
-    getUsers(req,callback){
-        User.find({},(err,users)=>{
-            if(err){
-                callback({message: "No users in the DB" });
+    getUsers(req, callback) {
+        User.find({}, (err, users) => {
+            if (err) {
+                callback({ message: "No users in the DB" });
             }
-            else{
-                callback(null,users);
+            else {
+                callback(null, users);
             }
         }).select('_id').select('name').select('email');
 
     }
-    getUserWithId(req,callback){
-        User.findOne({_id:req._id}, (err, user) => {
-            if(!user){
+    getUserWithId(req, callback) {
+        User.findOne({ _id: req._id }, (err, user) => {
+            if (!user) {
                 callback({ message: 'Email is not registered' })
             }
             else if (err) {
                 callback(err);
             }
-            else{
-                callback(null,user);
+            else {
+                callback(null, user);
             }
         }).select('_id').select('name').select('email');
 

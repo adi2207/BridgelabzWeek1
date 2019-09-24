@@ -1,27 +1,50 @@
 
-body{
-    background-color:white;
-    font-family: "Bookman Old Style",serif;
+h2 {
+    text-align: center;
 }
-.container{
-    width:80%;
-    color:black;
-    margin:auto;
+h1 {
+    text-align: center;
+    color:grey;
 }
-.my-form{
-    background-color:grey;
-    color:white;
-    font-family: "Bookman Old Style",serif;
-    padding: 15px;
-    margin:30px;
-
-}
-.my-form .form-group{
-    padding:15px
-}  
-.my-form label{
-    display:block
-} 
-.my-form input, .my-form textarea{
+form {
+    
+    border: 3px solid #f1f1f1;
+    width: 50%;
+    margin-left: 300px;
+    margin-right:300px;
+  }
+  
+  input {
     width: 100%;
-} 
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .container {
+    padding: 16px;
+    width: 100%;
+  }
+
+  li{
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    margin-right:85%;
+  }
+  

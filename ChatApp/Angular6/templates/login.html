@@ -1,19 +1,22 @@
 <div class="container">
+    <h1>CHATAPP</h1>
     <h2>User login</h2>
-    <form novalidate name="loginForm" class="my-form">
-        <p>Email <input type="email" name="email" ng-model="email" required></input></p>
+    <form novalidate name="loginForm" >
+        <label>Email</label>
+        <input type="email" name="email" ng-model="email" required></input>
         <span style="color:red" ng-show="loginForm.email.$dirty && loginForm.email.$invalid">
             <span ng-show="loginForm.email.$error.required">Email is required</span>
             <span ng-show="loginForm.email.$error.email">Email is invalid</span>
             <!-- email must be registered-->
         </span>
-        <p>Password <input type="password" ng-model="password" name="password" required ></input></p>
+        <label>Password </label>
+        <input type="password" ng-model="password" name="password" required ></input>
         <span style="color:red" ng-show="loginForm.password.$dirty && loginForm.password.$invalid">
             <span ng-show="loginForm.password.$error.required">Password is required</span>
         </span>
-            <button ng-click="loginController()" ng-disabled="(loginForm.email.$invalid)||(loginForm.password.$invalid)">Sign In</button></p>
-            <p><button ui-sref="registerState">Sign Up</button></p>
-            <p><button ui-sref="forgotState">Forgot password?</button></p>
+            <button ng-click="loginController()" ng-disabled="(loginForm.email.$invalid)||(loginForm.password.$invalid)">Sign In</button>
+            <button ui-sref="registerState">Sign Up</button>
+            <button ui-sref="forgotState">Forgot password?</button>
 
     </form>
 </div>

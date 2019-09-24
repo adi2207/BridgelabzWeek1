@@ -1,13 +1,14 @@
 <div class="container">
     <h2>Enter email to receive link</h2>
-    <form name="forgotForm" class="my-form" novalidate>
-        <p>Email <input type="email" name="email" ng-model="email" required></input></p>
+    <form name="forgotForm" novalidate>
+        <label>Email</label>
+        <input type="email" name="email" ng-model="email" required></input>
         <span style="color:red" ng-show="forgotForm.email.$dirty && forgotForm.email.$invalid">
             <span ng-show="forgotForm.email.$error.required">Email is required</span>
             <span ng-show="forgotForm.email.$error.email">Email is invalid</span>
             <!-- email must be registered in the db -->
         </span>
-        <p><button ng-click="forgotController()" ng-disabled="forgotForm.email.$dirty && forgotForm.email.$invalid">Send Link</button>
-            <button ui-sref="loginState">Sign In</button></p>
+        <button ng-click="forgotController()" ng-disabled="forgotForm.email.$dirty && forgotForm.email.$invalid">Send Link</button>
+            <button ui-sref="loginState">Sign In</button>
     </form>
 </div>

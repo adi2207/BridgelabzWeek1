@@ -1,25 +1,47 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 
 <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.js">  </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.22/angular-ui-router.js"></script>
     <script src="app.js"> </script>
 
-    <script src='./controllers/userController.js'></script> 
-    <script src='./controllers/getUsersController.js'></script> 
+    <script src='./controllers/userController.js'></script>
+    <script src='./controllers/getUsersController.js'></script>
 
-    <script src='./services/userServices.js'></script> 
+    <script src='./services/userServices.js'></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io()
+        socket.on('connect', function () {
+            console.log('Connected to Server')
+
+        });
+        socket.on('newMessage', function (message) {
+            console.log(message);
+        });
+
+        // emits message from user side 
+        socket.emit('createMessage', {
+            to: 'aditipal96@gmail.com',
+            text: 'what kjkljd'
+        });
+
+        // when disconnected from server 
+        socket.on('disconnect', function () {
+            console.log('Disconnect from server')
+        }); 
+    </script>
 
 
     <title>ChatApp</title>
     <link rel="stylesheet" type="text/css" href="style/style.css">
 </head>
 
-<body  ng-app="chatapp" >
+<body ng-app="chatapp">
     <!-- <h1>ytfduuy</h1> -->
     <div ui-view>
-    </div> 
+    </div>
     <!-- <div>
         <div class col-sm-12 well>
             header|<a href='#/'>Home</a>

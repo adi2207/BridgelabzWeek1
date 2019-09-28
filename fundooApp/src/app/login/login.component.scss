@@ -1,73 +1,54 @@
-// body{
-//     margin:none;
-//     height: 100%;
-//     font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-//     //background-image: url("../../assets/images/background-image.png");
-//     height: 100%;
-  
-//     //background-position: center;
-//     //background-repeat: no-repeat;
-//     //background-size: cover;
+body{
+    margin:none;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    height: 100%;
 
-// }
-// html{
-//     height: 100%;
-// }
-// .background-image {
-//     background-image: url("../../assets/images/background-image.png");
-  
-//      height: 100%;
-  
-//      background-position: center;
-//      background-repeat: no-repeat;
-//      background-size: cover;
-//   }
-
-// .form{
-//     width:40%;
-//     align-self: auto;
-// }
-// .subheader{
-//     //display: block;
-//     //border: 5px;
-//     display: flex;
-//     flex-direction: column;
-//     color:#003399;
-//     align-self: center;
-// }
-// .formcontainer{
-//     display: flex;
-//     flex-direction: column;
-//     width:50%;
-//     font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-//     margin-left:25%; 
-//     margin-right:25%; 
-//     margin-bottom:2%;
-//     margin-top:2%;
-
-// }
-// .imagecontainer{
-//     display: flex;
-//     flex-direction: column;
-//     margin-bottom:2%;
-//     margin-top:2%;
-
-
-// }
-// .logoimage{
-//     height:200px;
-//     width:200px;
-//     align-self: center;
-//     border-radius: 15%;
-
-// }
-// .buttoncontainer{
-//     display: flex;
-//     flex-direction: row;
-//     font-size: 10px;
-//     align-self: center;
-// }
-
-input {
-    display:block;
 }
+html{
+    height: 100%;
+}
+.background-image {
+    background-image: url("../../assets/images/background-image.png");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+// .form{ 
+//     display: flex;
+// }
+
+.formcontainer{
+    //display: flex;
+    //flex-direction: column;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+
+//.imagecontainer{
+    //display: flex;
+    //flex-direction: column;
+
+//}
+.subheader{
+    flex-wrap: wrap;
+    color:#003399;
+    //align-self: center;
+}
+.logoimage{
+    //display: flex;
+    //flex-direction: column;
+    //flex-basis: 30%;
+    //align-self: center;
+    border-radius: 15%;  
+}
+.buttoncontainer{
+    //display: flex;
+    //flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+}
+
+

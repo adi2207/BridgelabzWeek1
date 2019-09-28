@@ -1,32 +1,30 @@
-<!-- 
-    <img src="../images/wallpaper.png" ><div class="background-image" >
+<div class="background-image" fxLayoutAlign="center center">
 
-  <mat-card class="form">
-    <div class="imagecontainer">
+  <mat-card class="form" fxFlex="80" fxFlex.xs="100" fxLayout="column" fxLayoutAlign="center center">
+    <mat-card-content class="imagecontainer" fxLayoutAlign="center center" fxLayout="column">
       <h2 mat-subheader class="subheader">USER LOGIN</h2>
-      <img class="logoimage" src='../../assets/images/user_login_logo.jpg'>
-    </div>
+      <img class="logoimage" src='../../assets/images/unnamed.webp'>
+    </mat-card-content>
     <mat-divider [inset]="true"></mat-divider>
-    <div class="formcontainer"> -->
-<!--   
-      <mat-form-field appearance="outline">
+    <mat-card-content class="formcontainer" fxLayoutAlign="center center" fxLayout="column">
+
+      <mat-form-field appearance="outline" width="100%">
         <mat-label>Enter email</mat-label>
         <input matInput placeholder="Input">
-      </mat-form-field> -->
-  
-      <input placeholder="Input">
+      </mat-form-field>
 
-      <!-- <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline">
         <mat-label>Enter password</mat-label>
         <input type="password" matInput placeholder="Input">
       </mat-form-field>
-    </div>
-    <div class="buttoncontainer">
-  
-        <button mat-button>Login</button>
-        <button mat-button color="primary">New User?</button>
-        <button mat-button color="warn">Forgot Password?</button>
-  
-      </div>
+    </mat-card-content>
+    <mat-card-content class="buttoncontainer" fxLayout="row">
+
+      <button mat-button class="buttons">Login</button>
+      <button mat-button class="buttons"><a routerLink="/register">New User?</a></button>
+      <button mat-button class="buttons"><a routerLink="/forgot">Forgot Password?</a></button>
+
+    </mat-card-content>
+
   </mat-card>
-  </div> -->
+</div>

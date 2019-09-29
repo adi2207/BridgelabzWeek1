@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {AppMaterialModule} from './app.material'
+import {AppMaterialModule} from './app.material';
 import 'hammerjs';
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,8 +15,6 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { ForgotComponent } from './forgot/forgot.component';
 import { ResetComponent } from './reset/reset.component';
-
-// import {ErrorComponent} from './error/error.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +23,6 @@ import { ResetComponent } from './reset/reset.component';
     HomeComponent,
     ForgotComponent,
     ResetComponent,
-    // ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +30,9 @@ import { ResetComponent } from './reset/reset.component';
     BrowserAnimationsModule,
     AppMaterialModule,
     FlexLayoutModule,
+    ReactiveFormsModule,
+    FormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,7 +4,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatIconModule} from '@angular/material/icon';
 
 
 
@@ -16,7 +18,9 @@ MatFormFieldModule,
 MatInputModule,
 MatCardModule,
 MatDividerModule,
-MatProgressSpinnerModule
+MatSidenavModule,
+MatButtonToggleModule,
+MatIconModule
 ],
 
 exports: [
@@ -25,7 +29,9 @@ MatFormFieldModule,
 MatInputModule,
 MatCardModule,
 MatDividerModule,
-MatProgressSpinnerModule
+MatSidenavModule,
+MatButtonToggleModule,
+MatIconModule
 ],
 })
 export class AppMaterialModule { }

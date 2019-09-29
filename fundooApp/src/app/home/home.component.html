@@ -1,3 +1,7 @@
-<p>
-  home works!
-</p>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="side" #sidenavvv >Sidenav content</mat-sidenav>
+  <mat-sidenav-content>Main content
+    <mat-icon aria-hidden="false" aria-label="Example home icon" (click)="sidenavvv.toggle()">home</mat-icon>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+

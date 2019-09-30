@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup,FormBuilder,FormControl,Validators} from '@angular/forms';
+import {FormControl,Validators} from '@angular/forms';
+import {UserService} from '../../services/user.service';
+import {ResetModel} from './reset.model'
+import {HttpInterceptor} from '@angular/common/http'
 
 @Component({
   selector: 'app-reset',
@@ -9,6 +12,8 @@ import {FormGroup,FormBuilder,FormControl,Validators} from '@angular/forms';
 export class ResetComponent implements OnInit {
   password=new FormControl('',[Validators.required,Validators.minLength(6)]);
   confirmPassword=new FormControl('',[Validators.required,Validators.minLength(6),Validators.pattern(this.password.value)]);
+  resetObj:ResetModel=new ResetModel();
+  
   getPasswordInvalidMessage(){
     if(this.password.hasError("required")){
       return "Password is required";
@@ -28,9 +33,17 @@ export class ResetComponent implements OnInit {
       return "Passwords donot match";
     }
   }
-  constructor() { }
+  constructor(private userService:UserService) { }
 
   ngOnInit() {
   }
-
+  onReset(){
+    this.resetObj={
+      password:this.password.value,
+      service:"basic",
+      token:"token"
+      //retreive token from state paramsand send reset obj. vahan pe headers mein token pass karo to backend
+    }
+    this.userService.register(this.resetObj);
+  }
 }

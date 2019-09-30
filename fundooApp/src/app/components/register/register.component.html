@@ -15,14 +15,14 @@
 
         <mat-form-field appearance="outline">
           <mat-label>First Name</mat-label>
-          <input matInput placeholder="Input" [formControl]="firstname" required>
-          <mat-error  *ngIf="firstname.invalid">{{getFirstNameInvalidMessage()}}</mat-error>
+          <input matInput placeholder="Input" [formControl]="firstName" required>
+          <mat-error  *ngIf="firstName.invalid">{{getFirstNameInvalidMessage()}}</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Last Name </mat-label>
-          <input matInput placeholder="Input" [formControl]="lastname" required>
-          <mat-error  *ngIf="lastname.invalid">{{getLastNameInvalidMessage()}}</mat-error>
+          <input matInput placeholder="Input" [formControl]="lastName" required>
+          <mat-error  *ngIf="lastName.invalid">{{getLastNameInvalidMessage()}}</mat-error>
         </mat-form-field>
 
       </mat-card-content>
@@ -49,8 +49,8 @@
 
     <mat-card-content class="buttoncontainer" fxLayout="row">
 
-      <button mat-button class="buttons">Sign Up</button>
-      <button mat-button class="buttons"><a routerLink="/login">Existing User?</a></button>
+      <button mat-button (click)="onSignUp()">Sign Up</button>
+      <button mat-button><a routerLink="/login">Existing User?</a></button>
 
     </mat-card-content>
 

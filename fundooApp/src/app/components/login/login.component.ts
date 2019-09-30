@@ -34,8 +34,9 @@ export class LoginComponent implements OnInit {
   }
   onLogin(){
     this.user={
-      'email':this.email.value,
-      'password':this.email.value,
+      email:this.email.value,
+      password:this.password.value,
+      service:"basic"
     }
     this.userService.login(this.user);
   }

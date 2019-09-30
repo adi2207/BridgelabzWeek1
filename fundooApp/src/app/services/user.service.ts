@@ -6,11 +6,24 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserService {
   response:any;
-  error:any;
   constructor(private http: HttpClient) { }
 
   login(user) {
     this.http.post(' http://fundoonotes.incubation.bridgelabz.com/api/user/login', user)
+      .subscribe((response) => {
+        this.response = response;
+        console.log(this.response);
+      })
+  }
+  register(user) {
+    this.http.post(' http://fundoonotes.incubation.bridgelabz.com/api/user/userSignUp', user)
+      .subscribe((response) => {
+        this.response = response;
+        console.log(this.response);
+      })
+  }
+  forgot(user){
+    this.http.post(' http://fundoonotes.incubation.bridgelabz.com/api/user/reset', user)
       .subscribe((response) => {
         this.response = response;
         console.log(this.response);

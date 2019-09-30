@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormBuilder,FormControl,Validators} from '@angular/forms';
+import { ForgotModel } from './forgot.model';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-forgot',
@@ -8,7 +10,7 @@ import {FormGroup,FormBuilder,FormControl,Validators} from '@angular/forms';
 })
 export class ForgotComponent implements OnInit {
   email=new FormControl('',[Validators.required,Validators.email]);
-
+  user:ForgotModel=new ForgotModel();
   getEmailInvalidMessage(){
     if(this.email.hasError("required")){
       return "Email is required"
@@ -17,9 +19,16 @@ export class ForgotComponent implements OnInit {
       return "Enter a valid email"
     }
   }
-  constructor() { }
+  constructor(private userService:UserService) { }
 
   ngOnInit() {
+  }
+  onForgot(){
+    this.user={
+      email:this.email.value,
+      service:"basic"
+    }
+    this.userService.forgot(this.user);
   }
 
 }

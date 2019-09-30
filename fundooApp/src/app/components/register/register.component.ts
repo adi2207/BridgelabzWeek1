@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 //import {ErrorComponent} from '../error/error.component';
-import {FormGroup,FormBuilder,FormControl,Validators} from '@angular/forms';
+import {FormControl,Validators} from '@angular/forms';
+import {UserService} from '../../services/user.service';
+import {RegisterModel} from './register.model';
 
 @Component({
   selector: 'app-register',
@@ -8,9 +10,10 @@ import {FormGroup,FormBuilder,FormControl,Validators} from '@angular/forms';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+  user:RegisterModel=new RegisterModel();
 
-  firstname=new FormControl('',[Validators.required]);
-  lastname=new FormControl('',[Validators.required]);
+  firstName=new FormControl('',[Validators.required]);
+  lastName=new FormControl('',[Validators.required]);
   email=new FormControl('',[Validators.required,Validators.email]);
   password=new FormControl('',[Validators.required,Validators.minLength(6)]);
   confirmPassword=new FormControl('',[Validators.required,Validators.minLength(6),Validators.pattern(this.password.value)]);
@@ -24,12 +27,12 @@ export class RegisterComponent implements OnInit {
     }
   }
   getFirstNameInvalidMessage(){
-    if(this.firstname.hasError("required")){
+    if(this.firstName.hasError("required")){
       return "First Name is required"
     }
   }
   getLastNameInvalidMessage(){
-    if(this.lastname.hasError("required")){
+    if(this.lastName.hasError("required")){
       return "Last Name is required"
     }
   }
@@ -58,7 +61,19 @@ export class RegisterComponent implements OnInit {
   // errorEmailCall(){
   //   this.error.getEmailInvalidMessage(this.email);
   // }
-  constructor() { }
+  constructor(private userService:UserService) { }
   ngOnInit() {
   }
+
+  onSignUp(){
+    this.user={
+      firstName:this.firstName.value,
+      lastName:this.lastName.value,
+      service: "basic",
+      email:this.email.value,
+      password:this.password.value
+  }
+  console.log("--------------------",this.user);
+  this.userService.register(this.user);
+}
 }

@@ -14,8 +14,8 @@
 
     <mat-card-content class="buttoncontainer" fxLayout="row">
 
-      <button mat-button class="buttons">Send Link On Email</button>
-      <button mat-button class="buttons"><a routerLink="/login">Log In</a></button>
+      <button mat-button (click)="onForgot()">Send Link On Email</button>
+      <button mat-button ><a routerLink="/login">Log In</a></button>
 
     </mat-card-content>
   </mat-card>

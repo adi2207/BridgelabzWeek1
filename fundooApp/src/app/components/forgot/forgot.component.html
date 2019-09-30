@@ -1,0 +1,22 @@
+<div class="background-image" fxLayoutAlign="center center">
+
+  <mat-card class="form" fxFlex="50" fxFlex.xs="100" fxLayout="column" fxLayoutAlign="center center">
+    <mat-card-content class="imagecontainer" fxLayout="column" fxLayoutAlign="center center">
+      <h2 mat-subheader class="subheader">FORGOT PASSWORD?</h2>
+      <img class="logoimage" src='../../assets/images/unnamed.webp'>
+    </mat-card-content>
+    <mat-divider [inset]="true"></mat-divider>
+    <mat-form-field appearance="outline">
+      <mat-label>Enter email</mat-label>
+      <input matInput placeholder="Input" required type="email" [formControl]="email">
+      <mat-error *ngIf="email.invalid"> {{getEmailInvalidMessage()}}</mat-error>
+    </mat-form-field>
+
+    <mat-card-content class="buttoncontainer" fxLayout="row">
+
+      <button mat-button class="buttons">Send Link On Email</button>
+      <button mat-button class="buttons"><a routerLink="/login">Log In</a></button>
+
+    </mat-card-content>
+  </mat-card>
+</div>

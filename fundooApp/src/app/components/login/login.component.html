@@ -1,0 +1,31 @@
+<div class="background-image" fxLayoutAlign="center center">
+
+  <mat-card class="form" fxFlex="50" fxFlex.xs="100" fxLayout="column" fxLayoutAlign="center center">
+
+    <h2 mat-subheader class="subheader">USER LOGIN</h2>
+    <img class="logoimage" src='../../assets/images/unnamed.webp'>
+
+    <mat-divider [inset]="true"></mat-divider>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Enter email</mat-label>
+        <input matInput placeholder="Input" id="email"[(formControl)]="email" required>
+        <mat-error *ngIf="email.invalid"> {{getEmailInvalidMessage()}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Enter password</mat-label>
+        <input type="password" matInput id="password" placeholder="Input" [(formControl)]="password" required>
+        <mat-error *ngIf="password.invalid"> {{getPasswordInvalidMessage()}}</mat-error>
+      </mat-form-field>
+
+    <mat-card-content class="buttoncontainer" fxLayout="row">
+
+      <button mat-button class="buttons" (click)="onLogin()">Login</button>
+      <button mat-button class="buttons"><a routerLink="/register">New User?</a></button>
+      <button mat-button class="buttons"><a routerLink="/forgot">Forgot Password?</a></button>
+
+    </mat-card-content>
+
+  </mat-card>
+</div>

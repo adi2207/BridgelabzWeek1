@@ -1,0 +1,16 @@
+@mixin background{
+    background-image: url("/../../assets/images/background-image.png");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+@mixin default_body{
+    margin:none;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    height: 100%;
+}
+@mixin heading{
+    flex-wrap: wrap;
+    color:#003399;
+}

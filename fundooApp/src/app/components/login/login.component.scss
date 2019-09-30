@@ -1,0 +1,31 @@
+@import '../../styles/constants.scss';
+
+body{
+    @include default_body;
+}
+html{
+    height: 100%;
+}
+.background-image {
+    @include background;
+  }
+
+.formcontainer{
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+.subheader{
+    @include heading;
+}
+.logoimage{
+    border-radius: 15%;  
+}
+.buttoncontainer{
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+
+.mat-form-field{
+    width:70%;
+}

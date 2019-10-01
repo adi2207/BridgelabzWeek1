@@ -1,4 +1,4 @@
-export class ForgotModel{
+export class ForgotInterface{
     email:String;
     service:String;
 }

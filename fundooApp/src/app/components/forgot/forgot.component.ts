@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup,FormBuilder,FormControl,Validators} from '@angular/forms';
-import { ForgotModel } from './forgot.model';
-import { UserService } from 'src/app/services/user.service';
+import {FormControl,Validators} from '@angular/forms';
+import { ForgotInterface} from '../../interfaces/forgot';
+import { UserService } from '../../services/user.services/user.service';
 
 @Component({
   selector: 'app-forgot',
@@ -10,25 +10,35 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ForgotComponent implements OnInit {
   email=new FormControl('',[Validators.required,Validators.email]);
-  user:ForgotModel=new ForgotModel();
-  getEmailInvalidMessage(){
-    if(this.email.hasError("required")){
-      return "Email is required"
-    }
-    if(this.email.hasError("email")){
-      return "Enter a valid email"
-    }
-  }
+  user:ForgotInterface;
+  response:any;
+  
   constructor(private userService:UserService) { }
 
   ngOnInit() {
   }
+  getEmailInvalidMessage() {
+    if (this.email.hasError("required")) {
+        return ("Email is required");
+    }
+    if (this.email.hasError("email")) {
+        return ("Invalid Email")
+    }
+}
   onForgot(){
     this.user={
       email:this.email.value,
       service:"basic"
     }
-    this.userService.forgot(this.user);
+    let options = {
+      data: this.user,
+      purpose: 'reset'
+    }
+    let result =this.userService.postWithoutToken(options)
+    result.subscribe((response) => {
+      this.response = response;
+      console.log(this.response);
+    });
   }
 
 }

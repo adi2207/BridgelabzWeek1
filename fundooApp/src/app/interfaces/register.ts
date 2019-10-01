@@ -1,4 +1,4 @@
-export class RegisterModel{
+export class RegisterInterface{
     firstName:String;
     lastName:String;
     email:String;

@@ -17,6 +17,9 @@ import { RegisterComponent } from './components/register/register.component';
 import { ForgotComponent } from './components/forgot/forgot.component';
 import { ResetComponent } from './components/reset/reset.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { IconsComponent } from './components/icons/icons.component';
+import { TakenoteComponent } from './components/takenote/takenote.component';
+import { DisplaycardsComponent } from './components/displaycards/displaycards.component';
 //import { ErrorComponent } from './components/error/error.component';
 @NgModule({
   declarations: [
@@ -26,6 +29,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     ForgotComponent,
     ResetComponent,
     DashboardComponent,
+    IconsComponent,
+    TakenoteComponent,
+    DisplaycardsComponent,
   ],
   imports: [
     BrowserModule,

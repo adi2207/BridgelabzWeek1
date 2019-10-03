@@ -1,0 +1,15 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Take a note..
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <mat-form-field>
+    <input matInput placeholder="Title">
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+      placeholder="Add note here.."></textarea>
+  </mat-form-field>
+  <app-icons></app-icons>
+</mat-expansion-panel>

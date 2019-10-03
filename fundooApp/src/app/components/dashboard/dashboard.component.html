@@ -1,6 +1,25 @@
-<mat-toolbar fxLayout="row" >
-  <!-- <mat-icon fxLayoutAlign="start space-around">menu</mat-icon> -->
-  <span fxLayoutALign="end end">Big Header</span>
-  <!-- <mat-icon mat-list-icon>home</mat-icon> -->
-  <span mat-line>Backup</span>
+<mat-toolbar >
+    <button type="button" mat-button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
+    <button type="button" mat-button ><mat-icon>settings</mat-icon></button>
 </mat-toolbar>
+
+<mat-drawer-container class="sidebar-container">
+    <mat-drawer #drawer class="sidenav-main" mode="side" opened>  
+             
+        <mat-nav-list fxLayout="column" fxLayoutGap="10px">
+            <mat-icon fxLayout="row" fxLayoutAlign="start center">note<a mat-list-item>Notes</a></mat-icon> 
+            <mat-icon fxLayout="row" fxLayoutAlign="start center">notifications_none<a mat-list-item>Reminders</a></mat-icon>
+            <mat-divider [inset]="true"></mat-divider>
+            <mat-icon fxLayout="row" fxLayoutAlign="start center">label<a mat-list-item>LABELS</a></mat-icon>
+            <mat-divider [inset]="true"></mat-divider>
+
+            <mat-icon fxLayout="row" fxLayoutAlign="start center">archive<a mat-list-item>Archive</a></mat-icon>
+            <mat-icon fxLayout="row" fxLayoutAlign="start center">delete_outline<a mat-list-item>Trash</a></mat-icon>
+          </mat-nav-list>
+
+    </mat-drawer>
+    <app-takenote ></app-takenote>
+    <app-displaycards></app-displaycards>
+
+</mat-drawer-container>
+

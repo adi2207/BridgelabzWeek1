@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {environment} from '../../../environments/environment'
 import {HttpService} from '../http.services/http.service'
+import { HttpHeaders } from '@angular/common/http';
 
 
 @Injectable({
@@ -12,11 +13,29 @@ export class NotesService {
   constructor(private http:HttpService) { }
   
   postWithoutToken(options){
-    return this.http.postCall(this.baseUrl+'note/'+options.purpose,options.data).subscribe((response) => {
-      console.log(response);
-    },(error)=>{
-      console.log(error.statusText());
-    });
+    return this.http.postCall(this.baseUrl+'notes/'+options.purpose,options.data)
+  }
+  postWithToken(options){
+    let httpOptions={
+      headers:new HttpHeaders({
+        'Content-type':'application/x-www-form-urlencoded',
+        'Authorization':localStorage.getItem('id')
+      })
+    }    
+    return this.http.postCallWithToken(this.baseUrl+'notes/'+options.purpose,this.getEncodedData(options.data),httpOptions)
+  }
+  getWithoutToken(options){
+    return this.http.getCall(this.baseUrl+'notes/'+options.purpose)
+
+  }
+  getEncodedData(data){
+    const formBody=[];
+    for(const property in data){
+      const encodedKey=encodeURIComponent(property);
+      const encodedValue=encodeURIComponent(data[property]);
+      formBody.push(encodedKey+'='+encodedValue);
+    }
+    return formBody.join ('&');
   }
 }
 

@@ -33,12 +33,12 @@ export class ForgotComponent implements OnInit {
       data: this.user,
       purpose: 'reset'
     }
-    let result =this.userService.postWithoutToken(options)
-    return result.subscribe((response) => {
+    this.userService.postWithoutToken(options).subscribe((response)=>{
       console.log(response);
     },(error)=>{
-      console.log(error.statusText());
+      console.log(error);
     });
+    
   }
 
 }

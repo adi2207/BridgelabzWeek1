@@ -1,20 +1,40 @@
 import { Component, OnInit,Output,EventEmitter } from '@angular/core';
-import { FormControl } from '@angular/forms';
-//import { FormControl,Validators} from '@angular/forms';
-
+import { FormControl,Validators} from '@angular/forms';
+import {NotesService} from '../../services/notes.services/notes.service'
+import {NoteInterface} from '../../interfaces/note'
 @Component({
   selector: 'app-takenote',
   templateUrl: './takenote.component.html',
   styleUrls: ['./takenote.component.scss']
 })
 export class TakenoteComponent implements OnInit {
-   //notedata="ksjgxyixgasuihcac";
-   titleee=new FormControl();
-   title=this.titleee.value;
-  constructor() { }
+  
+  message:string;
+  data=new FormControl();
+  title=new FormControl();
+  note:NoteInterface;
+  options:any;
+  constructor(private notesService: NotesService) { }
+
   ngOnInit() {
-    console.log(this.titleee.value);
 
   }
+  receiveMessage($event) {
+    this.message = $event
+      this.note={
+        title:this.title.value,
+        description:this.data.value
+      }
+      console.log(this.note);
+      this.options={
+        data:this.note,
+        purpose:'addNotes'
+      }
+      this.notesService.postWithToken(this.options).subscribe((response)=>{
+        console.log(response);
+      },(error)=>{
+        console.log(error);
+      });
+    }  
 
 }

@@ -63,6 +63,7 @@ export class RegisterComponent implements OnInit {
   constructor(private userService: UserService) { }
   ngOnInit() {
   }
+  response:any;
 
   onSignUp() {
     this.user = {
@@ -76,11 +77,11 @@ export class RegisterComponent implements OnInit {
       data: this.user,
       purpose: 'userSignUp'
     }
-    let result =this.userService.postWithoutToken(options)
-    return result.subscribe((response) => {
+    this.userService.postWithoutToken(options).subscribe((response)=>{
       console.log(response);
     },(error)=>{
-      console.log(error.statusText());
+      console.log(error);
     });
+   
   }
 }

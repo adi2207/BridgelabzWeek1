@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.services/user.service';
 import { ResetInterface } from '../../interfaces/reset'
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-reset',
@@ -34,27 +35,28 @@ export class ResetComponent implements OnInit {
       return "Passwords donot match";
     }
   }
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private routing:Router,
+    private route:ActivatedRoute) { }
 
+  token:string;
   ngOnInit() {
+    this.token=this.route.snapshot.paramMap.get('token');
+    localStorage.setItem('token',this.token);
   }
   onReset() {
     this.resetObj = {
       newPassword: this.password.value,
-      service: "basic",
     }
     let options = {
       data: this.resetObj,
-      purpose: 'reset-password/izDCxh0nyCd8UPms9LT7HVUx6sy1Y5FKsNiFIhmPylWIxCQCA0fdeH2Fsxqa86xA'
-
+      purpose: 'reset-password'
     }
-    console.log(options.purpose);
-    let result = this.userService.postWithoutToken(options)
-    return result.subscribe((response) => {
-      this.response = response;
-      console.log(this.response);
+
+    //console.log(options.purpose);
+    return this.userService.postWithToken(options).subscribe((response)=>{
+      console.log(response);
     },(error)=>{
-      console.log(error.statusText());
+      console.log(error);
     });
   }
 }

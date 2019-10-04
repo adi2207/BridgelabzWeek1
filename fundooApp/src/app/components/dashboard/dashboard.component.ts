@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {IconsComponent} from '../icons/icons.component';
 import {TakenoteComponent} from '../takenote/takenote.component';
 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -10,8 +11,9 @@ import {TakenoteComponent} from '../takenote/takenote.component';
 export class DashboardComponent implements OnInit {
 
   constructor() { }
+  ngOnInit(){
 
-  ngOnInit() {
   }
 
+  
 }

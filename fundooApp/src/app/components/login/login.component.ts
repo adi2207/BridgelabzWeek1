@@ -11,7 +11,7 @@ export class LoginComponent implements OnInit {
 
     email = new FormControl('', [Validators.required, Validators.email]);
     password = new FormControl('', [Validators.required]);
-
+    
     private user: UserInterface;
     constructor(private userService: UserService) { }
 
@@ -41,11 +41,12 @@ export class LoginComponent implements OnInit {
             data: this.user,
             purpose: 'login'
         }
-        let result = this.userService.postWithoutToken(options)
-        return result.subscribe((response) => {
+        this.userService.postWithoutToken(options).subscribe((response:any)=>{
             console.log(response);
-        },(error)=>{
-            console.log(error.statusText());
-        });
+            localStorage.setItem('id',response.id);
+          },(error)=>{
+            console.log(error);
+          });
+        
     }
 }

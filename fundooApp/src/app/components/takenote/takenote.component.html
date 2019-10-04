@@ -5,11 +5,11 @@
     </mat-panel-title>
   </mat-expansion-panel-header>
   <mat-form-field>
-    <input matInput placeholder="Title">
+    <input matInput [formControl]="titleee" placeholder="Title">
   </mat-form-field>
   <mat-form-field>
     <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
       placeholder="Add note here.."></textarea>
   </mat-form-field>
-  <app-icons></app-icons>
+  <app-icons [title]="title"></app-icons>
 </mat-expansion-panel>

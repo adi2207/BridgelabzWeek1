@@ -1,18 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 
 @Component({
   selector: 'app-icons',
   templateUrl: './icons.component.html',
   styleUrls: ['./icons.component.scss']
 })
-export class IconsComponent implements OnInit {
+export class IconsComponent{
 
+  //@Input() notedata : String;
+  @Input() title:String;
   constructor() { }
-
-  ngOnInit() {
-  }
   onSave(){
-    
+    //console.log(notedata);
+    //console.log(title);
   }
 
 }

@@ -50,9 +50,11 @@ export class ResetComponent implements OnInit {
     }
     console.log(options.purpose);
     let result = this.userService.postWithoutToken(options)
-    result.subscribe((response) => {
+    return result.subscribe((response) => {
       this.response = response;
       console.log(this.response);
+    },(error)=>{
+      console.log(error.statusText());
     });
   }
 }

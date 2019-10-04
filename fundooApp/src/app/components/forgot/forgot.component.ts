@@ -11,7 +11,6 @@ import { UserService } from '../../services/user.services/user.service';
 export class ForgotComponent implements OnInit {
   email=new FormControl('',[Validators.required,Validators.email]);
   user:ForgotInterface;
-  response:any;
   
   constructor(private userService:UserService) { }
 
@@ -35,9 +34,10 @@ export class ForgotComponent implements OnInit {
       purpose: 'reset'
     }
     let result =this.userService.postWithoutToken(options)
-    result.subscribe((response) => {
-      this.response = response;
-      console.log(this.response);
+    return result.subscribe((response) => {
+      console.log(response);
+    },(error)=>{
+      console.log(error.statusText());
     });
   }
 

@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required, Validators.minLength(6)]);
   confirmPassword = new FormControl('', [Validators.required, Validators.minLength(6), Validators.pattern(this.password.value)]);
-  response:any;
+
   getEmailInvalidMessage() {
     if (this.email.hasError("required")) {
       return "Email is required"
@@ -77,9 +77,10 @@ export class RegisterComponent implements OnInit {
       purpose: 'userSignUp'
     }
     let result =this.userService.postWithoutToken(options)
-    result.subscribe((response) => {
-      this.response = response;
-      console.log(this.response);
+    return result.subscribe((response) => {
+      console.log(response);
+    },(error)=>{
+      console.log(error.statusText());
     });
   }
 }

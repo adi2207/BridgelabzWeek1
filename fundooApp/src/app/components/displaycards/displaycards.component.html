@@ -1,9 +1,9 @@
-<mat-grid-list cols="3">
-    <mat-grid-tile class="cardcontainer" *ngFor="let record of records" >
-      <mat-card >
+  <div fxLayout="row wrap" class="cardcontainer">
+      <mat-card *ngFor="let record of records" fxFlex="30" (click)="openDialog(this.record)">
         <p>{{record.title}}</p>
         <p>{{record.description}}</p>
-        <app-icons></app-icons>
+        <div fxLayoutAlign="start start">
+          <app-icons></app-icons>
+        </div>
       </mat-card>
-    </mat-grid-tile>
-</mat-grid-list>
+  </div>

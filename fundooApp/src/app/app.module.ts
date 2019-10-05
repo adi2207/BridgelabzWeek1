@@ -7,8 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import {UserService} from './services/user.services/user.service'
 import { HttpClientModule} from '@angular/common/http';
-
-
+import {DialogboxComponent} from './components/dialogbox/dialogbox.component'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -32,6 +31,7 @@ import { DisplaycardsComponent } from './components/displaycards/displaycards.co
     IconsComponent,
     TakenoteComponent,
     DisplaycardsComponent,
+    DialogboxComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +44,7 @@ import { DisplaycardsComponent } from './components/displaycards/displaycards.co
     HttpClientModule,
   ],
   providers: [UserService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogboxComponent]
 })
 export class AppModule { }

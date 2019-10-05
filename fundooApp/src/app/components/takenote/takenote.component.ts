@@ -23,8 +23,7 @@ export class TakenoteComponent implements OnInit {
   toggle() { 
     this.show= !this.show;
   }
-  receiveMessage($event) {
-    this.message = $event
+  onClose() {
     this.show= !this.show;
       this.note={
         title:this.title.value,

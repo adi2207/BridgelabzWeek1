@@ -7,7 +7,10 @@
       <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
         placeholder="Take a note.." [formControl]="data"></textarea>
     </mat-form-field>
-    <app-icons (messageEvent)="receiveMessage($event)"></app-icons>
+    <div fxFlex="100" fxLayout="row">
+        <app-icons fxLayoutAlign="space-around start"></app-icons>
+        <button mat-button (click)="onClose()" >Close</button>
+    </div>  
   </mat-card>
 </div>
 <div *ngIf="show" (click)="toggle()" fxLayoutAlign="center start">

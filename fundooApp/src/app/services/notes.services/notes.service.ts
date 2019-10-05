@@ -24,8 +24,14 @@ export class NotesService {
     }    
     return this.http.postCallWithToken(this.baseUrl+'notes/'+options.purpose,this.getEncodedData(options.data),httpOptions)
   }
-  getWithoutToken(options){
-    return this.http.getCall(this.baseUrl+'notes/'+options.purpose)
+  getWithToken(options){
+    let httpOptions={
+      headers:new HttpHeaders({
+        'Content-type':'application/x-www-form-urlencoded',
+        'Authorization':localStorage.getItem('id')
+      })
+    }  
+    return this.http.getCallWithToken(this.baseUrl+'notes/'+options.purpose,httpOptions)
 
   }
   getEncodedData(data){

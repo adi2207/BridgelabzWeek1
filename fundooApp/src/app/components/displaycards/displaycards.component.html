@@ -1,4 +1,9 @@
-<mat-card class="form" fxLayout="column" fxFlex="30" fxLayoutAlign="start start">
-
-  <button (click)="onDisplayCards()"></button>
-</mat-card>
+<mat-grid-list cols="3">
+    <mat-grid-tile class="cardcontainer" *ngFor="let record of records" >
+      <mat-card >
+        <p>{{record.title}}</p>
+        <p>{{record.description}}</p>
+        <app-icons></app-icons>
+      </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>

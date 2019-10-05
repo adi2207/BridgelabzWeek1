@@ -11,9 +11,9 @@ export class IconsComponent{
 
   constructor() { }
  
-  onSave(){
+  onClose(){
     this.messageEvent.emit(this.message);
-
+    
   }
 
 }

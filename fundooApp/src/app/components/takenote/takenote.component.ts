@@ -15,12 +15,17 @@ export class TakenoteComponent implements OnInit {
   note:NoteInterface;
   options:any;
   constructor(private notesService: NotesService) { }
+  show: boolean = true;
 
   ngOnInit() {
 
   }
+  toggle() { 
+    this.show= !this.show;
+  }
   receiveMessage($event) {
     this.message = $event
+    this.show= !this.show;
       this.note={
         title:this.title.value,
         description:this.data.value

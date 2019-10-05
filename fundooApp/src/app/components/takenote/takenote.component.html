@@ -1,15 +1,20 @@
-<mat-expansion-panel>
-  <mat-expansion-panel-header>
-    <mat-panel-title>
-      Take a note..
-    </mat-panel-title>
-  </mat-expansion-panel-header>
-  <mat-form-field>
-    <input matInput [formControl]="title" placeholder="Title">
-  </mat-form-field>
-  <mat-form-field>
-    <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
-      placeholder="Add note here.." [formControl]="data"></textarea>
-  </mat-form-field>
-  <app-icons (messageEvent)="receiveMessage($event)"></app-icons>
-</mat-expansion-panel>
+<div *ngIf="!show" fxLayoutAlign="center start">
+  <mat-card fxFlex="70" fxLayout="column">
+    <mat-form-field>
+      <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [formControl]="title" placeholder="Title"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+        placeholder="Take a note.." [formControl]="data"></textarea>
+    </mat-form-field>
+    <app-icons (messageEvent)="receiveMessage($event)"></app-icons>
+  </mat-card>
+</div>
+<div *ngIf="show" (click)="toggle()" fxLayoutAlign="center start">
+    <mat-card fxFlex="70" fxLayout="column">
+        <mat-form-field>
+          <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+            placeholder="Take a note.." [formControl]="data"></textarea>
+        </mat-form-field>
+      </mat-card>
+</div>

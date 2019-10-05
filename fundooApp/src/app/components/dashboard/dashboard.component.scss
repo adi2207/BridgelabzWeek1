@@ -1,16 +1,28 @@
-.mat-toolbar{
-    color:white;
-    background-color:#ff9900;
+.background{
+    background-color: white;
+    height:100%;
+
+
+.headercontainer{
     font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    height: 40px;
+    height: 100px;
+    background-color: white;
+    .searchbar{
+        width:70%;
+    }
+    .searchbar::placeholder  {
+        font-family: FontAwesome;
+      }
 }
 
 .sidebar-container{
+    background-color: white;
     height:100%;
+    .sidenav-main{
+        width:15%;
+        font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    
+    }
 }
-.sidenav-main{
-    width:15%;
-    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color:#fff2e6;
 
 }

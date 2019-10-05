@@ -14,6 +14,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 
 
@@ -33,7 +35,8 @@ MatExpansionModule,
 MatMenuModule,
 MatChipsModule,
 MatTooltipModule,
-MatGridListModule
+MatGridListModule,
+MatDialogModule
 ],
 
 exports: [
@@ -51,7 +54,8 @@ MatExpansionModule,
 MatMenuModule,
 MatChipsModule,
 MatTooltipModule,
-MatGridListModule
+MatGridListModule,
+MatDialogModule
 ],
 })
 export class AppMaterialModule { }

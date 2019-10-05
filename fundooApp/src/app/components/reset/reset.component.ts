@@ -14,7 +14,6 @@ export class ResetComponent implements OnInit {
   confirmPassword = new FormControl('', [Validators.required, Validators.minLength(6), Validators.pattern(this.password.value)]);
   resetObj: ResetInterface;
   response: any;
-  //tokenReceived:'izDCxh0nyCd8UPms9LT7HVUx6sy1Y5FKsNiFIhmPylWIxCQCA0fdeH2Fsxqa86xA';
 
   getPasswordInvalidMessage() {
     if (this.password.hasError("required")) {

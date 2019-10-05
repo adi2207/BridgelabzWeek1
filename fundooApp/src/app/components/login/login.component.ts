@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserInterface } from '../../interfaces/login'
 import { FormControl, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.services/user.service';
+import { Router } from '@angular/router';
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
     password = new FormControl('', [Validators.required]);
     
     private user: UserInterface;
-    constructor(private userService: UserService) { }
+    constructor(private userService: UserService, private router:Router) { }
 
     ngOnInit() {
     }
@@ -44,6 +45,7 @@ export class LoginComponent implements OnInit {
         this.userService.postWithoutToken(options).subscribe((response:any)=>{
             console.log(response);
             localStorage.setItem('id',response.id);
+            this.router.navigate(['/dashboard']);
           },(error)=>{
             console.log(error);
           });

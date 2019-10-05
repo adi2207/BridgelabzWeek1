@@ -8,8 +8,8 @@ import { HttpClient } from '@angular/common/http';
 export class HttpService {
   constructor(private http:HttpClient) { }
 
-  getCall(url){
-    return this.http.get(url);
+  getCallWithToken(url,options){
+    return this.http.get(url,options);
 
   }
   postCall(url,data){

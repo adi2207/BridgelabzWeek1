@@ -3,7 +3,7 @@
     <mat-icon>image</mat-icon>
   </button>
   <button mat-button matTooltip="Remind me">
-    <mat-icon>notifications_none</mat-icon>
+    <mat-icon>add_alert</mat-icon>
   </button>
   <button mat-button matTooltip="Change colour" [matMenuTriggerFor]="chip">
     <mat-icon>palette</mat-icon>
@@ -22,13 +22,12 @@
     <mat-icon>archive</mat-icon>
   </button>
   <button mat-button matTooltip="More" [matMenuTriggerFor]="menu">
-    <mat-icon>more_horiz</mat-icon>
+    <mat-icon>more_vert</mat-icon>
   </button>
   <mat-menu #menu>
     <button mat-menu-item>Change Labels</button>
     <button mat-menu-item>Add drawing</button>
     <button mat-menu-item>Show checkboxes</button>
   </mat-menu>
-  <button mat-button (click)="onSave()">Save</button>
-  <button mat-button >Close</button>
+  <button mat-button (click)="onClose()">Close</button>
 </div>

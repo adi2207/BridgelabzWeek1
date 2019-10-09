@@ -1,6 +1,6 @@
 <div mat-dialog-content class="dialogboxx" fxLayout="column" fxLayoutGap="10px">
-  <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [formControl]="title" >{{note.title}}</textarea>
-  <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [formControl]="data">{{note.description}}</textarea>
+  <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [formControl]="title" value="{{note.title}}"></textarea>
+  <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [formControl]="data" value="{{note.description}}"></textarea>
   <div fxFlex="100" fxLayout="row">
       <app-icons fxLayoutAlign="space-around start"></app-icons>
       <button mat-button (click)="save()" >Close</button>

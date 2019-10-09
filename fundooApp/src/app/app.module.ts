@@ -19,6 +19,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { IconsComponent } from './components/icons/icons.component';
 import { TakenoteComponent } from './components/takenote/takenote.component';
 import { DisplaycardsComponent } from './components/displaycards/displaycards.component';
+import { ColorsComponent } from './components/colors/colors.component';
 //import { ErrorComponent } from './components/error/error.component';
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { DisplaycardsComponent } from './components/displaycards/displaycards.co
     TakenoteComponent,
     DisplaycardsComponent,
     DialogboxComponent,
+    ColorsComponent,
   ],
   imports: [
     BrowserModule,

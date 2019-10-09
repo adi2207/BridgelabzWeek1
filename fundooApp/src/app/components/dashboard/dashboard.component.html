@@ -1,17 +1,17 @@
 <div class="background">
-        <mat-toolbar fxLayoutAlign="space-around center" class="headercontainer">
-            <button type="button" mat-button (click)="drawer.toggle()">
-                <mat-icon>menu</mat-icon>
-            </button>
-            <img src="../../../assets/images/keep_app_logo.png">
-            <p>fundooApp</p>
-            <!-- <mat-form-field class="searchbar">
-                    <input placeholder="&#61442; Search">
-            </mat-form-field> -->
-            <button type="button" mat-button>
-                <mat-icon>settings</mat-icon>
-            </button>
-        </mat-toolbar>
+    <mat-toolbar fxLayoutAlign="space-around center" class="headercontainer">
+        <button type="button" mat-button (click)="drawer.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <img src="../../../assets/images/keep_app_logo.png">
+        <p>fundooApp</p>
+        <mat-form-field class="searchbar" appearance="outline" >
+            <input matInput placeholder="&#61442; Search">
+        </mat-form-field>
+        <button type="button" mat-button>
+            <mat-icon>settings</mat-icon>
+        </button>
+    </mat-toolbar>
 
     <mat-divider></mat-divider>
     <mat-drawer-container class="sidebar-container">

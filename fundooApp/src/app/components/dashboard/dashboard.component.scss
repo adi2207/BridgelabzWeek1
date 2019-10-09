@@ -5,10 +5,12 @@
 
 .headercontainer{
     font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    height: 50px;
+    height: 88px;
     background-color: white;
     .searchbar{
         width:70%;
+        height:100%;
+        padding:0;
     }
     .searchbar::placeholder  {
         font-family: FontAwesome;
@@ -18,10 +20,15 @@
 .sidebar-container{
     background-color: white;
     height:100%;
+   
+
     .sidenav-main{
         width:15%;
         font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    
+        overflow: auto;
+        overscroll-behavior-y: contain;
+        overflow-y: auto;
+        position: absolute
     }
 }
 

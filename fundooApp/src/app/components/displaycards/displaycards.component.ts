@@ -12,8 +12,11 @@ import { DialogboxComponent } from '../dialogbox/dialogbox.component';
 export class DisplaycardsComponent implements OnInit {
   records: any;
   note: NoteInterface;
+  hover: Boolean=false;
+
   constructor(private notesService: NotesService, public dialog: MatDialog) { }
   ngOnInit() {
+
     let options = {
       purpose: 'getNotesList'
     }

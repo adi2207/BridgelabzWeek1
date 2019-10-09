@@ -1,11 +1,19 @@
 .mat-card{
     height:20px;
 }
-.yellowchip{
-    background-color: #e6e600;
-    border-radius:100%;
-    height:40px;
-    width:0.2px;
-    padding: 0%;
-    margin:0%;
+
+.mat-button{
+    min-width: 0px;
+}
+.color-pallete{
+    width: 144px;
+    height: 102px;
+}
+
+.color-pallete > button{
+    border-radius: 50%;
+    margin: 2px;
+    height:30px;
+    width:20%;
+    display: inline-block;
 }

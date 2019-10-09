@@ -6,11 +6,12 @@ import { Component, Output, EventEmitter} from '@angular/core';
   styleUrls: ['./icons.component.scss']
 })
 export class IconsComponent{
-  message: string = "Saving.."
+  message: string = "Saving..";
+  
   @Output() messageEvent = new EventEmitter<string>();
 
   constructor() { }
- 
-
-
+  
 }
+
+

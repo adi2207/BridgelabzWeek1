@@ -5,20 +5,21 @@ import { RegisterComponent } from './components/register/register.component';
 import { ForgotComponent } from './components/forgot/forgot.component';
 import { ResetComponent } from './components/reset/reset.component';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
-import { TakenoteComponent } from './components/takenote/takenote.component';
-import{IconsComponent} from './components/icons/icons.component';
+import { TrashComponent } from './components/trash/trash.component';
+import { NotesComponent } from './components/notes/notes.component';
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
-  {path:'',redirectTo:'/login',pathMatch:'full'},
   {path:'register',component:RegisterComponent},
   {path:'forgot',component:ForgotComponent},
-  {path:'dashboard',component:DashboardComponent},
-  {path:'takenote',component:TakenoteComponent},
-  {path:'icons',component:IconsComponent},
+  {path:'',component:DashboardComponent, children:[{
+    path:'notes',component:NotesComponent 
+  },{
+    path:'trash',component:TrashComponent 
+  }
+  ]},
   {path:'resetpassword/:token',component:ResetComponent},
   {path:'**',redirectTo:'/login'},
-
 ];
 
 @NgModule({

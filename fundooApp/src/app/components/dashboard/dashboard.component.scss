@@ -7,6 +7,13 @@
     font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     height: 88px;
     background-color: white;
+    .circle-button{
+        border-radius: 50%;
+        height:50px;
+        width:50px;
+        min-width:0px;
+        padding:0;
+    }
     .searchbar{
         width:70%;
         height:100%;

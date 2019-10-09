@@ -11,19 +11,7 @@
 
   <mat-menu #chip>
     <div class="color-pallete" >
-        <button mat-button style="background-color:#B39DDB"> </button>
-        <button mat-button style="background-color:#F48FB1"> </button>
-        <button mat-button style="background-color:#FFAB40"> </button>
-        <button mat-button style="background-color:#E0E0E0"> </button>
-        <button mat-button style="background-color:#FFFFFF"> </button>
-        <button mat-button style="background-color:#E53935"> </button>
-        <button mat-button style="background-color:#EF6C00"> </button>
-        <button mat-button style="background-color:#FFEB3B"> </button>
-        <button mat-button style="background-color:#B2FF59"> </button>
-        <button mat-button style="background-color:#69F0AE"> </button>
-        <button mat-button style="background-color:#81D4FA"> </button>
-        <button mat-button style="background-color:#0288D1"> </button>
-        
+      <button *ngFor="let color1 of colorArray" [ngStyle]="{'background':color1.color}" (click)="changeColor(color1.color,recordid)"></button>
     </div>
 </mat-menu>
 
@@ -35,8 +23,10 @@
     <mat-icon>more_vert</mat-icon>
   </button>
   <mat-menu #menu>
-    <button mat-menu-item>Change Labels</button>
+    <button mat-menu-item click="trashNote(recordid)">Delete Note</button>
+    <button mat-menu-item>Add label</button>
     <button mat-menu-item>Add drawing</button>
+    <button mat-menu-item>Make a copy</button>
     <button mat-menu-item>Show checkboxes</button>
   </mat-menu>
 </div>

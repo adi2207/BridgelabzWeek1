@@ -19,7 +19,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { IconsComponent } from './components/icons/icons.component';
 import { TakenoteComponent } from './components/takenote/takenote.component';
 import { DisplaycardsComponent } from './components/displaycards/displaycards.component';
-import { ColorsComponent } from './components/colors/colors.component';
+import { NotesComponent } from './components/notes/notes.component';
+import { TrashComponent } from './components/trash/trash.component';
 //import { ErrorComponent } from './components/error/error.component';
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ColorsComponent } from './components/colors/colors.component';
     TakenoteComponent,
     DisplaycardsComponent,
     DialogboxComponent,
-    ColorsComponent,
+    NotesComponent,
+    TrashComponent,
   ],
   imports: [
     BrowserModule,

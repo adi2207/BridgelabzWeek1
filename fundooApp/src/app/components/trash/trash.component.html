@@ -1,0 +1,11 @@
+<div fxLayout="row wrap" class="cardcontainer">
+  <mat-card *ngFor="let record of records" [ngStyle]="{background:record.color}" fxFlex="30"  >
+    <div (click)="openDialog(this.record)">
+      <p>{{record.title}}</p>
+      <p>{{record.description}}</p>
+    </div>
+  </mat-card>
+</div>
+
+<!-- make dialog box -->
+<!-- more vertical icon  -->

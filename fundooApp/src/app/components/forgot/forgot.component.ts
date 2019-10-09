@@ -27,7 +27,7 @@ export class ForgotComponent implements OnInit {
   onForgot(){
     this.user={
       email:this.email.value,
-      service:"basic"
+      service:"advance"
     }
     let options = {
       data: this.user,

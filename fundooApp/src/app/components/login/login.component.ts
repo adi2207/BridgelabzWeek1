@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
         this.user = {
             email: this.email.value,
             password: this.password.value,
-            service: "basic"
+            service: "advance"
         }
         let options = {
             data: this.user,
@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
         this.userService.postWithoutToken(options).subscribe((response:any)=>{
             console.log(response);
             localStorage.setItem('id',response.id);
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['/']);
           },(error)=>{
             console.log(error);
           });

@@ -1,16 +1,24 @@
 <div class="background">
     <mat-toolbar fxLayoutAlign="space-around center" class="headercontainer">
-        <button type="button" mat-button (click)="drawer.toggle()">
+        <button type="button" mat-button (click)="drawer.toggle()" matTooltip="Main menu">
             <mat-icon>menu</mat-icon>
         </button>
         <img src="../../../assets/images/keep_app_logo.png">
         <p>fundooApp</p>
-        <mat-form-field class="searchbar" appearance="outline" >
-            <input matInput placeholder="&#61442; Search">
+        <mat-form-field class="searchbar" appearance="outline">
+            <mat-icon matPrefix matTooltip="Search" >search</mat-icon>
+            <input matInput placeholder="Search">
+            <mat-icon matSuffix matTooltip="Clear search" >close</mat-icon>
         </mat-form-field>
         <button type="button" mat-button>
             <mat-icon>settings</mat-icon>
         </button>
+        <button mat-button matTooltip="List View">
+            <mat-icon>list</mat-icon>
+        </button>
+        <button mat-button class="circle-button" >
+                <mat-icon>list</mat-icon>
+            </button>
     </mat-toolbar>
 
     <mat-divider></mat-divider>
@@ -27,16 +35,13 @@
                 <mat-divider></mat-divider>
 
                 <mat-icon fxLayout="row" fxLayoutAlign="start center">archive<a mat-list-item>Archive</a></mat-icon>
-                <mat-icon fxLayout="row" fxLayoutAlign="start center">delete_outline<a mat-list-item>Trash</a>
+                <mat-icon fxLayout="row" fxLayoutAlign="start center">delete_outline<a mat-list-item
+                        routerLink="/trash">Trash</a>
                 </mat-icon>
             </mat-nav-list>
 
         </mat-drawer>
         <mat-divider vertical="true"></mat-divider>
-
-        <app-takenote></app-takenote>
-        <app-displaycards></app-displaycards>
-
+        <router-outlet></router-outlet>
     </mat-drawer-container>
-
 </div>

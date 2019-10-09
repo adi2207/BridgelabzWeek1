@@ -69,7 +69,7 @@ export class RegisterComponent implements OnInit {
     this.user = {
       firstName: this.firstName.value,
       lastName: this.lastName.value,
-      service: "basic",
+      service: "advance",
       email: this.email.value,
       password: this.password.value
     }

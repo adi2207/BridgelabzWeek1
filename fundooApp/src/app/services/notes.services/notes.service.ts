@@ -43,6 +43,15 @@ export class NotesService {
     }
     return formBody.join ('&');
   }
+  postWithTokenNoEncoding(options){
+    let httpOptions={
+      headers:new HttpHeaders({
+        'Content-type':'application/json',
+        'Authorization':localStorage.getItem('id')
+      })
+    }    
+    return this.http.postCallWithToken(this.baseUrl+'notes/'+options.purpose,options.data,httpOptions)
+  }
 }
 
 

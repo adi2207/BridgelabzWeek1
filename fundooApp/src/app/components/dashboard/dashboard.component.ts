@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {IconsComponent} from '../icons/icons.component';
 import {TakenoteComponent} from '../takenote/takenote.component';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,9 +11,9 @@ import {TakenoteComponent} from '../takenote/takenote.component';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(public router: Router) { }
   ngOnInit(){
-
+    this.router.navigate(['notes'])
   }
 
   

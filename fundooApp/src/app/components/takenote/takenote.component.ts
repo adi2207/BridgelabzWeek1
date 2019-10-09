@@ -2,6 +2,7 @@ import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 import { FormControl,Validators} from '@angular/forms';
 import {NotesService} from '../../services/notes.services/notes.service'
 import {NoteInterface} from '../../interfaces/note'
+import { DataService } from 'src/app/services/data.services/data.service';
 @Component({
   selector: 'app-takenote',
   templateUrl: './takenote.component.html',
@@ -9,15 +10,16 @@ import {NoteInterface} from '../../interfaces/note'
 })
 export class TakenoteComponent implements OnInit {
   
-  message:string;
   data=new FormControl();
   title=new FormControl();
+  message:string;
   note:NoteInterface;
   options:any;
-  constructor(private notesService: NotesService) { }
+  constructor(private notesService: NotesService,private dataService:DataService) { }
   show: boolean = true;
 
   ngOnInit() {
+    this.dataService.currentMessage.subscribe(message => this.message = message)
 
   }
   toggle() { 
@@ -36,6 +38,7 @@ export class TakenoteComponent implements OnInit {
       }
       this.notesService.postWithToken(this.options).subscribe((response)=>{
         console.log(response);
+        this.dataService.changeMessage("new noteeeee");
       },(error)=>{
         console.log(error);
       });

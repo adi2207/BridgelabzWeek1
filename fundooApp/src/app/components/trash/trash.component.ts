@@ -15,13 +15,22 @@ export class TrashComponent implements OnInit {
   ngOnInit() {
     this.getTrashNotes();
   }
+  filterToGetTrash(records)
+  {
+    var newRecords = records.filter(function(note) {
+      return (note.isDeleted==true);
+    })
+    console.log("note", newRecords);
+    return newRecords;
+  }
   getTrashNotes(){
     let options = {
       purpose: 'getTrashNotesList'
     }
     return this.notesService.getWithToken(options).subscribe((response: any) => {
       console.log(response);
-      this.records=response.data.data;
+      this.records=response.data.data.reverse();
+      this.records=this.filterToGetTrash(this.records);
     }, (error) => {
       console.log(error);
     });

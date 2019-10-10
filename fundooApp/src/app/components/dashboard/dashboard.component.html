@@ -5,13 +5,12 @@
         </button>
         <img src="../../../assets/images/keep_app_logo.png">
         <p>fundooApp</p>
-        <mat-form-field class="searchbar" appearance="outline">
-            <button mat-icon-button (click)="onSearch()">
-                <mat-icon matPrefix matTooltip="Search">search</mat-icon>
-            </button>
-            <input matInput placeholder="Search" [(ngModel)]="searchText">
-            <mat-icon matSuffix matTooltip="Clear search">close</mat-icon>
-        </mat-form-field>
+        <div class="searchbar">
+                <button mat-icon-button (click)="onSearch()">
+                  <mat-icon matPrefix matTooltip="Search">search</mat-icon>
+                </button>
+                <input matInput placeholder="Search" [(ngModel)]="searchText" routerLink="/search" >
+        </div>
         <button type="button" mat-button>
             <mat-icon>settings</mat-icon>
         </button>
@@ -51,10 +50,4 @@
         <mat-divider vertical="true"></mat-divider>
         <router-outlet></router-outlet>
     </mat-drawer-container>
-    <div fxLayout="row wrap" class="cardcontainer">
-        <mat-card *ngFor="let record of records | searchfilter:searchText" fxFlex="30">
-            <p>{{record.title}}</p>
-            <p>{{record.description}}</p>
-        </mat-card>
-    </div>
 </div>

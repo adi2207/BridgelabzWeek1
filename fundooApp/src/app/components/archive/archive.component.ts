@@ -16,10 +16,10 @@ export class ArchiveComponent implements OnInit {
   ngOnInit() {
     this.getArchivedNotes()
   }
-  filterTrash(records)
+  filterToGetArchived(records)
   {
     var newRecords = records.filter(function(note) {
-      return (note.isDeleted==false);
+      return (note.isDeleted==false&&note.isArchived==true);
     })
     console.log("note", newRecords);
     return newRecords;
@@ -30,8 +30,8 @@ export class ArchiveComponent implements OnInit {
     }
     return this.notesService.getWithToken(options).subscribe((response: any) => {
       console.log(response);
-      this.records=response.data.data;
-      this.records=this.filterTrash(this.records);
+      this.records=response.data.data.reverse();
+      this.records=this.filterToGetArchived(this.records);
     }, (error) => {
       console.log(error);
     });

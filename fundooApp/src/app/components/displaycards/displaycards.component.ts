@@ -19,8 +19,7 @@ export class DisplaycardsComponent implements OnInit {
 
 
   constructor(private notesService: NotesService, public dialog: MatDialog, private dataService: DataService) { }
-  //study thisssssssssssssssssssss
-  filterTrash(records)
+  filterTrashAndArchives(records)
   {
     var newRecords = records.filter(function(note) {
       return (note.isDeleted==false && note.isArchived==false);
@@ -35,14 +34,13 @@ export class DisplaycardsComponent implements OnInit {
     }
     return this.notesService.getWithToken(options).subscribe((response: any) => {
       this.records = response.data.data.reverse();
-      this.records=this.filterTrash(this.records)
+      this.records=this.filterTrashAndArchives(this.records)
       console.log(response);
     }, (error) => {
       console.log(error);
     });
   }
   ngOnInit() {
-    this.displayCards()
     this.dataService.currentMessage.subscribe((message) => {
       this.message = message
       this.displayCards();

@@ -10,7 +10,6 @@ export class DataService {
   currentMessage = this.messageSource.asObservable();
 
   constructor() { }
-
   changeMessage(message: string) {
     this.messageSource.next(message)
   }

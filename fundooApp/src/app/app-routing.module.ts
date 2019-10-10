@@ -8,7 +8,8 @@ import {DashboardComponent} from './components/dashboard/dashboard.component';
 import { TrashComponent } from './components/trash/trash.component';
 import { NotesComponent } from './components/notes/notes.component';
 import {ArchiveComponent} from './components/archive/archive.component';
-import {AuthGuard} from './components/authguard/auth.guard'
+import {AuthGuard} from './services/authguard/auth.guard';
+import {SearchbarComponent} from './components/searchbar/searchbar.component' 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
@@ -19,6 +20,9 @@ const routes: Routes = [
     path:'trash',component:TrashComponent 
   },{
     path:'archive',component:ArchiveComponent 
+  },
+  {
+    path:'search',component:SearchbarComponent 
   }
   ]},
   {path:'resetpassword/:token',component:ResetComponent},

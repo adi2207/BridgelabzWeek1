@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import {NoteInterface} from '../../interfaces/note';
+import {NotesService} from '../../services/notes.services/notes.service'
 @Component({
   selector: 'app-trash',
   templateUrl: './trash.component.html',
@@ -7,9 +8,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrashComponent implements OnInit {
 
-  constructor() { }
+  records:any;
+  note:NoteInterface;
+  constructor(private notesService:NotesService) { }
 
   ngOnInit() {
+    this.getTrashNotes();
+  }
+  getTrashNotes(){
+    let options = {
+      purpose: 'getTrashNotesList'
+    }
+    return this.notesService.getWithToken(options).subscribe((response: any) => {
+      console.log(response);
+      this.records=response.data.data;
+    }, (error) => {
+      console.log(error);
+    });
+
+  }
+  deleteNoteForever(recordid){
+    let noteObj={
+      'noteIdList':[recordid],
+      'isDeleted':true
+    }
+    let options = {
+      data:noteObj,
+      purpose: 'deleteForeverNotes'
+    }
+    return this.notesService.postWithTokenNoEncoding(options).subscribe((response: any) => {
+      console.log(response);
+      this.getTrashNotes();
+    }, (error) => {
+      console.log(error);
+    });
   }
 
 }

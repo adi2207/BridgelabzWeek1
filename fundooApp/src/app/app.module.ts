@@ -21,7 +21,10 @@ import { TakenoteComponent } from './components/takenote/takenote.component';
 import { DisplaycardsComponent } from './components/displaycards/displaycards.component';
 import { NotesComponent } from './components/notes/notes.component';
 import { TrashComponent } from './components/trash/trash.component';
-//import { ErrorComponent } from './components/error/error.component';
+import { ArchiveComponent } from './components/archive/archive.component';
+import { AuthService } from './services/auth.service/auth.service';
+import { AuthGuard } from './components/authguard/auth.guard';
+import { SearchfilterPipe } from './searchfilter.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +39,8 @@ import { TrashComponent } from './components/trash/trash.component';
     DialogboxComponent,
     NotesComponent,
     TrashComponent,
+    ArchiveComponent,
+    SearchfilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +52,7 @@ import { TrashComponent } from './components/trash/trash.component';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [UserService],
+  providers: [UserService,AuthGuard,AuthService],
   bootstrap: [AppComponent],
   entryComponents: [DialogboxComponent]
 })

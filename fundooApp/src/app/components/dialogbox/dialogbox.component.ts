@@ -16,14 +16,14 @@ export class DialogboxComponent implements OnInit {
   title=new FormControl();
   data=new FormControl();
   options:any;
-  noteUpdateMessage:string="note updated"
+  noteUpdateMessage:string="note updated";
 
   @Output() noteMessageEvent = new EventEmitter<string>();
 
   constructor(private dialogRef: MatDialogRef<DisplaycardsComponent>,
     @Inject(MAT_DIALOG_DATA) data,private notesService:NotesService) {
     this.note={description: data.description,
-      title:data.title,noteId:data.recordid}
+      title:data.title,noteId:data.recordid,color:data.color}
   }
   
   ngOnInit() {
@@ -36,7 +36,7 @@ export class DialogboxComponent implements OnInit {
     this.note={
       'noteId':this.note.noteId,
       'title':this.note.title,
-      'description':this.note.description
+      'description':this.note.description,
     }
     this.dialogRef.close(this.note);
     this.options={
@@ -45,8 +45,6 @@ export class DialogboxComponent implements OnInit {
     }
     this.notesService.postWithToken(this.options).subscribe((response)=>{
       console.log(response);
-      this.noteMessageEvent.emit(this.noteUpdateMessage)
-
     },(error)=>{
       console.log(error);
     });

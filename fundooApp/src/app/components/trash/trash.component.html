@@ -4,8 +4,12 @@
       <p>{{record.title}}</p>
       <p>{{record.description}}</p>
     </div>
+    <button mat-button matTooltip="More" [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
+    <mat-menu #menu>
+      <button mat-menu-item (click)="deleteNoteForever(this.record.id)">Delete forever</button>
+      <button mat-menu-item >Restore</button>
+    </mat-menu>
   </mat-card>
 </div>
 
 <!-- make dialog box -->
-<!-- more vertical icon  -->

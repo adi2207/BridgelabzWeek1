@@ -37,14 +37,12 @@ export class IconsComponent{
     this.notesService.postWithTokenNoEncoding(options).subscribe((response: any) => {
       console.log(response);
       this.messageEvent.emit(this.updateMessage)
-
     }, (error) => {
       console.log(error);
     });
 
   }
   trashNote(recordid){
-    console.log("inside trash note function");
     let noteObj={
       'noteIdList':[recordid],
       'isDeleted':true
@@ -56,7 +54,23 @@ export class IconsComponent{
     return this.notesService.postWithTokenNoEncoding(options).subscribe((response: any) => {
       console.log(response);
       this.messageEvent.emit(this.updateMessage)
+    }, (error) => {
+      console.log(error);
+    });
 
+  }
+  archiveNote(recordid){
+    let noteObj={
+      'noteIdList':[recordid],
+      'isArchived':true
+    }
+    let options = {
+      data:noteObj,
+      purpose: 'archiveNotes'
+    }
+    return this.notesService.postWithTokenNoEncoding(options).subscribe((response: any) => {
+      console.log(response);
+      this.messageEvent.emit(this.updateMessage)
     }, (error) => {
       console.log(error);
     });

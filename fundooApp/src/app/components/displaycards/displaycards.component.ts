@@ -22,11 +22,11 @@ export class DisplaycardsComponent implements OnInit {
   //study thisssssssssssssssssssss
   filterTrash(records)
   {
-    var newNote = records.filter(function(note) {
+    var newRecords = records.filter(function(note) {
       return (note.isDeleted==false && note.isArchived==false);
     })
-    console.log("note", newNote);
-    return newNote;
+    console.log("note", newRecords);
+    return newRecords;
   }
 
   displayCards() {
@@ -35,7 +35,7 @@ export class DisplaycardsComponent implements OnInit {
     }
     return this.notesService.getWithToken(options).subscribe((response: any) => {
       this.records = response.data.data.reverse();
-      this.filterTrash(this.records)
+      this.records=this.filterTrash(this.records)
       console.log(response);
     }, (error) => {
       console.log(error);
@@ -61,15 +61,16 @@ export class DisplaycardsComponent implements OnInit {
     dialogConfig.data = {
       title: record.title,
       description: record.description,
-      recordid:record.id
+      recordid:record.id,
+      color:record.color
     }
 
     this.dialogRef = this.dialog.open(DialogboxComponent, dialogConfig);
 
     this.dialogRef.afterClosed().subscribe(
-      data => console.log("Dialog output:", data)
+      data =>{ console.log("Dialog output:", data)
+      this.displayCards();}
     );
-
   }
   
   receiveUpdateMessage($event) {

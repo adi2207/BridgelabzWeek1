@@ -16,14 +16,14 @@
 </mat-menu>
 
 
-  <button mat-button matTooltip="Archive">
+  <button mat-button matTooltip="Archive" (click)="archiveNote(recordid)">
     <mat-icon>archive</mat-icon>
   </button>
   <button mat-button matTooltip="More" [matMenuTriggerFor]="menu">
     <mat-icon>more_vert</mat-icon>
   </button>
   <mat-menu #menu>
-    <button mat-menu-item click="trashNote(recordid)">Delete Note</button>
+    <button mat-menu-item (click)="trashNote(recordid)">Delete Note</button>
     <button mat-menu-item>Add label</button>
     <button mat-menu-item>Add drawing</button>
     <button mat-menu-item>Make a copy</button>

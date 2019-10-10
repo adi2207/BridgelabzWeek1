@@ -26,6 +26,7 @@ import { AuthService } from './services/auth.service/auth.service';
 import { AuthGuard } from './services/authguard/auth.guard';
 import { SearchfilterPipe } from './services/search.filter.pipe/searchfilter.pipe';
 import { SearchbarComponent } from './components/searchbar/searchbar.component';
+import {LabelsComponent} from './components/labels/labels.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +44,7 @@ import { SearchbarComponent } from './components/searchbar/searchbar.component';
     ArchiveComponent,
     SearchfilterPipe,
     SearchbarComponent,
+    LabelsComponent
   ],
   imports: [
     BrowserModule,

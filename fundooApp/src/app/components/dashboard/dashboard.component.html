@@ -1,6 +1,6 @@
 <div class="background">
     <mat-toolbar fxLayoutAlign="space-around center" class="headercontainer">
-        <button type="button" mat-button (click)="drawer.toggle()" matTooltip="Main menu">
+        <button mat-icon-button (click)="drawer.toggle()" matTooltip="Main menu">
             <mat-icon>menu</mat-icon>
         </button>
         <img src="../../../assets/images/keep_app_logo.png">
@@ -11,13 +11,13 @@
                 </button>
                 <input matInput placeholder="Search" [(ngModel)]="searchText" routerLink="/search" >
         </div>
-        <button type="button" mat-button>
+        <button mat-icon-button>
             <mat-icon>settings</mat-icon>
         </button>
         <button mat-icon-button matTooltip="List View">
             <mat-icon>list</mat-icon>
         </button>
-        <button mat-icon-button class="circle-button" [matMenuTriggerFor]="menu">
+        <button mat-button class="circle-button" [matMenuTriggerFor]="menu">
             <mat-icon>list</mat-icon>
         </button>
         <mat-menu #menu>

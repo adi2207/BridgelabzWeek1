@@ -20,7 +20,6 @@ export class TakenoteComponent implements OnInit {
 
   ngOnInit() {
     this.dataService.currentMessage.subscribe(message => this.message = message)
-
   }
   toggle() { 
     this.show= !this.show;

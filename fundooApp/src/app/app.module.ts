@@ -26,7 +26,7 @@ import { AuthService } from './services/auth.service/auth.service';
 import { AuthGuard } from './services/authguard/auth.guard';
 import { SearchfilterPipe } from './services/search.filter.pipe/searchfilter.pipe';
 import { SearchbarComponent } from './components/searchbar/searchbar.component';
-import {LabelsComponent} from './components/labels/labels.component';
+import { LabeldialogboxComponent } from './components/labeldialogbox/labeldialogbox.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +44,7 @@ import {LabelsComponent} from './components/labels/labels.component';
     ArchiveComponent,
     SearchfilterPipe,
     SearchbarComponent,
-    LabelsComponent
+    LabeldialogboxComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,6 +58,6 @@ import {LabelsComponent} from './components/labels/labels.component';
   ],
   providers: [UserService,AuthGuard,AuthService],
   bootstrap: [AppComponent],
-  entryComponents: [DialogboxComponent]
+  entryComponents: [DialogboxComponent,LabeldialogboxComponent]
 })
 export class AppModule { }

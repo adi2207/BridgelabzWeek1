@@ -13,10 +13,8 @@ import { DataService } from 'src/app/services/data.services/data.service';
 export class DisplaycardsComponent implements OnInit {
   records: any;
   note: NoteInterface;
-  //hover: Boolean=false;
   message: string;
   updateMessage: string;
-
 
   constructor(private notesService: NotesService, public dialog: MatDialog, private dataService: DataService) { }
   filterTrashAndArchives(records)

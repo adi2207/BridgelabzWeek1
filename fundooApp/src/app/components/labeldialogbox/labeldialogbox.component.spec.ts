@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LabelsComponent } from './labels.component';
+import { LabeldialogboxComponent } from './labeldialogbox.component';
 
-describe('LabelsComponent', () => {
-  let component: LabelsComponent;
-  let fixture: ComponentFixture<LabelsComponent>;
+describe('LabeldialogboxComponent', () => {
+  let component: LabeldialogboxComponent;
+  let fixture: ComponentFixture<LabeldialogboxComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LabelsComponent ]
+      declarations: [ LabeldialogboxComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LabelsComponent);
+    fixture = TestBed.createComponent(LabeldialogboxComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -18,9 +18,10 @@
             <mat-icon>list</mat-icon>
         </button>
         <button mat-button class="circle-button" [matMenuTriggerFor]="menu">
-            <mat-icon>list</mat-icon>
+            <mat-icon>account_circle</mat-icon>
         </button>
         <mat-menu #menu>
+            <button mat-menu-item><mat-icon>account_circle</mat-icon></button>
             <button mat-menu-item routerLink="/register">Add account</button>
             <button mat-menu-item (click)="onSignOut()">Sign Out</button>
         </mat-menu>

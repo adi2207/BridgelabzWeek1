@@ -10,6 +10,7 @@ import { DataService } from 'src/app/services/data.services/data.service';
 })
 export class DashboardComponent implements OnInit {
 
+  hide:Boolean=true;
   searchMessage:string;
   searchText:string;
   constructor(public router: Router, private authService:AuthService, private dataService:DataService) { }
@@ -24,5 +25,8 @@ export class DashboardComponent implements OnInit {
   } 
   onSearch(){
     this.dataService.changeMessage(this.searchText);
+  }
+  toggle(){
+    this.hide=!this.hide;
   }
 }

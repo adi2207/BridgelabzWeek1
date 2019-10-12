@@ -3,6 +3,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
 import {NotelabelService} from '../../services/note.label.service/notelabel.service'
 import {DashboardComponent} from '../dashboard/dashboard.component'
 import { FormControl } from '@angular/forms';
+import {AuthService} from '../../services/auth.service/auth.service'
 @Component({
   selector: 'app-labeldialogbox',
   templateUrl: './labeldialogbox.component.html',
@@ -13,7 +14,7 @@ export class LabeldialogboxComponent implements OnInit {
   labelName:any;
   data:any;
   constructor(private dialogRef: MatDialogRef<DashboardComponent>,
-    @Inject(MAT_DIALOG_DATA) dialogData,private notelabelService:NotelabelService) {
+    @Inject(MAT_DIALOG_DATA) dialogData,private notelabelService:NotelabelService,private authService:AuthService) {
   }
 
   ngOnInit() {
@@ -25,7 +26,9 @@ export class LabeldialogboxComponent implements OnInit {
   createNewLabel(){
     this.data={
       "label": this.labelName,
-      "isDeleted": false
+      "isDeleted": false,
+      "userId": this.authService.getToken()
+      
     }
     let options = {
       data:this.data,

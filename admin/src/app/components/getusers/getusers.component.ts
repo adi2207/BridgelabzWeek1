@@ -9,18 +9,36 @@ import * as $ from 'jquery';
 })
 export class GetusersComponent implements OnInit {
 
-  records:any;
+  records: any;
   constructor() { }
 
   ngOnInit() {
     $(function () {
+
       this.options = {
         purpose: 'getAdminUserList'
       }
-      $.get(environment.baseUrl + this.options.purpose,(response,error) => {
+      $.get(environment.baseUrl + this.options.purpose, (response, error) => {
         if (response) {
           console.log(response);
-          this.records=response.data.data;
+          this.records = response.data.data;
+          $('#basicCount').html(this.records.filter(function (i) {
+            return i.service == "basic" || i.service == "Basic"
+          }).length);
+          $('#advanceCount').html(this.records.filter(function (i) {
+            return i.service == "advance" || i.service == "Advance"
+          }).length);
+          var row = "";
+          $.each(this.records, function (key, value) {
+            row += "<tr>";
+            row += "<td>" + key + "</td>";
+            row += "<td>" + value.firstName + "</td>";
+            row += "<td>" + value.lastName + "</td>";
+            row += "<td>" + value.email + "</td>";
+            row += "<td>" + value.service + "</td>";
+            row += "</tr>";
+          })
+          $("#admin-table ").append(row);
         }
         else
           console.log(error);

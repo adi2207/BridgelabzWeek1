@@ -32,14 +32,17 @@ export class AdminloginComponent implements OnInit {
 
   data: AdminInterface;
   options: any;
-  constructor(private router:Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
-
+    $(document).ready(function () {
+      $("#login-button").click(function (e) {
+        e.preventDefault();
+      })
+    })
   }
 
   onLogin() {
-    $(function () {
       this.data = {
         email: $('#userEmail').val(),
         password: $('#userPassword').val()
@@ -49,13 +52,12 @@ export class AdminloginComponent implements OnInit {
         purpose: 'adminLogin'
       }
       $.post(environment.baseUrl + this.options.purpose, this.options.data, (response, error) => {
-        if (response){
+        if (response) {
           console.log(response);
-          //this.router.navigate(["/getUsers"]);        
+          this.router.navigate(["/getUsers"]);        
         }
         else
           console.log(error);
       });
-    });
   }
 }

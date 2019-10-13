@@ -38,6 +38,9 @@
                 </mat-icon>
                 <mat-divider></mat-divider>
                 <p mat-list-item>LABELS</p>
+                <div *ngFor="let record of records">
+                <a mat-list-item>{{record.label}}</a>
+                </div>
                 <mat-icon fxLayout="row" fxLayoutAlign="start center">edit<a mat-list-item (click)="openLabelDialog()">Edit labels</a></mat-icon>
                 <mat-divider></mat-divider>
 

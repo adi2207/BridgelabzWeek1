@@ -4,7 +4,7 @@ import {AuthService} from '../../services/auth.service/auth.service'
 import { DataService } from 'src/app/services/data.services/data.service';
 import { MatDialog, MatDialogConfig } from "@angular/material";
 import { LabeldialogboxComponent } from '../labeldialogbox/labeldialogbox.component';
-
+import {NotelabelService} from '../../services/note.label.service/notelabel.service'
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -15,11 +15,21 @@ export class DashboardComponent implements OnInit {
   hide:Boolean=true;
   searchMessage:string;
   searchText:string;
+  message:string;
   private dialogRef;
-  constructor(public router: Router, private authService:AuthService, private dataService:DataService,public dialog: MatDialog) { }
+  records:any;
+  constructor(public router: Router, 
+    private authService:AuthService, 
+    private dataService:DataService,
+    public dialog: MatDialog,
+    private notelabelService:NotelabelService) { }
   ngOnInit(){
     this.dataService.currentMessage.subscribe((searchMessage) => {
       this.searchMessage = searchMessage
+    });
+    this.dataService.currentMessage.subscribe((message)=>{
+      this.message = message
+      this.displayLabels();
     });
     this.router.navigate(['notes'])
   }
@@ -41,4 +51,17 @@ export class DashboardComponent implements OnInit {
     }
     );
   }
+  displayLabels(){
+    let options = {
+      purpose: 'getNoteLabelList'
+    }
+    return this.notelabelService.getWithToken(options).subscribe((response: any) => {
+      console.log(response);
+      this.records=response.data.details.reverse();
+    }, (error) => {
+      console.log(error);
+    });
+  }
+
+  
 }

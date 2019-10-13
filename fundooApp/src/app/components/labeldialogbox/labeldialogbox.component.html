@@ -1,13 +1,27 @@
-<div mat-dialog-content fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="center center" >
-    <div fxLayout="row">
-        <button mat-icon-button matToolTip="Cancel"><mat-icon>close</mat-icon></button>
-        <input matInput placeholder="Create new label" [(ngModel)]="labelName">
-        <button mat-icon-button matToolTip="Create Label" (click)="createNewLabel()"><mat-icon>done</mat-icon></button>
-    </div>
-
-    <div fxFlex="100" fxLayout="row" fxLayoutAlign="end end">
-      <button mat-button (click)="onDone()">Done</button>
+<div mat-dialog-content fxLayout="column" fxLayoutGap="10px">
+  <p>Edit labels</p>
+  <div fxLayout="row" fxLayoutGap="40px">
+    <button mat-icon-button matToolTip="Cancel">
+      <mat-icon>close</mat-icon>
+    </button>
+    <input matInput placeholder="Create new label" [(ngModel)]="labelName" fxFlex="45">
+    <button mat-icon-button matToolTip="Create Label" (click)="createNewLabel()">
+      <mat-icon>done</mat-icon>
+    </button>
+  </div>
+  <div *ngFor="let record of records">
+    <div fxLayout="row" fxLayoutGap="80px" >
+      <button fxLayoutAlign="start start" mat-icon-button matToolTip="Delete label" (click)="onDeleteLabel(record)">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <p fxFlex="20">{{record.label}}</p>
+      <button fxLayoutAlign="end end" mat-icon-button matToolTip="Rename label" >
+          <mat-icon>edit</mat-icon>
+        </button>
     </div>
   </div>
-
-
+  <mat-divider></mat-divider>
+  <div fxFlex="100" fxLayout="row" fxLayoutAlign="end end" >
+    <button class="done-button" mat-button (click)="onDone()">Done</button>
+  </div>
+</div>

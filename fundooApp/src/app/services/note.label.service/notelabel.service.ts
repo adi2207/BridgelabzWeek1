@@ -24,6 +24,15 @@ export class NotelabelService {
     }    
     return this.http.postCallWithToken(this.baseUrl+'noteLabels/'+options.purpose,this.getEncodedData(options.data),httpOptions)
   }
+  deleteWithToken(options){
+    let httpOptions={
+      headers:new HttpHeaders({
+        'Content-type':'application/x-www-form-urlencoded',
+        'Authorization':localStorage.getItem('id')
+      })
+    }
+    return this.http.deleteCallWithToken(this.baseUrl+'noteLabels/'+options.data.id+options.purpose,httpOptions)  
+  }
   getWithToken(options){
     let httpOptions={
       headers:new HttpHeaders({

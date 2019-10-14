@@ -6,10 +6,10 @@
         <img src="../../../assets/images/keep_app_logo.png">
         <p>fundooApp</p>
         <div class="searchbar">
-                <button mat-icon-button (click)="onSearch()">
-                  <mat-icon matPrefix matTooltip="Search">search</mat-icon>
-                </button>
-                <input matInput placeholder="Search" [(ngModel)]="searchText" routerLink="/search" >
+            <button mat-icon-button (click)="onSearch()">
+                <mat-icon matPrefix matTooltip="Search">search</mat-icon>
+            </button>
+            <input matInput placeholder="Search" [(ngModel)]="searchText" routerLink="/search">
         </div>
         <button mat-icon-button>
             <mat-icon>settings</mat-icon>
@@ -21,7 +21,9 @@
             <mat-icon>account_circle</mat-icon>
         </button>
         <mat-menu #menu>
-            <button mat-menu-item><mat-icon>account_circle</mat-icon></button>
+            <button mat-menu-item>
+                <mat-icon>account_circle</mat-icon>
+            </button>
             <button mat-menu-item routerLink="/register">Add account</button>
             <button mat-menu-item (click)="onSignOut()">Sign Out</button>
         </mat-menu>
@@ -37,11 +39,13 @@
                 <mat-icon fxLayout="row" fxLayoutAlign="start center">notifications_none<a mat-list-item>Reminders</a>
                 </mat-icon>
                 <mat-divider></mat-divider>
-                <p mat-list-item>LABELS</p>
+                <p mat-list-item style="color: grey; font-size: 12px">LABELS</p>
                 <div *ngFor="let record of records">
-                <a mat-list-item>{{record.label}}</a>
+                    <mat-icon fxLayout="row" fxLayoutAlign="start center">label_outline<a mat-list-item>{{record.label}}</a>
+                    </mat-icon>
                 </div>
-                <mat-icon fxLayout="row" fxLayoutAlign="start center">edit<a mat-list-item (click)="openLabelDialog()">Edit labels</a></mat-icon>
+                <mat-icon fxLayout="row" fxLayoutAlign="start center">edit<a mat-list-item
+                        (click)="openLabelDialog()">Edit labels</a></mat-icon>
                 <mat-divider></mat-divider>
 
                 <mat-icon fxLayout="row" fxLayoutAlign="start center">archive<a mat-list-item

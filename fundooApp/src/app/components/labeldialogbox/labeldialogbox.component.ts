@@ -16,6 +16,7 @@ export class LabeldialogboxComponent implements OnInit {
   data:any;
   records:any;
   message:string;
+  updateMessage:string="label updated";
   @Output() messageEvent = new EventEmitter<string>();
 
   constructor(private dialogRef: MatDialogRef<DashboardComponent>,
@@ -45,7 +46,7 @@ export class LabeldialogboxComponent implements OnInit {
     }
     return this.notelabelService.postWithTokenNoEncoding(options).subscribe((response: any) => {
       console.log(response);
-      this.dataService.changeMessage(this.data.label); //check if its the right way to do things 
+      this.dataService.changeMessage(this.updateMessage); 
       this.getLabels()
     }, (error) => {
       console.log(error);
@@ -62,21 +63,21 @@ export class LabeldialogboxComponent implements OnInit {
       console.log(error);
     });
   }
-  // onDeleteLabel(record){
-  //   this.data={
-  //     id:record.id,
-  //     isDeleted:true
-  //   }
-  //   let options = {
-  //     data:this.data,
-  //     purpose: this.data.id+'/deleteNoteLabel'
-  //   }
-  //   return this.notelabelService.postWithoutToken(options).subscribe((response: any) => {
-  //     console.log(response);
-  //     this.getLabels();
-  //   }, (error) => {
-  //     console.log(error);
-  //   });
-  // }
+  onDeleteLabel(record){
+    this.data={
+      id:record.id,
+    }
+    let options = {
+      data:this.data,
+      purpose: '/deleteNoteLabel'
+    }
+    return this.notelabelService.deleteWithToken(options).subscribe((response: any) => {
+      console.log(response);
+      this.getLabels();
+      this.dataService.changeMessage(this.updateMessage); 
+    }, (error) => {
+      console.log(error);
+    });
+  }
 
 }

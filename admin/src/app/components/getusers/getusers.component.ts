@@ -38,7 +38,15 @@ export class GetusersComponent implements OnInit {
             row += "<td>" + value.service + "</td>";
             row += "</tr>";
           })
-          $("#admin-table ").append(row);
+          $("#admin-table").append(row);
+          $(document).ready(function(){
+            $("#searchInput").on("keyup", function() {
+              var value = $(this).val().toLowerCase();
+              $("#admin-table td").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+              });
+            });
+          });
         }
         else
           console.log(error);

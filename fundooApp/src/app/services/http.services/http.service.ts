@@ -16,13 +16,13 @@ export class HttpService {
     return this.http.post(url,data);
 
   }
-  deleteCall(){
-
-  }
   putCall(){
 
   }
   postCallWithToken(url,data,options){
     return this.http.post(url,data,options);
+  }
+  deleteCallWithToken(url,options){
+    return this.http.delete(url,options);
   }
 }

@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit {
   message:string;
   private dialogRef;
   records:any;
+  updateMessage:string;
   constructor(public router: Router, 
     private authService:AuthService, 
     private dataService:DataService,
@@ -27,8 +28,8 @@ export class DashboardComponent implements OnInit {
     this.dataService.currentMessage.subscribe((searchMessage) => {
       this.searchMessage = searchMessage
     });
-    this.dataService.currentMessage.subscribe((message)=>{
-      this.message = message
+    this.dataService.currentMessage.subscribe((updateMessage)=>{
+      this.updateMessage = updateMessage
       this.displayLabels();
     });
     this.router.navigate(['notes'])

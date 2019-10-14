@@ -52,5 +52,21 @@ export class TrashComponent implements OnInit {
       console.log(error);
     });
   }
+  onRestoreNote(recordid){
+    let noteObj={
+      'noteIdList':[recordid],
+      'isDeleted':false
+    }
+    let options = {
+      data:noteObj,
+      purpose: 'trashNotes'
+    }
+    return this.notesService.postWithTokenNoEncoding(options).subscribe((response: any) => {
+      console.log(response);
+      this.getTrashNotes();
+    }, (error) => {
+      console.log(error);
+    });
+  }
 
 }

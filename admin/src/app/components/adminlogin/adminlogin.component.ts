@@ -3,6 +3,7 @@ import { AdminInterface } from '../../interfaces/admin';
 import * as $ from 'jquery';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import {AuthService} from '../../services/authservice/auth.service'
 declare var $: any;
 
 // $(this).hide() - hides the current element.
@@ -32,7 +33,7 @@ export class AdminloginComponent implements OnInit {
 
   data: AdminInterface;
   options: any;
-  constructor(private router: Router) { }
+  constructor(private router: Router, private authService:AuthService) { }
 
   ngOnInit() {
     $(document).ready(function () {
@@ -54,6 +55,7 @@ export class AdminloginComponent implements OnInit {
       $.post(environment.baseUrl + this.options.purpose, this.options.data, (response, error) => {
         if (response) {
           console.log(response);
+          this.authService.sendToken(response.id);
           this.router.navigate(["/getUsers"]);        
         }
         else

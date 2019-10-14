@@ -24,6 +24,15 @@ export class NotesService {
     }    
     return this.http.postCallWithToken(this.baseUrl+'notes/'+options.purpose,this.getEncodedData(options.data),httpOptions)
   }
+  postWithTokenCreateUrl(options){
+    let httpOptions={
+      headers:new HttpHeaders({
+        'Content-type':'application/x-www-form-urlencoded',
+        'Authorization':localStorage.getItem('id')
+      })
+    }    
+    return this.http.postCallWithToken(this.baseUrl+'notes/'+options.data.noteId+"/"+options.purpose+"/"+options.data.labelId+"/add",this.getEncodedData(options.data),httpOptions)
+  }
   getWithToken(options){
     let httpOptions={
       headers:new HttpHeaders({

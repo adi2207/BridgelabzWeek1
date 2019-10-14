@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import * as $ from 'jquery';
-import {AuthService} from '../../services/authservice/auth.service'
+import { AuthService } from '../../services/authservice/auth.service'
 @Component({
   selector: 'app-getusers',
   templateUrl: './getusers.component.html',
@@ -10,11 +10,10 @@ import {AuthService} from '../../services/authservice/auth.service'
 export class GetusersComponent implements OnInit {
 
   records: any;
-  constructor(private authService:AuthService) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
     $(function () {
-
       this.options = {
         purpose: 'getAdminUserList'
       }
@@ -27,8 +26,7 @@ export class GetusersComponent implements OnInit {
           }).length);
           $('#advanceCount').html(this.records.filter(function (i) {
             return i.service == "advance" || i.service == "Advance"
-          }).length);
-          var row = "";
+          }).length); var row = "";
           $.each(this.records, function (key, value) {
             row += "<tr>";
             row += "<td>" + key + "</td>";
@@ -39,10 +37,10 @@ export class GetusersComponent implements OnInit {
             row += "</tr>";
           })
           $("#admin-table").append(row);
-          $(document).ready(function(){
-            $("#searchInput").on("keyup", function() {
+          $(document).ready(function () {
+            $("#searchInput").on("keyup", function () {
               var value = $(this).val().toLowerCase();
-              $("#admin-table td").filter(function() {
+              $("#admin-table td").filter(function () {
                 $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
               });
             });
@@ -53,7 +51,56 @@ export class GetusersComponent implements OnInit {
       });
     });
   }
-  onLogout(){
+  onLogout() {
     this.authService.logout();
+  }
+  getAdvanceUserList() {
+    $(function () {
+      var filteredRecords = this.records.filter(function (v) {
+        return v.service == "advance";
+      });
+      var row = "";
+      console.log(filteredRecords)
+      $.each(filteredRecords, function (key, value) {
+        {
+          row += "<tr>";
+          row += "<td>" + key + "</td>";
+          row += "<td>" + value.firstName + "</td>";
+          row += "<td>" + value.lastName + "</td>";
+          row += "<td>" + value.email + "</td>";
+          row += "<td>" + value.service + "</td>";
+          row += "</tr>";
+        }
+      })
+      $("#admin-table").html(row);
+    })
+  }
+  getBasicUserList() {
+    $(function () {
+      var filteredRecords = this.records.filter(function (v) {
+        return v.service == "basic"||v.service =="Basic";
+      });
+      var row = "";
+      console.log(filteredRecords);
+      $.each(filteredRecords, function (key, value) {
+        {
+          row += "<tr>";
+          row += "<td>" + key + "</td>";
+          row += "<td>" + value.firstName + "</td>";
+          row += "<td>" + value.lastName + "</td>";
+          row += "<td>" + value.email + "</td>";
+          row += "<td>" + value.service + "</td>";
+          row += "</tr>";
+        }
+      })
+      $("#admin-table").html(row);
+    })
+
+  }
+  getBasicAndAdvanceCount() {
+
+  }
+  onSearch() {
+
   }
 }

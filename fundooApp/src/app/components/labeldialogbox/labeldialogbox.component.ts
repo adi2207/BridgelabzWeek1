@@ -4,6 +4,8 @@ import {NotelabelService} from '../../services/note.label.service/notelabel.serv
 import {DashboardComponent} from '../dashboard/dashboard.component'
 import {AuthService} from '../../services/auth.service/auth.service'
 import {DataService} from '../../services/data.services/data.service'
+import { UserService } from 'src/app/services/user.services/user.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-labeldialogbox',
@@ -17,6 +19,8 @@ export class LabeldialogboxComponent implements OnInit {
   records:any;
   message:string;
   updateMessage:string="label updated";
+  labelNewName=new FormControl()
+
   @Output() messageEvent = new EventEmitter<string>();
 
   constructor(private dialogRef: MatDialogRef<DashboardComponent>,
@@ -72,6 +76,25 @@ export class LabeldialogboxComponent implements OnInit {
       purpose: '/deleteNoteLabel'
     }
     return this.notelabelService.deleteWithToken(options).subscribe((response: any) => {
+      console.log(response);
+      this.getLabels();
+      this.dataService.changeMessage(this.updateMessage); 
+    }, (error) => {
+      console.log(error);
+    });
+  }
+  onRename(labelid){
+    this.data={
+      id:labelid,
+      label:this.labelNewName.value,
+      isDeleted:false,
+      userId:this.authService.getToken()
+    }
+    let options = {
+      data:this.data,
+      purpose: 'updateNoteLabel'
+    }
+    return this.notelabelService.postWithTokenCreateUrl(options).subscribe((response: any) => {
       console.log(response);
       this.getLabels();
       this.dataService.changeMessage(this.updateMessage); 

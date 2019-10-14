@@ -7,17 +7,17 @@ export class AuthService {
 
   constructor(private router: Router) { }
 
-  sendToken(userId: string) {
-    localStorage.setItem("userId", userId)
+  sendToken(id: string) {
+    localStorage.setItem("id", id)
   }
   getToken() {
-    return localStorage.getItem("userId")
+    return localStorage.getItem("id")
   }
   isLoggednIn() {
     return this.getToken() !== null;
   }
   logout() {
-    localStorage.removeItem("userId");
+    localStorage.removeItem("id");
     this.router.navigate(["login"]);
   }
 

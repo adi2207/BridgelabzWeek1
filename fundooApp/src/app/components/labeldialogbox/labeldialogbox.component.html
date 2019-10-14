@@ -14,8 +14,8 @@
       <button fxLayoutAlign="start start" mat-icon-button matToolTip="Delete label" (click)="onDeleteLabel(record)">
         <mat-icon>delete</mat-icon>
       </button>
-      <p fxFlex="20">{{record.label}}</p>
-      <button fxLayoutAlign="end end" mat-icon-button matToolTip="Rename label" >
+      <input matInput fxFlex="20" value="{{record.label}}" [formControl]="labelNewName">
+      <button fxLayoutAlign="end end" mat-icon-button (click)="onRename(record.id)" matToolTip="Rename label" >
           <mat-icon>edit</mat-icon>
         </button>
     </div>

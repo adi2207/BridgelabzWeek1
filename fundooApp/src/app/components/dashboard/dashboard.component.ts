@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
   searchText:string;
   message:string;
   private dialogRef;
-  records:any;
+  labels:any;
   updateMessage:string;
   constructor(public router: Router, 
     private authService:AuthService, 
@@ -58,7 +58,7 @@ export class DashboardComponent implements OnInit {
     }
     return this.notelabelService.getWithToken(options).subscribe((response: any) => {
       console.log(response);
-      this.records=response.data.details.reverse();
+      this.labels=response.data.details.reverse();
     }, (error) => {
       console.log(error);
     });

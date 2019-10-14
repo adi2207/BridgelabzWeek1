@@ -10,6 +10,8 @@ import { NotesComponent } from './components/notes/notes.component';
 import {ArchiveComponent} from './components/archive/archive.component';
 import {AuthGuard} from './services/authguard/auth.guard';
 import {SearchbarComponent} from './components/searchbar/searchbar.component' 
+import {LabelsComponent} from './components/labels/labels.component'
+
 const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
@@ -20,9 +22,10 @@ const routes: Routes = [
     path:'trash',component:TrashComponent 
   },{
     path:'archive',component:ArchiveComponent 
-  },
-  {
+  },{
     path:'search',component:SearchbarComponent 
+  },{
+    path:'labels',component:LabelsComponent
   }
   ]},
   {path:'resetpassword/:token',component:ResetComponent},

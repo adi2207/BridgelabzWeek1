@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import * as $ from 'jquery';
-
+import {AuthService} from '../../services/authservice/auth.service'
 @Component({
   selector: 'app-getusers',
   templateUrl: './getusers.component.html',
@@ -10,7 +10,7 @@ import * as $ from 'jquery';
 export class GetusersComponent implements OnInit {
 
   records: any;
-  constructor() { }
+  constructor(private authService:AuthService) { }
 
   ngOnInit() {
     $(function () {
@@ -52,5 +52,8 @@ export class GetusersComponent implements OnInit {
           console.log(error);
       });
     });
+  }
+  onLogout(){
+    this.authService.logout();
   }
 }

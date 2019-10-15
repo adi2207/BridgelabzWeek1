@@ -15,6 +15,9 @@ export class DisplaycardsComponent implements OnInit {
   note: NoteInterface;
   message: string;
   updateMessage: string;
+  @Input() notes:any;
+  @Input() archivedNotes;
+  @Input() trashNotes; 
 
   constructor(private notesService: NotesService, public dialog: MatDialog, private dataService: DataService) { }
   filterTrashAndArchives(records)
@@ -42,7 +45,13 @@ export class DisplaycardsComponent implements OnInit {
     this.dataService.currentMessage.subscribe((message) => {
       this.message = message
       this.displayCards();
+      //this.records=this.notes;
+      //console.log("noteeeeeeeeeee",this.trashNotes);
+
     });
+    //console.log("noteeeeeeeeeee",this.trashNotes);
+    //this.records=this.notes;
+
   }
 
 
@@ -65,12 +74,13 @@ export class DisplaycardsComponent implements OnInit {
 
     this.dialogRef.afterClosed().subscribe(
       data =>{ console.log("Dialog output:", data)
-      this.displayCards();}
-    );
+      this.displayCards();
+    });
   }
   
   receiveUpdateMessage($event) {
     this.updateMessage = $event;
     this.displayCards();
+    this.records=this.notes;
   }
 }

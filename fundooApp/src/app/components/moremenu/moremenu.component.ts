@@ -1,7 +1,6 @@
 import { Component, OnInit,Input,Output,EventEmitter} from '@angular/core';
 import {NotesService} from '../../services/notes.services/notes.service'
 import {NotelabelService} from '../../services/note.label.service/notelabel.service'
-import { ShowHideDirective } from '@angular/flex-layout';
 @Component({
   selector: 'app-moremenu',
   templateUrl: './moremenu.component.html',
@@ -9,22 +8,28 @@ import { ShowHideDirective } from '@angular/flex-layout';
 })
 export class MoremenuComponent implements OnInit {
 
+  @Input() isDeleted:any;
+  @Input() isNote:any;
+
   note: any;
   records:any;
   labels:any;
   updateMessage:string="note updated"
-
+  x:any;
   @Input() recordid : any;
+
   @Output() messageEvent = new EventEmitter<string>();
   show:Boolean=true;
   constructor(private notesService:NotesService,private notelabelService:NotelabelService) { }
   ngOnInit(){
     this.getLabels();
+    console.log("is noteeeeeeee",this.isNote)
+
   }
 
-  trashNote(recordid){
+  trashNote(){
     let noteObj={
-      'noteIdList':[recordid],
+      'noteIdList':[this.recordid],
       'isDeleted':true
     }
     let options = {
@@ -40,10 +45,10 @@ export class MoremenuComponent implements OnInit {
 
   }
 
-  afterLabelSelection(recordid,labelid){
+  afterLabelSelection(labelid){
     let data={
       labelId:labelid,
-      noteId:[recordid]
+      noteId:[this.recordid]
     }
     let options = {
       data:data,
@@ -67,9 +72,36 @@ export class MoremenuComponent implements OnInit {
       console.log(error);
     });
   }
-  toggle(){
-    this.show=!this.show;
+   deleteNoteForever(){
+    let noteObj={
+      'noteIdList':[this.recordid],
+      'isDeleted':true
+    }
+    let options = {
+      data:noteObj,
+      purpose: 'deleteForeverNotes'
+    }
+    return this.notesService.postWithTokenNoEncoding(options).subscribe((response: any) => {
+      console.log(response);
+      this.messageEvent.emit(this.updateMessage);
+    }, (error) => {
+      console.log(error);
+    });
   }
-  
-
+  onRestoreNote(){
+    let noteObj={
+      'noteIdList':[this.recordid],
+      'isDeleted':false
+    }
+    let options = {
+      data:noteObj,
+      purpose: 'trashNotes'
+    }
+    return this.notesService.postWithTokenNoEncoding(options).subscribe((response: any) => {
+      console.log(response);
+      this.messageEvent.emit(this.updateMessage);
+    }, (error) => {
+      console.log(error);
+    });
+  }
 }

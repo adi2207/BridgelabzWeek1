@@ -1,17 +1,34 @@
-<button mat-icon-button matTooltip="More" [matMenuTriggerFor]="menu">
+<button *ngIf="isDeleted=='false'" mat-icon-button matTooltip="More" [matMenuTriggerFor]="menugeneral">
   <mat-icon>more_vert</mat-icon>
 </button>
-<mat-menu #menu>
-  <button mat-menu-item (click)="trashNote(recordid)">Delete Note</button>
+<mat-menu #menugeneral>
+  <button mat-menu-item (click)="trashNote()">Delete Note</button>
   <button mat-menu-item [matMenuTriggerFor]="labelmenu">Add label</button>
   <button mat-menu-item>Add drawing</button>
   <button mat-menu-item>Make a copy</button>
   <button mat-menu-item>Show checkboxes</button>
 </mat-menu>
+
+<button mat-icon-button *ngIf="isDeleted=='true'" matTooltip="More" [matMenuTriggerFor]="menutrash">
+  <mat-icon>more_vert</mat-icon>
+</button>
+<mat-menu #menutrash>
+  <button mat-menu-item (click)="deleteNoteForever()">Delete Forever</button>
+  <button mat-menu-item (click)="onRestoreNote()">Restore</button>
+</mat-menu>
+
+<button mat-icon-button *ngIf="isNote=='note'" matTooltip="More" [matMenuTriggerFor]="takenotemenu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+<mat-menu #takenotemenu>
+  <button mat-menu-item [matMenuTriggerFor]="labelmenu">Add label</button>
+  <button mat-menu-item>Add drawing</button>
+  <button mat-menu-item>Show checkboxes</button>
+</mat-menu>
 <mat-menu #labelmenu>
   <p>Label Note</p>
   <mat-selection-list #selectedlabels>
-    <mat-list-option *ngFor="let label of labels" (click)="afterLabelSelection(recordid,label.id)">
+    <mat-list-option *ngFor="let label of labels" (click)="afterLabelSelection(label.id)">
       {{label.label}}
     </mat-list-option>
   </mat-selection-list>

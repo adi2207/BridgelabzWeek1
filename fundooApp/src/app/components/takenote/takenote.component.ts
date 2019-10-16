@@ -11,6 +11,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class TakenoteComponent implements OnInit {
   
+  isNote='note';
   data=new FormControl();
   title=new FormControl();
   note:any;
@@ -26,9 +27,9 @@ export class TakenoteComponent implements OnInit {
     this.show= !this.show;
   }
   onClose() {
+    this.show= !this.show;
     if(this.title.value!=null||this.data.value!=null){
       if(this.updateMessage!=null){
-        this.show= !this.show;
         this.note={
           title:this.title.value,
           description:this.data.value,
@@ -48,7 +49,6 @@ export class TakenoteComponent implements OnInit {
         });
       }
       else{
-        this.show= !this.show;
         this.note={
           title:this.title.value,
           description:this.data.value,

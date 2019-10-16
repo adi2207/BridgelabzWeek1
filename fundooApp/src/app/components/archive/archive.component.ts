@@ -11,6 +11,7 @@ export class ArchiveComponent implements OnInit {
 
   records:any;
   updateMessage:any;
+  isDeleted='false';
   constructor(private notesService : NotesService) { }
 
   ngOnInit() {

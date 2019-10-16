@@ -12,7 +12,7 @@ import {NotelabelService} from '../../services/note.label.service/notelabel.serv
 })
 export class DashboardComponent implements OnInit {
 
-  hide:Boolean=true;
+  show:Boolean=false;
   searchMessage:string;
   searchText:string;
   message:string;
@@ -25,9 +25,6 @@ export class DashboardComponent implements OnInit {
     public dialog: MatDialog,
     private notelabelService:NotelabelService) { }
   ngOnInit(){
-    this.dataService.currentMessage.subscribe((searchMessage) => {
-      this.searchMessage = searchMessage
-    });
     this.dataService.currentMessage.subscribe((updateMessage)=>{
       this.updateMessage = updateMessage
       this.displayLabels();
@@ -41,7 +38,7 @@ export class DashboardComponent implements OnInit {
     this.dataService.changeMessage(this.searchText);
   }
   toggle(){
-    this.hide=!this.hide;
+    this.show=!this.show;
   }
   openLabelDialog() {
     const dialogConfig = new MatDialogConfig();
@@ -63,6 +60,7 @@ export class DashboardComponent implements OnInit {
       console.log(error);
     });
   }
+
 
   
 }

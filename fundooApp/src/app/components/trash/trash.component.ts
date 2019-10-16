@@ -12,7 +12,7 @@ export class TrashComponent implements OnInit {
   note:NoteInterface;
   updateMessage:string;
   constructor(private notesService:NotesService) { }
-
+  isDeleted='true';
   ngOnInit() {
     this.getTrashNotes();
   }
@@ -36,38 +36,7 @@ export class TrashComponent implements OnInit {
       console.log(error);
     });
   }
-  // deleteNoteForever(recordid){
-  //   let noteObj={
-  //     'noteIdList':[recordid],
-  //     'isDeleted':true
-  //   }
-  //   let options = {
-  //     data:noteObj,
-  //     purpose: 'deleteForeverNotes'
-  //   }
-  //   return this.notesService.postWithTokenNoEncoding(options).subscribe((response: any) => {
-  //     console.log(response);
-  //     this.getTrashNotes();
-  //   }, (error) => {
-  //     console.log(error);
-  //   });
-  // }
-  // onRestoreNote(recordid){
-  //   let noteObj={
-  //     'noteIdList':[recordid],
-  //     'isDeleted':false
-  //   }
-  //   let options = {
-  //     data:noteObj,
-  //     purpose: 'trashNotes'
-  //   }
-  //   return this.notesService.postWithTokenNoEncoding(options).subscribe((response: any) => {
-  //     console.log(response);
-  //     this.getTrashNotes();
-  //   }, (error) => {
-  //     console.log(error);
-  //   });
-  // }
+ 
   receiveUpdateMessage($event) {
     this.updateMessage = $event;
     this.getTrashNotes();

@@ -1,9 +1,9 @@
-import { Component, OnInit, Inject, Output, EventEmitter} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
-import {NotelabelService} from '../../services/note.label.service/notelabel.service'
-import {DashboardComponent} from '../dashboard/dashboard.component'
-import {AuthService} from '../../services/auth.service/auth.service'
-import {DataService} from '../../services/data.services/data.service'
+import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
+import { NotelabelService } from '../../services/note.label.service/notelabel.service'
+import { DashboardComponent } from '../dashboard/dashboard.component'
+import { AuthService } from '../../services/auth.service/auth.service'
+import { DataService } from '../../services/data.services/data.service'
 import { UserService } from 'src/app/services/user.services/user.service';
 import { FormControl } from '@angular/forms';
 
@@ -14,93 +14,96 @@ import { FormControl } from '@angular/forms';
 })
 export class LabeldialogboxComponent implements OnInit {
 
-  labelName:any;
-  data:any;
-  records:any;
-  message:string;
-  updateMessage:string="label updated";
-  labelNewName=new FormControl()
+  labelName: any;
+  data: any;
+  records: any;
+  message: string;
+  updateMessage: string = "label updated";
+  labelNewName = new FormControl()
 
   @Output() messageEvent = new EventEmitter<string>();
 
   constructor(private dialogRef: MatDialogRef<DashboardComponent>,
     @Inject(MAT_DIALOG_DATA) dialogData,
-    private notelabelService:NotelabelService,
-    private authService:AuthService,
-    private dataService:DataService) {
+    private notelabelService: NotelabelService,
+    private authService: AuthService,
+    private dataService: DataService) {
   }
 
   ngOnInit() {
     this.dataService.currentMessage.subscribe(message => this.message = message);
     this.getLabels();
   }
-  onDone(){
+  onDone() {
     this.dialogRef.close("closing dialog box");
   }
-  createNewLabel(){
-    this.data={
+  createNewLabel() {
+    this.data = {
       "label": this.labelName,
       "isDeleted": false,
       "userId": this.authService.getToken()
-      
+
     }
     let options = {
-      data:this.data,
+      data: this.data,
       purpose: ''
     }
     return this.notelabelService.postWithTokenNoEncoding(options).subscribe((response: any) => {
       console.log(response);
-      this.dataService.changeMessage(this.updateMessage); 
+      this.dataService.changeMessage(this.updateMessage);
       this.getLabels()
     }, (error) => {
       console.log(error);
     });
   }
-  getLabels(){
+  getLabels() {
     let options = {
       purpose: 'getNoteLabelList'
     }
     return this.notelabelService.getWithToken(options).subscribe((response: any) => {
       console.log(response);
-      this.records=response.data.details.reverse();
+      this.records = response.data.details.reverse();
+      this.dataService.changeMessage(this.updateMessage);
     }, (error) => {
       console.log(error);
     });
   }
-  onDeleteLabel(record){
-    this.data={
-      id:record.id,
+  onDeleteLabel(record) {
+    this.data = {
+      id: record.id,
     }
     let options = {
-      data:this.data,
+      data: this.data,
       purpose: '/deleteNoteLabel'
     }
     return this.notelabelService.deleteWithToken(options).subscribe((response: any) => {
       console.log(response);
       this.getLabels();
-      this.dataService.changeMessage(this.updateMessage); 
+      this.dataService.changeMessage(this.updateMessage);
     }, (error) => {
       console.log(error);
     });
   }
-  onRename(labelid){
-    this.data={
-      id:labelid,
-      label:this.labelNewName.value,
-      isDeleted:false,
-      userId:this.authService.getToken()
+  onRename(labelid) {
+    if (this.labelNewName.value != null) {
+      this.data = {
+        id: labelid,
+        label: this.labelNewName.value,
+        isDeleted: false,
+        userId: this.authService.getToken()
+      }
+      let options = {
+        data: this.data,
+        purpose: 'updateNoteLabel'
+      }
+      return this.notelabelService.postWithTokenCreateUrl(options).subscribe((response: any) => {
+        console.log(response);
+        this.getLabels();
+        this.dataService.changeMessage(this.updateMessage);
+      }, (error) => {
+        console.log(error);
+      });
     }
-    let options = {
-      data:this.data,
-      purpose: 'updateNoteLabel'
-    }
-    return this.notelabelService.postWithTokenCreateUrl(options).subscribe((response: any) => {
-      console.log(response);
-      this.getLabels();
-      this.dataService.changeMessage(this.updateMessage); 
-    }, (error) => {
-      console.log(error);
-    });
   }
 
 }

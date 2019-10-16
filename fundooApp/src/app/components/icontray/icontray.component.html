@@ -4,5 +4,5 @@
   <app-colorsicon [recordid]=recordid (messageEvent)="receiveUpdateMessage($event)"></app-colorsicon>
   <app-imageicon></app-imageicon>
   <app-archiveicon [recordid]=recordid (messageEvent)="receiveUpdateMessage($event)"></app-archiveicon>
-  <app-moremenu [recordid]=recordid (messageEvent)="receiveUpdateMessage($event)"></app-moremenu>
+  <app-moremenu [isNote]='isNote' [isDeleted]="isDeleted" [recordid]=recordid (messageEvent)="receiveUpdateMessage($event)"></app-moremenu>
 </div>

@@ -8,7 +8,7 @@
       </div>
     </div>
     <div fxLayoutAlign="start start" fxFLex="100">
-      <app-icontray [recordid]=record.id (messageEvent)="receiveUpdateMessage($event)"></app-icontray>
+      <app-icontray [recordid]=record.id [isDeleted]="isDeleted" (messageEvent)="receiveUpdateMessage($event)"></app-icontray>
     </div>
   </mat-card>
 </div>

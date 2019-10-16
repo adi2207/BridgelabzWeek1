@@ -8,7 +8,7 @@
         placeholder="Take a note.." [formControl]="data"></textarea>
     </mat-form-field>
     <div fxFlex="100" fxLayout="row">
-        <app-icontray (messageEvent)="receiveUpdateMessage($event)"></app-icontray>
+        <app-icontray [isNote]="isNote" (messageEvent)="receiveUpdateMessage($event)"></app-icontray>
         <button mat-button (click)="onClose()" class="closebutton">Close</button>
     </div>  
   </mat-card>

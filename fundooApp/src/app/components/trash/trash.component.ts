@@ -10,6 +10,7 @@ export class TrashComponent implements OnInit {
 
   records:any;
   note:NoteInterface;
+  updateMessage:string;
   constructor(private notesService:NotesService) { }
 
   ngOnInit() {
@@ -28,45 +29,47 @@ export class TrashComponent implements OnInit {
       purpose: 'getTrashNotesList'
     }
     return this.notesService.getWithToken(options).subscribe((response: any) => {
-      console.log(response);
       this.records=response.data.data.reverse();
       this.records=this.filterToGetTrash(this.records);
-    }, (error) => {
-      console.log(error);
-    });
-
-  }
-  deleteNoteForever(recordid){
-    let noteObj={
-      'noteIdList':[recordid],
-      'isDeleted':true
-    }
-    let options = {
-      data:noteObj,
-      purpose: 'deleteForeverNotes'
-    }
-    return this.notesService.postWithTokenNoEncoding(options).subscribe((response: any) => {
-      console.log(response);
-      this.getTrashNotes();
+      console.log(response)
     }, (error) => {
       console.log(error);
     });
   }
-  onRestoreNote(recordid){
-    let noteObj={
-      'noteIdList':[recordid],
-      'isDeleted':false
-    }
-    let options = {
-      data:noteObj,
-      purpose: 'trashNotes'
-    }
-    return this.notesService.postWithTokenNoEncoding(options).subscribe((response: any) => {
-      console.log(response);
-      this.getTrashNotes();
-    }, (error) => {
-      console.log(error);
-    });
+  // deleteNoteForever(recordid){
+  //   let noteObj={
+  //     'noteIdList':[recordid],
+  //     'isDeleted':true
+  //   }
+  //   let options = {
+  //     data:noteObj,
+  //     purpose: 'deleteForeverNotes'
+  //   }
+  //   return this.notesService.postWithTokenNoEncoding(options).subscribe((response: any) => {
+  //     console.log(response);
+  //     this.getTrashNotes();
+  //   }, (error) => {
+  //     console.log(error);
+  //   });
+  // }
+  // onRestoreNote(recordid){
+  //   let noteObj={
+  //     'noteIdList':[recordid],
+  //     'isDeleted':false
+  //   }
+  //   let options = {
+  //     data:noteObj,
+  //     purpose: 'trashNotes'
+  //   }
+  //   return this.notesService.postWithTokenNoEncoding(options).subscribe((response: any) => {
+  //     console.log(response);
+  //     this.getTrashNotes();
+  //   }, (error) => {
+  //     console.log(error);
+  //   });
+  // }
+  receiveUpdateMessage($event) {
+    this.updateMessage = $event;
+    this.getTrashNotes();
   }
-
 }

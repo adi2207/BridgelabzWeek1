@@ -6,11 +6,13 @@ import {NotesService} from '../../services/notes.services/notes.service'
   styleUrls: ['./notes.component.scss']
 })
 export class NotesComponent implements OnInit {
-  public records:any;
-  constructor(private notesService: NotesService) { }
+  records=[];
+  updateMessage:any;
+  constructor(private notesService: NotesService) {
+  }
 
   ngOnInit() {
-    //this.displayCards()
+    this.getCards()
   }
   filterTrashAndArchives(records)
   {
@@ -19,19 +21,22 @@ export class NotesComponent implements OnInit {
     })
     return newRecords;
   }
-  displayCards() {
+  getCards() {
     let options = {
       purpose: 'getNotesList'
     }
-    return this.notesService.getWithToken(options).subscribe((response: any) => {
+    this.notesService.getWithToken(options).subscribe((response:any) => {
       this.records = response.data.data.reverse();
-      this.records=this.filterTrashAndArchives(this.records)
-      console.log("hajhsjhjshk", this.records);
-      
+      this.records=this.filterTrashAndArchives(this.records)      
       console.log(response);
     }, (error) => {
       console.log(error);
     });
   }
+  receiveUpdateMessage($event) {
+    this.updateMessage=$event;
+    this.getCards()
+  }
+
 
 }

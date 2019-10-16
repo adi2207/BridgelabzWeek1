@@ -1,0 +1,8 @@
+<div fxLayout="row" fxFlex="100">
+  <app-remindmeicon></app-remindmeicon>
+  <app-collaboratoricon></app-collaboratoricon>
+  <app-colorsicon [recordid]=recordid (messageEvent)="receiveUpdateMessage($event)"></app-colorsicon>
+  <app-imageicon></app-imageicon>
+  <app-archiveicon [recordid]=recordid (messageEvent)="receiveUpdateMessage($event)"></app-archiveicon>
+  <app-moremenu [recordid]=recordid (messageEvent)="receiveUpdateMessage($event)"></app-moremenu>
+</div>

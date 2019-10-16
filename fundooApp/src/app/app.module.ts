@@ -28,6 +28,14 @@ import { SearchfilterPipe } from './services/search.filter.pipe/searchfilter.pip
 import { SearchbarComponent } from './components/searchbar/searchbar.component';
 import { LabeldialogboxComponent } from './components/labeldialogbox/labeldialogbox.component';
 import { LabelsComponent } from './components/labels/labels.component';
+import { ColorsiconComponent } from './components/colorsicon/colorsicon.component';
+import { ArchiveiconComponent } from './components/archiveicon/archiveicon.component';
+import { ImageiconComponent } from './components/imageicon/imageicon.component';
+import { CollaboratoriconComponent } from './components/collaboratoricon/collaboratoricon.component';
+import { RemindmeiconComponent } from './components/remindmeicon/remindmeicon.component';
+import { MoremenuComponent } from './components/moremenu/moremenu.component';
+import { CloseiconComponent } from './components/closeicon/closeicon.component';
+import { IcontrayComponent } from './components/icontray/icontray.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +55,14 @@ import { LabelsComponent } from './components/labels/labels.component';
     SearchbarComponent,
     LabeldialogboxComponent,
     LabelsComponent,
+    ColorsiconComponent,
+    ArchiveiconComponent,
+    ImageiconComponent,
+    CollaboratoriconComponent,
+    RemindmeiconComponent,
+    MoremenuComponent,
+    CloseiconComponent,
+    IcontrayComponent,
   ],
   imports: [
     BrowserModule,

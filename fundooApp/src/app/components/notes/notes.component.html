@@ -1,3 +1,2 @@
-<app-takenote></app-takenote>
-
-<app-displaycards [notes]="records"></app-displaycards>
+<app-takenote (messageEvent)="receiveUpdateMessage($event)"></app-takenote>
+<app-displaycards [records]="records" (messageEvent)="receiveUpdateMessage($event)"></app-displaycards>

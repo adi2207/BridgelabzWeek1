@@ -21,7 +21,6 @@ export class ArchiveComponent implements OnInit {
     var newRecords = records.filter(function(note) {
       return (note.isDeleted==false&&note.isArchived==true);
     })
-    console.log("note", newRecords);
     return newRecords;
   }
   getArchivedNotes(){

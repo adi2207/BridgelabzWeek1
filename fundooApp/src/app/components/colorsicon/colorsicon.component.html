@@ -1,0 +1,9 @@
+<button mat-icon-button matTooltip="Change colour" [matMenuTriggerFor]="chip">
+  <mat-icon>palette</mat-icon>
+</button>
+
+<mat-menu #chip>
+  <div class="color-pallete" >
+    <button *ngFor="let color1 of colorArray" [ngStyle]="{'background':color1.color}" (click)="changeColor(color1.color)"></button>
+  </div>
+</mat-menu>

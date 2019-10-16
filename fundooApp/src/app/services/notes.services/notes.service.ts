@@ -61,6 +61,29 @@ export class NotesService {
     }    
     return this.http.postCallWithToken(this.baseUrl+'notes/'+options.purpose,options.data,httpOptions)
   }
+  addNote(data){
+    return this.http.postCallWithToken(this.baseUrl+'notes/addNotes',this.getEncodedData(data))
+
+  }
+  getTrash(){
+    return this.http.getCallWithToken(this.baseUrl+'notes/getTrashNotesList')
+
+  }
+  getNotes(){
+    return this.http.getCallWithToken(this.baseUrl+'notes/getNotesList')
+
+  }
+  getArchives(){
+    return this.http.getCallWithToken(this.baseUrl+'notes/archiveNotes');
+
+  }
+  addLabelToNotes(data){
+    return this.http.postCallWithToken(this.baseUrl+'notes/addNotes',this.getEncodedData(data))
+  }
+  createArchiveNote(data){
+    return this.http.postCallWithToken(this.baseUrl+'notes/addNotes',data)
+
+  }
 }
 
 

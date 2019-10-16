@@ -68,11 +68,7 @@ export class IconsComponent implements OnInit{
       'noteIdList':[recordid],
       'isArchived':true
     }
-    let options = {
-      data:noteObj,
-      purpose: 'archiveNotes'
-    }
-    return this.notesService.postWithTokenNoEncoding(options).subscribe((response: any) => {
+    return this.notesService.createArchiveNote(this.noteObj).subscribe((response: any) => {
       console.log(response);
       this.messageEvent.emit(this.updateMessage)
     }, (error) => {
@@ -85,11 +81,7 @@ export class IconsComponent implements OnInit{
       labelId:labelid,
       noteId:[recordid]
     }
-    let options = {
-      data:data,
-      purpose: 'addLabelToNotes'
-    }
-    return this.notesService.postWithTokenCreateUrl(options).subscribe((response: any) => {
+    return this.notesService.addLabelToNotes(this.data).subscribe((response: any) => {
       console.log(response);
       this.messageEvent.emit(this.updateMessage);
     }, (error) => {
@@ -97,10 +89,7 @@ export class IconsComponent implements OnInit{
     });
   }
   getLabels(){
-    let options = {
-      purpose: 'getNoteLabelList'
-    }
-    return this.notelabelService.getWithToken(options).subscribe((response: any) => {
+    return this.notelabelService.getLabels().subscribe((response: any) => {
       console.log(response);
       this.labels=response.data.details.reverse();
     }, (error) => {

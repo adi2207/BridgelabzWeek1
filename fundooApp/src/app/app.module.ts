@@ -27,7 +27,6 @@ import { AuthGuard } from './services/authguard/auth.guard';
 import { SearchfilterPipe } from './services/search.filter.pipe/searchfilter.pipe';
 import { SearchbarComponent } from './components/searchbar/searchbar.component';
 import { LabeldialogboxComponent } from './components/labeldialogbox/labeldialogbox.component';
-import { LabelsComponent } from './components/labels/labels.component';
 import { ColorsiconComponent } from './components/colorsicon/colorsicon.component';
 import { ArchiveiconComponent } from './components/archiveicon/archiveicon.component';
 import { ImageiconComponent } from './components/imageicon/imageicon.component';
@@ -54,7 +53,6 @@ import { IcontrayComponent } from './components/icontray/icontray.component';
     SearchfilterPipe,
     SearchbarComponent,
     LabeldialogboxComponent,
-    LabelsComponent,
     ColorsiconComponent,
     ArchiveiconComponent,
     ImageiconComponent,

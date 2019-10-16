@@ -61,15 +61,22 @@ export class NotelabelService {
     }
     return formBody.join ('&');
   }
-  postWithTokenNoEncoding(options){
-    let httpOptions={
-      headers:new HttpHeaders({
-        'Content-type':'application/json',
-        'Authorization':localStorage.getItem('id')
-      })
-    }    
-    return this.http.postCallWithToken(this.baseUrl+'noteLabels/'+options.purpose,options.data,httpOptions)
-  }
+createLabel(data){    
+  return this.http.postCallWithToken(this.baseUrl+'noteLabels/',data)
+}
+getLabels(){
+  return this.http.getCallWithToken(this.baseUrl+'noteLabels/getNoteLabelList')
+
+}
+deleteLabel(data){
+
+  return this.http.deleteCallWithToken(this.baseUrl+'noteLabels/'+data.id+'/deleteNoteLabel')
+
+}
+renameLabel(data){
+  return this.http.deleteCallWithToken(this.baseUrl+'noteLabels/'+data.id+'/updateNoteLabel')
+
+}
 }
 
 

@@ -42,13 +42,8 @@ export class LabeldialogboxComponent implements OnInit {
       "label": this.labelName,
       "isDeleted": false,
       "userId": this.authService.getToken()
-
     }
-    let options = {
-      data: this.data,
-      purpose: ''
-    }
-    return this.notelabelService.postWithTokenNoEncoding(options).subscribe((response: any) => {
+    return this.notelabelService.createLabel(this.data).subscribe((response: any) => {
       console.log(response);
       this.dataService.changeMessage(this.updateMessage);
       this.getLabels()
@@ -57,10 +52,7 @@ export class LabeldialogboxComponent implements OnInit {
     });
   }
   getLabels() {
-    let options = {
-      purpose: 'getNoteLabelList'
-    }
-    return this.notelabelService.getWithToken(options).subscribe((response: any) => {
+    return this.notelabelService.getLabels().subscribe((response: any) => {
       console.log(response);
       this.records = response.data.details.reverse();
       this.dataService.changeMessage(this.updateMessage);
@@ -72,11 +64,7 @@ export class LabeldialogboxComponent implements OnInit {
     this.data = {
       id: record.id,
     }
-    let options = {
-      data: this.data,
-      purpose: '/deleteNoteLabel'
-    }
-    return this.notelabelService.deleteWithToken(options).subscribe((response: any) => {
+    return this.notelabelService.deleteWithToken(this.data).subscribe((response: any) => {
       console.log(response);
       this.getLabels();
       this.dataService.changeMessage(this.updateMessage);
@@ -92,11 +80,7 @@ export class LabeldialogboxComponent implements OnInit {
         isDeleted: false,
         userId: this.authService.getToken()
       }
-      let options = {
-        data: this.data,
-        purpose: 'updateNoteLabel'
-      }
-      return this.notelabelService.postWithTokenCreateUrl(options).subscribe((response: any) => {
+      return this.notelabelService.renameLabel(this.data).subscribe((response: any) => {
         console.log(response);
         this.getLabels();
         this.dataService.changeMessage(this.updateMessage);

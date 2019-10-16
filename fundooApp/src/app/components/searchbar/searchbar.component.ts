@@ -30,10 +30,7 @@ export class SearchbarComponent implements OnInit {
     this.dataService.currentMessage.subscribe((searchText) => {
       this.searchText = searchText
     });
-    let options = {
-      purpose: 'getNotesList'
-    }
-    return this.notesService.getWithToken(options).subscribe((response: any) => {
+    return this.notesService.getNotes().subscribe((response: any) => {
       this.records = response.data.data.reverse();
       this.records=this.filterDeleted(this.records);
       this.filteredRecords=this.filterPipe.transform(this.records,this.searchText);

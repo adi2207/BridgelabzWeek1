@@ -35,12 +35,7 @@ export class TakenoteComponent implements OnInit {
           description:this.data.value,
           color:this.updateMessage,
         }
-        console.log(this.note);
-        this.options={
-          data:this.note,
-          purpose:'addNotes'
-        }
-        this.notesService.postWithToken(this.options).subscribe((response)=>{
+        this.notesService.addNote(this.note).subscribe((response)=>{
           console.log(response);
           this.messageEvent.emit(this.updateMessage)
           this.updateMessage=null;
@@ -53,12 +48,7 @@ export class TakenoteComponent implements OnInit {
           title:this.title.value,
           description:this.data.value,
         }
-        console.log(this.note);
-        this.options={
-          data:this.note,
-          purpose:'addNotes'
-        }
-        this.notesService.postWithToken(this.options).subscribe((response)=>{
+        this.notesService.addNote(this.note).subscribe((response)=>{
           console.log(response);
           this.messageEvent.emit(this.updateMessage)
           this.updateMessage=null;

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 
 
 @Injectable({
@@ -8,8 +9,14 @@ import { HttpClient } from '@angular/common/http';
 export class HttpService {
   constructor(private http:HttpClient) { }
 
-  getCallWithToken(url,options){
-    return this.http.get(url,options);
+  getCallWithToken(url){
+    let httpOptions={
+      headers:new HttpHeaders({
+        'Content-type':'application/json',
+        'Authorization':localStorage.getItem('id')
+      })
+    } 
+    return this.http.get(url,httpOptions);
 
   }
   postCall(url,data){
@@ -19,10 +26,23 @@ export class HttpService {
   putCall(){
 
   }
-  postCallWithToken(url,data,options){
-    return this.http.post(url,data,options);
+  postCallWithToken(url,data){
+    let httpOptions={
+      headers:new HttpHeaders({
+        'Content-type':'application/json',
+        'Authorization':localStorage.getItem('id')
+      })
+    }
+    return this.http.post(url,data,httpOptions);
   }
-  deleteCallWithToken(url,options){
-    return this.http.delete(url,options);
+  deleteCallWithToken(url){
+    let httpOptions={
+      headers:new HttpHeaders({
+        'Content-type':'application/json',
+        'Authorization':localStorage.getItem('id')
+      })
+    }
+    return this.http.delete(url,httpOptions);
   }
+
 }

@@ -23,10 +23,7 @@ export class NotesComponent implements OnInit {
     return newRecords;
   }
   getCards() {
-    let options = {
-      purpose: 'getNotesList'
-    }
-    this.notesService.getWithToken(options).subscribe((response:any) => {
+    this.notesService.getNotes().subscribe((response:any) => {
       this.records = response.data.data.reverse();
       this.records=this.filterTrashAndArchives(this.records)      
       console.log(response);

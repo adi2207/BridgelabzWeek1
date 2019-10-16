@@ -25,10 +25,7 @@ export class TrashComponent implements OnInit {
     return newRecords;
   }
   getTrashNotes(){
-    let options = {
-      purpose: 'getTrashNotesList'
-    }
-    return this.notesService.getWithToken(options).subscribe((response: any) => {
+    return this.notesService.getTrash().subscribe((response: any) => {
       this.records=response.data.data.reverse();
       this.records=this.filterToGetTrash(this.records);
       console.log(response)

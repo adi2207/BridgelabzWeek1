@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { Router } from '@angular/router';
 import {AuthService} from '../../services/auth.service/auth.service'
 import { DataService } from 'src/app/services/data.services/data.service';
@@ -19,6 +19,7 @@ export class DashboardComponent implements OnInit {
   private dialogRef;
   labels:any;
   updateMessage:string;
+  @Input('class') panelClass: string  
   constructor(public router: Router, 
     private authService:AuthService, 
     private dataService:DataService,

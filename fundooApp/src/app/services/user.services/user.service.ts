@@ -10,21 +10,6 @@ export class UserService {
   baseUrl=environment.baseUrl;
   constructor(private http:HttpService) { }
   
-  postWithoutToken(options){
-    return this.http.postCall(this.baseUrl+'user/'+options.purpose,options.data);
-    
-  }
-  postWithToken(options){
-    let httpOptions={
-      headers:new HttpHeaders({
-        'Content-type':'application/x-www-form-urlencoded',
-        'Authorization':localStorage.getItem('token')
-      })
-    }
-
-    return this.http.postCallWithToken(this.baseUrl+'user/'+options.purpose,this.getEncodedData(options.data),httpOptions);
-
-  }
   getEncodedData(data){
     const formBody=[];
     for(const property in data){
@@ -33,6 +18,21 @@ export class UserService {
       formBody.push(encodedKey+'='+encodedValue);
     }
     return formBody.join ('&');
+  }
+  forgotPassword(data){
+    return this.http.postCall(this.baseUrl+'user/reset',data);
+
+  }
+  login(data){
+    return this.http.postCall(this.baseUrl+'user/login',data);
+
+  }
+  register(data){
+    return this.http.postCall(this.baseUrl+'user/userSignUp',data);
+  }
+  resetPassword(data){
+    return this.http.postCallWithToken(this.baseUrl+'user/reset-password',this.getEncodedData(data));
+
   }
 }
 

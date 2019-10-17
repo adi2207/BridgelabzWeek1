@@ -73,11 +73,7 @@ export class RegisterComponent implements OnInit {
       email: this.email.value,
       password: this.password.value
     }
-    let options = {
-      data: this.user,
-      purpose: 'userSignUp'
-    }
-    this.userService.postWithoutToken(options).subscribe((response)=>{
+    this.userService.register(this.user).subscribe((response)=>{
       console.log(response);
     },(error)=>{
       console.log(error);

@@ -46,13 +46,8 @@ export class ResetComponent implements OnInit {
     this.resetObj = {
       newPassword: this.password.value,
     }
-    let options = {
-      data: this.resetObj,
-      purpose: 'reset-password'
-    }
 
-    //console.log(options.purpose);
-    return this.userService.postWithToken(options).subscribe((response)=>{
+    return this.userService.resetPassword(this.resetObj).subscribe((response)=>{
       console.log(response);
     },(error)=>{
       console.log(error);

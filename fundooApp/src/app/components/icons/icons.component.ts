@@ -27,18 +27,13 @@ export class IconsComponent implements OnInit{
   ngOnInit(){
     this.getLabels();
   }
-  changeColor(color,recordid){
+  changeColor(color){
     this.note = {
-      'noteIdList': [recordid],
+      'noteIdList': [this.recordid],
       'color': color,
 
     };
-    const options = {
-      data: this.note,
-      purpose: 'changesColorNotes',
-
-    };
-    this.notesService.postWithTokenNoEncoding(options).subscribe((response: any) => {
+    this.notesService.changeColor(this.note).subscribe((response: any) => {
       console.log(response);
       this.messageEvent.emit(this.updateMessage)
     }, (error) => {
@@ -51,11 +46,7 @@ export class IconsComponent implements OnInit{
       'noteIdList':[recordid],
       'isDeleted':true
     }
-    let options = {
-      data:noteObj,
-      purpose: 'trashNotes'
-    }
-    return this.notesService.postWithTokenNoEncoding(options).subscribe((response: any) => {
+    return this.notesService.createTrashNotes(noteObj).subscribe((response: any) => {
       console.log(response);
       this.messageEvent.emit(this.updateMessage)
     }, (error) => {
@@ -68,7 +59,7 @@ export class IconsComponent implements OnInit{
       'noteIdList':[recordid],
       'isArchived':true
     }
-    return this.notesService.createArchiveNote(this.noteObj).subscribe((response: any) => {
+    return this.notesService.createArchiveNote(noteObj).subscribe((response: any) => {
       console.log(response);
       this.messageEvent.emit(this.updateMessage)
     }, (error) => {
@@ -76,18 +67,18 @@ export class IconsComponent implements OnInit{
     });
 
   }
-  afterLabelSelection(recordid,labelid){
-    let data={
-      labelId:labelid,
-      noteId:[recordid]
-    }
-    return this.notesService.addLabelToNotes(this.data).subscribe((response: any) => {
-      console.log(response);
-      this.messageEvent.emit(this.updateMessage);
-    }, (error) => {
-      console.log(error);
-    });
-  }
+  // afterLabelSelection(recordid,labelid){
+  //   let data={
+  //     labelId:labelid,
+  //     noteId:[recordid]
+  //   }
+  //   return this.notesService.addLabelToNotes(data).subscribe((response: any) => {
+  //     console.log(response);
+  //     this.messageEvent.emit(this.updateMessage);
+  //   }, (error) => {
+  //     console.log(error);
+  //   });
+  // }
   getLabels(){
     return this.notelabelService.getLabels().subscribe((response: any) => {
       console.log(response);

@@ -43,11 +43,8 @@ export class DialogboxComponent implements OnInit {
       'description':this.note.description,
     }
     this.dialogRef.close(this.note);
-    this.options={
-      data:this.note,
-      purpose:'updateNotes'
-    }
-    this.notesService.postWithToken(this.options).subscribe((response)=>{
+
+    this.notesService.updateNote(this.note).subscribe((response)=>{
       console.log(response);
     },(error)=>{
       console.log(error);

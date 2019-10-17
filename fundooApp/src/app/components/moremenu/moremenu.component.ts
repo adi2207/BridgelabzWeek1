@@ -32,11 +32,7 @@ export class MoremenuComponent implements OnInit {
       'noteIdList':[this.recordid],
       'isDeleted':true
     }
-    let options = {
-      data:noteObj,
-      purpose: 'trashNotes'
-    }
-    return this.notesService.postWithTokenNoEncoding(options).subscribe((response: any) => {
+    return this.notesService.createTrashNotes(noteObj).subscribe((response: any) => {
       console.log(response);
       this.messageEvent.emit(this.updateMessage)
     }, (error) => {
@@ -45,27 +41,24 @@ export class MoremenuComponent implements OnInit {
 
   }
 
-  afterLabelSelection(labelid){
-    let data={
-      labelId:labelid,
-      noteId:[this.recordid]
-    }
-    let options = {
-      data:data,
-      purpose: 'addLabelToNotes'
-    }
-    return this.notesService.postWithTokenCreateUrl(options).subscribe((response: any) => {
-      console.log(response);
-      this.messageEvent.emit(this.updateMessage);
-    }, (error) => {
-      console.log(error);
-    });
-  }
+  // afterLabelSelection(labelid){
+  //   let data={
+  //     labelId:labelid,
+  //     noteId:[this.recordid]
+  //   }
+  //   let options = {
+  //     data:data,
+  //     purpose: 'addLabelToNotes'
+  //   }
+  //   return this.notesService.postWithTokenCreateUrl(options).subscribe((response: any) => {
+  //     console.log(response);
+  //     this.messageEvent.emit(this.updateMessage);
+  //   }, (error) => {
+  //     console.log(error);
+  //   });
+  // }
   getLabels(){
-    let options = {
-      purpose: 'getNoteLabelList'
-    }
-    return this.notelabelService.getWithToken(options).subscribe((response: any) => {
+    return this.notelabelService.getLabels().subscribe((response: any) => {
       console.log(response);
       this.labels=response.data.details.reverse();
     }, (error) => {
@@ -77,11 +70,7 @@ export class MoremenuComponent implements OnInit {
       'noteIdList':[this.recordid],
       'isDeleted':true
     }
-    let options = {
-      data:noteObj,
-      purpose: 'deleteForeverNotes'
-    }
-    return this.notesService.postWithTokenNoEncoding(options).subscribe((response: any) => {
+    return this.notesService.deleteNoteForever(noteObj).subscribe((response: any) => {
       console.log(response);
       this.messageEvent.emit(this.updateMessage);
     }, (error) => {
@@ -93,11 +82,7 @@ export class MoremenuComponent implements OnInit {
       'noteIdList':[this.recordid],
       'isDeleted':false
     }
-    let options = {
-      data:noteObj,
-      purpose: 'trashNotes'
-    }
-    return this.notesService.postWithTokenNoEncoding(options).subscribe((response: any) => {
+    return this.notesService.createTrashNotes(noteObj).subscribe((response: any) => {
       console.log(response);
       this.messageEvent.emit(this.updateMessage);
     }, (error) => {

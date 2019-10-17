@@ -41,11 +41,7 @@ export class LoginComponent implements OnInit {
             password: this.password.value,
             service: "advance"
         }
-        let options = {
-            data: this.user,
-            purpose: 'login'
-        }
-        this.userService.postWithoutToken(options).subscribe((response:any)=>{
+        this.userService.login(this.user).subscribe((response:any)=>{
             console.log(response);
             this.authService.sendToken(response.userId);
             localStorage.setItem("id",response.id);

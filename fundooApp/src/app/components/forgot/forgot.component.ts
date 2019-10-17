@@ -29,11 +29,7 @@ export class ForgotComponent implements OnInit {
       email:this.email.value,
       service:"advance"
     }
-    let options = {
-      data: this.user,
-      purpose: 'reset'
-    }
-    this.userService.postWithoutToken(options).subscribe((response)=>{
+    this.userService.forgotPassword(this.user).subscribe((response)=>{
       console.log(response);
     },(error)=>{
       console.log(error);

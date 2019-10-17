@@ -25,10 +25,8 @@ export class ArchiveComponent implements OnInit {
     return newRecords;
   }
   getArchivedNotes(){
-    let options = {
-      purpose: 'getArchiveNotesList'
-    }
-    return this.notesService.getWithToken(options).subscribe((response: any) => {
+
+    return this.notesService.getArchives().subscribe((response: any) => {
       console.log(response);
       this.records=response.data.data.reverse();
       this.records=this.filterToGetArchived(this.records);

@@ -32,12 +32,7 @@ export class ColorsiconComponent implements OnInit {
         'noteIdList': [this.recordid],
         'color': color,
       };
-      const options = {
-        data: this.note,
-        purpose: 'changesColorNotes',
-  
-      };
-      this.notesService.postWithTokenNoEncoding(options).subscribe((response: any) => {
+      this.notesService.changeColor(this.note).subscribe((response: any) => {
         console.log(response);
         this.messageEvent.emit(this.updateMessage)
       }, (error) => {

@@ -64,7 +64,7 @@ export class LabeldialogboxComponent implements OnInit {
     this.data = {
       id: record.id,
     }
-    return this.notelabelService.deleteWithToken(this.data).subscribe((response: any) => {
+    return this.notelabelService.deleteLabel(this.data).subscribe((response: any) => {
       console.log(response);
       this.getLabels();
       this.dataService.changeMessage(this.updateMessage);

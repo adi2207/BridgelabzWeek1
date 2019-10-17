@@ -11,7 +11,7 @@
 
   <mat-menu #chip>
     <div class="color-pallete" >
-      <button *ngFor="let color1 of colorArray" [ngStyle]="{'background':color1.color}" (click)="changeColor(color1.color,recordid)"></button>
+      <button *ngFor="let color1 of colorArray" [ngStyle]="{'background':color1.color}" (click)="changeColor(color1.color)"></button>
     </div>
 </mat-menu>
 

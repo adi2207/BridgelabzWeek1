@@ -12,37 +12,6 @@ export class NotesService {
   baseUrl=environment.baseUrl;
   constructor(private http:HttpService) { }
   
-  postWithoutToken(options){
-    return this.http.postCall(this.baseUrl+'notes/'+options.purpose,options.data)
-  }
-  postWithToken(options){
-    let httpOptions={
-      headers:new HttpHeaders({
-        'Content-type':'application/x-www-form-urlencoded',
-        'Authorization':localStorage.getItem('id')
-      })
-    }    
-    return this.http.postCallWithToken(this.baseUrl+'notes/'+options.purpose,this.getEncodedData(options.data),httpOptions)
-  }
-  postWithTokenCreateUrl(options){
-    let httpOptions={
-      headers:new HttpHeaders({
-        'Content-type':'application/x-www-form-urlencoded',
-        'Authorization':localStorage.getItem('id')
-      })
-    }    
-    return this.http.postCallWithToken(this.baseUrl+'notes/'+options.data.noteId+"/"+options.purpose+"/"+options.data.labelId+"/add",this.getEncodedData(options.data),httpOptions)
-  }
-  getWithToken(options){
-    let httpOptions={
-      headers:new HttpHeaders({
-        'Content-type':'application/x-www-form-urlencoded',
-        'Authorization':localStorage.getItem('id')
-      })
-    }  
-    return this.http.getCallWithToken(this.baseUrl+'notes/'+options.purpose,httpOptions)
-
-  }
   getEncodedData(data){
     const formBody=[];
     for(const property in data){
@@ -52,15 +21,7 @@ export class NotesService {
     }
     return formBody.join ('&');
   }
-  postWithTokenNoEncoding(options){
-    let httpOptions={
-      headers:new HttpHeaders({
-        'Content-type':'application/json',
-        'Authorization':localStorage.getItem('id')
-      })
-    }    
-    return this.http.postCallWithToken(this.baseUrl+'notes/'+options.purpose,options.data,httpOptions)
-  }
+
   addNote(data){
     return this.http.postCallWithToken(this.baseUrl+'notes/addNotes',this.getEncodedData(data))
 
@@ -74,16 +35,32 @@ export class NotesService {
 
   }
   getArchives(){
-    return this.http.getCallWithToken(this.baseUrl+'notes/archiveNotes');
+    return this.http.getCallWithToken(this.baseUrl+'notes/getArchiveNotesList');
 
   }
-  addLabelToNotes(data){
-    return this.http.postCallWithToken(this.baseUrl+'notes/addNotes',this.getEncodedData(data))
-  }
+  // addLabelToNotes(data){
+  //   return this.http.postCallWithToken(this.baseUrl+'notes/addNotes',this.getEncodedData(data))
+  // }
   createArchiveNote(data){
-    return this.http.postCallWithToken(this.baseUrl+'notes/addNotes',data)
+    return this.http.postCallWithToken(this.baseUrl+'notes/archiveNotes',data)
 
   }
+  createTrashNotes(data){
+      return this.http.postCallWithToken(this.baseUrl+'notes/trashNotes',data)
+
+  }
+  changeColor(data){
+    return this.http.postCallWithToken(this.baseUrl+'notes/changeColorNotes',data)
+
+}
+updateNote(data){
+  return this.http.postCallWithToken(this.baseUrl+'notes/updateNotes',this.getEncodedData(data))
+
+}
+deleteNoteForever(data){
+  return this.http.postCallWithToken(this.baseUrl+'notes/deleteForeverNotes',data)
+
+}
 }
 
 

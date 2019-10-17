@@ -51,10 +51,8 @@ export class DashboardComponent implements OnInit {
     );
   }
   displayLabels(){
-    let options = {
-      purpose: 'getNoteLabelList'
-    }
-    return this.notelabelService.getWithToken(options).subscribe((response: any) => {
+
+    return this.notelabelService.getLabels().subscribe((response: any) => {
       console.log(response);
       this.labels=response.data.details.reverse();
     }, (error) => {

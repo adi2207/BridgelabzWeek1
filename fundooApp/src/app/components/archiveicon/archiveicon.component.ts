@@ -28,11 +28,7 @@ export class ArchiveiconComponent implements OnInit {
         'noteIdList':[this.recordid],
         'isArchived':true
       }
-      let options = {
-        data:noteObj,
-        purpose: 'archiveNotes'
-      }
-      return this.notesService.postWithTokenNoEncoding(options).subscribe((response: any) => {
+      return this.notesService.createArchiveNote(noteObj).subscribe((response: any) => {
         console.log(response);
         this.messageEvent.emit(this.updateMessage)
       }, (error) => {

@@ -23,8 +23,6 @@ export class MoremenuComponent implements OnInit {
   constructor(private notesService:NotesService,private notelabelService:NotelabelService) { }
   ngOnInit(){
     this.getLabels();
-    console.log("is noteeeeeeee",this.isNote)
-
   }
 
   trashNote(){
@@ -41,22 +39,18 @@ export class MoremenuComponent implements OnInit {
 
   }
 
-  // afterLabelSelection(labelid){
-  //   let data={
-  //     labelId:labelid,
-  //     noteId:[this.recordid]
-  //   }
-  //   let options = {
-  //     data:data,
-  //     purpose: 'addLabelToNotes'
-  //   }
-  //   return this.notesService.postWithTokenCreateUrl(options).subscribe((response: any) => {
-  //     console.log(response);
-  //     this.messageEvent.emit(this.updateMessage);
-  //   }, (error) => {
-  //     console.log(error);
-  //   });
-  // }
+  afterLabelSelection(labelid){
+    let data={
+      labelId:labelid,
+      noteId:[this.recordid]
+    }
+    return this.notesService.addLabelToNotes(data).subscribe((response: any) => {
+      console.log(response);
+      this.messageEvent.emit(this.updateMessage);
+    }, (error) => {
+      console.log(error);
+    });
+  }
   getLabels(){
     return this.notelabelService.getLabels().subscribe((response: any) => {
       console.log(response);
@@ -88,5 +82,9 @@ export class MoremenuComponent implements OnInit {
     }, (error) => {
       console.log(error);
     });
+  }
+  createChecklist(){
+    console.log("DDD")
+    this.messageEvent.emit(this.updateMessage);
   }
 }

@@ -23,7 +23,7 @@ export class NotesService {
   }
 
   addNote(data){
-    return this.http.postCallWithToken(this.baseUrl+'notes/addNotes',this.getEncodedData(data))
+    return this.http.postCallWithToken(this.baseUrl+'notes/addNotes',data)
 
   }
   getTrash(){
@@ -38,9 +38,9 @@ export class NotesService {
     return this.http.getCallWithToken(this.baseUrl+'notes/getArchiveNotesList');
 
   }
-  // addLabelToNotes(data){
-  //   return this.http.postCallWithToken(this.baseUrl+'notes/addNotes',this.getEncodedData(data))
-  // }
+  addLabelToNotes(data){
+    return this.http.postCallWithToken(this.baseUrl+'notes/'+data.noteId+'/addLabelToNotes/'+data.labelId+'/add',data)
+  }
   createArchiveNote(data){
     return this.http.postCallWithToken(this.baseUrl+'notes/archiveNotes',data)
 
@@ -50,7 +50,7 @@ export class NotesService {
 
   }
   changeColor(data){
-    return this.http.postCallWithToken(this.baseUrl+'notes/changeColorNotes',data)
+    return this.http.postCallWithToken(this.baseUrl+'notes/changesColorNotes',data)
 
 }
 updateNote(data){
@@ -60,6 +60,9 @@ updateNote(data){
 deleteNoteForever(data){
   return this.http.postCallWithToken(this.baseUrl+'notes/deleteForeverNotes',data)
 
+}
+getNotesByLabelName(data){
+  return this.http.postCallWithToken(this.baseUrl+'notes/getNotesListByLabel/'+data.labelName,data);
 }
 }
 

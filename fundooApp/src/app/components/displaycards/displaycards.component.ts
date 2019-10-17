@@ -20,6 +20,7 @@ export class DisplaycardsComponent implements OnInit {
   @Input() records:any;
   @Input() trashNotes:any;
   @Input() isDeleted:any;
+  @Input() isArchived:any;
 
   constructor(private notesService: NotesService, public dialog: MatDialog, private dataService: DataService) { }
 

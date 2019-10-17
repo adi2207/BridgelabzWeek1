@@ -28,11 +28,10 @@ export class UserService {
 
   }
   register(data){
-    return this.http.postCall(this.baseUrl+'user/userSignUp',data);
+    return this.http.postCall(this.baseUrl+'user/userSignUp',this.getEncodedData(data));
   }
   resetPassword(data){
-    return this.http.postCallWithToken(this.baseUrl+'user/reset-password',this.getEncodedData(data));
-
+    return this.http.postCallWithToken(this.baseUrl+'user/reset-password',data);
   }
 }
 

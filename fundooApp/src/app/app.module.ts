@@ -35,6 +35,9 @@ import { RemindmeiconComponent } from './components/remindmeicon/remindmeicon.co
 import { MoremenuComponent } from './components/moremenu/moremenu.component';
 import { CloseiconComponent } from './components/closeicon/closeicon.component';
 import { IcontrayComponent } from './components/icontray/icontray.component';
+import { LabelsComponent } from './components/labels/labels.component';
+import { ChecklistComponent } from './components/checklist/checklist.component';
+import { ChangeUserImageComponent } from './components/change-user-image/change-user-image.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,6 +64,9 @@ import { IcontrayComponent } from './components/icontray/icontray.component';
     MoremenuComponent,
     CloseiconComponent,
     IcontrayComponent,
+    LabelsComponent,
+    ChecklistComponent,
+    ChangeUserImageComponent
   ],
   imports: [
     BrowserModule,
@@ -74,6 +80,6 @@ import { IcontrayComponent } from './components/icontray/icontray.component';
   ],
   providers: [UserService,AuthGuard,AuthService],
   bootstrap: [AppComponent],
-  entryComponents: [DialogboxComponent,LabeldialogboxComponent]
+  entryComponents: [DialogboxComponent,LabeldialogboxComponent,ChangeUserImageComponent]
 })
 export class AppModule { }

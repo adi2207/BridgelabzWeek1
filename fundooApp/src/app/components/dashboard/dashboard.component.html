@@ -20,12 +20,26 @@
         <button mat-button class="circle-button" [matMenuTriggerFor]="menu">
             <mat-icon>account_circle</mat-icon>
         </button>
-        <mat-menu class="account-menu" #menu overlapTrigger=false >
-            <button mat-menu-item>
-                <mat-icon>account_circle</mat-icon>
-            </button>
-            <button mat-menu-item routerLink="/register">Add account</button>
-            <button mat-menu-item (click)="onSignOut()">Sign Out</button>
+        <mat-menu #menu overlapTrigger=false>
+            <div class="account-menu" fxLayout="column">
+                <div fxFlex=90 fxLayout="row">
+                    <div fxFlex=40 fxLayoutAlign="center center">
+                        <mat-icon (click)="onChangeImage()" class='icon-display'>account_circle</mat-icon>
+                    </div>
+                    <div fxFlex=60>
+                        <p>{{firstName}}{{lastName}}</p>
+                        <p>{{email}}</p>
+                    </div>
+                </div>
+                <div fxFlex=10 fxLayout="row">
+                    <div fxFlex=50>
+                        <button mat-menu-item (click)="onSignOut()">Sign Out</button>
+                    </div>
+                    <div fxFlex=50>
+                        <button mat-menu-item routerLink="/register">Add account</button>
+                    </div>
+                </div>
+            </div>
         </mat-menu>
     </mat-toolbar>
 
@@ -41,17 +55,14 @@
                 <mat-divider></mat-divider>
                 <p mat-list-item style="color: grey; font-size: 12px">LABELS</p>
                 <div *ngFor="let label of labels">
-                    <mat-icon fxLayout="row" fxLayoutAlign="start center">label_outline<a mat-list-item routerLink="/labels">{{label.label}}</a>
+                    <mat-icon fxLayout="row" fxLayoutAlign="start center">label_outline<a mat-list-item (click)="onClickingLabel()" routerLink="/labels/{{label.label}}">{{label.label}}</a>
                     </mat-icon>
                 </div>
-                <mat-icon fxLayout="row" fxLayoutAlign="start center">edit<a mat-list-item
-                        (click)="openLabelDialog()">Edit labels</a></mat-icon>
+                <mat-icon fxLayout="row" fxLayoutAlign="start center">edit<a mat-list-item (click)="openLabelDialog()">Edit labels</a></mat-icon>
                 <mat-divider></mat-divider>
 
-                <mat-icon fxLayout="row" fxLayoutAlign="start center">archive<a mat-list-item
-                        routerLink="/archive">Archive</a></mat-icon>
-                <mat-icon fxLayout="row" fxLayoutAlign="start center">delete_outline<a mat-list-item
-                        routerLink="/trash">Trash</a>
+                <mat-icon fxLayout="row" fxLayoutAlign="start center">archive<a mat-list-item routerLink="/archive">Archive</a></mat-icon>
+                <mat-icon fxLayout="row" fxLayoutAlign="start center">delete_outline<a mat-list-item routerLink="/trash">Trash</a>
                 </mat-icon>
             </mat-nav-list>
         </mat-drawer>
@@ -59,3 +70,25 @@
         <router-outlet></router-outlet>
     </mat-drawer-container>
 </div>
+
+<!-- <mat-menu #belowMenu="matMenu" [overlapTrigger]="false">
+    <div class='ProfileInfo' fxLayout="column">
+        <div fxFlex=90 fxLayout="row">
+            <div fxFlex=40 fxLayoutAlign="center center">
+                <mat-icon class='icon-display'>account_circle</mat-icon>
+            </div>
+            <div fxFlex=60>
+                <p>{{firstName+' '+lastName}}</p>
+                <p>{{email}}</p>
+            </div>
+        </div>
+        <div fxFlex=10 fxLayout="row">
+            <div fxFlex=50>
+                <button mat-menu-item routerLink="/login"> Add Account</button>
+            </div>
+            <div fxFlex=50>
+                <button mat-menu-item *ngIf="auth.isLoggednIn()" (click)="auth.logout()">Logout</button>
+            </div>
+        </div>
+    </div>
+</mat-menu> -->

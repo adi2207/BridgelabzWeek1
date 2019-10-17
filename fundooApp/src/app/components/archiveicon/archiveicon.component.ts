@@ -12,7 +12,7 @@ export class ArchiveiconComponent implements OnInit {
   records:any;
   labels:any;
   updateMessage:string="note updated"
-
+  @Input() isArchived:any;
   @Input() recordid : any;
 
   
@@ -23,7 +23,6 @@ export class ArchiveiconComponent implements OnInit {
   }
   
   archiveNote(){
-    if(this.recordid!=null){
       let noteObj={
         'noteIdList':[this.recordid],
         'isArchived':true
@@ -34,11 +33,18 @@ export class ArchiveiconComponent implements OnInit {
       }, (error) => {
         console.log(error);
       });
-    }
-    else{
-
-    }
   }
-  
+  unarchiveNote(){
+      let noteObj={
+        'noteIdList':[this.recordid],
+        'isArchived':false
+      }
+      return this.notesService.createArchiveNote(noteObj).subscribe((response: any) => {
+        console.log(response);
+        this.messageEvent.emit(this.updateMessage)
+      }, (error) => {
+        console.log(error);
+      });
+    }
 
 }

@@ -1,16 +1,16 @@
 <div fxLayout="row wrap" class="cardcontainer">
-  <mat-card *ngFor="let record of records" [ngStyle]="{background:record.color}" fxFlex="30">
-    <div (click)="openDialog(this.record)">
-      <p>{{record.title}}</p>
-      <p>{{record.description}}</p>
-      <div *ngFor="let noteLabel of record.noteLabels">
-        <div style="font-size: 10px">{{noteLabel.label}}</div>
-      </div>
-    </div>
-    <div fxLayoutAlign="start start" fxFLex="100">
-      <app-icontray [recordid]=record.id [isDeleted]="isDeleted" (messageEvent)="receiveUpdateMessage($event)"></app-icontray>
-    </div>
-  </mat-card>
+    <mat-card *ngFor="let record of records" [ngStyle]="{background:record.color}" fxFlex="30">
+        <div (click)="openDialog(this.record)">
+            <p>{{record.title}}</p>
+            <p>{{record.description}}</p>
+            <div *ngFor="let noteLabel of record.noteLabels">
+                <div style="font-size: 10px">{{noteLabel.label}}</div>
+            </div>
+        </div>
+        <div fxLayoutAlign="start start" fxFLex="100">>
+            <app-icontray [recordid]=record.id [isArchived]="isArchived" [isDeleted]="isDeleted" (messageEvent)="receiveUpdateMessage($event)"></app-icontray>
+        </div>
+    </mat-card>
 </div>
 <!-- (mouseover)="hover=true" (mouseleave)="hover=false" -->
 <!-- *ngIf="hover&&record.i=record.id" -->

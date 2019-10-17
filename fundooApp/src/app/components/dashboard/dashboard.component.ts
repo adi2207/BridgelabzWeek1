@@ -5,6 +5,7 @@ import { DataService } from 'src/app/services/data.services/data.service';
 import { MatDialog, MatDialogConfig } from "@angular/material";
 import { LabeldialogboxComponent } from '../labeldialogbox/labeldialogbox.component';
 import {NotelabelService} from '../../services/note.label.service/notelabel.service'
+import {ChangeUserImageComponent} from '../../components/change-user-image/change-user-image.component'
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -19,16 +20,21 @@ export class DashboardComponent implements OnInit {
   private dialogRef;
   labels:any;
   updateMessage:string;
-  @Input('class') panelClass: string  
+  firstName=localStorage.getItem('firstName');
+  lastName=localStorage.getItem('lastName');
+  email=localStorage.getItem('email');
+
   constructor(public router: Router, 
     private authService:AuthService, 
     private dataService:DataService,
     public dialog: MatDialog,
     private notelabelService:NotelabelService) { }
+
   ngOnInit(){
     this.dataService.currentMessage.subscribe((updateMessage)=>{
       this.updateMessage = updateMessage
       this.displayLabels();
+      console.log("valuessss",this.firstName)
     });
     this.router.navigate(['notes'])
   }
@@ -59,7 +65,16 @@ export class DashboardComponent implements OnInit {
       console.log(error);
     });
   }
-
-
+  onClickingLabel(){
+    this.dataService.changeMessage("opening label")
+  }
+  onChangeImage() {
+    this.dialogRef = this.dialog.open(ChangeUserImageComponent, {
+      panelClass: 'dialogboxClass'
+    });
+    this.dialogRef.afterClosed().subscribe(
+      data =>{ console.log("Dialog output:", data)
+    });
+  }
   
 }

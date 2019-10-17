@@ -46,7 +46,6 @@ export class ResetComponent implements OnInit {
     this.resetObj = {
       newPassword: this.password.value,
     }
-
     return this.userService.resetPassword(this.resetObj).subscribe((response)=>{
       console.log(response);
     },(error)=>{

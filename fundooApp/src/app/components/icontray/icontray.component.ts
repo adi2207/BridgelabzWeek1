@@ -11,6 +11,8 @@ export class IcontrayComponent implements OnInit {
   @Input () recordid:any;
   @Input () isNote:any;
   @Input() isDeleted:any;
+  @Input() isArchived:any;
+
   @Output() messageEvent = new EventEmitter<string>();
 
   constructor() { }

@@ -25,7 +25,7 @@ export class NotelabelService {
 
   }
   renameLabel(data) {
-    return this.http.deleteCallWithToken(this.baseUrl + 'noteLabels/' + data.id + '/updateNoteLabel')
+    return this.http.postCallWithToken(this.baseUrl + 'noteLabels/' + data.id + '/updateNoteLabel',data)
 
   }
 }

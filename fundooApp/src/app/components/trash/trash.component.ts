@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NoteInterface} from '../../interfaces/note';
 import {NotesService} from '../../services/notes.services/notes.service'
+import {DataService} from '../../services/data.services/data.service'
 @Component({
   selector: 'app-trash',
   templateUrl: './trash.component.html',
@@ -11,9 +12,11 @@ export class TrashComponent implements OnInit {
   records:any;
   note:NoteInterface;
   updateMessage:string;
-  constructor(private notesService:NotesService) { }
+  message:string;
+  constructor(private notesService:NotesService,private dataService:DataService) { }
   isDeleted='true';
   ngOnInit() {
+    this.dataService.currentMessage.subscribe(message => this.message = message);
     this.getTrashNotes();
   }
   filterToGetTrash(records)

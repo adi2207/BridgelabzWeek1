@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NotesService} from '../../services/notes.services/notes.service'
+import {DataService} from '../../services/data.services/data.service'
+
 @Component({
   selector: 'app-notes',  
   templateUrl: './notes.component.html',
@@ -9,10 +11,13 @@ export class NotesComponent implements OnInit {
   records=[];
   isDeleted='false'
   updateMessage:any;
-  constructor(private notesService: NotesService) {
+  message:any;
+  isArchived='false';
+  constructor(private notesService: NotesService,private dataService:DataService) {
   }
 
   ngOnInit() {
+    this.dataService.currentMessage.subscribe(message => this.message = message);
     this.getCards()
   }
   filterTrashAndArchives(records)

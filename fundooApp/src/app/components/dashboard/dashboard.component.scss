@@ -1,35 +1,67 @@
-.mat-menu-panel {
-    //check why this is not working
-    min-width: 400px;
-    max-width: 500px;
-}
-
 .background {
-    background-color: white;
     height: 100%;
     .headercontainer {
-        font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        height: 50px;
         background-color: white;
-        .circle-button {
-            border-radius: 50%;
-            height: 50px;
-            width: 50px;
-            min-width: 0px;
-            padding: 0;
+        width: 100%;
+        height: 64px;
+        padding: 8px 8px;
+        .headerr {
+            height: 48px;
+            min-width: 230px;
+            padding-right: 30px;
+            color: #5f6368;
+        }
+        .logoimg {
+            height: 40px;
+            width: 40px;
+            margin-bottom: 4px;
+            padding-right: 4px;
+            font-size: 22px;
+        }
+        .appname {
+            font-family: 'Product Sans', Arial, sans-serif;
+            padding-left: 4px;
+            color: #5f6368;
+        }
+        .mat-button-wrapper {
+            padding: 12px;
+            margin: 0 4px;
+            vertical-align: unset;
+        }
+        .searchicon {
+            color: #5f6368;
+            cursor: pointer;
+            height: 40px;
+            padding: 0px 13px;
+            margin: 3px;
         }
         .searchbar {
-            width: 70%;
-            height: 100%;
+            font: normal 16px Google Sans, Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+            border-radius: 8px;
+            width: 480px;
+            color: #5f6368;
+            font-size: 18px;
             padding: 0;
-        }
-        .searchbar::placeholder {
-            font-family: FontAwesome;
+            margin-left: 10px;
+            margin-right: 30px;
+            background: #f1f3f4;
+            transition: none !important;
+            box-shadow: none !important;
         }
     }
-    .account-menu {
-        width: 400px;
-    }
+    // accountmenu {
+    //      ::ng-deep accountmenu {
+    //         width: 400px;
+    //         min-width: 400px;
+    //         max-width: 600px;
+    //     }
+    //      ::ng-deep .accountemail {
+    //         overflow-x: hidden;
+    //     }
+    //      ::ng-deep .accountbutton {
+    //         overflow-x: hidden;
+    //     }
+    //}
     .icon-display {
         transform: scale(6);
         // padding-left: 10px
@@ -38,12 +70,15 @@
         background-color: white;
         height: 100%;
         .sidenav-main {
-            width: 15%;
+            width: 280px;
             font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             overflow: auto;
             overscroll-behavior-y: contain;
             overflow-y: auto;
             position: absolute
+        }
+        .mat-drawer-content {
+            margin-left: 280px;
         }
         //button:hover { background-color: #ffdb3a; }
         //button:focus { background-color:red; }

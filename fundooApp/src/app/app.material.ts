@@ -16,6 +16,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTabsModule} from '@angular/material/tabs';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 
 
@@ -39,7 +40,9 @@ MatMenuModule,
 MatChipsModule,
 MatTooltipModule,
 MatGridListModule,
-MatDialogModule
+MatDialogModule,
+MatTabsModule,
+ImageCropperModule
 ],
 
 exports: [
@@ -58,7 +61,9 @@ MatMenuModule,
 MatChipsModule,
 MatTooltipModule,
 MatGridListModule,
-MatDialogModule
+MatDialogModule,
+MatTabsModule,
+ImageCropperModule
 ],
 })
 export class AppMaterialModule { }

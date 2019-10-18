@@ -48,6 +48,7 @@ export class LoginComponent implements OnInit {
             localStorage.setItem("lastName",response.lastName);
             localStorage.setItem("email",response.email);
             localStorage.setItem("id",response.id);
+            localStorage.setItem("profile-pic",response.imageUrl);
             this.router.navigate(["/"]);
           },(error)=>{
             console.log(error);

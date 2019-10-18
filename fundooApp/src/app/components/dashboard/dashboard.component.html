@@ -1,42 +1,48 @@
 <div class="background">
-    <mat-toolbar fxLayoutAlign="space-around center" class="headercontainer">
-        <button mat-icon-button (click)="drawer.toggle()" matTooltip="Main menu">
-            <mat-icon>menu</mat-icon>
-        </button>
-        <img src="../../../assets/images/keep_app_logo.png">
-        <p>fundooApp</p>
-        <div class="searchbar">
-            <button mat-icon-button (click)="onSearch()">
-                <mat-icon matPrefix matTooltip="Search">search</mat-icon>
+    <mat-toolbar class="headercontainer">
+        <span class="headerr" fxLayout="row" fxLayoutAlign="start center">
+            <button class="menuicon" mat-icon-button (click)="drawer.toggle()" matTooltip="Main menu">
+                        <mat-icon>menu</mat-icon>
+                    </button>
+            <img class="logoimg" src="../../../assets/images/keep_app_logo.png">
+            <span class="appname">fundooApp</span>
+        </span>
+        <span fxLayout="row" fxLayoutAlign="center center">
+        <mat-card class="searchbar" fxLayout="row" fxLayoutAlign="center center" tabindex="0">
+            <button mat-icon-button class="searchicon" (click)="onSearch()" fxLayoutAlign="center center">
+                <mat-icon matTooltip="Search">search</mat-icon>
             </button>
             <input matInput placeholder="Search" [(ngModel)]="searchText" routerLink="/search">
-        </div>
+            <button mat-icon-button class="searchicon">
+                    <mat-icon matTooltip="Clear search">close</mat-icon>
+                </button>
+        </mat-card>
+        </span>
         <button mat-icon-button>
-            <mat-icon>settings</mat-icon>
+            <mat-icon>settings_outline</mat-icon>
         </button>
         <button mat-icon-button matTooltip="List View">
             <mat-icon>list</mat-icon>
         </button>
-        <button mat-button class="circle-button" [matMenuTriggerFor]="menu">
-            <mat-icon>account_circle</mat-icon>
-        </button>
-        <mat-menu #menu overlapTrigger=false>
+        <img [src]="profilepic" [matMenuTriggerFor]="accountmenu">
+
+        <mat-menu #accountmenu overlapTrigger=false>
             <div class="account-menu" fxLayout="column">
                 <div fxFlex=90 fxLayout="row">
                     <div fxFlex=40 fxLayoutAlign="center center">
-                        <mat-icon (click)="onChangeImage()" class='icon-display'>account_circle</mat-icon>
+                        <img [src]="profilepic" (click)="onChangeImage()" class='icon-display'>
                     </div>
                     <div fxFlex=60>
-                        <p>{{firstName}}{{lastName}}</p>
-                        <p>{{email}}</p>
+                        <p>{{firstName}} {{lastName}}</p>
+                        <p class="accountemail">{{email}}</p>
                     </div>
                 </div>
                 <div fxFlex=10 fxLayout="row">
                     <div fxFlex=50>
-                        <button mat-menu-item (click)="onSignOut()">Sign Out</button>
+                        <button class="accountbutton" mat-menu-item (click)="onSignOut()">Sign Out</button>
                     </div>
                     <div fxFlex=50>
-                        <button mat-menu-item routerLink="/register">Add account</button>
+                        <button class="accountbutton" mat-menu-item routerLink="/register">Add account</button>
                     </div>
                 </div>
             </div>
@@ -67,7 +73,9 @@
             </mat-nav-list>
         </mat-drawer>
         <mat-divider vertical="true"></mat-divider>
-        <router-outlet></router-outlet>
+        <mat-drawer-content>
+            <router-outlet></router-outlet>
+        </mat-drawer-content>
     </mat-drawer-container>
 </div>
 

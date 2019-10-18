@@ -6,6 +6,8 @@ import { MatDialog, MatDialogConfig } from "@angular/material";
 import { LabeldialogboxComponent } from '../labeldialogbox/labeldialogbox.component';
 import {NotelabelService} from '../../services/note.label.service/notelabel.service'
 import {ChangeUserImageComponent} from '../../components/change-user-image/change-user-image.component'
+import {environment} from '../../../environments/environment'
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -19,7 +21,9 @@ export class DashboardComponent implements OnInit {
   message:string;
   private dialogRef;
   labels:any;
+  baseUrl=environment.baseUrlPic;
   updateMessage:string;
+  profilepic:any;
   firstName=localStorage.getItem('firstName');
   lastName=localStorage.getItem('lastName');
   email=localStorage.getItem('email');
@@ -34,6 +38,8 @@ export class DashboardComponent implements OnInit {
     this.dataService.currentMessage.subscribe((updateMessage)=>{
       this.updateMessage = updateMessage
       this.displayLabels();
+      this.getProfilePicture();
+
       console.log("valuessss",this.firstName)
     });
     this.router.navigate(['notes'])
@@ -75,6 +81,12 @@ export class DashboardComponent implements OnInit {
     this.dialogRef.afterClosed().subscribe(
       data =>{ console.log("Dialog output:", data)
     });
+  }
+
+  getProfilePicture(){
+    let picturelink=localStorage.getItem('profile-pic');
+    console.log("hkghskjd",picturelink)
+    this.profilepic=this.baseUrl+picturelink;
   }
   
 }

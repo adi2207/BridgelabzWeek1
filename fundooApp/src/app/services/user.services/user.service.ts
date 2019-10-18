@@ -33,6 +33,9 @@ export class UserService {
   resetPassword(data){
     return this.http.postCallWithToken(this.baseUrl+'user/reset-password',data);
   }
+  uploadPicture(data){
+    return this.http.postImageWithToken(this.baseUrl+'user/uploadProfileImage',data);
+  }
 }
 
 

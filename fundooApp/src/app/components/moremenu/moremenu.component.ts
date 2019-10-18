@@ -85,6 +85,6 @@ export class MoremenuComponent implements OnInit {
   }
   createChecklist(){
     console.log("DDD")
-    this.messageEvent.emit(this.updateMessage);
+    this.messageEvent.emit("create checklist");
   }
 }

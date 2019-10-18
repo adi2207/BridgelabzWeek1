@@ -1,13 +1,21 @@
-<div md-dialog-content>
-    <h1>Select profile photo</h1>
+<div md-dialog-content fxLayout="column" fxLayoutGap="20px">
+    <h3>Select profile photo</h3>
     <mat-tab-group>
         <mat-tab label="Upload Photos"></mat-tab>
         <mat-tab label="Your Photos"></mat-tab>
     </mat-tab-group>
+
+    <div style="min-height:300px">
+        <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput>
+        <image-cropper [imageChangedEvent]="imageChangeEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3" [resizeToWidth]="128" (imageCropped)="imageCropped($event)"></image-cropper>
+        <!-- <img [src]="croppedImage" /> -->
+        <div fxLayoutAlign="center center" style="align-self: flex-end;">
+            <button mat-raised-button (click)="fileInput.click()">Select a photo from your computer </button>
+        </div>
+    </div>
     <mat-divider></mat-divider>
-    <mat-divider></mat-divider>
-    <button mat-button>Set as Profile photo</button>
-</div>
-<div md-dialog-actions>
-    <button md-button md-dialog-close="Cancel">Cancel</button>
+    <div fxFlex="100" fxLayout="row" fxLayoutGap="10px">
+        <button mat-raised-button (click)="onUpload()" color="primary">Set as Profile photo</button>
+        <button mat-raised-button (click)="onCancel()">Cancel</button>
+    </div>
 </div>

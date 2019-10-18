@@ -22,6 +22,7 @@ export class DisplaycardsComponent implements OnInit {
   @Input() isDeleted:any;
   @Input() isArchived:any;
 
+
   constructor(private notesService: NotesService, public dialog: MatDialog, private dataService: DataService) { }
 
   ngOnInit() {
@@ -51,8 +52,12 @@ export class DisplaycardsComponent implements OnInit {
       this.messageEvent.emit(this.updateMessage)
     });
   }
+
   receiveUpdateMessage($event) {
     this.updateMessage=$event;
+    if(this.updateMessage=="create checklist"){
+      //create cheklist
+    }
     this.messageEvent.emit(this.updateMessage);
   }
 }

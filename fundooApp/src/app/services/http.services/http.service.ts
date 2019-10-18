@@ -44,5 +44,13 @@ export class HttpService {
     }
     return this.http.delete(url,httpOptions);
   }
+  postImageWithToken(url,data){
+    let httpOptions={
+      headers:new HttpHeaders({
+        'Authorization':localStorage.getItem('id')
+      })
+    }
+    return this.http.post(url,data,httpOptions);
+  }
 
 }

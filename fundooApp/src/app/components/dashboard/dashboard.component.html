@@ -24,8 +24,9 @@
         <button mat-icon-button matTooltip="List View">
             <mat-icon>list</mat-icon>
         </button>
-        <img [src]="profilepic" [matMenuTriggerFor]="accountmenu">
-
+        <button mat-mini-fab>
+            <img class="profilepic" [src]="profilepic" [matMenuTriggerFor]="accountmenu">
+        </button>
         <mat-menu #accountmenu overlapTrigger=false>
             <div class="account-menu" fxLayout="column">
                 <div fxFlex=90 fxLayout="row">

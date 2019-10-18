@@ -1,11 +1,13 @@
 .cardcontainer {
-    margin: 40px;
+    margin: 20px;
 }
 
-.mat-card {
-    margin: 2px;
+.displaycard {
+    margin: 4px;
     align-self: flex-start;
     border-radius: 8px;
+    width:240px;
+    //padding: ;
 }
 
 p {

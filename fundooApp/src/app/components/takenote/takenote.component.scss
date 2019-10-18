@@ -1,11 +1,32 @@
-.mat-card {
+.mat-card-small {
     margin: 30px;
     border-radius: 8px;
     padding: 1% 2%;
+    height: 46px!important;
+    width:495px;
+}
+.mat-card-big {
+    margin: 30px;
+    border-radius: 8px;
+    padding: 1% 2%;
+    width:495px;
+    height :170px;
+
 }
 
 .mat-form-field {
     width: 100%;
+}
+.text{
+    font-size:15px;
+    border:none;
+    //overflow: auto;
+    outline: none;
+    font-family: Roboto,Arial,sans-serif;
+    //-webkit-box-shadow: none;
+   // -moz-box-shadow: none;
+    //box-shadow: none;
+    //resize: none;
 }
 
 .closebutton {

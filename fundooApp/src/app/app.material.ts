@@ -19,10 +19,6 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { ImageCropperModule } from 'ngx-image-cropper';
 
 
-
-
-
-
 @NgModule({
 imports: [
 MatButtonModule,

@@ -7,44 +7,42 @@
             <img class="logoimg" src="../../../assets/images/keep_app_logo.png">
             <span class="appname">fundooApp</span>
         </span>
-        <span fxLayout="row" fxLayoutAlign="center center">
-        <mat-card class="searchbar" fxLayout="row" fxLayoutAlign="center center" tabindex="0">
+        <span fxLayout="row" fxLayoutAlign="center center" fxFlex="70" fxHide.xs>
+        <mat-card class="searchbar" fxFlex="90" fxLayout="row" fxLayoutAlign="center center" tabindex="0">
             <button mat-icon-button class="searchicon" (click)="onSearch()" fxLayoutAlign="center center">
                 <mat-icon matTooltip="Search">search</mat-icon>
             </button>
-            <input matInput placeholder="Search" [(ngModel)]="searchText" routerLink="/search">
+            <input matInput fxFlex="90" class ="searchtext" matInput placeholder="Search" [(ngModel)]="searchText" routerLink="/search">
             <button mat-icon-button class="searchicon">
                     <mat-icon matTooltip="Clear search">close</mat-icon>
                 </button>
         </mat-card>
         </span>
         <button mat-icon-button>
-            <mat-icon>settings_outline</mat-icon>
+            <img class="headerbuttons" src="../../../assets/images/icons8-settings.svg">
         </button>
         <button mat-icon-button matTooltip="List View">
-            <mat-icon>list</mat-icon>
+            <img class="headerbuttons" src="../../../assets/images/icons8-view-headline-32.png">
         </button>
-        <button mat-mini-fab>
-            <img class="profilepic" [src]="profilepic" [matMenuTriggerFor]="accountmenu">
-        </button>
-        <mat-menu #accountmenu overlapTrigger=false>
-            <div class="account-menu" fxLayout="column">
-                <div fxFlex=90 fxLayout="row">
-                    <div fxFlex=40 fxLayoutAlign="center center">
-                        <img [src]="profilepic" (click)="onChangeImage()" class='icon-display'>
-                    </div>
-                    <div fxFlex=60>
-                        <p>{{firstName}} {{lastName}}</p>
-                        <p class="accountemail">{{email}}</p>
+        <img mat-card-avatar class="profilepic" [src]="profilepic" [matMenuTriggerFor]="accountmenu">
+        <mat-menu #accountmenu class="accountmenu" overlapTrigger=false>
+            <div fxLayout="column">
+                <div fxLayout="row" class="tophalfaccount">
+                    <img mat-card-avatar class="profilepicbig" [src]="profilepic" (click)="onChangeImage()">
+                    <div fxLayout="column" fxLayoutAlign="center start">
+                        <span class="accountname">{{firstName}} {{lastName}}</span>
+                        <span class="accountemail">{{email}}</span>
                     </div>
                 </div>
-                <div fxFlex=10 fxLayout="row">
-                    <div fxFlex=50>
-                        <button class="accountbutton" mat-menu-item (click)="onSignOut()">Sign Out</button>
-                    </div>
-                    <div fxFlex=50>
-                        <button class="accountbutton" mat-menu-item routerLink="/register">Add account</button>
-                    </div>
+                <mat-divider></mat-divider>
+                <div fxLayout="row" class="bottomhalfaccount">
+                    <span fxFlex="50">
+                    <button class="accountbutton" (click)="onSignOut()">Sign Out</button>
+                    </span>
+                    <span fxFlex="50" fxLayoutAlign="flex-end">
+                    <button class="accountbutton" routerLink="/register">Add account</button>
+
+                    </span>
                 </div>
             </div>
         </mat-menu>
@@ -52,7 +50,7 @@
 
     <mat-divider></mat-divider>
     <mat-drawer-container class="sidebar-container">
-        <mat-drawer #drawer class="sidenav-main" mode="side" opened>
+        <mat-drawer #drawer class="sidenav-main" mode="side" fxHide.xs opened>
 
             <mat-nav-list fxLayout="column" fxLayoutGap="20px">
                 <mat-icon fxLayout="row" fxLayoutAlign="start center">note<a mat-list-item routerLink="/notes">Notes</a>
@@ -60,12 +58,11 @@
                 <mat-icon fxLayout="row" fxLayoutAlign="start center">notifications_none<a mat-list-item>Reminders</a>
                 </mat-icon>
                 <mat-divider></mat-divider>
-                <p mat-list-item style="color: grey; font-size: 12px">LABELS</p>
+                <span class="labelsheading" mat-list-item>LABELS</span>
                 <div *ngFor="let label of labels">
-                    <mat-icon fxLayout="row" fxLayoutAlign="start center">label_outline<a mat-list-item (click)="onClickingLabel()" routerLink="/labels/{{label.label}}">{{label.label}}</a>
-                    </mat-icon>
+                    <a class="labellist" mat-list-item (click)="onClickingLabel()" routerLink="/labels/{{label.label}}"><img class="sidenavicon" src="../../../assets/images/label-right-arrow-outline (1).svg"><span class="labelname">{{label.label}}</span></a>
                 </div>
-                <mat-icon fxLayout="row" fxLayoutAlign="start center">edit<a mat-list-item (click)="openLabelDialog()">Edit labels</a></mat-icon>
+                <a class="labellist" mat-list-item (click)="openLabelDialog()"><img class="sidenavicon" src="../../../assets/images/edit.svg"><span class="labelname">Edit labels</span></a>
                 <mat-divider></mat-divider>
 
                 <mat-icon fxLayout="row" fxLayoutAlign="start center">archive<a mat-list-item routerLink="/archive">Archive</a></mat-icon>
@@ -73,7 +70,6 @@
                 </mat-icon>
             </mat-nav-list>
         </mat-drawer>
-        <mat-divider vertical="true"></mat-divider>
         <mat-drawer-content>
             <router-outlet></router-outlet>
         </mat-drawer-content>

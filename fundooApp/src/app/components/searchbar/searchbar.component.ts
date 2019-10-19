@@ -29,15 +29,18 @@ export class SearchbarComponent implements OnInit {
   searchNote(){
     this.dataService.currentMessage.subscribe((searchText) => {
       this.searchText = searchText
-    });
+      console.log("searchtext",searchText)
+    
     return this.notesService.getNotes().subscribe((response: any) => {
       this.records = response.data.data.reverse();
+      console.log("records", this.records)
       this.records=this.filterDeleted(this.records);
       this.filteredRecords=this.filterPipe.transform(this.records,this.searchText);
-      console.log(this.filteredRecords);
+      console.log("here",this.filteredRecords);
     }, (error) => {
       console.log(error);
     });
+  });
   }
   receiveUpdateMessage($event) {
     this.updateMessage = $event;

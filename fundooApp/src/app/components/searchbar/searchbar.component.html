@@ -1,11 +1,1 @@
-<div fxLayout="row wrap" class="cardcontainer" >
-    <mat-card *ngFor="let record of records | searchfilter:searchText" [ngStyle]="{background:record.color}" fxFlex="30" >
-      <div (click)="openDialog(this.record)" >
-        <p>{{record.title}}</p>
-        <p>{{record.description}}</p>
-      </div>
-      <div fxLayoutAlign="start start" fxFLex="100">
-        <app-icons [recordid]=record.id (messageEvent)="receiveUpdateMessage($event)"></app-icons>
-      </div>
-    </mat-card>
-</div>
+<app-displaycards [records]="filteredRecords" (messageEvent)="receiveUpdateMessage($event)"></app-displaycards>

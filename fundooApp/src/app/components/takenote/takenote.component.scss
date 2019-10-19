@@ -1,30 +1,29 @@
 .mat-card-small {
-    margin: 30px;
+    margin: 40px 20px 13px;
     border-radius: 8px;
-    padding: 1% 2%;
     height: 46px!important;
-    width:495px;
+    padding: 0;
 }
-.mat-card-big {
-    margin: 30px;
-    border-radius: 8px;
-    padding: 1% 2%;
-    width:495px;
-    height :170px;
 
+.mat-card-big {
+    margin: 40px 20px 13px;
+    border-radius: 8px;
+    padding: 0;
+    height: 170px;
 }
 
 .mat-form-field {
     width: 100%;
 }
-.text{
-    font-size:15px;
-    border:none;
+
+.textt {
+    border: none;
     //overflow: auto;
+    padding: 10px 15px;
     outline: none;
-    font-family: Roboto,Arial,sans-serif;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
     //-webkit-box-shadow: none;
-   // -moz-box-shadow: none;
+    // -moz-box-shadow: none;
     //box-shadow: none;
     //resize: none;
 }

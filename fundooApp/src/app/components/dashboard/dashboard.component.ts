@@ -49,6 +49,7 @@ export class DashboardComponent implements OnInit {
   } 
   onSearch(){
     this.dataService.changeMessage(this.searchText);
+    console.log("searchtrext1",this.searchText);
   }
   toggle(){
     this.show=!this.show;

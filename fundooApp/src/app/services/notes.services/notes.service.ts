@@ -54,7 +54,7 @@ export class NotesService {
 
 }
 updateNote(data){
-  return this.http.postCallWithToken(this.baseUrl+'notes/updateNotes',this.getEncodedData(data))
+  return this.http.postCallWithToken(this.baseUrl+'notes/updateNotes',data)
 
 }
 deleteNoteForever(data){

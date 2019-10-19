@@ -3,24 +3,33 @@
 }
 
 .displaycard {
-    margin: 4px;
+    margin: 7px;
     align-self: flex-start;
     border-radius: 8px;
-    width:240px;
-    //padding: ;
+    width: 240px;
+    padding: 0;
 }
 
-p {
+.title {
+    padding: 12px 16px 0px;
+    color: #202124;
+    font-weight: 400;
+    font-family: 'Google Sans', Roboto, Arial, sans-serif;
     word-break: break-all;
     white-space: normal;
-    .title {
-        padding: 12px 16px 0px;
-    }
-    .description {
-        padding: 4px 16px 12px;
-    }
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.5rem;
 }
 
-.mat-button {
-    min-width: 0px;
+.description {
+    padding: 4px 16px 12px;
+    color: #202124;
+    word-break: break-all;
+    white-space: normal;
+    margin: 0;
+    font-family: 'Google Sans', Roboto, Arial, sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.5rem;
 }

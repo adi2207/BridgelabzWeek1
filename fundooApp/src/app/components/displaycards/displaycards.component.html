@@ -1,8 +1,8 @@
-<div fxLayout="row wrap" class="cardcontainer" fxLayoutAlign="center start">
+<div fxLayout="row wrap" class="cardcontainer" fxLayoutAlign="center start" fxFlex.xs="100" fxFlex.sm="100">
     <mat-card class="displaycard" *ngFor="let record of records" [ngStyle]="{background:record.color}">
         <div (click)="openDialog(this.record)">
-            <span class="title">{{record.title}}</span>
-            <span class="description">{{record.description}}</span>
+            <p class="title">{{record.title}}</p>
+            <p class="description">{{record.description}}</p>
             <div *ngFor="let noteLabel of record.noteLabels">
                 <div style="font-size: 10px">{{noteLabel.label}}</div>
             </div>

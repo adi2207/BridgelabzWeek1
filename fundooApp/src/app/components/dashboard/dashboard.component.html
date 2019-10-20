@@ -2,21 +2,22 @@
     <mat-toolbar class="headercontainer">
         <span class="headerr" fxLayout="row" fxLayoutAlign="start center">
             <button class="menuicon" mat-icon-button (click)="drawer.toggle()" matTooltip="Main menu">
-                        <mat-icon>menu</mat-icon>
-                    </button>
+                <mat-icon>menu</mat-icon>
+            </button>
             <img class="logoimg" src="../../../assets/images/keep_app_logo.png">
             <span class="appname">fundooApp</span>
         </span>
         <span fxLayout="row" fxLayoutAlign="center center" fxFlex="70" fxHide.xs>
-        <mat-card class="searchbar" fxFlex="90" fxLayout="row" fxLayoutAlign="center center" tabindex="0">
-            <button mat-icon-button class="searchicon" (click)="onSearch()" fxLayoutAlign="center center">
-                <mat-icon matTooltip="Search">search</mat-icon>
-            </button>
-            <input matInput fxFlex="90" class ="searchtext" matInput placeholder="Search" [(ngModel)]="searchText" routerLink="/search">
-            <button mat-icon-button class="searchicon">
+            <mat-card class="searchbar" fxFlex="90" fxLayout="row" fxLayoutAlign="center center" tabindex="0">
+                <button mat-icon-button class="searchicon" (click)="onSearch()" fxLayoutAlign="center center">
+                    <mat-icon matTooltip="Search">search</mat-icon>
+                </button>
+                <input matInput fxFlex="90" class="searchtext" matInput placeholder="Search" [(ngModel)]="searchText"
+                    routerLink="/search">
+                <button mat-icon-button class="searchicon">
                     <mat-icon matTooltip="Clear search">close</mat-icon>
                 </button>
-        </mat-card>
+            </mat-card>
         </span>
         <button mat-icon-button>
             <img class="headerbuttons" src="../../../assets/images/icons8-settings.svg">
@@ -37,10 +38,10 @@
                 <mat-divider></mat-divider>
                 <div fxLayout="row" class="bottomhalfaccount">
                     <span fxFlex="50">
-                    <button class="accountbutton" (click)="onSignOut()">Sign Out</button>
+                        <button class="accountbutton" (click)="onSignOut()">Sign Out</button>
                     </span>
-                    <span fxFlex="50" fxLayoutAlign="flex-end">
-                    <button class="accountbutton" routerLink="/register">Add account</button>
+                    <span fxFlex="50">
+                        <button class="accountbutton" routerLink="/register">Add account</button>
 
                     </span>
                 </div>
@@ -50,27 +51,40 @@
 
     <mat-divider></mat-divider>
     <mat-drawer-container class="sidebar-container">
-        <mat-drawer #drawer class="sidenav-main" mode="side" fxHide.xs opened>
+        <mat-drawer #drawer class="sidenav-main" mode="side" opened>
 
-            <mat-nav-list fxLayout="column" fxLayoutGap="20px">
-                <mat-icon fxLayout="row" fxLayoutAlign="start center">note<a mat-list-item routerLink="/notes">Notes</a>
-                </mat-icon>
-                <mat-icon fxLayout="row" fxLayoutAlign="start center">notifications_none<a mat-list-item>Reminders</a>
-                </mat-icon>
-                <mat-divider></mat-divider>
-                <span class="labelsheading" mat-list-item>LABELS</span>
-                <div *ngFor="let label of labels">
-                    <a class="labellist" mat-list-item (click)="onClickingLabel()" routerLink="/labels/{{label.label}}"><img class="sidenavicon" src="../../../assets/images/label-right-arrow-outline (1).svg"><span class="labelname">{{label.label}}</span></a>
+            <mat-nav-list fxLayout="column">
+                <div  class="navlistdivs">
+                    <a class="labellist" mat-list-item routerLink="/notes"><img class="sidenavicon"
+                            src="../../../assets/images/lightbulb-gross-outline.svg"><span
+                            class="labelname">Notes</span></a>
+                    <a class="labellist" mat-list-item routerLink="/reminders"><img class="sidenavicon"
+                            src="../../../assets/images/alarm-bell-outline.svg"><span
+                            class="labelname">Reminders</span></a>
                 </div>
-                <a class="labellist" mat-list-item (click)="openLabelDialog()"><img class="sidenavicon" src="../../../assets/images/edit.svg"><span class="labelname">Edit labels</span></a>
-                <mat-divider></mat-divider>
+                <mat-divider ></mat-divider>
 
-                <mat-icon fxLayout="row" fxLayoutAlign="start center">archive<a mat-list-item routerLink="/archive">Archive</a></mat-icon>
-                <mat-icon fxLayout="row" fxLayoutAlign="start center">delete_outline<a mat-list-item routerLink="/trash">Trash</a>
-                </mat-icon>
+                <div class="navlistdivs">
+                    <p class="labelsheading" mat-list-item>LABELS</p>
+                    <div *ngFor="let label of labels">
+                        <a class="labellist" mat-list-item (click)="onClickingLabel()"
+                            routerLink="/labels/{{label.label}}"><img class="sidenavicon"
+                                src="../../../assets/images/label-right-arrow-outline (1).svg"><span
+                                class="labelname">{{label.label}}</span></a>
+                    </div>
+                    <a class="labellist" mat-list-item (click)="openLabelDialog()"><img class="sidenavicon"
+                            src="../../../assets/images/edit.svg"><span class="labelname">Edit labels</span></a>
+                </div>
+                <mat-divider ></mat-divider>
+                <div  class="navlistdivs">
+                    <a class="labellist" mat-list-item routerLink="/archive"><img class="sidenavicon"
+                            src="../../../assets/images/box (2).svg"><span class="labelname">Archive</span></a>
+                    <a class="labellist" mat-list-item routerLink="/trash"><img class="sidenavicon"
+                            src="../../../assets/images/trash.svg"><span class="labelname">Trash</span></a>
+                </div>
             </mat-nav-list>
         </mat-drawer>
-        <mat-drawer-content>
+        <mat-drawer-content class="maincontent">
             <router-outlet></router-outlet>
         </mat-drawer-content>
     </mat-drawer-container>

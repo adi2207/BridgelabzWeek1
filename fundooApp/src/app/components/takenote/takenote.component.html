@@ -1,8 +1,8 @@
-<div *ngIf="!show" fxLayoutAlign="center center" fxFlex.xs="100" fxFlex.sm="100">
+<div *ngIf="!show" fxLayoutAlign="center center">
     <mat-card fxFlex="60" fxLayoutAlign="center start" fxLayout="column" class="mat-card-big" [ngStyle]="{background:updateMessage}">
         <textarea class="textt" style="font-size:17px; font-weight:400;" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [formControl]="title" placeholder="Title"></textarea>
         <textarea class="textt" style="font-size:15px; " matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" placeholder="Take a note.." [formControl]="data"></textarea>
-        <div fxFlex="100" fxLayout="row">
+        <div fxFlex="100" fxLayout="row" >
             <app-icontray [isNote]="isNote" [isArchived]="isArchived" (messageEvent)="receiveUpdateMessage($event)"></app-icontray>
             <button mat-button (click)="onClose()" class="closebutton">Close</button>
         </div>

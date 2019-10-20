@@ -1,14 +1,19 @@
-<div fxLayout="row wrap" class="cardcontainer" fxLayoutAlign="center start" fxFlex.xs="100" fxFlex.sm="100">
+<div fxLayout="row wrap" class="cardcontainer" fxLayoutAlign="center start">
     <mat-card class="displaycard" *ngFor="let record of records" [ngStyle]="{background:record.color}">
         <div (click)="openDialog(this.record)">
             <p class="title">{{record.title}}</p>
             <p class="description">{{record.description}}</p>
-            <div *ngFor="let noteLabel of record.noteLabels">
-                <div style="font-size: 10px">{{noteLabel.label}}</div>
-            </div>
+                    <mat-chip-list #chipList>
+                      <mat-chip *ngFor="let noteLabel of record.noteLabels" [selectable]="selectable"
+                               [removable]="removable" (removed)="remove(noteLabel)">
+                               {{noteLabel.label}}
+                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                      </mat-chip>
+                    </mat-chip-list>
         </div>
         <div fxLayoutAlign="start start" fxFLex="100">
-            <app-icontray [recordid]=record.id [isArchived]="isArchived" [isDeleted]="isDeleted" (messageEvent)="receiveUpdateMessage($event)"></app-icontray>
+            <app-icontray [recordid]=record.id [isArchived]="isArchived" [isDeleted]="isDeleted"
+                (messageEvent)="receiveUpdateMessage($event)"></app-icontray>
         </div>
     </mat-card>
 </div>

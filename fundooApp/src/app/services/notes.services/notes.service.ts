@@ -64,6 +64,14 @@ deleteNoteForever(data){
 getNotesByLabelName(data){
   return this.http.postCallWithToken(this.baseUrl+'notes/getNotesListByLabel/'+data.labelName,data);
 }
+getReminders(){
+  return this.http.getCallWithToken(this.baseUrl+'notes/getReminderNotesList');
+
+}
+addReminder(data){
+  return this.http.postCallWithToken(this.baseUrl+'notes/addUpdateReminderNotes',this.getEncodedData(data));
+}
+
 }
 
 

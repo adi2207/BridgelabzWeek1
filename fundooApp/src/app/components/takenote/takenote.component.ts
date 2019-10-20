@@ -33,6 +33,7 @@ export class TakenoteComponent implements OnInit {
       title: this.title.value,
       description: this.data.value,
     }
+
     this.notesService.addNote(this.note).subscribe((response) => {
       console.log(response);
       this.messageEvent.emit(this.updateMessage)

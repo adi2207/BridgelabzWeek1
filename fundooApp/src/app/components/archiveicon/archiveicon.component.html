@@ -1,6 +1,6 @@
-<button mat-icon-button *ngIf="isArchived=='false' " matTooltip="Archive" (click)="archiveNote()">
-    <mat-icon>archive</mat-icon>
+<button mat-icon-button  *ngIf="isArchived=='false' " matTooltip="Archive" (click)="archiveNote()">
+  <img class="icon" src="../../../assets/images/box (2).svg">
   </button>
-<button mat-icon-button *ngIf="isArchived=='true' " matTooltip="Unrchive" (click)="unarchiveNote()">
-    <mat-icon>unarchive</mat-icon>
-  </button>
+<button  mat-icon-button *ngIf="isArchived=='true' " matTooltip="Unrchive" (click)="unarchiveNote()">
+<img class="icon" src="../../../assets/images/box (1).svg">
+</button>

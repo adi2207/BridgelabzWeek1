@@ -60,4 +60,5 @@ export class DisplaycardsComponent implements OnInit {
     }
     this.messageEvent.emit(this.updateMessage);
   }
+  
 }

@@ -1,5 +1,5 @@
 <button *ngIf="isDeleted=='false'" mat-icon-button matTooltip="More" [matMenuTriggerFor]="menugeneral">
-  <mat-icon>more_vert</mat-icon>
+        <img class="icon" src="../../../assets/images/menu.svg">
 </button>
 <mat-menu #menugeneral>
     <button mat-menu-item (click)="trashNote()">Delete Note</button>

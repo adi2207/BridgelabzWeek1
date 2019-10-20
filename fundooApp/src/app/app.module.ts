@@ -38,6 +38,7 @@ import { IcontrayComponent } from './components/icontray/icontray.component';
 import { LabelsComponent } from './components/labels/labels.component';
 import { ChecklistComponent } from './components/checklist/checklist.component';
 import { ChangeUserImageComponent } from './components/change-user-image/change-user-image.component';
+import { RemindersComponent } from './components/reminders/reminders.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { ChangeUserImageComponent } from './components/change-user-image/change-
     IcontrayComponent,
     LabelsComponent,
     ChecklistComponent,
-    ChangeUserImageComponent
+    ChangeUserImageComponent,
+    RemindersComponent
   ],
   imports: [
     BrowserModule,

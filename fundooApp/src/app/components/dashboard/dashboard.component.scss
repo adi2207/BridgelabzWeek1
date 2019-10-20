@@ -1,3 +1,5 @@
+.background {
+    height: 100vh;
 .headercontainer {
     background-color: white;
     width: 100%;
@@ -74,31 +76,38 @@
     .sidenavicon {
         height: 20px;
         width: 20px;
+        color: #202124;
     }
     .labelsheading {
         font-family: Roboto, Arial, sans-serif;
         font-size: .6875rem;
         font-weight: 500;
         color: #5f6368;
-        padding: 15px 24px 10px;
+        padding:4px 24px 0px 16px;
     }
     .sidenav-main {
         width: 280px;
         font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
-    .labellist {
-        padding: 0px 0px 0px 8px;
-    }
+
     .labelname {
         padding: 0 0 0 32px;
+        font-family: 'Google Sans',Roboto,Arial,sans-serif;
+        font-size: .875rem;
+        font-weight: 500;
+    }
+    .navlistdivs{
+        padding:8px;
     }
     //button:hover { background-color: #ffdb3a; }
     //button:focus { background-color:red; }
 }
 
+}
+
 ::ng-deep.mat-menu-panel.ng-trigger.ng-trigger-transformMenu.ng-tns-c6-0.accountmenu.mat-menu-below.ng-star-inserted.mat-elevation-z2.mat-menu-before {
-    max-width: 600px;
-    max-height: 600px;
+    max-width: 700px;
+    max-height: 700px;
     .accountname {
         font-size: 13px;
         font-weight: bold;
@@ -130,14 +139,17 @@
         line-height: 28px;
         padding: 0 12px;
         margin: 0 20px;
+        width:110px;
         font-family: Roboto, Arial, sans-serif;
     }
 }
 
-::ng-deep.background[_ngcontent-c1] .sidebar-container[_ngcontent-c1] .mat-drawer-content[_ngcontent-c1] {
-    overflow: hidden;
-}
-
-::ng-deep.mat-nav-list .mat-list-item .mat-list-item-content {
-    padding: 0px;
+// ::ng-deep.background[_ngcontent-c1] .sidebar-container[_ngcontent-c1] .mat-drawer-content[_ngcontent-c1] {
+//     overflow: hidden;
+// }
+::ng-deep .background[_ngcontent-c1] .sidebar-container[_ngcontent-c1] .labelname[_ngcontent-c1]{
+        padding: 0 0 0 32px;
+        font-family: 'Google Sans',Roboto,Arial,sans-serif;
+        font-size: .875rem;
+        font-weight: 500;
 }

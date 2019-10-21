@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {NotesService} from '../../services/notes.services/notes.service'
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { ArchiveiconComponent } from './archiveicon.component';
 
@@ -8,7 +10,12 @@ describe('ArchiveiconComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ArchiveiconComponent ]
+      declarations: [ ArchiveiconComponent ],
+      imports: [HttpClientTestingModule], 
+
+      providers: [NotesService]
+
+      
     })
     .compileComponents();
   }));
@@ -22,4 +29,8 @@ describe('ArchiveiconComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should be created', () => {
+    const service: NotesService = TestBed.get(NotesService);
+    expect(service).toBeTruthy();
+   });
 });

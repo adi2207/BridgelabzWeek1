@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { routerNgProbeToken } from '@angular/router/src/router_module';
+import { ActivatedRoute } from '@angular/router';
 import { NotesService } from '../../services/notes.services/notes.service'
 import { DataService } from '../../services/data.services/data.service'
 

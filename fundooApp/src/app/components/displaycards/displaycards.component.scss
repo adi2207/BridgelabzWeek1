@@ -1,5 +1,6 @@
 .cardcontainer {
     margin: 20px 80px;
+    height: 100vh;
 }
 
 .displaycard {
@@ -32,4 +33,12 @@
     font-family: 'Google Sans', Roboto, Arial, sans-serif;
     font-size: 1.125rem;
     line-height: 1.5rem;
+}
+
+.hideicon mat-icon {
+    display: none;
+}
+
+.hideicon:hover mat-icon {
+    display: block;
 }

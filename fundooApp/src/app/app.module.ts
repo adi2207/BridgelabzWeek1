@@ -16,7 +16,6 @@ import { RegisterComponent } from './components/register/register.component';
 import { ForgotComponent } from './components/forgot/forgot.component';
 import { ResetComponent } from './components/reset/reset.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { IconsComponent } from './components/icons/icons.component';
 import { TakenoteComponent } from './components/takenote/takenote.component';
 import { DisplaycardsComponent } from './components/displaycards/displaycards.component';
 import { NotesComponent } from './components/notes/notes.component';
@@ -39,7 +38,6 @@ import { LabelsComponent } from './components/labels/labels.component';
 import { ChecklistComponent } from './components/checklist/checklist.component';
 import { ChangeUserImageComponent } from './components/change-user-image/change-user-image.component';
 import { RemindersComponent } from './components/reminders/reminders.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +46,6 @@ import { RemindersComponent } from './components/reminders/reminders.component';
     ForgotComponent,
     ResetComponent,
     DashboardComponent,
-    IconsComponent,
     TakenoteComponent,
     DisplaycardsComponent,
     DialogboxComponent,

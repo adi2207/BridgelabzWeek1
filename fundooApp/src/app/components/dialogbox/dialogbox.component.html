@@ -1,12 +1,8 @@
-    <div mat-dialog-content fxLayout="column" fxLayoutGap="10px" [ngStyle]="{background:note.color}">
-      <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [formControl]="title"
-        value="{{note.title}}"></textarea>
-      <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [formControl]="data"
-        value="{{note.description}}"></textarea>
-      <div fxFlex="100" fxLayout="row">
-        <app-icons fxLayoutAlign="space-around start"></app-icons>
+<div mat-dialog-content fxLayout="column" fxLayoutGap="10px" [ngStyle]="{background:note.color}">
+    <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [formControl]="title" value="{{note.title}}"></textarea>
+    <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [formControl]="data" value="{{note.description}}"></textarea>
+    <div fxFlex="100" fxLayout="row">
+        <app-icontray fxLayoutAlign="space-around start"></app-icontray>
         <button mat-button (click)="save()">Close</button>
-      </div>
     </div>
-  
-  
+</div>

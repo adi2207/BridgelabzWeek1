@@ -13,6 +13,7 @@ export class NotesComponent implements OnInit {
   updateMessage:any;
   message:any;
   isArchived='false';
+  isReminder="false";
   constructor(private notesService: NotesService,private dataService:DataService) {
   }
 

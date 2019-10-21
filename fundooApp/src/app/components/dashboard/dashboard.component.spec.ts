@@ -1,6 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core'
 import { DashboardComponent } from './dashboard.component';
+import { FormsModule } from '@angular/forms';
+import { MatMenuModule} from '@angular/material/menu';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MatDialog } from "@angular/material";
+
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -8,7 +15,12 @@ describe('DashboardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DashboardComponent ]
+      declarations: [ DashboardComponent ],
+      schemas:[CUSTOM_ELEMENTS_SCHEMA],
+      imports: [MatMenuModule,FormsModule,RouterTestingModule,HttpClientTestingModule],
+      providers: [{provide: MatDialog, useValue: {}},
+      ],
+
     })
     .compileComponents();
   }));
@@ -22,4 +34,5 @@ describe('DashboardComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });

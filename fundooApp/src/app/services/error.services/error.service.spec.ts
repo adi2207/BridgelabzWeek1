@@ -5,7 +5,8 @@ import { ErrorService } from './error.service';
 describe('ErrorService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ErrorService]
+      providers: [ErrorService],
+
     });
   });
 

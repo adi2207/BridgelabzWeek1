@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core'
 import { IcontrayComponent } from './icontray.component';
 
 describe('IcontrayComponent', () => {
@@ -8,7 +8,9 @@ describe('IcontrayComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ IcontrayComponent ]
+      declarations: [ IcontrayComponent ],
+      schemas:[CUSTOM_ELEMENTS_SCHEMA],
+
     })
     .compileComponents();
   }));

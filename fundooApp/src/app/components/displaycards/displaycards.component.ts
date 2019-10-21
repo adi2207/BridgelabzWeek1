@@ -52,6 +52,19 @@ export class DisplaycardsComponent implements OnInit {
       this.messageEvent.emit(this.updateMessage)
     });
   }
+  onDeleteLabelFromNote(labelId,noteId){
+    let data={
+      labelId:labelId,
+      noteId:noteId
+    }
+    return this.notesService.deleteLabelFromNote(data).subscribe((response: any) => {
+      console.log(response);
+      this.messageEvent.emit(this.updateMessage)
+
+    }, (error) => {
+      console.log(error);
+    });
+  }
 
   receiveUpdateMessage($event) {
     this.updateMessage=$event;

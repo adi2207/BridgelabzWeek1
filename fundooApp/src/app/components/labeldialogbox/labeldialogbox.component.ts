@@ -4,7 +4,6 @@ import { NotelabelService } from '../../services/note.label.service/notelabel.se
 import { DashboardComponent } from '../dashboard/dashboard.component'
 import { AuthService } from '../../services/auth.service/auth.service'
 import { DataService } from '../../services/data.services/data.service'
-import { UserService } from 'src/app/services/user.services/user.service';
 import { FormControl } from '@angular/forms';
 
 @Component({

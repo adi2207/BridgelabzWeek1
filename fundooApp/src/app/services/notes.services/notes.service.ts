@@ -71,6 +71,10 @@ getReminders(){
 addReminder(data){
   return this.http.postCallWithToken(this.baseUrl+'notes/addUpdateReminderNotes',this.getEncodedData(data));
 }
+deleteLabelFromNote(data){
+  return this.http.postCallWithToken(this.baseUrl+'notes/'+data.noteId+'/addLabelToNotes/'+data.labelId+'/remove',data)
+
+}
 
 }
 

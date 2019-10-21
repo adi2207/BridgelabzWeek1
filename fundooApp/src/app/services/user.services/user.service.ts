@@ -21,11 +21,9 @@ export class UserService {
   }
   forgotPassword(data){
     return this.http.postCall(this.baseUrl+'user/reset',data);
-
   }
   login(data){
     return this.http.postCall(this.baseUrl+'user/login',data);
-
   }
   register(data){
     return this.http.postCall(this.baseUrl+'user/userSignUp',this.getEncodedData(data));

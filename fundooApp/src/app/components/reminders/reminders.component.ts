@@ -14,12 +14,16 @@ export class RemindersComponent implements OnInit {
   updateMessage:any;
   message:any;
   isArchived='false';
+  isReminder="true";
   constructor(private notesService: NotesService,private dataService:DataService) {
   }
 
   ngOnInit() {
-    this.dataService.currentMessage.subscribe(message => this.message = message);
-    this.getReminders()
+    this.dataService.currentMessage.subscribe(message => {
+      this.message = message;
+      this.getReminders()
+
+    });
   }
   // filterTrashAndArchives(records)
   // {

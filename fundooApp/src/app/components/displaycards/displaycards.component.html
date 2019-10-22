@@ -3,14 +3,16 @@
         <div (click)="openDialog(this.record)">
             <p class="title">{{record.title}}</p>
             <p class="description">{{record.description}}</p>
-            <mat-chip-list>
-                <mat-chip *ngFor="let noteLabel of record.noteLabels">
-                    {{noteLabel.label}}
-                    <button class="hideicon" (click)="onDeleteLabelFromNote(noteLabel.id,record.id)" mat-icon-button><mat-icon>cancel</mat-icon></button>
-                </mat-chip>
-            </mat-chip-list>
+            <div class="chiplist" fxLayoutGap="5px">
+                <mat-chip-list>
+                    <mat-chip class="chip" *ngFor="let noteLabel of record.noteLabels" [ngStyle]="{background:record.color}">
+                        {{noteLabel.label}}
+                        <button mat-icon-button class="hideicon" (click)="onDeleteLabelFromNote(noteLabel.id,record.id)"><img class="cross" src="../../../assets/images/close-button.svg"></button>
+                    </mat-chip>
+                </mat-chip-list>
+            </div>
         </div>
-        <div fxLayoutAlign="start start" fxFLex="100">
+        <div fxLayoutAlign="start start" fxFLex="100" class="icontray">
             <app-icontray [recordid]=record.id [isArchived]="isArchived" [isDeleted]="isDeleted" (messageEvent)="receiveUpdateMessage($event)"></app-icontray>
         </div>
     </mat-card>

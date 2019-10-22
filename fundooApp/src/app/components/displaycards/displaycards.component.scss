@@ -9,6 +9,14 @@
     border-radius: 8px;
     width: 240px;
     padding: 0;
+    .icontray {
+        opacity: 0
+    }
+    &:hover {
+        .icontray {
+            opacity: 1;
+        }
+    }
 }
 
 .title {
@@ -35,10 +43,30 @@
     line-height: 1.5rem;
 }
 
-.hideicon mat-icon {
+.chiplist {
+    padding: 5px;
+}
+
+.chip {
+    filter: brightness(80%);
+}
+
+.hideicon .cross {
     display: none;
 }
 
-.hideicon:hover mat-icon {
+.hideicon:hover .cross {
     display: block;
+    height: 10px;
+    width: 10px;
+    padding-left: 5px;
+}
+
+.mat-icon-button {
+    width: 10px;
+    height: 10px;
+}
+
+::ng-deep.div.mat-chip-list-wrapper {
+    margin: 0px;
 }

@@ -27,21 +27,17 @@ export class ColorsiconComponent implements OnInit {
   ngOnInit(){
   }
   changeColor(color){
-    if(this.recordid!=null){
       this.note = {
         'noteIdList': [this.recordid],
         'color': color,
       };
       this.notesService.changeColor(this.note).subscribe((response: any) => {
         console.log(response);
-        this.messageEvent.emit(this.updateMessage)
+        this.messageEvent.emit(color);
+        console.log("color",color)
       }, (error) => {
         console.log(error);
       });
-    }
-    else{
-      this.messageEvent.emit(color);
-    }
 
   }
   

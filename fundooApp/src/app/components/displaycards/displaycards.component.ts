@@ -68,9 +68,6 @@ export class DisplaycardsComponent implements OnInit {
 
   receiveUpdateMessage($event) {
     this.updateMessage=$event;
-    if(this.updateMessage=="create checklist"){
-      //create cheklist
-    }
     this.messageEvent.emit(this.updateMessage);
   }
   

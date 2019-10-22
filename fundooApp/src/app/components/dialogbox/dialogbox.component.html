@@ -1,8 +1,10 @@
-<div mat-dialog-content fxLayout="column" fxLayoutGap="10px" [ngStyle]="{background:note.color}">
-    <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [formControl]="title" value="{{note.title}}"></textarea>
-    <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [formControl]="data" value="{{note.description}}"></textarea>
-    <div fxFlex="100" fxLayout="row">
-        <app-icontray fxLayoutAlign="space-around start"></app-icontray>
-        <button mat-button (click)="save()">Close</button>
+<div mat-dialog-container [ngStyle]="{background:color}">
+    <div mat-dialog-content fxLayout="column" fxLayoutGap="10px" [ngStyle]="{background:color}">
+        <textarea [ngStyle]="{background:color}" class="textt" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [formControl]="title" value="{{note.title}}"></textarea>
+        <textarea [ngStyle]="{background:color}" class="textt" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [formControl]="data" value="{{note.description}}"></textarea>
+        <div class="buttonbox" fxFlex="100" fxLayout="row" fxLayoutAlign="start center">
+            <app-icontray [recordid]=note.noteId (messageEvent)="receiveUpdateMessage($event)" fxLayoutAlign="space-around start"></app-icontray>
+            <button mat-button (click)="save()">Close</button>
+        </div>
     </div>
 </div>

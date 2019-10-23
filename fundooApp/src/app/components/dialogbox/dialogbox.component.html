@@ -3,7 +3,7 @@
         <textarea [ngStyle]="{background:color}" class="textt" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [formControl]="title" value="{{note.title}}"></textarea>
         <textarea [ngStyle]="{background:color}" class="textt" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [formControl]="data" value="{{note.description}}"></textarea>
         <div class="buttonbox" fxFlex="100" fxLayout="row" fxLayoutAlign="start center">
-            <app-icontray [recordid]=note.noteId (messageEvent)="receiveUpdateMessage($event)" fxLayoutAlign="space-around start"></app-icontray>
+            <app-icontray [isArchived]="note.isArchived" [isDeleted]="note.isDeleted" [recordid]=note.noteId (messageEvent)="receiveUpdateMessage($event)" fxLayoutAlign="space-around start"></app-icontray>
             <button mat-button (click)="save()">Close</button>
         </div>
     </div>

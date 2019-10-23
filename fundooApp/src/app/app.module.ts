@@ -37,7 +37,9 @@ import { IcontrayComponent } from './components/icontray/icontray.component';
 import { LabelsComponent } from './components/labels/labels.component';
 import { ChecklistComponent } from './components/checklist/checklist.component';
 import { ChangeUserImageComponent } from './components/change-user-image/change-user-image.component';
-import { RemindersComponent } from './components/reminders/reminders.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material';
+import {CollaboratordialogboxComponent} from './components/collaboratordialogbox/collaboratordialogbox.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,7 +68,7 @@ import { RemindersComponent } from './components/reminders/reminders.component';
     LabelsComponent,
     ChecklistComponent,
     ChangeUserImageComponent,
-    RemindersComponent
+    CollaboratordialogboxComponent
   ],
   imports: [
     BrowserModule,
@@ -77,9 +79,11 @@ import { RemindersComponent } from './components/reminders/reminders.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
-  providers: [UserService,AuthGuard,AuthService],
+  providers: [UserService,AuthGuard,AuthService,MatDatepickerModule],
   bootstrap: [AppComponent],
-  entryComponents: [DialogboxComponent,LabeldialogboxComponent,ChangeUserImageComponent]
+  entryComponents: [DialogboxComponent,LabeldialogboxComponent,ChangeUserImageComponent,CollaboratordialogboxComponent]
 })
 export class AppModule { }

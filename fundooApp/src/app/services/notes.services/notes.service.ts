@@ -69,11 +69,18 @@ getReminders(){
 
 }
 addReminder(data){
-  return this.http.postCallWithToken(this.baseUrl+'notes/addUpdateReminderNotes',this.getEncodedData(data));
+  return this.http.postCallWithToken(this.baseUrl+'notes/addUpdateReminderNotes',data);
 }
 deleteLabelFromNote(data){
   return this.http.postCallWithToken(this.baseUrl+'notes/'+data.noteId+'/addLabelToNotes/'+data.labelId+'/remove',data)
 
+}
+deleteReminderFromNote(data){
+  return this.http.postCallWithToken(this.baseUrl+'notes/removeReminderNotes',data)
+
+}
+addCollaboratorsToNote(data){
+  return this.http.postCallWithToken(this.baseUrl+'notes/'+data.id+'/AddcollaboratorsNotes',data)
 }
 
 }

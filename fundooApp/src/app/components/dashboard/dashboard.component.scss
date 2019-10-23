@@ -1,7 +1,8 @@
-// body {
-//     overflow-y: hidden;
-//     overscroll-behavior-y: contain;
-// }
+body {
+    overflow-y: hidden;
+    overscroll-behavior-y: contain;
+}
+
 .background {
     .headercontainer {
         background-color: white;
@@ -154,11 +155,11 @@
     }
 }
 
-// ::ng-deep.background[_ngcontent-c1] .sidebar-container[_ngcontent-c1] .mat-drawer-content[_ngcontent-c1] {
-//     //height: 100vh;
-//     overflow-y: auto;
-//     overscroll-behavior-y: contain;
-// }
+::ng-deep.background[_ngcontent-c1] .sidebar-container[_ngcontent-c1] .mat-drawer-content[_ngcontent-c1] {
+    overflow-x: hidden;
+    overscroll-behavior-x: contain;
+}
+
 ::ng-deep .background[_ngcontent-c1] .sidebar-container[_ngcontent-c1] .labelname[_ngcontent-c1] {
     padding: 0 0 0 32px;
     font-family: 'Google Sans', Roboto, Arial, sans-serif;

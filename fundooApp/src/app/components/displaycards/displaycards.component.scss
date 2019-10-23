@@ -3,11 +3,32 @@
     height: 100vh;
 }
 
+.listcardcontainer {
+    margin: 20px 80px;
+    height: 100vh;
+    align-items: center;
+}
+
 .displaycard {
     margin: 7px;
     align-self: flex-start;
     border-radius: 8px;
     width: 240px;
+    padding: 0;
+    .icontray {
+        opacity: 0
+    }
+    &:hover {
+        .icontray {
+            opacity: 1;
+        }
+    }
+}
+
+.displaycardlist {
+    margin: 7px;
+    border-radius: 8px;
+    width: 700px;
     padding: 0;
     .icontray {
         opacity: 0

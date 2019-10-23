@@ -27,6 +27,8 @@ export class DashboardComponent implements OnInit {
   firstName=localStorage.getItem('firstName');
   lastName=localStorage.getItem('lastName');
   email=localStorage.getItem('email');
+  grid:Boolean=false;
+
 
   constructor(public router: Router, 
     private authService:AuthService, 
@@ -72,8 +74,9 @@ export class DashboardComponent implements OnInit {
       console.log(error);
     });
   }
-  onClickingLabel(){
-    this.dataService.changeMessage("opening label")
+  onClickingLabel(labelname){
+    this.router.navigate(["/labels/"+labelname]);
+    this.dataService.changeMessage(labelname)
   }
   onChangeImage() {
     this.dialogRef = this.dialog.open(ChangeUserImageComponent, {
@@ -88,6 +91,15 @@ export class DashboardComponent implements OnInit {
     let picturelink=localStorage.getItem('profile-pic');
     console.log("hkghskjd",picturelink)
     this.profilepic=this.baseUrl+picturelink;
+  }
+  togglegrid(){
+    this.grid=!this.grid;
+  }
+  onGridDisplay(){
+    this.dataService.changeMessage("grid");
+  }
+  onListDisplay(){
+    this.dataService.changeMessage("list");
   }
   
 }

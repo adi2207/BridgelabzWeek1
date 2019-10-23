@@ -11,7 +11,6 @@ import {ArchiveComponent} from './components/archive/archive.component';
 import {AuthGuard} from './services/authguard/auth.guard';
 import {SearchbarComponent} from './components/searchbar/searchbar.component' 
 import { LabelsComponent } from './components/labels/labels.component';
-import { RemindersComponent } from './components/reminders/reminders.component';
 import {DialogboxComponent} from './components/dialogbox/dialogbox.component'
 const routes: Routes = [
   {path:'login',component:LoginComponent},
@@ -29,8 +28,6 @@ const routes: Routes = [
     path:'search',component:SearchbarComponent 
   },{
     path:'labels/:labelname',component:LabelsComponent 
-  },{
-    path:'reminders',component:RemindersComponent 
   },
   { path: '**', redirectTo: '/notes' }
 

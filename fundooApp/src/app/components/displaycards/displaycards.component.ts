@@ -21,6 +21,7 @@ export class DisplaycardsComponent implements OnInit {
   @Input() trashNotes:any;
   @Input() isDeleted:any;
   @Input() isArchived:any;
+  displayType:String="grid";
 
 
   constructor(private notesService: NotesService, public dialog: MatDialog, private dataService: DataService) { }
@@ -28,6 +29,10 @@ export class DisplaycardsComponent implements OnInit {
   ngOnInit() {
     this.dataService.currentMessage.subscribe((message) => {
       this.message = message
+      if(message=="grid"||message=="list")
+      {
+        this.displayType=message;
+      }
     });
   }
 
@@ -42,7 +47,9 @@ export class DisplaycardsComponent implements OnInit {
       title: record.title,
       description: record.description,
       recordid:record.id,
-      color:record.color
+      color:record.color,
+      isDeleted:this.isDeleted,
+      isArchived:this.isArchived
     }
 
     this.dialogRef = this.dialog.open(DialogboxComponent, dialogConfig);
@@ -64,6 +71,20 @@ export class DisplaycardsComponent implements OnInit {
     }, (error) => {
       console.log(error);
     });
+  }
+  onDeleteReminderFromNote(reminder,recordid){
+    let data={
+      reminder:reminder,
+      noteIdList:[recordid]
+    }
+    return this.notesService.deleteReminderFromNote(data).subscribe((response: any) => {
+      console.log(response);
+      this.messageEvent.emit(this.updateMessage)
+
+    }, (error) => {
+      console.log(error);
+    });
+
   }
 
   receiveUpdateMessage($event) {

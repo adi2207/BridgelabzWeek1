@@ -1,0 +1,12 @@
+<div mat-dialog-container>
+    <div mat-dialog-content fxLayout="column" fxLayoutGap="10px">
+        <h1>Collaborators</h1>
+        <mat-divider></mat-divider>
+        <span>{{owner.firstName}} {{owner.lastName}} (Owner) </span>
+        <span>{{owner.email}}</span>
+        <textarea class="textt" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [formControl]="email" placeholder="Person or email to share with"></textarea>
+        <div class="buttonbox" fxFlex="100" fxLayout="row" fxLayoutAlign="start center">
+            <button mat-button (click)="save()">Save</button>
+        </div>
+    </div>
+</div>

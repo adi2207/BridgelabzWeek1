@@ -19,7 +19,6 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import {MatChipsModule} from '@angular/material/chips';
 
 
-
 @NgModule({
 imports: [
 MatButtonModule,
@@ -39,7 +38,8 @@ MatTooltipModule,
 MatGridListModule,
 MatDialogModule,
 MatTabsModule,
-ImageCropperModule
+ImageCropperModule,
+
 ],
 
 exports: [
@@ -60,7 +60,7 @@ MatTooltipModule,
 MatGridListModule,
 MatDialogModule,
 MatTabsModule,
-ImageCropperModule
+ImageCropperModule,
 ],
 })
 export class AppMaterialModule { }

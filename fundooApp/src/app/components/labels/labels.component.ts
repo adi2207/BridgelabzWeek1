@@ -17,15 +17,14 @@ export class LabelsComponent implements OnInit {
   isDeleted="false";
   ngOnInit() {
     this.dataService.currentMessage.subscribe(message => {
-      this.message = message;
-      this.labelname = this.route.snapshot.paramMap.get('labelname');
-      localStorage.setItem('labelname', this.labelname);
-      this.getNotesByLabelName();
-    })
-
+      this.labelname=message;
+        this.getNotesByLabelName();
+    });
   }
 
+
   getNotesByLabelName() {
+  
     let data = {
       labelName: this.labelname
     }

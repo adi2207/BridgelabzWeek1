@@ -23,8 +23,11 @@
             <button mat-icon-button>
             <img class="headerbuttons" src="../../../assets/images/icons8-settings.svg">
         </button>
-            <button mat-icon-button matTooltip="List View">
-            <img class="headerbuttons" src="../../../assets/images/icons8-view-headline-32.png">
+            <button *ngIf="!grid" (click)="togglegrid()" mat-icon-button matTooltip="List View">
+            <img (click)="onListDisplay()" class="headerbuttons" src="../../../assets/images/icons8-view-headline-32.png">
+        </button>
+            <button *ngIf="grid" (click)="togglegrid()" mat-icon-button matTooltip="Grid View">
+            <img (click)="onGridDisplay()" class="headerbuttons" src="../../../assets/images/grid.svg">
         </button>
             <img mat-card-avatar class="profilepic" [src]="profilepic" [matMenuTriggerFor]="accountmenu">
             <mat-menu #accountmenu class="accountmenu" overlapTrigger=false>
@@ -64,7 +67,7 @@
                     <div class="navlistdivs">
                         <p class="labelsheading" mat-list-item>LABELS</p>
                         <div *ngFor="let label of labels">
-                            <a class="labellist" mat-list-item (click)="onClickingLabel()" routerLink="/labels/{{label.label}}"><img class="sidenavicon" src="../../../assets/images/label-right-arrow-outline (1).svg"><span class="labelname">{{label.label}}</span></a>
+                            <a class="labellist" mat-list-item (click)="onClickingLabel(label.label)"><img class="sidenavicon" src="../../../assets/images/label-right-arrow-outline (1).svg"><span class="labelname">{{label.label}}</span></a>
                         </div>
                         <a class="labellist" mat-list-item (click)="openLabelDialog()"><img class="sidenavicon" src="../../../assets/images/edit.svg"><span class="labelname">Edit labels</span></a>
                     </div>

@@ -27,10 +27,10 @@ export class DialogboxComponent implements OnInit {
       description: data.description,
       title:data.title,
       noteId:data.recordid,
-      color:data.color
-
+      color:data.color,
+      isDeleted:data.isDeleted,
+      isArchived:data.isArchived
     }
-
   }
   
   ngOnInit() {
@@ -45,7 +45,9 @@ export class DialogboxComponent implements OnInit {
       'noteId':this.note.noteId,
       'title':this.note.title,
       'description':this.note.description,
-      'color':this.note.color
+      'color':this.note.color,
+      'isDeleted':this.note.isDeleted,
+      'isArchived':this.note.isArchived
     }
     this.dialogRef.close(this.note);
 

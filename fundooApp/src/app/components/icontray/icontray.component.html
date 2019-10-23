@@ -1,6 +1,6 @@
 <div fxLayout="row" fxFlex="100">
-    <app-remindmeicon></app-remindmeicon>
-    <app-collaboratoricon></app-collaboratoricon>
+    <app-remindmeicon [recordid]=recordid (messageEvent)="receiveUpdateMessage($event)"></app-remindmeicon>
+    <app-collaboratoricon [recordid]=recordid></app-collaboratoricon>
     <app-colorsicon [recordid]=recordid (messageEvent)="receiveUpdateMessage($event)"></app-colorsicon>
     <app-imageicon></app-imageicon>
     <app-archiveicon [isArchived]="isArchived" [recordid]=recordid (messageEvent)="receiveUpdateMessage($event)"></app-archiveicon>

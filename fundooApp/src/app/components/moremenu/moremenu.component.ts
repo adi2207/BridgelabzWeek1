@@ -32,9 +32,11 @@ export class MoremenuComponent implements OnInit {
     }
     return this.notesService.createTrashNotes(noteObj).subscribe((response: any) => {
       console.log(response);
-      this.messageEvent.emit(this.updateMessage)
+      this.messageEvent.emit("Note trashed")
     }, (error) => {
       console.log(error);
+      this.messageEvent.emit("Note could not be trashed")
+
     });
 
   }
@@ -46,9 +48,11 @@ export class MoremenuComponent implements OnInit {
     }
     return this.notesService.addLabelToNotes(data).subscribe((response: any) => {
       console.log(response);
-      this.messageEvent.emit(this.updateMessage);
+      this.messageEvent.emit("Label added");
     }, (error) => {
       console.log(error);
+      this.messageEvent.emit("Label could not be added");
+
     });
   }
   getLabels(){
@@ -66,9 +70,11 @@ export class MoremenuComponent implements OnInit {
     }
     return this.notesService.deleteNoteForever(noteObj).subscribe((response: any) => {
       console.log(response);
-      this.messageEvent.emit(this.updateMessage);
+      this.messageEvent.emit("Note deleted forever");
     }, (error) => {
       console.log(error);
+      this.messageEvent.emit("Note could not be deleted forever");
+
     });
   }
   onRestoreNote(){
@@ -78,9 +84,11 @@ export class MoremenuComponent implements OnInit {
     }
     return this.notesService.createTrashNotes(noteObj).subscribe((response: any) => {
       console.log(response);
-      this.messageEvent.emit(this.updateMessage);
+      this.messageEvent.emit("Note restored");
     }, (error) => {
       console.log(error);
+      this.messageEvent.emit("Note could not be restored");
+
     });
   }
   createChecklist(){

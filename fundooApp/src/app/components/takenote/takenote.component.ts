@@ -38,10 +38,12 @@ export class TakenoteComponent implements OnInit {
   
       this.notesService.addNote(this.note).subscribe((response) => {
         console.log(response);
-        this.messageEvent.emit(this.updateMessage)
+        this.messageEvent.emit("New note created")
         this.updateMessage = null;
       }, (error) => {
         console.log(error);
+        this.messageEvent.emit("Note could not be created")
+
       });
     }
     else if(this.isReminder=="true"){
@@ -52,10 +54,13 @@ export class TakenoteComponent implements OnInit {
   
       this.notesService.addReminder(this.note).subscribe((response) => {
         console.log(response);
-        this.messageEvent.emit(this.updateMessage)
+        this.messageEvent.emit("New reminder created")
+        
         this.updateMessage = null;
       }, (error) => {
         console.log(error);
+        this.messageEvent.emit("Reminder could not be created")
+
       });
     }
   

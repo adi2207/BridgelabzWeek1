@@ -36,12 +36,15 @@ export class ArchiveComponent implements OnInit {
       this.records=this.filterToGetArchived(this.records);
     }, (error) => {
       console.log(error);
+
     });
 
   }
   receiveUpdateMessage($event) {
     this.updateMessage = $event;
     this.getArchivedNotes();
+    this.dataService.changeMessage(this.updateMessage);
+
   }
 
 }

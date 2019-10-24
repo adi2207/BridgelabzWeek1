@@ -29,9 +29,11 @@ export class RemindmeiconComponent implements OnInit {
     }
     this.notesService.addReminder(data).subscribe((response: any) => {
       console.log(response);
-      this.messageEvent.emit(this.updateMessage);
+      this.messageEvent.emit("Reminder set");
     }, (error) => {
       console.log(error);
+      this.messageEvent.emit("Reminder could not be set");
+
     });
 
   }

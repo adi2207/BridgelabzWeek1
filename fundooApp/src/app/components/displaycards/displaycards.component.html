@@ -46,6 +46,12 @@
                     </mat-chip>
                 </mat-chip-list>
             </div>
+            <div class="chiplist" fxLayoutGap="5px" fxLayout="row">
+                <div *ngFor="let collaborator of record.collaborators">
+                    <button mat-mini-fab class="chip" matTooltip="{{collaborator.firstName+' '+collaborator.lastName}}">
+                </button>
+                </div>
+            </div>
         </div>
         <div fxLayoutAlign="start start" fxFLex="100" class="icontray">
             <app-icontray [recordid]=record.id [isArchived]="isArchived" [isDeleted]="isDeleted" (messageEvent)="receiveUpdateMessage($event)"></app-icontray>

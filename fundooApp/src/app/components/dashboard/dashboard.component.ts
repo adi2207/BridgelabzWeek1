@@ -7,6 +7,7 @@ import { LabeldialogboxComponent } from '../labeldialogbox/labeldialogbox.compon
 import {NotelabelService} from '../../services/note.label.service/notelabel.service'
 import {ChangeUserImageComponent} from '../../components/change-user-image/change-user-image.component'
 import {environment} from '../../../environments/environment'
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-dashboard',
@@ -34,15 +35,16 @@ export class DashboardComponent implements OnInit {
     private authService:AuthService, 
     private dataService:DataService,
     public dialog: MatDialog,
-    private notelabelService:NotelabelService) { }
+    private notelabelService:NotelabelService, private _snackBar:MatSnackBar) { }
 
   ngOnInit(){
     this.dataService.currentMessage.subscribe((updateMessage)=>{
-      this.updateMessage = updateMessage
+      this.updateMessage = updateMessage;
+
       this.displayLabels();
       this.getProfilePicture();
+      this.openSnackBar();
 
-      console.log("valuessss",this.firstName)
     });
     this.router.navigate(['notes'])
   }
@@ -100,6 +102,11 @@ export class DashboardComponent implements OnInit {
   }
   onListDisplay(){
     this.dataService.changeMessage("list");
+  }
+  openSnackBar(){
+    this._snackBar.open(this.updateMessage, "Dismiss",{
+      duration: 2000,
+    });
   }
   
 }

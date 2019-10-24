@@ -4,7 +4,26 @@
         <mat-divider></mat-divider>
         <span>{{owner.firstName}} {{owner.lastName}} (Owner) </span>
         <span>{{owner.email}}</span>
-        <textarea class="textt" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [formControl]="email" placeholder="Person or email to share with"></textarea>
+        <textarea class="textt" [formControl]="myControl" matInput [matAutocomplete]="auto" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [(ngModel)]="searchVal" (keyup)="searchUsers(searchVal)" placeholder="Person or email to share with"></textarea>
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let record of filteredRecords | async" [value]="record.email">
+                {{record.email}}
+            </mat-option>
+        </mat-autocomplete>
+        <div fxLayout="column">
+            <div *ngFor="let record of recordss" fxLayout="row">
+                <div fxLayout="column">
+                    <span>{{record.firstName}} {{record.lastName}}</span>
+                    <span>{{record.email}}</span>
+                </div>
+                <button mat-icon-button matToolTip="Delete label" (click)="deleteCollaboratorFromNote(record)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+            </div>
+        </div>
+        <div class="buttonbox" fxFlex="100" fxLayout="row" fxLayoutAlign="start center">
+            <button mat-button (click)="onDone()">Done</button>
+        </div>
         <div class="buttonbox" fxFlex="100" fxLayout="row" fxLayoutAlign="start center">
             <button mat-button (click)="save()">Save</button>
         </div>

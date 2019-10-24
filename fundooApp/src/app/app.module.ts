@@ -32,14 +32,15 @@ import { ImageiconComponent } from './components/imageicon/imageicon.component';
 import { CollaboratoriconComponent } from './components/collaboratoricon/collaboratoricon.component';
 import { RemindmeiconComponent } from './components/remindmeicon/remindmeicon.component';
 import { MoremenuComponent } from './components/moremenu/moremenu.component';
-import { CloseiconComponent } from './components/closeicon/closeicon.component';
 import { IcontrayComponent } from './components/icontray/icontray.component';
 import { LabelsComponent } from './components/labels/labels.component';
 import { ChecklistComponent } from './components/checklist/checklist.component';
 import { ChangeUserImageComponent } from './components/change-user-image/change-user-image.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material';
-import {CollaboratordialogboxComponent} from './components/collaboratordialogbox/collaboratordialogbox.component'
+import {CollaboratordialogboxComponent} from './components/collaboratordialogbox/collaboratordialogbox.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,12 +64,11 @@ import {CollaboratordialogboxComponent} from './components/collaboratordialogbox
     CollaboratoriconComponent,
     RemindmeiconComponent,
     MoremenuComponent,
-    CloseiconComponent,
     IcontrayComponent,
     LabelsComponent,
     ChecklistComponent,
     ChangeUserImageComponent,
-    CollaboratordialogboxComponent
+    CollaboratordialogboxComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,7 +80,8 @@ import {CollaboratordialogboxComponent} from './components/collaboratordialogbox
     FormsModule,
     HttpClientModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatAutocompleteModule
   ],
   providers: [UserService,AuthGuard,AuthService,MatDatepickerModule],
   bootstrap: [AppComponent],

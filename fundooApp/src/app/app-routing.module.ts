@@ -17,10 +17,10 @@ const routes: Routes = [
   {path:'register',component:RegisterComponent},
   {path:'forgot',component:ForgotComponent},
   {path:'dialogbox',component:DialogboxComponent },
-  {path:'',component:DashboardComponent , canActivate: [AuthGuard], children:[{
+  {path:'',component:DashboardComponent , canActivate: [AuthGuard], children:
+  [{
     path:'notes',component:NotesComponent 
-  }
-  ,{
+  },{
     path:'trash',component:TrashComponent 
   },{
     path:'archive',component:ArchiveComponent 
@@ -29,8 +29,6 @@ const routes: Routes = [
   },{
     path:'labels/:labelname',component:LabelsComponent 
   },
-  { path: '**', redirectTo: '/notes' }
-
   ]},
   {path:'resetpassword/:token',component:ResetComponent},
   {path:'**',redirectTo:'/login'},

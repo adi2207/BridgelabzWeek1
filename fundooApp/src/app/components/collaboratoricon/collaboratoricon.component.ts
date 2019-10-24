@@ -1,6 +1,7 @@
 import { Component, OnInit,Output,EventEmitter,Input} from '@angular/core';
 import { MatDialog, MatDialogConfig } from "@angular/material";
 import { CollaboratordialogboxComponent } from '../collaboratordialogbox/collaboratordialogbox.component';
+import { DataService } from 'src/app/services/data.services/data.service';
 
 @Component({
   selector: 'app-collaboratoricon',
@@ -14,15 +15,18 @@ export class CollaboratoriconComponent implements OnInit {
   @Input() recordid : any;
   @Output() messageEvent = new EventEmitter<string>();
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private dataService:DataService) { }
 
   ngOnInit() {
+    this.dataService.currentMessage.subscribe((message) => {
+      this.updateMessage=message;
+    });
   }
   openDialog() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.panelClass="collaboratorDialog";
     dialogConfig.data={
-      recordid:this.recordid
+      recordid:this.recordid,
     };
     console.log("yyy", dialogConfig.data)
 
@@ -30,7 +34,8 @@ export class CollaboratoriconComponent implements OnInit {
 
     this.dialogRef.afterClosed().subscribe(
       data =>{ console.log("Dialog output:", data)
-      this.messageEvent.emit(this.updateMessage)
+      this.messageEvent.emit(this.updateMessage);
+
     });
   }
 

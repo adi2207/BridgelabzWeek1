@@ -36,7 +36,7 @@ export class ChangeUserImageComponent implements OnInit {
       .subscribe((response:any) => {
         console.log(response)
         localStorage.setItem('profile-pic',response.status.imageUrl);
-        this.dataService.changeMessage("dfkhf")
+        this.dataService.changeMessage("ooooooooooo")
         this.dialogRef.close();
       }, (error) => {
         console.log(error)

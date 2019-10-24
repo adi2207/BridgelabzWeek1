@@ -34,6 +34,9 @@ export class UserService {
   uploadPicture(data){
     return this.http.postImageWithToken(this.baseUrl+'user/uploadProfileImage',data);
   }
+  searchUserList(data){
+    return this.http.postCallWithToken(this.baseUrl+'user/searchUserList',data);
+  }
 }
 
 

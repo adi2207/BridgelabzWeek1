@@ -17,6 +17,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatTabsModule} from '@angular/material/tabs';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
 @NgModule({
@@ -39,6 +41,8 @@ MatGridListModule,
 MatDialogModule,
 MatTabsModule,
 ImageCropperModule,
+MatSnackBarModule,
+MatAutocompleteModule
 
 ],
 
@@ -61,6 +65,8 @@ MatGridListModule,
 MatDialogModule,
 MatTabsModule,
 ImageCropperModule,
+MatSnackBarModule,
+MatAutocompleteModule
 ],
 })
 export class AppMaterialModule { }

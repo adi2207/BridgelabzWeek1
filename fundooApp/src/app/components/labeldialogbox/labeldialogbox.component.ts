@@ -44,10 +44,12 @@ export class LabeldialogboxComponent implements OnInit {
     }
     return this.notelabelService.createLabel(this.data).subscribe((response: any) => {
       console.log(response);
-      this.dataService.changeMessage(this.updateMessage);
+      this.dataService.changeMessage("New label created");
       this.getLabels()
     }, (error) => {
       console.log(error);
+      this.dataService.changeMessage("New label could not be created");
+
     });
   }
   getLabels() {
@@ -57,6 +59,7 @@ export class LabeldialogboxComponent implements OnInit {
       this.dataService.changeMessage(this.updateMessage);
     }, (error) => {
       console.log(error);
+
     });
   }
   onDeleteLabel(record) {
@@ -66,9 +69,11 @@ export class LabeldialogboxComponent implements OnInit {
     return this.notelabelService.deleteLabel(this.data).subscribe((response: any) => {
       console.log(response);
       this.getLabels();
-      this.dataService.changeMessage(this.updateMessage);
+      this.dataService.changeMessage("Label deleted");
     }, (error) => {
       console.log(error);
+      this.dataService.changeMessage("Label could not be deleted");
+
     });
   }
   onRename(labelid) {
@@ -82,9 +87,11 @@ export class LabeldialogboxComponent implements OnInit {
       return this.notelabelService.renameLabel(this.data).subscribe((response: any) => {
         console.log(response);
         this.getLabels();
-        this.dataService.changeMessage(this.updateMessage);
+        this.dataService.changeMessage("Label renamed");
       }, (error) => {
         console.log(error);
+        this.dataService.changeMessage("Label could not be renamed");
+
       });
     }
   }

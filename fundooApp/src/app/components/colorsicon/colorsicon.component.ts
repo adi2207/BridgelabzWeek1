@@ -36,6 +36,7 @@ export class ColorsiconComponent implements OnInit {
         this.messageEvent.emit(color);
         console.log("color",color)
       }, (error) => {
+        this.messageEvent.emit("Color could not be changed");
         console.log(error);
       });
 

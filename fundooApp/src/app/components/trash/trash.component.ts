@@ -39,6 +39,7 @@ export class TrashComponent implements OnInit {
  
   receiveUpdateMessage($event) {
     this.updateMessage = $event;
+    this.dataService.changeMessage(this.updateMessage);
     this.getTrashNotes();
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit,Input,Output,EventEmitter} from '@angular/core';
 import {NotesService} from '../../services/notes.services/notes.service'
-import {NotelabelService} from '../../services/note.label.service/notelabel.service'
+import {DataService} from '../../services/data.services/data.service'
+
 @Component({
   selector: 'app-archiveicon',
   templateUrl: './archiveicon.component.html',
@@ -18,7 +19,7 @@ export class ArchiveiconComponent implements OnInit {
   
   @Output() messageEvent = new EventEmitter<string>();
 
-  constructor(private notesService:NotesService,private notelabelService:NotelabelService) { }
+  constructor(private notesService:NotesService, private dataService:DataService) { }
   ngOnInit(){
   }
   
@@ -29,9 +30,12 @@ export class ArchiveiconComponent implements OnInit {
       }
       return this.notesService.createArchiveNote(noteObj).subscribe((response: any) => {
         console.log(response);
-        this.messageEvent.emit(this.updateMessage)
+        this.messageEvent.emit("Note Archived")
+
       }, (error) => {
         console.log(error);
+        this.messageEvent.emit("Note could not be archived")
+
       });
   }
   unarchiveNote(){
@@ -41,9 +45,11 @@ export class ArchiveiconComponent implements OnInit {
       }
       return this.notesService.createArchiveNote(noteObj).subscribe((response: any) => {
         console.log(response);
-        this.messageEvent.emit(this.updateMessage)
+        this.messageEvent.emit("Note unarchived")
       }, (error) => {
         console.log(error);
+        this.messageEvent.emit("Note could not be unarchived")
+
       });
     }
 

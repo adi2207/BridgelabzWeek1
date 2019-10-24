@@ -56,7 +56,7 @@ export class DisplaycardsComponent implements OnInit {
 
     this.dialogRef.afterClosed().subscribe(
       data =>{ console.log("Dialog output:", data)
-      this.messageEvent.emit(this.updateMessage)
+      this.messageEvent.emit("Dialog box closed")
     });
   }
   onDeleteLabelFromNote(labelId,noteId){
@@ -66,10 +66,12 @@ export class DisplaycardsComponent implements OnInit {
     }
     return this.notesService.deleteLabelFromNote(data).subscribe((response: any) => {
       console.log(response);
-      this.messageEvent.emit(this.updateMessage)
+      this.messageEvent.emit("Label deleted from note")
 
     }, (error) => {
       console.log(error);
+      this.messageEvent.emit("Label could not be deleted from note")
+
     });
   }
   onDeleteReminderFromNote(reminder,recordid){
@@ -79,10 +81,12 @@ export class DisplaycardsComponent implements OnInit {
     }
     return this.notesService.deleteReminderFromNote(data).subscribe((response: any) => {
       console.log(response);
-      this.messageEvent.emit(this.updateMessage)
+      this.messageEvent.emit("Reminder deleted from note")
 
     }, (error) => {
       console.log(error);
+      this.messageEvent.emit("Reminder could not be deleted from note")
+
     });
 
   }

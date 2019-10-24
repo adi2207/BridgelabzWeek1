@@ -52,5 +52,15 @@ export class HttpService {
     }
     return this.http.post(url,data,httpOptions);
   }
+  patchCallWithToken(url,data){
+    let httpOptions={
+      headers:new HttpHeaders({
+        'Authorization':localStorage.getItem('id'),
+        'Content-type':'application/json',
+
+      })
+    }
+    return this.http.patch(url,data,httpOptions);
+  }
 
 }

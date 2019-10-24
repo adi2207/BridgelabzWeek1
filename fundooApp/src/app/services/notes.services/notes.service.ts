@@ -82,6 +82,13 @@ deleteReminderFromNote(data){
 addCollaboratorsToNote(data){
   return this.http.postCallWithToken(this.baseUrl+'notes/'+data.id+'/AddcollaboratorsNotes',data)
 }
+getNoteDetails(data){
+  return this.http.patchCallWithToken(this.baseUrl+'notes/'+data.id,data)
+
+}
+deleteCollaboratorFromNote(data){
+  return this.http.deleteCallWithToken(this.baseUrl + 'notes/' + data.id + '/removeCollaboratorsNotes/'+data.userId)
+}
 
 }
 

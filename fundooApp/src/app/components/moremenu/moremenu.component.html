@@ -4,8 +4,7 @@
 <mat-menu #menugeneral>
     <button mat-menu-item (click)="trashNote()">Delete Note</button>
     <button mat-menu-item [matMenuTriggerFor]="labelmenu">Add label</button>
-    <button mat-menu-item>Add drawing</button>
-    <button mat-menu-item>Make a copy</button>
+    <button mat-menu-item (click)="onAskQuestion()">Ask a question</button>
     <button mat-menu-item (click)="createChecklist()">Show checkboxes</button>
 </mat-menu>
 
@@ -22,7 +21,6 @@
   </button>
 <mat-menu #takenotemenu>
     <button mat-menu-item [matMenuTriggerFor]="labelmenu">Add label</button>
-    <button mat-menu-item>Add drawing</button>
     <button mat-menu-item (click)="createChecklist()">Show checkboxes</button>
 </mat-menu>
 <mat-menu #labelmenu>

@@ -40,6 +40,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material';
 import {CollaboratordialogboxComponent} from './components/collaboratordialogbox/collaboratordialogbox.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { QuestionanswerComponent } from './components/questionanswer/questionanswer.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     ChecklistComponent,
     ChangeUserImageComponent,
     CollaboratordialogboxComponent,
+    QuestionanswerComponent,
   ],
   imports: [
     BrowserModule,

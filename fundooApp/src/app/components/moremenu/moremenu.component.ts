@@ -1,6 +1,10 @@
 import { Component, OnInit,Input,Output,EventEmitter} from '@angular/core';
 import {NotesService} from '../../services/notes.services/notes.service'
 import {NotelabelService} from '../../services/note.label.service/notelabel.service'
+import {DataService} from '../../services/data.services/data.service'
+
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-moremenu',
   templateUrl: './moremenu.component.html',
@@ -20,7 +24,7 @@ export class MoremenuComponent implements OnInit {
 
   @Output() messageEvent = new EventEmitter<string>();
   show:Boolean=true;
-  constructor(private notesService:NotesService,private notelabelService:NotelabelService) { }
+  constructor(private dataService:DataService,private router:Router,private notesService:NotesService,private notelabelService:NotelabelService) { }
   ngOnInit(){
     this.getLabels();
   }
@@ -95,4 +99,9 @@ export class MoremenuComponent implements OnInit {
     console.log("DDD")
     this.messageEvent.emit("create checklist");
   }
+  onAskQuestion(){
+    this.router.navigate(['/questionanswer/'+this.recordid]);
+    this.dataService.changeMessage(this.recordid)
+  }
+
 }

@@ -1,0 +1,36 @@
+<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+ -->
+<div fxFlex="80" fxLayout="column">
+    <div fxLayout="row">
+        <div fxLayout="column">
+            <span class="title">{{record.title}}</span>
+            <span class="description">{{record.description}}</span>
+        </div>
+        <div fxLayoutALign="center center">
+            <button class="closebutton" mat-button routerLink="/notes">Close</button>
+        </div>
+    </div>
+
+    <mat-divider></mat-divider>
+    <div *ngIf="questionPosted=='false'" fxLayout="row">
+        <textarea class="textt" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" placeholder="Type something" [(ngModel)]="questionAsked"></textarea>
+        <div>
+            <button mat-button (click)="afterAskingQues()">Ask</button>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div *ngIf="questionPosted=='true'">
+
+        <span class="title">Question asked</span> {{approvedQuesAns[0].message}}
+        <mat-divider></mat-divider>
+        <div *ngFor="let quesAns of approvedQuesAns">
+            <span>{{quesAns.message}}</span>
+            <textarea class="textt" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" placeholder="Type reply" [(ngModel)]="replySent"></textarea>
+            <button mat-button (click)="afterClickingReply(quesAns.id)">Reply</button>
+        </div>
+        <div>
+        </div>
+    </div>
+</div>

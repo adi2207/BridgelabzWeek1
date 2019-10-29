@@ -51,6 +51,7 @@ export class DisplaycardsComponent implements OnInit {
       isDeleted:this.isDeleted,
       isArchived:this.isArchived
     }
+    dialogConfig.panelClass='cardDialogBox';
 
     this.dialogRef = this.dialog.open(DialogboxComponent, dialogConfig);
 

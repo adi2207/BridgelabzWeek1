@@ -61,6 +61,7 @@ deleteNoteForever(data){
   return this.http.postCallWithToken(this.baseUrl+'notes/deleteForeverNotes',data)
 
 }
+
 getNotesByLabelName(data){
   return this.http.postCallWithToken(this.baseUrl+'notes/getNotesListByLabel/'+data.labelName,data);
 }

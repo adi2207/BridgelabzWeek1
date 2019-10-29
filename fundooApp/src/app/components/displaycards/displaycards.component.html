@@ -52,11 +52,14 @@
                 </button>
                 </div>
             </div>
+            <div *ngIf="record.questionAndAnswerNotes.length>0" fxLayoutGap="5px" fxLayout="column">
+                <mat-divider></mat-divider>
+                <span class="title">Question Asked</span>
+                <span class="description">{{record.questionAndAnswerNotes[0].message}}</span>
+            </div>
         </div>
         <div fxLayoutAlign="start start" fxFLex="100" class="icontray">
             <app-icontray [recordid]=record.id [isArchived]="isArchived" [isDeleted]="isDeleted" (messageEvent)="receiveUpdateMessage($event)"></app-icontray>
         </div>
     </mat-card>
 </div>
-<!-- (mouseover)="hover=true" (mouseleave)="hover=false" -->
-<!-- *ngIf="hover&&record.i=record.id" -->

@@ -113,8 +113,4 @@ export class CollaboratordialogboxComponent implements OnInit {
 
     });
   }
-  // receiveUpdateMessage($event) {
-  //   console.log("here",$event);
-  //   //this.dataService.changeMessage(this.updateMessage);
-  // }
 }

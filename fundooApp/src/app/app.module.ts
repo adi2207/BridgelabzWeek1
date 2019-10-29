@@ -41,6 +41,7 @@ import {MatNativeDateModule} from '@angular/material';
 import {CollaboratordialogboxComponent} from './components/collaboratordialogbox/collaboratordialogbox.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { QuestionanswerComponent } from './components/questionanswer/questionanswer.component';
+import { RemindersComponent } from './components/reminders/reminders.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { QuestionanswerComponent } from './components/questionanswer/questionans
     ChangeUserImageComponent,
     CollaboratordialogboxComponent,
     QuestionanswerComponent,
+    RemindersComponent,
   ],
   imports: [
     BrowserModule,

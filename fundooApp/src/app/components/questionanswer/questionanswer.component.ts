@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NotesService } from '../../services/notes.services/notes.service'
 import { DataService } from '../../services/data.services/data.service'
 import { QuestionanswerService } from '../../services/questionanswer.services/questionanswer.service'
+import { ShowHideDirective } from '@angular/flex-layout';
 
 @Component({
   selector: 'app-questionanswer',
@@ -20,6 +21,8 @@ export class QuestionanswerComponent implements OnInit {
   questionAndAnswers:any;
   approvedQuesAns=new Array;
   replySent:any;
+  show:boolean=false;
+  parentId:any;
   owner={
     firstName:localStorage.getItem('firstName'),
     lastName:localStorage.getItem('lastName')
@@ -38,6 +41,12 @@ export class QuestionanswerComponent implements OnInit {
     return this.notesService.getNoteDetails(data).subscribe((response: any) => {
       console.log(response);
       this.record=response.data.data[0];
+      if(response.data.data[0].questionAndAnswerNotes.length>0){
+        this.questionPosted="true";
+      }
+      else{
+        this.questionPosted="false";
+      }
       this.questionAndAnswers=this.record.questionAndAnswerNotes;
       for(var i=0;i<this.questionAndAnswers.length;i++){
         if(this.questionAndAnswers[i].isApproved==true){
@@ -59,16 +68,20 @@ export class QuestionanswerComponent implements OnInit {
       console.log(error);
     });
   }
-  afterClickingReply(parentId){
+  afterClickingReply(){
     let data={
       message: this.replySent, 
-      id: parentId
+      id: this.parentId
     }
     return this.questionanswerService.postReply(data).subscribe((response: any) => {
       console.log(response);
     }, (error) => {
       console.log(error);
     });
+  }
+  toggle(parentId){
+    this.show=true;
+    this.parentId=parentId
   }
 
 }

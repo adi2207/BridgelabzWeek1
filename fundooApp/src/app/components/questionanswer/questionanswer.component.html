@@ -12,23 +12,25 @@
             <button class="closebutton" mat-button routerLink="/notes">Close</button>
         </div>
     </div>
-
     <mat-divider></mat-divider>
     <div *ngIf="questionPosted=='false'" fxLayout="row">
         <textarea class="textt" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" placeholder="Type something" [(ngModel)]="questionAsked"></textarea>
-        <div>
-            <button mat-button (click)="afterAskingQues()">Ask</button>
-        </div>
+        <button mat-button (click)="afterAskingQues()">Ask</button>
+        <mat-divider></mat-divider>
     </div>
-    <mat-divider></mat-divider>
     <div *ngIf="questionPosted=='true'">
-
-        <span class="title">Question asked</span> {{approvedQuesAns[0].message}}
+        <div fxLayout="column">
+            <span class="title">Question asked</span>
+            <span class="description">{{approvedQuesAns[0].message}}</span>
+        </div>
         <mat-divider></mat-divider>
         <div *ngFor="let quesAns of approvedQuesAns">
             <span>{{quesAns.message}}</span>
+            <button mat-button (click)="toggle(quesAns.id)">Reply</button>
+        </div>
+        <div *ngIf="show">
             <textarea class="textt" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" placeholder="Type reply" [(ngModel)]="replySent"></textarea>
-            <button mat-button (click)="afterClickingReply(quesAns.id)">Reply</button>
+            <button mat-button (click)="afterClickingReply()">Reply</button>
         </div>
         <div>
         </div>

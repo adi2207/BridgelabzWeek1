@@ -13,6 +13,7 @@ import {SearchbarComponent} from './components/searchbar/searchbar.component'
 import { LabelsComponent } from './components/labels/labels.component';
 import {QuestionanswerComponent} from './components/questionanswer/questionanswer.component'
 import {DialogboxComponent} from './components/dialogbox/dialogbox.component'
+import {RemindersComponent} from './components/reminders/reminders.component'
 const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
@@ -27,6 +28,8 @@ const routes: Routes = [
     path:'archive',component:ArchiveComponent 
   },{
     path:'search',component:SearchbarComponent 
+  },{
+    path:'reminders',component:RemindersComponent 
   },{
     path:'labels/:labelname',component:LabelsComponent 
   },

@@ -45,3 +45,11 @@ body {
     height: 16px;
     width: 16px;
 }
+
+.cardDialogBox .mat-dialog-container {
+    padding: 0;
+    border-radius: 8px;
+    width: 600px;
+    min-width: 600px;
+    overflow-x: hidden;
+}

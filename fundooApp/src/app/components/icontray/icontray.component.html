@@ -1,4 +1,4 @@
-<div fxLayout="row" fxFlex="100">
+<div *ngIf="isDeleted=='false'" fxLayout="row" fxFlex="100">
     <app-remindmeicon [recordid]=recordid (messageEvent)="receiveUpdateMessage($event)"></app-remindmeicon>
     <app-collaboratoricon (messageEvent)="receiveUpdateMessage($event)" [recordid]=recordid></app-collaboratoricon>
     <app-colorsicon [recordid]=recordid (messageEvent)="receiveUpdateMessage($event)"></app-colorsicon>
@@ -7,6 +7,6 @@
     <app-moremenu [isNote]='isNote' [isDeleted]="isDeleted" [recordid]=recordid (messageEvent)="receiveUpdateMessage($event)"></app-moremenu>
 </div>
 
-<!-- <div *ngIf="isDeleted=='true'" fxLayout="row" fxFlex="100">
+<div *ngIf="isDeleted=='true'" fxLayout="row" fxFlex="100">
     <app-moremenu [isNote]='isNote' [isDeleted]="isDeleted" [recordid]=recordid (messageEvent)="receiveUpdateMessage($event)"></app-moremenu>
-</div> -->
+</div>

@@ -26,7 +26,8 @@
         <mat-divider></mat-divider>
         <div *ngFor="let quesAns of approvedQuesAns">
             <span>{{quesAns.message}}</span>
-            <button mat-button (click)="toggle(quesAns.id)">Reply</button>
+            <button mat-icon-button (click)="toggle(quesAns.id)"><img class="icons" src="../../../assets/images/reply.svg"></button>
+            <button mat-icon-button><img class="icons" src="../../../assets/images/thumb-up-gross-line-symbol.svg"></button>
         </div>
         <div *ngIf="show">
             <textarea class="textt" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" placeholder="Type reply" [(ngModel)]="replySent"></textarea>

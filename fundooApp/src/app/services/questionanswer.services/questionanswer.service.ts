@@ -24,5 +24,9 @@ export class QuestionanswerService {
   postReply(data){
     return this.http.postCallWithToken(this.baseUrl+'questionAndAnswerNotes/reply/'+data.id,data);
   }
+  likeDislike(parentId,data){
+    return this.http.postCallWithToken(this.baseUrl+'questionAndAnswerNotes/like/'+parentId,data);
+
+  }
 
 }

@@ -2,6 +2,7 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1/css/froala_style.min.css" rel="stylesheet" type="text/css" />
  -->
+
 <div fxFlex="80" fxLayout="column">
     <div fxLayout="row">
         <div fxLayout="column">
@@ -13,9 +14,13 @@
         </div>
     </div>
     <mat-divider></mat-divider>
-    <div *ngIf="questionPosted=='false'" fxLayout="row">
-        <textarea class="textt" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" placeholder="Type something" [(ngModel)]="questionAsked"></textarea>
-        <button mat-button (click)="afterAskingQues()">Ask</button>
+    <div *ngIf="questionPosted=='false'" fxLayout="column">
+        <span class="description">Ask a question</span>
+        <textarea [froalaEditor] class="textt" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" placeholder="Type something" [(ngModel)]="questionAsked"></textarea>
+        <div fxLayoutALign="center center">
+            <button mat-button (click)="afterAskingQues()">Ask</button>
+        </div>
+
         <mat-divider></mat-divider>
     </div>
     <div *ngIf="questionPosted=='true'">
@@ -27,10 +32,11 @@
         <div *ngFor="let quesAns of approvedQuesAns">
             <span>{{quesAns.message}}</span>
             <button mat-icon-button (click)="toggle(quesAns.id)"><img class="icons" src="../../../assets/images/reply.svg"></button>
-            <button mat-icon-button><img class="icons" src="../../../assets/images/thumb-up-gross-line-symbol.svg"></button>
+            <button mat-icon-button (click)="likeDislike(quesAns.id)"><img class="icons" src="../../../assets/images/thumb-up-gross-line-symbol.svg"></button>
+            <span>{{quesAns.like.length}}</span>
         </div>
         <div *ngIf="show">
-            <textarea class="textt" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" placeholder="Type reply" [(ngModel)]="replySent"></textarea>
+            <textarea [froalaEditor] class="textt" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" placeholder="Type reply" [(ngModel)]="replySent"></textarea>
             <button mat-button (click)="afterClickingReply()">Reply</button>
         </div>
         <div>

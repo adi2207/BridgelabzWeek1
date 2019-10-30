@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import {AppMaterialModule} from './app.material';
 import 'hammerjs';
 import { FlexLayoutModule } from "@angular/flex-layout";
@@ -85,7 +86,9 @@ import { RemindersComponent } from './components/reminders/reminders.component';
     HttpClientModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    FroalaEditorModule, 
+    FroalaViewModule
   ],
   providers: [UserService,AuthGuard,AuthService,MatDatepickerModule],
   bootstrap: [AppComponent],

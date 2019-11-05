@@ -24,6 +24,7 @@ export class QuestionanswerComponent implements OnInit {
   replySent: any;
   show: boolean = false;
   likeCount=new Array();
+  count=0;
   parentId: any;
   like: boolean;
   owner = {

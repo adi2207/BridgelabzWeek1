@@ -3,7 +3,7 @@
         <textarea class="textt" style="font-size:17px; font-weight:400;" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [formControl]="title" placeholder="Title"></textarea>
         <textarea class="textt" style="font-size:15px; " matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" placeholder="Take a note.." [formControl]="data"></textarea>
         <div fxFlex="100" fxLayout="row">
-            <app-icontray [isNote]="isNote" [isArchived]="isArchived" (messageEvent)="receiveUpdateMessage($event)"></app-icontray>
+            <app-icontray [takeNoteType]="takeNoteType" (messageEvent)="receiveUpdateMessage($event)"></app-icontray>
             <button mat-button (click)="onClose()" class="closebutton">Close</button>
         </div>
     </mat-card>

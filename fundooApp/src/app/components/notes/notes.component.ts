@@ -9,11 +9,10 @@ import {DataService} from '../../services/data.services/data.service'
 })
 export class NotesComponent implements OnInit {
   records=[];
-  isDeleted='false'
+  noteType='notes';
+  takeNoteType='notes'
   updateMessage:any;
   message:any;
-  isArchived='false';
-  isReminder="false";
   constructor(private notesService: NotesService,private dataService:DataService) {
   }
 

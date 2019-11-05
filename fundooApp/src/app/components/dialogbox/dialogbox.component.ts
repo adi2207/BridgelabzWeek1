@@ -28,8 +28,8 @@ export class DialogboxComponent implements OnInit {
       title:data.title,
       noteId:data.recordid,
       color:data.color,
-      isDeleted:data.isDeleted,
-      isArchived:data.isArchived
+      noteType:data.noteType
+
     }
   }
   
@@ -46,8 +46,9 @@ export class DialogboxComponent implements OnInit {
       'title':this.note.title,
       'description':this.note.description,
       'color':this.note.color,
-      'isDeleted':this.note.isDeleted,
-      'isArchived':this.note.isArchived
+      //'isDeleted':this.note.isDeleted,
+      //'isArchived':this.note.isArchived
+      //attend
     }
     this.dialogRef.close(this.note);
 

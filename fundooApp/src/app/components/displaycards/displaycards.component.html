@@ -59,7 +59,7 @@
             </div>
         </div>
         <div fxLayoutAlign="start start" fxFLex="100" class="icontray">
-            <app-icontray [recordid]=record.id [isArchived]="isArchived" [isDeleted]="isDeleted" (messageEvent)="receiveUpdateMessage($event)"></app-icontray>
+            <app-icontray [recordid]=record.id [noteType]="noteType" (messageEvent)="receiveUpdateMessage($event)"></app-icontray>
         </div>
     </mat-card>
 </div>

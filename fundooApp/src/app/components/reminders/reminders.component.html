@@ -1,1 +1,4 @@
-<app-displaycards [records]="records" [isArchived]="isArchived" [isDeleted]="isDeleted"></app-displaycards>
+<div class="content">
+    <app-takenote [takeNoteType]="takeNoteType" (messageEvent)="receiveUpdateMessage($event)"></app-takenote>
+    <app-displaycards [noteType]=noteType [records]="records"></app-displaycards>
+</div>

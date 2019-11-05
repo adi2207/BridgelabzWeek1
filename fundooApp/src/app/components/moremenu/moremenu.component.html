@@ -1,4 +1,4 @@
-<button *ngIf="isDeleted=='false'" mat-icon-button matTooltip="More" [matMenuTriggerFor]="menugeneral">
+<button *ngIf="noteType=='notes'||noteType=='reminders'||noteType=='labels'||noteType=='archived'" mat-icon-button matTooltip="More" [matMenuTriggerFor]="menugeneral">
         <img class="icon" src="../../../assets/images/menu.svg">
 </button>
 <mat-menu #menugeneral>
@@ -8,7 +8,7 @@
     <button mat-menu-item (click)="createChecklist()">Show checkboxes</button>
 </mat-menu>
 
-<button mat-icon-button *ngIf="isDeleted=='true'" matTooltip="More" [matMenuTriggerFor]="menutrash">
+<button mat-icon-button *ngIf="noteType=='deleted'" matTooltip="More" [matMenuTriggerFor]="menutrash">
   <mat-icon>more_vert</mat-icon>
 </button>
 <mat-menu #menutrash>
@@ -16,7 +16,7 @@
     <button mat-menu-item (click)="onRestoreNote()">Restore</button>
 </mat-menu>
 
-<button mat-icon-button *ngIf="isNote=='note'" matTooltip="More" [matMenuTriggerFor]="takenotemenu">
+<button mat-icon-button *ngIf="takeNoteType=='notes'||takeNoteType=='reminders'" matTooltip="More" [matMenuTriggerFor]="takenotemenu">
     <mat-icon>more_vert</mat-icon>
   </button>
 <mat-menu #takenotemenu>

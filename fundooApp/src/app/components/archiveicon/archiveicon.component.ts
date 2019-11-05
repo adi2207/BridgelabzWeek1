@@ -13,7 +13,7 @@ export class ArchiveiconComponent implements OnInit {
   records:any;
   labels:any;
   updateMessage:string="note updated"
-  @Input() isArchived:any;
+  @Input() noteType:any;
   @Input() recordid : any;
 
   

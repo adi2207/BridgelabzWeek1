@@ -13,24 +13,25 @@ export class TrashComponent implements OnInit {
   note:NoteInterface;
   updateMessage:string;
   message:string;
+  noteType='deleted';
+
   constructor(private notesService:NotesService,private dataService:DataService) { }
-  isDeleted='true';
   ngOnInit() {
     this.dataService.currentMessage.subscribe(message => this.message = message);
     this.getTrashNotes();
   }
-  filterToGetTrash(records)
-  {
-    var newRecords = records.filter(function(note) {
-      return (note.isDeleted==true);
-    })
-    console.log("note", newRecords);
-    return newRecords;
-  }
+  // filterToGetTrash(records)
+  // {
+  //   var newRecords = records.filter(function(note) {
+  //     return (note.isDeleted==true);
+  //   })
+  //   console.log("note", newRecords);
+  //   return newRecords;
+  // }
   getTrashNotes(){
     return this.notesService.getTrash().subscribe((response: any) => {
       this.records=response.data.data.reverse();
-      this.records=this.filterToGetTrash(this.records);
+      //this.records=this.filterToGetTrash(this.records);
       console.log(response)
     }, (error) => {
       console.log(error);

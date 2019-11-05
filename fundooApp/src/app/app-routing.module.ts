@@ -12,13 +12,14 @@ import {AuthGuard} from './services/authguard/auth.guard';
 import {SearchbarComponent} from './components/searchbar/searchbar.component' 
 import { LabelsComponent } from './components/labels/labels.component';
 import {QuestionanswerComponent} from './components/questionanswer/questionanswer.component'
-import {DialogboxComponent} from './components/dialogbox/dialogbox.component'
 import {RemindersComponent} from './components/reminders/reminders.component'
+import {CartComponent} from './components/cart/cart.component'
+
 const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
   {path:'forgot',component:ForgotComponent},
-  {path:'dialogbox',component:DialogboxComponent },
+  {path:'cart',component:CartComponent},
   {path:'',component:DashboardComponent , canActivate: [AuthGuard], children:
   [{
     path:'notes',component:NotesComponent 

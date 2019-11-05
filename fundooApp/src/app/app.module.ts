@@ -43,6 +43,7 @@ import {CollaboratordialogboxComponent} from './components/collaboratordialogbox
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { QuestionanswerComponent } from './components/questionanswer/questionanswer.component';
 import { RemindersComponent } from './components/reminders/reminders.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { RemindersComponent } from './components/reminders/reminders.component';
     CollaboratordialogboxComponent,
     QuestionanswerComponent,
     RemindersComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,

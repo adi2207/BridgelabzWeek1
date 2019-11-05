@@ -14,7 +14,7 @@ export class LabelsComponent implements OnInit {
   labelname: string;
   message: string;
   records:any;
-  isDeleted="false";
+  noteType="labels";
   ngOnInit() {
     this.dataService.currentMessage.subscribe(message => {
       this.labelname=message;

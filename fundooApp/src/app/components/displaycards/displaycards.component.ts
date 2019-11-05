@@ -19,8 +19,8 @@ export class DisplaycardsComponent implements OnInit {
 
   @Input() records:any;
   @Input() trashNotes:any;
-  @Input() isDeleted:any;
-  @Input() isArchived:any;
+  @Input() noteType:any;
+
   displayType:String="grid";
 
 
@@ -48,8 +48,7 @@ export class DisplaycardsComponent implements OnInit {
       description: record.description,
       recordid:record.id,
       color:record.color,
-      isDeleted:this.isDeleted,
-      isArchived:this.isArchived
+      noteType:this.noteType
     }
     dialogConfig.panelClass='cardDialogBox';
 

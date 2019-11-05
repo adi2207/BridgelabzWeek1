@@ -12,8 +12,7 @@ export class ArchiveComponent implements OnInit {
   records:any;
   updateMessage:any;
   message:any;
-  isDeleted='false';
-  isArchived='true';
+  noteType='archived';
   
   constructor(private notesService : NotesService,private dataService:DataService) { }
 
@@ -24,7 +23,7 @@ export class ArchiveComponent implements OnInit {
   filterToGetArchived(records)
   {
     var newRecords = records.filter(function(note) {
-      return (note.isDeleted==false&&note.isArchived==true);
+      return (note.isDeleted==false);
     })
     return newRecords;
   }

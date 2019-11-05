@@ -1,0 +1,24 @@
+.headercontainer {
+    background-color: white;
+    width: 100%;
+    height: 64px;
+    padding: 8px 8px;
+    .headerr {
+        height: 48px;
+        min-width: 230px;
+        padding-right: 30px;
+        color: #5f6368;
+    }
+    .logoimg {
+        height: 40px;
+        width: 40px;
+        margin-bottom: 4px;
+        padding-right: 4px;
+        font-size: 22px;
+    }
+    .appname {
+        font-family: 'Product Sans', Arial, sans-serif;
+        padding-left: 4px;
+        color: #5f6368;
+    }
+}

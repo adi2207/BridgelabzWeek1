@@ -12,8 +12,8 @@ import { Router } from '@angular/router';
 })
 export class MoremenuComponent implements OnInit {
 
-  @Input() isDeleted:any;
-  @Input() isNote:any;
+  @Input() noteType:any;
+  @Input() takeNoteType:any;
 
   note: any;
   records:any;

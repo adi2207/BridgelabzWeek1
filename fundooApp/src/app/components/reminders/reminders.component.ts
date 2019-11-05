@@ -9,10 +9,10 @@ import { NotesService } from '../../services/notes.services/notes.service'
 export class RemindersComponent implements OnInit {
 
   records:any;
-  isDeleted='false'
+  noteType='reminders'
+  takeNoteType='reminders'
   updateMessage:any;
   message:any;
-  isArchived='false';
   constructor(private notesService:NotesService ) { }
 
   ngOnInit() {

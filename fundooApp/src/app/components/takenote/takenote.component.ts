@@ -11,9 +11,9 @@ import { Title } from '@angular/platform-browser';
 })
 export class TakenoteComponent implements OnInit {
 
-  @Input() isReminder:any;
-  isNote = 'note';
-  isArchived='false';
+  @Input () takeNoteType:any;
+  @Input () noteType:any;
+
   data = new FormControl();
   title = new FormControl();
   note: any;
@@ -30,7 +30,6 @@ export class TakenoteComponent implements OnInit {
   }
   onClose() {
     this.show = !this.show;
-    if(this.isReminder=="false"){
       this.note = {
         title: this.title.value,
         description: this.data.value,
@@ -45,24 +44,6 @@ export class TakenoteComponent implements OnInit {
         this.messageEvent.emit("Note could not be created")
 
       });
-    }
-    else if(this.isReminder=="true"){
-      this.note = {
-        title: this.title.value,
-        description: this.data.value,
-      }
-  
-      this.notesService.addReminder(this.note).subscribe((response) => {
-        console.log(response);
-        this.messageEvent.emit("New reminder created")
-        
-        this.updateMessage = null;
-      }, (error) => {
-        console.log(error);
-        this.messageEvent.emit("Reminder could not be created")
-
-      });
-    }
   
   }
   receiveUpdateMessage($event) {

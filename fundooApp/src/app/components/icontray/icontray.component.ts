@@ -9,10 +9,8 @@ export class IcontrayComponent implements OnInit {
 
   updateMessage:string;
   @Input () recordid:any;
-  @Input () isNote:any;
-  @Input() isDeleted:any;
-  @Input() isArchived:any;
-
+  @Input() noteType:any;
+  @Input() takeNoteType:any;
   @Output() messageEvent = new EventEmitter<string>();
 
   constructor() { }

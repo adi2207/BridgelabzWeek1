@@ -44,6 +44,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { QuestionanswerComponent } from './components/questionanswer/questionanswer.component';
 import { RemindersComponent } from './components/reminders/reminders.component';
 import { CartComponent } from './components/cart/cart.component';
+import { MycartComponent } from './components/mycart/mycart.component';
+//import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 
 @NgModule({
   declarations: [
@@ -76,6 +78,7 @@ import { CartComponent } from './components/cart/cart.component';
     QuestionanswerComponent,
     RemindersComponent,
     CartComponent,
+    MycartComponent,
   ],
   imports: [
     BrowserModule,
@@ -92,7 +95,11 @@ import { CartComponent } from './components/cart/cart.component';
     FroalaEditorModule, 
     FroalaViewModule
   ],
-  providers: [UserService,AuthGuard,AuthService,MatDatepickerModule],
+ 
+  providers: [UserService,AuthGuard,AuthService,MatDatepickerModule
+    //, 
+    //{provide: STEPPER_GLOBAL_OPTIONS,useValue: { showError: true }}
+  ],
   bootstrap: [AppComponent],
   entryComponents: [DialogboxComponent,LabeldialogboxComponent,ChangeUserImageComponent,CollaboratordialogboxComponent]
 })

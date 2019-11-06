@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.services/user.service';
+import { DataService } from '../../services/data.services/data.service';
+import { Router } from '@angular/router';
+
 import { RegisterInterface } from '../../interfaces/register';
+import { routerNgProbeToken } from '@angular/router/src/router_module';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +20,16 @@ export class RegisterComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required, Validators.minLength(6)]);
   confirmPassword = new FormControl('', [Validators.required, Validators.minLength(6), Validators.pattern(this.password.value)]);
+  response:any;
+  typeOfService:any;
 
+  constructor(private userService: UserService,private dataService:DataService,private router:Router) { }
+  ngOnInit() {
+    this.dataService.currentMessage.subscribe((typeOfService)=>{
+      this.typeOfService = typeOfService;
+    });
+
+  }
   getEmailInvalidMessage() {
     if (this.email.hasError("required")) {
       return "Email is required"
@@ -56,27 +69,22 @@ export class RegisterComponent implements OnInit {
     }
 
   }
-  //constructor(private error : ErrorComponent) { }
-  // errorEmailCall(){
-  //   this.error.getEmailInvalidMessage(this.email);
-  // }
-  constructor(private userService: UserService) { }
-  ngOnInit() {
-  }
-  response:any;
 
   onSignUp() {
     this.user = {
       firstName: this.firstName.value,
       lastName: this.lastName.value,
-      service: "advance",
+      service: this.typeOfService,
       email: this.email.value,
       password: this.password.value
     }
     this.userService.register(this.user).subscribe((response)=>{
       console.log(response);
+      this.dataService.changeMessage("User registered successfully");
+      //this.router.navigate(["/login"]);
     },(error)=>{
       console.log(error);
+      this.dataService.changeMessage("User could not be registered");
     });
    
   }

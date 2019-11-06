@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { DataService } from 'src/app/services/data.services/data.service';
 
 @Component({
   selector: 'app-cart',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router,private dataService:DataService) { }
 
   ngOnInit() {
+  }
+  onAddToCart(typeOfService){
+    this.router.navigate(["/register"]);
+    this.dataService.changeMessage(typeOfService)
   }
 
 }

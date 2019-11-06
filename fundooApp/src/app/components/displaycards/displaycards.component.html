@@ -1,4 +1,4 @@
-<!-- <div *ngIf="displayType=='list' " fxLayout="column" class="listcardcontainer">
+<div *ngIf="displayType=='list' " fxLayout="column" class="listcardcontainer">
     <mat-card class="displaycardlist" *ngFor="let record of records" [ngStyle]="{background:record.color}">
         <div (click)="openDialog(this.record)">
             <p class="title">{{record.title}}</p>
@@ -10,21 +10,31 @@
                         <button mat-icon-button class="hideicon" (click)="onDeleteLabelFromNote(noteLabel.id,record.id)"><img class="cross" src="../../../assets/images/close-button.svg"></button>
                     </mat-chip>
                 </mat-chip-list>
-                <div class="chiplist" fxLayoutGap="5px">
-                        <mat-chip-list>
-                            <mat-chip class="chip" *ngFor="let noteLabel of record.noteLabels" [ngStyle]="{background:record.color}">
-                                {{noteLabel.label}}
-                                <button mat-icon-button class="hideicon" (click)="onDeleteLabelFromNote(noteLabel.id,record.id)"><img class="cross" src="../../../assets/images/close-button.svg"></button>
-                            </mat-chip>
-                        </mat-chip-list>
-                    </div>
+            </div>
+            <div class="chiplist" fxLayoutGap="5px">
+                <mat-chip-list>
+                    <mat-chip class="chip" *ngFor="let remindme of record.reminder" [ngStyle]="{background:record.color}">
+                        {{remindme}}
+                        <button mat-icon-button class="hideicon" (click)="onDeleteReminderFromNote(record.reminder,record.id)"><img class="cross" src="../../../assets/images/close-button.svg"></button>
+                    </mat-chip>
+                </mat-chip-list>
+            </div>
+            <div class="chiplist" fxLayoutGap="5px" fxLayout="row wrap">
+                <div *ngFor="let collaborator of record.collaborators">
+                    <mat-chip class="profilepic" [ngStyle]="{background:record.color}" matTooltip="{{collaborator.firstName+' '+collaborator.lastName}}">AB</mat-chip>
+                </div>
+            </div>
+            <div *ngIf="record.questionAndAnswerNotes.length>0" fxLayoutGap="5px" fxLayout="column">
+                <mat-divider></mat-divider>
+                <span class="title">Question Asked</span>
+                <span class="description" [innerHTML]="record.questionAndAnswerNotes[0].message"></span>
             </div>
         </div>
         <div fxLayoutAlign="start start" fxFLex="100" class="icontray">
-            <app-icontray [recordid]=record.id [isArchived]="isArchived" [isDeleted]="isDeleted" (messageEvent)="receiveUpdateMessage($event)"></app-icontray>
+            <app-icontray [recordid]=record.id [noteType]="noteType" (messageEvent)="receiveUpdateMessage($event)"></app-icontray>
         </div>
     </mat-card>
-</div> -->
+</div>
 <div *ngIf="displayType=='grid' " fxLayout="row wrap" class="cardcontainer" fxLayoutAlign="center start">
     <mat-card class="displaycard" *ngFor="let record of records" [ngStyle]="{background:record.color}">
         <div (click)="openDialog(this.record)">
@@ -46,16 +56,15 @@
                     </mat-chip>
                 </mat-chip-list>
             </div>
-            <div class="chiplist" fxLayoutGap="5px" fxLayout="row">
+            <div class="chiplist" fxLayoutGap="5px" fxLayout="row wrap">
                 <div *ngFor="let collaborator of record.collaborators">
-                    <button mat-mini-fab class="chip" matTooltip="{{collaborator.firstName+' '+collaborator.lastName}}">
-                </button>
+                    <mat-chip class="profilepic" [ngStyle]="{background:record.color}" matTooltip="{{collaborator.firstName+' '+collaborator.lastName}}">{{collaborator.firstName.charAt(0)+collaborator.lastName.charAt(0)}}</mat-chip>
                 </div>
             </div>
             <div *ngIf="record.questionAndAnswerNotes.length>0" fxLayoutGap="5px" fxLayout="column">
                 <mat-divider></mat-divider>
                 <span class="title">Question Asked</span>
-                <span class="description">{{record.questionAndAnswerNotes[0].message}}</span>
+                <span class="description" [innerHTML]="record.questionAndAnswerNotes[0].message"></span>
             </div>
         </div>
         <div fxLayoutAlign="start start" fxFLex="100" class="icontray">

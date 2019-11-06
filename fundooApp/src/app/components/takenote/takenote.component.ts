@@ -1,9 +1,6 @@
 import { Component, OnInit, Output, EventEmitter,Input } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { NotesService } from '../../services/notes.services/notes.service'
-import { NoteInterface } from '../../interfaces/note'
-import { DataService } from 'src/app/services/data.services/data.service';
-import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-takenote',
   templateUrl: './takenote.component.html',
@@ -19,7 +16,7 @@ export class TakenoteComponent implements OnInit {
   note: any;
   options: any;
   updateMessage: string;
-  constructor(private notesService: NotesService, private dataService: DataService) { }
+  constructor(private notesService: NotesService) { }
   show: boolean = true;
   @Output() messageEvent = new EventEmitter<string>();
 

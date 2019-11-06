@@ -21,7 +21,7 @@
             </mat-card>
         </span>
             <button mat-icon-button>
-            <img class="headerbuttons" src="../../../assets/images/icons8-settings.svg">
+            <img class="headerbuttons" routerLink="/mycart" src="../../../assets/images/shopping-cart.svg">
         </button>
             <button *ngIf="!grid" (click)="togglegrid()" mat-icon-button matTooltip="List View">
             <img (click)="onListDisplay()" class="headerbuttons" src="../../../assets/images/icons8-view-headline-32.png">
@@ -45,7 +45,7 @@
                         <button class="accountbutton" (click)="onSignOut()">Sign Out</button>
                     </span>
                         <span fxFlex="50">
-                        <button class="accountbutton" routerLink="/register">Add account</button>
+                        <button class="accountbutton" routerLink="/cart">Add account</button>
 
                     </span>
                     </div>

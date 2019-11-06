@@ -14,6 +14,7 @@ import { LabelsComponent } from './components/labels/labels.component';
 import {QuestionanswerComponent} from './components/questionanswer/questionanswer.component'
 import {RemindersComponent} from './components/reminders/reminders.component'
 import {CartComponent} from './components/cart/cart.component'
+import { MycartComponent } from './components/mycart/mycart.component';
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
@@ -23,7 +24,11 @@ const routes: Routes = [
   {path:'',component:DashboardComponent , canActivate: [AuthGuard], children:
   [{
     path:'notes',component:NotesComponent 
-  },{
+  },
+  {
+    path:'mycart',component:MycartComponent 
+  },
+  {
     path:'trash',component:TrashComponent 
   },{
     path:'archive',component:ArchiveComponent 

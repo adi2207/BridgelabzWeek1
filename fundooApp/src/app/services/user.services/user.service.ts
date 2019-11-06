@@ -26,7 +26,7 @@ export class UserService {
     return this.http.postCall(this.baseUrl+'user/login',data);
   }
   register(data){
-    return this.http.postCall(this.baseUrl+'user/userSignUp',this.getEncodedData(data));
+    return this.http.postCall(this.baseUrl+'user/userSignUp',data);
   }
   resetPassword(data){
     return this.http.postCallWithToken(this.baseUrl+'user/reset-password',data);

@@ -1,19 +1,31 @@
-<mat-toolbar class="headercontainer">
-    <span class="headerr" fxLayout="row" fxLayoutAlign="start center">
-  <img class="logoimg" src="../../../assets/images/keep_app_logo.png">
-  <span class="appname">fundooApp</span>
-    </span>
-</mat-toolbar>
-<span class="appname">Choose a service to register</span>
-<mat-card fxLayout="column">
-    <h3>price:$99 per month</h3>
-    <span class="appname">advance</span>
-    <span class="appname">$99/month</span>
-    <span class="appname">Ability to add title, description, images, labels, checklist and colors</span>
-</mat-card>
-<mat-card fxLayout="column">
-    <h3>price:$49 per month</h3>
-    <span class="appname">basic</span>
-    <span class="appname">$49/month</span>
-    <span class="appname">Ability to add only title and description</span>
-</mat-card>
+<div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px">
+    <mat-toolbar class="headercontainer">
+        <span class="header" fxLayout="row" fxLayoutAlign="start center">
+              <img class="logoimg" src="../../../assets/images/keep_app_logo.png">
+              <span class="appname">fundooApp</span>
+        </span>
+
+    </mat-toolbar>
+    <mat-divider></mat-divider>
+
+    <span class="heading">Choose a service to register</span>
+    <div fxLayout="row" fxLayoutGap="20px">
+        <mat-card class="cardholder" fxLayout="column">
+            <span class="title">price:$99 per month</span>
+            <span class="typeofservice">advance</span>
+            <span class="appname">$99/month</span>
+            <span class="appname">Ability to add title, description, images, labels, checklist and colors</span>
+            <button class="button" mat-button (click)="onAddToCart('advance')">Add to Cart</button>
+
+        </mat-card>
+        <mat-card class="cardholder" fxLayout="column">
+            <span class="title">price:$49 per month</span>
+            <span class="typeofservice">basic</span>
+            <span class="appname">$49/month</span>
+            <span class="appname">Ability to add only title and description</span>
+            <button class="button" mat-button (click)="onAddToCart('basic')">Add to Cart</button>
+        </mat-card>
+    </div>
+    <button mat-button routerLink="/login">Sign in instead</button>
+
+</div>

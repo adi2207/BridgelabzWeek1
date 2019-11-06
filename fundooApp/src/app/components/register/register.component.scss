@@ -1,37 +1,88 @@
 @import '../../styles/constants.scss';
-
-body{
+body {
     @include default_body;
 }
-html{
+
+html {
     height: 100%;
 }
+
 .background-image {
     @include background;
-  }
-
-.formcontainer{
-    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-
 }
-.subheader{
+
+.form {
+    margin-bottom: 50px;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.subheader {
     @include heading;
 }
-.logoimage{
-    border-radius: 15%;  
+
+.mat-subheader {
+    margin: 5px;
 }
-.buttoncontainer{
+
+.cornerbutton {
+    margin: 30px;
+}
+
+.logoimage {
+    border-radius: 15%;
+    height: 40px;
+    width: 40px;
+}
+
+.buttoncontainer {
     flex-wrap: wrap;
-    width:70%;
-}
-.mat-form-field{
-    width:70%;
-}
-.namecontainer{
-    width:70%;
+    width: 70%;
+    margin: 20px;
 }
 
-.passwordcontainer{
-    width:70%;
+.mat-form-field {
+    width: 70%;
 }
 
+.namecontainer {
+    margin-top: 20px;
+    width: 70%;
+}
+
+.passwordcontainer {
+    width: 70%;
+}
+
+.heading {
+    font-family: 'Product Sans', Arial, sans-serif;
+    color: #202124;
+    font-size: 30px;
+}
+
+.title {
+    font-family: 'Product Sans', Arial, sans-serif;
+    color: #202124;
+    font-size: 20px;
+}
+
+.typeofservice {
+    font-family: 'Product Sans', Arial, sans-serif;
+    color: blue;
+}
+
+.cardholder {
+    height: 170px;
+    max-width: 300px;
+}
+
+.selected {
+    height: 15px;
+    max-width: 300px;
+    background-color: #f5ba14;
+}
+
+.unselected {
+    height: 15px;
+    max-width: 300px;
+    background-color: grey;
+}

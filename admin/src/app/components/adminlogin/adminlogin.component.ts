@@ -50,12 +50,13 @@ export class AdminloginComponent implements OnInit {
       }
       this.options = {
         data: this.data,
-        purpose: 'adminLogin'
+        purpose: 'user/adminLogin'
       }
       $.post(environment.baseUrl + this.options.purpose, this.options.data, (response, error) => {
         if (response) {
           console.log(response);
           this.authService.sendToken(response.id);
+          localStorage.setItem('id',response.id);
           this.router.navigate(["/getUsers"]);        
         }
         else

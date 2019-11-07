@@ -26,18 +26,18 @@
     <div *ngIf="questionPosted=='true'">
         <div fxLayout="column">
             <span class="title">Question asked</span>
-            <span class="description">{{approvedQuesAns[0].message}}</span>
+            <div class="description" innerHTML="{{approvedQuesAns[0].message}}"></div>
         </div>
         <mat-divider></mat-divider>
-        <div *ngFor="let quesAns of approvedQuesAns">
-            <span>{{quesAns.message}}</span>
+        <div *ngFor="let quesAns of approvedQuesAns" fxLayout="row">
+            <div innerHTML="{{quesAns.message}}"></div>
             <button mat-icon-button (click)="toggle(quesAns.id)"><img class="icons" src="../../../assets/images/reply.svg"></button>
             <button mat-icon-button (click)="likeDislike(quesAns.id)"><img class="icons" src="../../../assets/images/thumb-up-gross-line-symbol.svg"></button>
-            <div *ngFor="let likes of quesAns.like">
+            <!-- <div *ngFor="let likes of quesAns.like">
                 <div *ngIf="likes.like==true">
                     {{count+1}}
                 </div>
-            </div>
+            </div> -->
         </div>
         <div *ngIf="show">
             <textarea [froalaEditor] class="textt" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" placeholder="Type reply" [(ngModel)]="replySent"></textarea>

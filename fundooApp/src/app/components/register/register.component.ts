@@ -3,9 +3,9 @@ import { FormControl, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.services/user.service';
 import { DataService } from '../../services/data.services/data.service';
 import { Router } from '@angular/router';
-
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {ProductcartService} from '../../services/productcart/productcart.service'
 import { RegisterInterface } from '../../interfaces/register';
-import { routerNgProbeToken } from '@angular/router/src/router_module';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +13,7 @@ import { routerNgProbeToken } from '@angular/router/src/router_module';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  user: RegisterInterface;
+  user: any;
 
   firstName = new FormControl('', [Validators.required]);
   lastName = new FormControl('', [Validators.required]);
@@ -22,13 +22,21 @@ export class RegisterComponent implements OnInit {
   confirmPassword = new FormControl('', [Validators.required, Validators.minLength(6), Validators.pattern(this.password.value)]);
   response:any;
   typeOfService:any;
+  message:any;
+  productId:any;
+  generatedCartId:any;
 
-  constructor(private userService: UserService,private dataService:DataService,private router:Router) { }
-  ngOnInit() {
-    this.dataService.currentMessage.subscribe((typeOfService)=>{
+  constructor(private productcartService:ProductcartService,private userService: UserService,private dataService:DataService,private router:Router,private _snackBar:MatSnackBar) { }
+  ngOnInit(){
+    this.dataService.currentService.subscribe((typeOfService)=>{
       this.typeOfService = typeOfService;
+      if(typeOfService==''){
+        this.router.navigate(["/cart"]);
+      }
     });
-
+    this.dataService.cartId.subscribe((generatedCartId)=>{
+      this.generatedCartId = generatedCartId;
+    });
   }
   getEmailInvalidMessage() {
     if (this.email.hasError("required")) {
@@ -69,23 +77,29 @@ export class RegisterComponent implements OnInit {
     }
 
   }
+  openSnackBar(message){
+    this._snackBar.open(message, "Dismiss",{
+      duration: 2000,
+    });
+  }
 
+ 
   onSignUp() {
     this.user = {
       firstName: this.firstName.value,
       lastName: this.lastName.value,
       service: this.typeOfService,
       email: this.email.value,
-      password: this.password.value
+      password: this.password.value,
+      cartId:this.generatedCartId
     }
     this.userService.register(this.user).subscribe((response)=>{
       console.log(response);
-      this.dataService.changeMessage("User registered successfully");
+      this.openSnackBar("User registered successfully")
       //this.router.navigate(["/login"]);
     },(error)=>{
       console.log(error);
-      this.dataService.changeMessage("User could not be registered");
+      this.openSnackBar("User could  not be registered")
     });
-   
   }
 }

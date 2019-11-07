@@ -16,4 +16,7 @@ export class ProductcartService {
   getCartDetails(){
     return this.http.getCallWithToken(this.baseUrl+'productcarts/myCart');
   }
+  addToCart(data){
+    return this.http.postCallWithToken(this.baseUrl+'productcarts/addToCart',data);
+  }
 }

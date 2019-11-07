@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top" style="width:100%">
+    <a class="navbar-brand" href="#">fundooAdmin</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav  mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/unapprovedAnswers">Unapproved Answers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/getUsers">User List</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Orders</a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav justify-content-right">
+            <li class="nav-item">
+                <a class="nav-link" (click)="onLogout()">Log Out</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<router-outlet></router-outlet>

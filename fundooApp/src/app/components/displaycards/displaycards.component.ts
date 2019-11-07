@@ -21,9 +21,10 @@ export class DisplaycardsComponent implements OnInit {
   @Input() trashNotes:any;
   @Input() noteType:any;
 
+  questionAsked:string='false';
   displayType:String="grid";
 
-
+  
   constructor(private notesService: NotesService, public dialog: MatDialog, private dataService: DataService) { }
 
   ngOnInit() {
@@ -34,6 +35,7 @@ export class DisplaycardsComponent implements OnInit {
         this.displayType=message;
       }
     });
+    console.log("in diplaycards",this.questionAsked)
   }
 
   private dialogRef;

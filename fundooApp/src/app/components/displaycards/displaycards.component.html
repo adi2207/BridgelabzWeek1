@@ -65,10 +65,13 @@
                 <mat-divider></mat-divider>
                 <span class="title">Question Asked</span>
                 <span class="description" [innerHTML]="record.questionAndAnswerNotes[0].message"></span>
+                <!-- <script type="text/javascript">
+                    this.questionAsked = "true";
+                </script> -->
             </div>
         </div>
         <div fxLayoutAlign="start start" fxFLex="100" class="icontray">
-            <app-icontray [recordid]=record.id [noteType]="noteType" (messageEvent)="receiveUpdateMessage($event)"></app-icontray>
+            <app-icontray [questionAsked]="questionAsked" [recordid]=record.id [noteType]="noteType" (messageEvent)="receiveUpdateMessage($event)"></app-icontray>
         </div>
     </mat-card>
 </div>

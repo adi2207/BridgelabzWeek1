@@ -15,7 +15,7 @@ export class GetusersComponent implements OnInit {
   ngOnInit() {
     $(function () {
       this.options = {
-        purpose: 'getAdminUserList'
+        purpose: 'user/getAdminUserList'
       }
       $.get(environment.baseUrl + this.options.purpose, (response, error) => {
         if (response) {
@@ -26,7 +26,8 @@ export class GetusersComponent implements OnInit {
           }).length);
           $('#advanceCount').html(this.records.filter(function (i) {
             return i.service == "advance" || i.service == "Advance"
-          }).length); var row = "";
+          }).length);
+          var row = "";
           $.each(this.records, function (key, value) {
             row += "<tr>";
             row += "<td>" + key + "</td>";
@@ -50,9 +51,6 @@ export class GetusersComponent implements OnInit {
           console.log(error);
       });
     });
-  }
-  onLogout() {
-    this.authService.logout();
   }
   getAdvanceUserList() {
     $(function () {

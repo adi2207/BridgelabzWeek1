@@ -1,0 +1,16 @@
+<table class="table table-hover table-responsive-sm" style="width:100%; margin-top:100px">
+    <thead class="thead-light">
+        <tr>
+            <th>Unapproved Answer</th>
+            <th>Approve</th>
+            <th>Reject</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let record of records">
+            <td innerHTML="{{record.message}}"></td>
+            <td><button class="btn btn-success" (click)="onApprove(record.id)">Approve</button></td>
+            <td><button class="btn btn-danger" (click)="onReject(record.id)">Reject</button></td>
+        </tr>
+    </tbody>
+</table>

@@ -21,12 +21,16 @@ export class MoremenuComponent implements OnInit {
   updateMessage:string="note updated"
   x:any;
   @Input() recordid : any;
+  @Input() questionAsked : any;
+
 
   @Output() messageEvent = new EventEmitter<string>();
   show:Boolean=true;
   constructor(private dataService:DataService,private router:Router,private notesService:NotesService,private notelabelService:NotelabelService) { }
   ngOnInit(){
     this.getLabels();
+    console.log("in ",this.questionAsked)
+
   }
 
   trashNote(){

@@ -9,6 +9,8 @@ export class IcontrayComponent implements OnInit {
 
   updateMessage:string;
   @Input () recordid:any;
+  @Input () questionAsked:any;
+
   @Input() noteType:any;
   @Input() takeNoteType:any;
   @Output() messageEvent = new EventEmitter<string>();
@@ -16,6 +18,8 @@ export class IcontrayComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log("in icontyraycards",this.questionAsked)
+
   }
   receiveUpdateMessage($event) {
     this.updateMessage=$event;

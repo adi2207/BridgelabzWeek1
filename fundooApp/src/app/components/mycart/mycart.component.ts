@@ -17,10 +17,14 @@ export class MycartComponent implements OnInit {
   firstForm: FormGroup;
   secondForm: FormGroup;
   cartId:any;
+  typeOfService:any;
 
   constructor(private _formBuilder: FormBuilder,private productCartService:ProductcartService,private dataService:DataService) {}
  
   ngOnInit() {
+    this.dataService.currentService.subscribe((typeOfService)=>{
+      this.typeOfService = typeOfService;
+    });
     this.firstForm = this._formBuilder.group({});
     this.secondForm = this._formBuilder.group({
       addressControl: ['', Validators.required]
@@ -42,11 +46,11 @@ export class MycartComponent implements OnInit {
     }
     return this.productCartService.placeOrder(data).subscribe((response: any) => {
       console.log(response);
-      this.dataService.changeMessage("Order placed successfully");
+      //this.dataService.changeMessage("Order placed successfully");
 
     }, (error) => {
       console.log(error);
-      this.dataService.changeMessage("Could not place the order");
+      //this.dataService.changeMessage("Could not place the order");
 
     });
   }

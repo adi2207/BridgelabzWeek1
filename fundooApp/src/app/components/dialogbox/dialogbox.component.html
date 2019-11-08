@@ -1,9 +1,31 @@
 <div mat-dialog-container [ngStyle]="{background:color}">
     <div mat-dialog-content fxLayout="column" fxLayoutGap="10px" [ngStyle]="{background:color}">
-        <textarea [ngStyle]="{background:color}" class="textt" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [formControl]="title" value="{{note.title}}"></textarea>
-        <textarea [ngStyle]="{background:color}" class="textt" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [formControl]="data" value="{{note.description}}"></textarea>
+        <textarea [ngStyle]="{background:color}" class="textt" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [formControl]="title" value="{{titlee}}"></textarea>
+        <textarea [ngStyle]="{background:color}" class="textt" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [formControl]="data" value="{{description}}"></textarea>
+        <!-- <div class="chiplist" fxLayoutGap="5px">
+            <mat-chip-list>
+                <mat-chip class="chip" *ngFor="let noteLabel of record.noteLabels" [ngStyle]="{background:record.color}">
+                    {{noteLabel.label}}
+                    <button mat-icon-button class="hideicon" (click)="onDeleteLabelFromNote(noteLabel.id,record.id)"><img class="cross" src="../../../assets/images/close-button.svg"></button>
+                </mat-chip>
+            </mat-chip-list>
+        </div> -->
+        <div class="chiplist" fxLayoutGap="5px">
+            <mat-chip-list>
+                <mat-chip *ngIf="reminder!=''" class="chip" [ngStyle]="{background:color}">
+                    {{reminder}}
+                    <!-- <button mat-icon-button class="hideicon" (click)="onDeleteReminderFromNote(record.reminder,record.id)"><img class="cross" src="../../../assets/images/close-button.svg"></button> -->
+                </mat-chip>
+            </mat-chip-list>
+        </div>
+        <div class="chiplist" fxLayoutGap="5px" fxLayout="row wrap">
+            <div *ngFor="let collaborator of collaborators">
+                <mat-chip class="profilepic" [ngStyle]="{background:color}" matTooltip="{{collaborator.firstName+' '+collaborator.lastName}}">{{collaborator.firstName.charAt(0)+collaborator.lastName.charAt(0)}}</mat-chip>
+            </div>
+        </div>
         <div class="buttonbox" fxFlex="100" fxLayout="row" fxLayoutAlign="start center">
-            <app-icontray [noteType]="note.noteType" [recordid]=note.noteId (messageEvent)="receiveUpdateMessage($event)" fxLayoutAlign="space-around start"></app-icontray>
+            <app-icontray [noteType]="noteType" [recordid]=noteId (messageEvent)="receiveUpdateMessage($event)" (colorEvent)="receiveColorUpdateMessage($event)" (collaboratorEvent)="receiveCollaboratorUpdateMessage($event)" (reminderEvent)="receiveReminderUpdateMessage($event)"
+                fxLayoutAlign="space-around start"></app-icontray>
             <button mat-button (click)="save()">Close</button>
         </div>
     </div>

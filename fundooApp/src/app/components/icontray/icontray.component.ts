@@ -14,16 +14,27 @@ export class IcontrayComponent implements OnInit {
   @Input() noteType:any;
   @Input() takeNoteType:any;
   @Output() messageEvent = new EventEmitter<string>();
+  @Output() colorEvent = new EventEmitter<string>();
+  @Output() reminderEvent = new EventEmitter<string>();
+  @Output() collaboratorEvent = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit() {
-    console.log("in icontyraycards",this.questionAsked)
-
   }
   receiveUpdateMessage($event) {
     this.updateMessage=$event;
     this.messageEvent.emit(this.updateMessage);
+  }
+  receiveColorUpdateMessage($event) {
+    this.colorEvent.emit($event);
+  }
+  receiveReminderUpdateMessage($event) {
+    this.reminderEvent.emit($event);
+  }
+  receiveCollaboratorUpdateMessage($event) {
+    this.collaboratorEvent.emit($event);
+    console.log("heyyyyyyyyyyyy",$event)
   }
 
 }

@@ -50,7 +50,10 @@ export class DisplaycardsComponent implements OnInit {
       description: record.description,
       recordid:record.id,
       color:record.color,
-      noteType:this.noteType
+      noteType:this.noteType,
+      collaborators:record.collaborators,
+      reminder:record.reminder,
+
     }
     dialogConfig.panelClass='cardDialogBox';
 

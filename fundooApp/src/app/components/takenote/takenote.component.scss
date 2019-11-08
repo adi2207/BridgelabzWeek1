@@ -22,10 +22,6 @@
     padding: 10px 15px;
     outline: none;
     font-family: Roboto, "Helvetica Neue", sans-serif;
-    //-webkit-box-shadow: none;
-    // -moz-box-shadow: none;
-    //box-shadow: none;
-    //resize: none;
 }
 
 .closebutton {
@@ -34,4 +30,20 @@
 
 .mat-button {
     min-width: 0px;
+}
+
+.chiplist {
+    padding: 5px;
+}
+
+.chip {
+    filter: brightness(80%);
+    margin-bottom: 5px;
+}
+
+.profilepic {
+    filter: brightness(80%);
+    height: 40px;
+    width: 40px;
+    margin: 2px;
 }

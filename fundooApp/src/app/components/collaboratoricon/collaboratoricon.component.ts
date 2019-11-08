@@ -13,7 +13,7 @@ export class CollaboratoriconComponent implements OnInit {
   private dialogRef;
   updateMessage:any;
   @Input() recordid : any;
-  @Output() messageEvent = new EventEmitter<string>();
+  @Output() collaboratorEvent = new EventEmitter<string>();
 
   constructor(public dialog: MatDialog, private dataService:DataService) { }
 
@@ -28,14 +28,12 @@ export class CollaboratoriconComponent implements OnInit {
     dialogConfig.data={
       recordid:this.recordid,
     };
-    console.log("yyy", dialogConfig.data)
 
     this.dialogRef = this.dialog.open(CollaboratordialogboxComponent,dialogConfig );
 
     this.dialogRef.afterClosed().subscribe(
       data =>{ console.log("Dialog output:", data)
-      this.messageEvent.emit(this.updateMessage);
-
+      this.collaboratorEvent.emit("Collaborator added");
     });
   }
 

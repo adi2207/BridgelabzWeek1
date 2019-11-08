@@ -7,7 +7,6 @@ import {environment} from '../../../environments/environment'
 import { FormControl } from '@angular/forms';
 import {map, startWith} from 'rxjs/operators';
 import {UserService} from '../../services/user.services/user.service'
-import { ArrayType } from '@angular/compiler';
 @Component({
   selector: 'app-collaboratordialogbox',
   templateUrl: './collaboratordialogbox.component.html',
@@ -37,7 +36,7 @@ export class CollaboratordialogboxComponent implements OnInit {
   filteredRecords: any;
   x:any;
   note:any;
-  recordss:any;
+  recordss=new Array;
   ngOnInit() {
     this.getCollaborators()
   }
@@ -64,10 +63,23 @@ export class CollaboratordialogboxComponent implements OnInit {
     });
   } 
   save() {
-    this.dialogRef.close("xvvvvvvoip");
+    this.dialogRef.close(this.recordss);
     } 
   onDone(){
-    console.log(this.NoteData)
+    console.log("hereeeeeee",this.NoteData)
+
+    if(this.NoteData==undefined){
+      let data={
+        firstName:this.x[0].firstName,
+        lastName:this.x[0].lastName,
+        email :this.x[0].email,
+        userId:this.x[0].userId
+        }
+      //let stringifiedData=JSON.stringify(data);
+      this.recordss.push(data);
+      this.dataService.updateTakeNoteCollaborator(this.x[0]);
+    }
+    else{
       let data={
       'email':this.x[0].email,
       'firstName':this.x[0].firstName,
@@ -78,11 +90,14 @@ export class CollaboratordialogboxComponent implements OnInit {
       this.notesService.addCollaboratorsToNote(data).subscribe((response)=>{
         console.log(response);
         this.dataService.changeMessage("Collaborator added");
+        this.dataService.updateDialogBoxCollaborator(data);
         this.getCollaborators();
       },(error)=>{
         console.log(error);
         this.dataService.changeMessage("Collaborator could not be added");
       });
+    }
+
   }
 
   getCollaborators(){
@@ -92,6 +107,7 @@ export class CollaboratordialogboxComponent implements OnInit {
     this.notesService.patchNoteDetails(data).subscribe((response:any) => {
       console.log("Ffffffffffffffffffff",response);
       this.recordss=response.collaborators.reverse();
+      console.log("recordss",this.recordss)
       this.note=response;
     }, (error) => {
       console.log(error);

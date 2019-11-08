@@ -21,7 +21,7 @@
             </div>
             <div class="chiplist" fxLayoutGap="5px" fxLayout="row wrap">
                 <div *ngFor="let collaborator of record.collaborators">
-                    <mat-chip class="profilepic" [ngStyle]="{background:record.color}" matTooltip="{{collaborator.firstName+' '+collaborator.lastName}}">AB</mat-chip>
+                    <mat-chip class="profilepic" [ngStyle]="{background:record.color}" matTooltip="{{collaborator.firstName+' '+collaborator.lastName}}">{{collaborator.firstName.charAt(0)+collaborator.lastName.charAt(0)}}</mat-chip>
                 </div>
             </div>
             <div *ngIf="record.questionAndAnswerNotes.length>0" fxLayoutGap="5px" fxLayout="column">

@@ -1,9 +1,9 @@
 <div *ngIf="takeNoteType=='notes'||takeNoteType=='reminders'||noteType=='notes'||noteType=='archived'||noteType=='reminders'||noteType=='labels'" fxLayout="row" fxFlex="100">
-    <app-remindmeicon [recordid]=recordid (messageEvent)="receiveUpdateMessage($event)"></app-remindmeicon>
-    <app-collaboratoricon [recordid]=recordid (messageEvent)="receiveUpdateMessage($event)"></app-collaboratoricon>
-    <app-colorsicon [recordid]=recordid (messageEvent)="receiveUpdateMessage($event)"></app-colorsicon>
+    <app-remindmeicon [recordid]=recordid (reminderEvent)="receiveReminderUpdateMessage($event)"></app-remindmeicon>
+    <app-collaboratoricon [recordid]=recordid (collaboratorEvent)="receiveCollaboratorUpdateMessage($event)"></app-collaboratoricon>
+    <app-colorsicon [recordid]=recordid (colorEvent)="receiveColorUpdateMessage($event)"></app-colorsicon>
     <app-imageicon></app-imageicon>
-    <app-archiveicon [noteType]=noteType [recordid]=recordid (messageEvent)="receiveUpdateMessage($event)"></app-archiveicon>
+    <app-archiveicon [takeNoteType]=takeNoteType [noteType]=noteType [recordid]=recordid (messageEvent)="receiveUpdateMessage($event)"></app-archiveicon>
     <app-moremenu [takeNoteType]=takeNoteType [noteType]=noteType [recordid]=recordid (messageEvent)="receiveUpdateMessage($event)"></app-moremenu>
 </div>
 

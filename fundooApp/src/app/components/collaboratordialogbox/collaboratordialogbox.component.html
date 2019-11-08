@@ -21,11 +21,13 @@
                   </button>
             </div>
         </div>
-        <div class="buttonbox" fxFlex="100" fxLayout="row" fxLayoutAlign="start center">
-            <button mat-button (click)="onDone()">Done</button>
-        </div>
-        <div class="buttonbox" fxFlex="100" fxLayout="row" fxLayoutAlign="start center">
-            <button mat-button (click)="save()">Save</button>
+        <div fxLayout="row">
+            <div class="buttonbox" fxFlex="100" fxLayout="row" fxLayoutAlign="start center">
+                <button mat-button (click)="onDone()">Done</button>
+            </div>
+            <div class="buttonbox" fxFlex="100" fxLayout="row" fxLayoutAlign="start center">
+                <button mat-button (click)="save()">Save</button>
+            </div>
         </div>
     </div>
 </div>

@@ -1,5 +1,5 @@
 <button *ngIf="noteType=='notes'||noteType=='reminders'||noteType=='labels'||noteType=='archived'" mat-icon-button matTooltip="More" [matMenuTriggerFor]="menugeneral">
-        <img class="icon" src="../../../assets/images/menu.svg">
+        <img (click)="onClickingMenuIcon()" class="icon" src="../../../assets/images/menu.svg">
 </button>
 <mat-menu #menugeneral>
     <button mat-menu-item (click)="trashNote()">Delete Note</button>
@@ -10,7 +10,7 @@
 </mat-menu>
 
 <button mat-icon-button *ngIf="noteType=='deleted'" matTooltip="More" [matMenuTriggerFor]="menutrash">
-  <mat-icon>more_vert</mat-icon>
+  <mat-icon (click)="onClickingMenuIcon()" >more_vert</mat-icon>
 </button>
 <mat-menu #menutrash>
     <button mat-menu-item (click)="deleteNoteForever()">Delete Forever</button>
@@ -18,7 +18,7 @@
 </mat-menu>
 
 <button mat-icon-button *ngIf="takeNoteType=='notes'||takeNoteType=='reminders'" matTooltip="More" [matMenuTriggerFor]="takenotemenu">
-    <mat-icon>more_vert</mat-icon>
+    <mat-icon (click)="onClickingMenuIcon()">more_vert</mat-icon>
   </button>
 <mat-menu #takenotemenu>
     <button mat-menu-item [matMenuTriggerFor]="labelmenu">Add label</button>

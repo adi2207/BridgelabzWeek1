@@ -28,9 +28,6 @@ export class MoremenuComponent implements OnInit {
   show:Boolean=true;
   constructor(private dataService:DataService,private router:Router,private notesService:NotesService,private notelabelService:NotelabelService) { }
   ngOnInit(){
-    this.getLabels();
-    console.log("in ",this.questionAsked)
-
   }
 
   trashNote(){
@@ -106,6 +103,9 @@ export class MoremenuComponent implements OnInit {
   onAskQuestion(){
     this.router.navigate(['/questionanswer/'+this.recordid]);
     this.dataService.changeMessage(this.recordid)
+  }
+  onClickingMenuIcon(){
+    this.getLabels();
   }
 
 }

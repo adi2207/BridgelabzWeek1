@@ -1,4 +1,4 @@
-<button mat-icon-button *ngIf="noteType=='notes'||noteType=='reminders'||noteType=='labels'" matTooltip="Archive" (click)="archiveNote()">
+<button mat-icon-button *ngIf="noteType=='notes'||noteType=='reminders'||noteType=='labels'||takeNoteType=='reminders'||takeNoteType=='notes'" matTooltip="Archive" (click)="archiveNote()">
   <img class="icon" src="../../../assets/images/box (2).svg">
   </button>
 <button mat-icon-button *ngIf="noteType=='archived' " matTooltip="Unrchive" (click)="unarchiveNote()">

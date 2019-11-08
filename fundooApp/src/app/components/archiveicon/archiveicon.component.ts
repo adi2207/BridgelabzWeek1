@@ -14,6 +14,8 @@ export class ArchiveiconComponent implements OnInit {
   labels:any;
   updateMessage:string="note updated"
   @Input() noteType:any;
+  @Input() takeNoteType:any;
+
   @Input() recordid : any;
 
   
@@ -24,19 +26,23 @@ export class ArchiveiconComponent implements OnInit {
   }
   
   archiveNote(){
-      let noteObj={
-        'noteIdList':[this.recordid],
-        'isArchived':true
-      }
-      return this.notesService.createArchiveNote(noteObj).subscribe((response: any) => {
-        console.log(response);
-        this.messageEvent.emit("Note Archived")
+   if(this.recordid==undefined){
+    this.dataService.updateTakeNoteArchive(true);
+   }
+   else{
+    let noteObj={
+      'noteIdList':[this.recordid],
+      'isArchived':true
+    }
+    return this.notesService.createArchiveNote(noteObj).subscribe((response: any) => {
+      console.log(response);
+      this.messageEvent.emit("Note Archived")
+    }, (error) => {
+      console.log(error);
+      this.messageEvent.emit("Note could not be archived")
 
-      }, (error) => {
-        console.log(error);
-        this.messageEvent.emit("Note could not be archived")
-
-      });
+    });
+   }
   }
   unarchiveNote(){
       let noteObj={

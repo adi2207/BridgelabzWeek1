@@ -32,7 +32,7 @@
             </div>
         </form>
     </mat-step>
-    <mat-step [stepControl]="secondForm">
+    <mat-step [stepControl]="secondForm" errorMessage="Address is required.">
         <form [formGroup]="secondForm">
             <ng-template matStepLabel>Add address and review</ng-template>
             <h5 class="heading">Review your Order</h5>

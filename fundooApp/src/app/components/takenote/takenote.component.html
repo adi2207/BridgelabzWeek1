@@ -1,15 +1,27 @@
 <div *ngIf="!show" fxLayoutAlign="center center">
-    <mat-card [ngStyle]="{background:color}" fxFlex="60" fxLayoutAlign="center start" fxLayout="column" class="mat-card-big" [ngStyle]="{background:updateMessage}">
+    <mat-card [ngStyle]="{background:color}" fxFlex="60" fxLayoutAlign="center start" fxLayout="column" class="mat-card-big">
         <textarea class="textt" style="font-size:17px; font-weight:400;" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [formControl]="title" placeholder="Title"></textarea>
         <textarea class="textt" style="font-size:15px; " matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" placeholder="Take a note.." [formControl]="data"></textarea>
-        <!-- <div class="chiplist" fxLayoutGap="5px">
+        <div *ngIf="checklist=='true'" fxLayout="column" fxLayoutGap="10px">
+            <div *ngFor="let checklistObject of noteCheckLists">
+                <mat-checkbox class="checklist-text">{{checklistObject.itemName}}</mat-checkbox>
+            </div>
+
+            <div fxLayout="row" fxLayoutGap="5px">
+
+                <mat-icon class="add-icon">add</mat-icon>
+                <textarea [ngStyle]="{background:color}" class="checklist-text" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [(ngModel)]="checklistItem" (keyup.enter)="createCheckbox()" placeholder="List Item"></textarea>
+
+            </div>
+        </div>
+        <div class="chiplist" fxLayoutGap="5px">
             <mat-chip-list>
-                <mat-chip class="chip" *ngFor="let noteLabel of record.noteLabels" [ngStyle]="{background:record.color}">
+                <mat-chip class="chip" *ngFor="let noteLabel of noteLabels" [ngStyle]="{background:color}">
                     {{noteLabel.label}}
-                    <button mat-icon-button class="hideicon" (click)="onDeleteLabelFromNote(noteLabel.id,record.id)"><img class="cross" src="../../../assets/images/close-button.svg"></button>
+                    <!-- <button mat-icon-button class="hideicon" (click)="onDeleteLabelFromNote(noteLabel.id,record.id)"><img class="cross" src="../../../assets/images/close-button.svg"></button> -->
                 </mat-chip>
             </mat-chip-list>
-        </div> -->
+        </div>
         <div class="chiplist" fxLayoutGap="5px">
             <mat-chip *ngIf="reminder!=''" class="chip" [ngStyle]="{background:color}">
                 {{reminder}}
@@ -22,7 +34,7 @@
             </div>
         </div>
         <div fxFlex="100" fxLayout="row">
-            <app-icontray [takeNoteType]="takeNoteType" (messageEvent)="receiveUpdateMessage($event)"></app-icontray>
+            <app-icontray (createChecklistEvent)="receiveChecklistCreationMessage($event)" [takeNoteType]="takeNoteType" (messageEvent)="receiveUpdateMessage($event)"></app-icontray>
             <button mat-button (click)="onClose()" class="closebutton">Close</button>
         </div>
     </mat-card>

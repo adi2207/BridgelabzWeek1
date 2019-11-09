@@ -17,6 +17,9 @@ export class IcontrayComponent implements OnInit {
   @Output() colorEvent = new EventEmitter<string>();
   @Output() reminderEvent = new EventEmitter<string>();
   @Output() collaboratorEvent = new EventEmitter<string>();
+  @Output() createChecklistEvent = new EventEmitter<string>();
+  @Output() labelEvent = new EventEmitter<string>();
+
 
   constructor() { }
 
@@ -34,7 +37,14 @@ export class IcontrayComponent implements OnInit {
   }
   receiveCollaboratorUpdateMessage($event) {
     this.collaboratorEvent.emit($event);
-    console.log("heyyyyyyyyyyyy",$event)
+  }
+  receiveChecklistCreationMessage($event) {
+    this.createChecklistEvent.emit($event);
+  }
+  receiveLabelUpdateMessage($event) {
+    this.labelEvent.emit($event);
+    console.log("in icontray",$event);
+
   }
 
 }

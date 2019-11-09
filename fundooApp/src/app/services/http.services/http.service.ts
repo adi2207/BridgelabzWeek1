@@ -52,6 +52,15 @@ export class HttpService {
     }
     return this.http.post(url,data,httpOptions);
   }
+  postCallWithTokenWithEncodedData(url,data){
+    let httpOptions={
+      headers:new HttpHeaders({
+        'Content-type':'application/x-www-form-urlencoded',
+        'Authorization':localStorage.getItem('id')
+      })
+    }
+    return this.http.post(url,data,httpOptions);
+  }
   patchCallWithToken(url,data){
     let httpOptions={
       headers:new HttpHeaders({

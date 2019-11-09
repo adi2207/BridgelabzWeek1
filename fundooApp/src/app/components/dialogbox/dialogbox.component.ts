@@ -5,6 +5,8 @@ import {DisplaycardsComponent} from '../displaycards/displaycards.component'
 import { FormControl } from '@angular/forms';
 import {NotesService} from '../../services/notes.services/notes.service'
 import { DataService } from 'src/app/services/data.services/data.service';
+import { NotelabelService } from 'src/app/services/note.label.service/notelabel.service';
+
 @Component({
   selector: 'app-dialogbox',
   templateUrl: './dialogbox.component.html',
@@ -26,23 +28,35 @@ export class DialogboxComponent implements OnInit {
   description:any;
   noteId:any;
   titlee:any;
+  checklist:any;
+  checklistItem:any;
+  noteCheckLists:any;
+  labelid:any;
+  noteLabels:any;
+  labels:any;
 
   @Output() messageEvent = new EventEmitter<string>();
 
   constructor(private dialogRef: MatDialogRef<DisplaycardsComponent>,
-    @Inject(MAT_DIALOG_DATA) data,private notesService:NotesService, private dataService:DataService) {
+    @Inject(MAT_DIALOG_DATA) data,private notesService:NotesService,private notelabelService:NotelabelService, private dataService:DataService) {
       this.description= data.description,
       this.titlee=data.title,
       this.noteId=data.recordid,
       this.color=data.color,
       this.reminder=data.reminder,
       this.collaborators=data.collaborators,
-      this.noteType=data.noteType
+      this.noteType=data.noteType,
+      this.checklist=data.checklist,
+      this.noteCheckLists=data.noteCheckLists,
+      this.noteLabels=data.noteLabels
       console.log("reminders in cons",this.reminder)
   }
   
   ngOnInit() {
     this.dataService.currentMessage.subscribe(message => this.message = message);
+    if(this.noteCheckLists!=''){
+      this.checklist='true';
+    }
 
   }
   save() {
@@ -72,14 +86,43 @@ export class DialogboxComponent implements OnInit {
   receiveColorUpdateMessage($event){
     this.dataService.dialogBoxColorUpdate.subscribe(message => this.color = message);
   }
+  receiveLabelUpdateMessage($event){
+    this.dataService.dialogBoxLabelUpdate.subscribe(message => {
+      this.labelid = message
+    });
+    this.notelabelService.getLabels().subscribe((response: any) => {
+      console.log(response);
+      this.labels=response.data.details;
+      for(var i =0;i<this.labels.length;i++){
+        if(this.labels[i].id==this.labelid){
+          this.noteLabels.push(this.labels[i]);
+        }
+      }
+    }, (error) => {
+      console.log(error);
+    });
+  
+  }
   receiveCollaboratorUpdateMessage($event){
-    console.log("in dialog box receive update message ",$event)
     this.dataService.dialogBoxCollaboratorUpdate.subscribe(message => this.collaborators.push(message));
-    console.log("collabsssssss ",this.collaborators)
-
   }
   receiveReminderUpdateMessage($event){
     this.dataService.dialogBoxReminderUpdate.subscribe(message => {this.reminder = message})
+  }
+  createCheckbox(){
+  let data={
+    'status':'open',
+    'itemName':this.checklistItem
+  }
+  this.notesService.addToChecklist(data,this.noteId).subscribe((response:any)=>{
+    console.log(response);
+    this.noteCheckLists.push(response.data.details);
+  },(error)=>{
+    console.log(error);
+  });
+  }
+  receiveChecklistCreationMessage($event) {
+    this.checklist='true';
   }
 
 }

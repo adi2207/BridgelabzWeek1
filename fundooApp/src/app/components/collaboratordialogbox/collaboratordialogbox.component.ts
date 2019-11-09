@@ -105,7 +105,6 @@ export class CollaboratordialogboxComponent implements OnInit {
       id:this.NoteData
     }
     this.notesService.patchNoteDetails(data).subscribe((response:any) => {
-      console.log("Ffffffffffffffffffff",response);
       this.recordss=response.collaborators.reverse();
       console.log("recordss",this.recordss)
       this.note=response;

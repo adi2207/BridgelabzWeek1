@@ -4,7 +4,7 @@
     <app-colorsicon [recordid]=recordid (colorEvent)="receiveColorUpdateMessage($event)"></app-colorsicon>
     <app-imageicon></app-imageicon>
     <app-archiveicon [takeNoteType]=takeNoteType [noteType]=noteType [recordid]=recordid (messageEvent)="receiveUpdateMessage($event)"></app-archiveicon>
-    <app-moremenu [takeNoteType]=takeNoteType [noteType]=noteType [recordid]=recordid (messageEvent)="receiveUpdateMessage($event)"></app-moremenu>
+    <app-moremenu [takeNoteType]=takeNoteType [noteType]=noteType [recordid]=recordid (createChecklistEvent)="receiveChecklistCreationMessage($event)" (labelEvent)="receiveLabelUpdateMessage($event)" (messageEvent)="receiveUpdateMessage($event)"></app-moremenu>
 </div>
 
 <div *ngIf="noteType=='deleted'" fxLayout="row" fxFlex="100">

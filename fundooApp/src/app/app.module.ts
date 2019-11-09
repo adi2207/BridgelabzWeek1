@@ -96,8 +96,7 @@ import { MycartComponent } from './components/mycart/mycart.component';
     FroalaViewModule
   ],
  
-  providers: [UserService,AuthGuard,AuthService,MatDatepickerModule
-    //, 
+  providers: [UserService,AuthGuard,AuthService,MatDatepickerModule, 
     //{provide: STEPPER_GLOBAL_OPTIONS,useValue: { showError: true }}
   ],
   bootstrap: [AppComponent],

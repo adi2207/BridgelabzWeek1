@@ -6,6 +6,25 @@
     padding: 10px;
 }
 
+::ng-deep.mat-checkbox-inner-container {
+    margin: none;
+    margin-left: 15px;
+    height: 15px;
+    width: 15px;
+    font-size: 15px;
+}
+
+.checklist-text {
+    border: none;
+    outline: none;
+    font-size: 15px;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.add-icon {
+    font-size: 15px;
+}
+
 .buttonbox {
     padding: 10px;
 }

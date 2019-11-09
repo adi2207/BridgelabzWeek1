@@ -84,6 +84,14 @@
     display: none;
 }
 
+.textt {
+    border: none;
+    outline: none;
+    font-size: 18px;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    padding: 10px;
+}
+
 .hideicon:hover .cross {
     display: block;
     height: 10px;

@@ -39,7 +39,6 @@ export class NotesComponent implements OnInit {
   receiveUpdateMessage($event) {
     this.updateMessage=$event;
     this.dataService.changeMessage(this.updateMessage);
-    console.log("in notes comp")
     this.getCards();
   }
 

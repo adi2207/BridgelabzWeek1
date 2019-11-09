@@ -21,6 +21,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatStepperModule} from '@angular/material/stepper';
 import {CdkStepperModule} from '@angular/cdk/stepper';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ MatTabsModule,
 ImageCropperModule,
 MatSnackBarModule,
 MatAutocompleteModule,
-CdkStepperModule
+CdkStepperModule,
+MatCheckboxModule
 
 ],
 
@@ -72,7 +74,8 @@ MatTabsModule,
 ImageCropperModule,
 MatSnackBarModule,
 MatAutocompleteModule,
-CdkStepperModule
+CdkStepperModule,
+MatCheckboxModule
 ],
 })
 export class AppMaterialModule { }

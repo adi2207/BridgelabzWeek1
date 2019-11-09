@@ -9,7 +9,7 @@
     margin: 40px 20px 13px;
     border-radius: 8px;
     padding: 0;
-    height: 170px;
+    min-height: 180px;
 }
 
 .mat-form-field {
@@ -39,6 +39,17 @@
 .chip {
     filter: brightness(80%);
     margin-bottom: 5px;
+}
+
+.checklist-text {
+    border: none;
+    outline: none;
+    font-size: 15px;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.add-icon {
+    font-size: 15px;
 }
 
 .profilepic {

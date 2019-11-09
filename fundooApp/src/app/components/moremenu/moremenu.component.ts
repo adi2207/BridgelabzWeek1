@@ -25,6 +25,9 @@ export class MoremenuComponent implements OnInit {
 
 
   @Output() messageEvent = new EventEmitter<string>();
+  @Output() createChecklistEvent = new EventEmitter<string>();
+  @Output() labelEvent = new EventEmitter<string>();
+
   show:Boolean=true;
   constructor(private dataService:DataService,private router:Router,private notesService:NotesService,private notelabelService:NotelabelService) { }
   ngOnInit(){
@@ -47,18 +50,25 @@ export class MoremenuComponent implements OnInit {
   }
 
   afterLabelSelection(labelid){
-    let data={
-      labelId:labelid,
-      noteId:[this.recordid]
+    if(this.recordid==undefined){
+      this.dataService.updateTakeNoteLabel(labelid);
     }
-    return this.notesService.addLabelToNotes(data).subscribe((response: any) => {
-      console.log(response);
-      this.messageEvent.emit("Label added");
-    }, (error) => {
-      console.log(error);
-      this.messageEvent.emit("Label could not be added");
-
-    });
+    else{
+      let data={
+        labelId:labelid,
+        noteId:[this.recordid]
+      }
+      return this.notesService.addLabelToNotes(data).subscribe((response: any) => {
+        console.log(response);
+        this.dataService.updateDialogBoxLabel(labelid);
+        this.labelEvent.emit("Label added");
+        console.log("labelid in more menu",labelid);
+      }, (error) => {
+        console.log(error);
+        this.messageEvent.emit("Label could not be added");
+  
+      });
+    }
   }
   getLabels(){
     return this.notelabelService.getLabels().subscribe((response: any) => {
@@ -97,8 +107,8 @@ export class MoremenuComponent implements OnInit {
     });
   }
   createChecklist(){
-    console.log("DDD")
-    this.messageEvent.emit("create checklist");
+    this.createChecklistEvent.emit("create checklist");
+    console.log("in moremenu")
   }
   onAskQuestion(){
     this.router.navigate(['/questionanswer/'+this.recordid]);

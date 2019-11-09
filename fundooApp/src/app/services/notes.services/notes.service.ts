@@ -23,7 +23,7 @@ export class NotesService {
   }
 
   addNote(data){
-    return this.http.postCallWithToken(this.baseUrl+'notes/addNotes',data)
+    return this.http.postCallWithTokenWithEncodedData(this.baseUrl+'notes/addNotes',this.getEncodedData(data))
 
   }
   getTrash(){
@@ -92,6 +92,9 @@ getNoteDetails(data){
 }
 deleteCollaboratorFromNote(data){
   return this.http.deleteCallWithToken(this.baseUrl + 'notes/' + data.id + '/removeCollaboratorsNotes/'+data.userId)
+}
+addToChecklist(data,id){
+  return this.http.postCallWithToken(this.baseUrl + 'notes/' + id+ '/checklist/add',data)
 }
 
 }

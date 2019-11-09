@@ -16,10 +16,13 @@ export class DisplaycardsComponent implements OnInit {
   note: NoteInterface;
   message: string;
   updateMessage: string;
+  checklist:string='false';
 
   @Input() records:any;
   @Input() trashNotes:any;
   @Input() noteType:any;
+  @Output() createChecklistEvent = new EventEmitter<string>();
+
 
   questionAsked:string='false';
   displayType:String="grid";
@@ -35,7 +38,6 @@ export class DisplaycardsComponent implements OnInit {
         this.displayType=message;
       }
     });
-    console.log("in diplaycards",this.questionAsked)
   }
 
   private dialogRef;
@@ -53,6 +55,9 @@ export class DisplaycardsComponent implements OnInit {
       noteType:this.noteType,
       collaborators:record.collaborators,
       reminder:record.reminder,
+      checklist:this.checklist,
+      noteCheckLists:record.noteCheckLists,
+      noteLabels:record.noteLabels
 
     }
     dialogConfig.panelClass='cardDialogBox';
@@ -93,12 +98,16 @@ export class DisplaycardsComponent implements OnInit {
       this.messageEvent.emit("Reminder could not be deleted from note")
 
     });
-
   }
 
   receiveUpdateMessage($event) {
     this.updateMessage=$event;
     this.messageEvent.emit(this.updateMessage);
+  }
+
+  receiveChecklistCreationMessage($event) {
+    this.createChecklistEvent.emit($event);
+    this.checklist='true';
   }
   
 }

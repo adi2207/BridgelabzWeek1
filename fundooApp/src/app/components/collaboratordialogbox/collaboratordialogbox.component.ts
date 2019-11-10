@@ -36,14 +36,15 @@ export class CollaboratordialogboxComponent implements OnInit {
   filteredRecords: any;
   x:any;
   note:any;
-  recordss=new Array;
+  recordss=[];
   ngOnInit() {
-    this.getCollaborators()
+    if(this.NoteData!=undefined){
+    this.getCollaborators();
+    }
   }
 
   filter(searchText) {
     this.x=this.records.filter(record => record.email.toLowerCase().includes(searchText.toLowerCase()));
-    console.log("xxxx",this.x);
     return this.x;
   }
   
@@ -57,7 +58,6 @@ export class CollaboratordialogboxComponent implements OnInit {
         startWith(''),
         map(val => this.filter(val))
       );
-      console.log("filtered recs",this.filteredRecords)
     }, (error) => {
       console.log(error);
     });
@@ -66,7 +66,6 @@ export class CollaboratordialogboxComponent implements OnInit {
     this.dialogRef.close(this.recordss);
     } 
   onDone(){
-    console.log("hereeeeeee",this.NoteData)
 
     if(this.NoteData==undefined){
       let data={
@@ -75,8 +74,8 @@ export class CollaboratordialogboxComponent implements OnInit {
         email :this.x[0].email,
         userId:this.x[0].userId
         }
-      //let stringifiedData=JSON.stringify(data);
       this.recordss.push(data);
+      console.log("recordsss",this.recordss)
       this.dataService.updateTakeNoteCollaborator(this.x[0]);
     }
     else{
@@ -128,4 +127,5 @@ export class CollaboratordialogboxComponent implements OnInit {
 
     });
   }
+
 }

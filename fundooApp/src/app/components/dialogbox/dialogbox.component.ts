@@ -32,8 +32,8 @@ export class DialogboxComponent implements OnInit {
   checklistItem:any;
   noteCheckLists:any;
   labelid:any;
-  noteLabels:any;
-  labels:any;
+  noteLabels=[];
+  labels=[];
 
   @Output() messageEvent = new EventEmitter<string>();
 
@@ -84,14 +84,17 @@ export class DialogboxComponent implements OnInit {
     this.dataService.changeMessage(this.updateMessage);
   }
   receiveColorUpdateMessage($event){
+    console.log("event",$event)
+
     this.dataService.dialogBoxColorUpdate.subscribe(message => this.color = message);
+    console.log("event2",this.color)
+
   }
   receiveLabelUpdateMessage($event){
     this.dataService.dialogBoxLabelUpdate.subscribe(message => {
       this.labelid = message
-    });
+  
     this.notelabelService.getLabels().subscribe((response: any) => {
-      console.log(response);
       this.labels=response.data.details;
       for(var i =0;i<this.labels.length;i++){
         if(this.labels[i].id==this.labelid){
@@ -101,7 +104,7 @@ export class DialogboxComponent implements OnInit {
     }, (error) => {
       console.log(error);
     });
-  
+  });
   }
   receiveCollaboratorUpdateMessage($event){
     this.dataService.dialogBoxCollaboratorUpdate.subscribe(message => this.collaborators.push(message));

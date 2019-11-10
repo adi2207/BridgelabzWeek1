@@ -20,27 +20,19 @@ export class TrashComponent implements OnInit {
     this.dataService.currentMessage.subscribe(message => this.message = message);
     this.getTrashNotes();
   }
-  // filterToGetTrash(records)
-  // {
-  //   var newRecords = records.filter(function(note) {
-  //     return (note.isDeleted==true);
-  //   })
-  //   console.log("note", newRecords);
-  //   return newRecords;
-  // }
   getTrashNotes(){
     return this.notesService.getTrash().subscribe((response: any) => {
       this.records=response.data.data.reverse();
-      //this.records=this.filterToGetTrash(this.records);
       console.log(response)
     }, (error) => {
       console.log(error);
     });
   }
- 
+
   receiveUpdateMessage($event) {
-    this.updateMessage = $event;
-    this.dataService.changeMessage(this.updateMessage);
+    this.dataService.changeMessage($event);
     this.getTrashNotes();
   }
+
+ 
 }

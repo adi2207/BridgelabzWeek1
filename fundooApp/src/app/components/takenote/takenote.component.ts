@@ -26,7 +26,6 @@ export class TakenoteComponent implements OnInit {
   reminder:any;
   collaborator:any;
   collaborators=[];
-  collabs:any;
   checklist:any;
   checklistItem:any;
   labelid:any;

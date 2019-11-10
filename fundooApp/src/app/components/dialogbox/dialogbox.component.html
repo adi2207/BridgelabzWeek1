@@ -21,10 +21,6 @@
                     {{label.label}}
                     <!-- <button mat-icon-button class="hideicon" (click)="onDeleteLabelFromNote(noteLabel.id,record.id)"><img class="cross" src="../../../assets/images/close-button.svg"></button> -->
                 </mat-chip>
-                <mat-chip class="chip" *ngFor="let label of noteLabelName" [ngStyle]="{background:color}">
-                    {{label}}
-                    <!-- <button mat-icon-button class="hideicon" (click)="onDeleteLabelFromNote(noteLabel.id,record.id)"><img class="cross" src="../../../assets/images/close-button.svg"></button> -->
-                </mat-chip>
             </mat-chip-list>
         </div>
         <div class="chiplist" fxLayoutGap="5px">
@@ -41,8 +37,8 @@
             </div>
         </div>
         <div class="buttonbox" fxFlex="100" fxLayout="row" fxLayoutAlign="start center">
-            <app-icontray [noteType]="noteType" [recordid]=noteId (createChecklistEvent)="receiveChecklistCreationMessage($event)" (labelEvent)="receiveLabelUpdateMessage($event)" (messageEvent)="receiveUpdateMessage($event)" (labelEvent)="receiveLabelUpdateMessage($event)"
-                (colorEvent)="receiveColorUpdateMessage($event)" (collaboratorEvent)="receiveCollaboratorUpdateMessage($event)" (reminderEvent)="receiveReminderUpdateMessage($event)" fxLayoutAlign="space-around start"></app-icontray>
+            <app-icontray [noteType]="noteType" [recordid]=noteId (createChecklistEvent)="receiveChecklistCreationMessage($event)" (labelEvent)="receiveLabelUpdateMessage($event)" (messageEvent)="receiveUpdateMessage($event)" (colorEvent)="receiveColorUpdateMessage($event)"
+                (collaboratorEvent)="receiveCollaboratorUpdateMessage($event)" (reminderEvent)="receiveReminderUpdateMessage($event)" fxLayoutAlign="space-around start"></app-icontray>
             <button mat-button (click)="save()">Close</button>
         </div>
     </div>

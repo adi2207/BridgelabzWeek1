@@ -35,7 +35,6 @@ import { RemindmeiconComponent } from './components/remindmeicon/remindmeicon.co
 import { MoremenuComponent } from './components/moremenu/moremenu.component';
 import { IcontrayComponent } from './components/icontray/icontray.component';
 import { LabelsComponent } from './components/labels/labels.component';
-import { ChecklistComponent } from './components/checklist/checklist.component';
 import { ChangeUserImageComponent } from './components/change-user-image/change-user-image.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material';
@@ -72,7 +71,6 @@ import { MycartComponent } from './components/mycart/mycart.component';
     MoremenuComponent,
     IcontrayComponent,
     LabelsComponent,
-    ChecklistComponent,
     ChangeUserImageComponent,
     CollaboratordialogboxComponent,
     QuestionanswerComponent,

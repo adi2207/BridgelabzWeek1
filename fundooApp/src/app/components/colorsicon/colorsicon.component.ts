@@ -26,7 +26,6 @@ export class ColorsiconComponent implements OnInit {
   ngOnInit(){
   }
   changeColor(color){
-    console.log("recordid",this.recordid)
     if(this.recordid==undefined){
       this.dataService.updateTakeNoteColor(color);
     }

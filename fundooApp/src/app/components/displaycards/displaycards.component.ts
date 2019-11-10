@@ -11,7 +11,6 @@ import { DataService } from 'src/app/services/data.services/data.service';
   styleUrls: ['./displaycards.component.scss']
 })
 export class DisplaycardsComponent implements OnInit {
-  @Output() messageEvent = new EventEmitter<string>();
 
   note: NoteInterface;
   message: string;
@@ -22,7 +21,11 @@ export class DisplaycardsComponent implements OnInit {
   @Input() trashNotes:any;
   @Input() noteType:any;
   @Output() createChecklistEvent = new EventEmitter<string>();
-
+  @Output() messageEvent = new EventEmitter<string>();
+  @Output() colorEvent = new EventEmitter<string>();
+  @Output() reminderEvent = new EventEmitter<string>();
+  @Output() collaboratorEvent = new EventEmitter<string>();
+  @Output() labelEvent = new EventEmitter<string>();
 
   questionAsked:string='false';
   displayType:String="grid";
@@ -108,6 +111,19 @@ export class DisplaycardsComponent implements OnInit {
   receiveChecklistCreationMessage($event) {
     this.createChecklistEvent.emit($event);
     this.checklist='true';
+  }
+  receiveColorUpdateMessage($event) {
+    this.colorEvent.emit($event);
+  }
+  receiveReminderUpdateMessage($event) {
+    this.reminderEvent.emit($event);
+  }
+  receiveCollaboratorUpdateMessage($event) {
+    this.collaboratorEvent.emit($event);
+  }
+  receiveLabelUpdateMessage($event) {
+    this.labelEvent.emit($event);
+
   }
   
 }

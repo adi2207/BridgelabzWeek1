@@ -28,14 +28,20 @@ export class DataService {
   dialogBoxColorUpdate = this.dialogBoxColorSource.asObservable();
   private dialogBoxCollaboratorSource = new BehaviorSubject('');
   dialogBoxCollaboratorUpdate = this.dialogBoxCollaboratorSource.asObservable();
+
   private dialogBoxReminderSource = new BehaviorSubject('');
   dialogBoxReminderUpdate = this.dialogBoxReminderSource.asObservable();
   private dialogBoxLabelSource = new BehaviorSubject('');
   dialogBoxLabelUpdate = this.dialogBoxLabelSource.asObservable();
 
+  private labelUpdateSource = new BehaviorSubject('');
+  currentLabel = this.labelUpdateSource.asObservable();
   constructor() { }
   changeMessage(message: string) {
     this.messageSource.next(message)
+  }
+  changeLabel(message: string) {
+    this.labelUpdateSource.next(message)
   }
   changeTypeOfService(message: string){
     this.typeOfServiceSource.next(message)
@@ -55,6 +61,7 @@ export class DataService {
   updateTakeNoteCollaborator(message: any){
     this.takeNoteCollaboratorSource.next(message)
   }
+
   updateTakeNoteLabel(message: any){
     this.takeNoteLabelSource.next(message)
   }

@@ -1,1 +1,2 @@
-<app-displaycards [records]="records" [noteType]=noteType></app-displaycards>
+<app-displaycards [noteType]="noteType" [records]="records" (colorEvent)="receiveColorUpdateMessage($event)" (reminderEvent)="receiveReminderUpdateMessage($event)" (labelEvent)="receiveLabelUpdateMessage($event)" (createChecklistEvent)="receiveChecklistCreationMessage($event)"
+    (collaboratorEvent)="receiveCollaboratorUpdateMessage($event)" (messageEvent)="receiveUpdateMessage($event)"></app-displaycards>

@@ -37,10 +37,29 @@ export class NotesComponent implements OnInit {
     });
   }
   receiveUpdateMessage($event) {
-    this.updateMessage=$event;
-    this.dataService.changeMessage(this.updateMessage);
+    this.dataService.changeMessage($event);
     this.getCards();
   }
+receiveColorUpdateMessage($event) {
+  this.dataService.changeMessage($event);
+  this.getCards();
+}
+receiveReminderUpdateMessage($event) {
+  this.dataService.changeMessage($event);
+  this.getCards();
+}
+receiveCollaboratorUpdateMessage($event) {
+  this.dataService.changeMessage($event);
+  this.getCards();
+}
+receiveChecklistCreationMessage($event) {
+  this.dataService.changeMessage($event);
+  this.getCards();
+}
+receiveLabelUpdateMessage($event) {
+  this.dataService.changeMessage($event);
+  this.getCards();
+}
 
 
 }

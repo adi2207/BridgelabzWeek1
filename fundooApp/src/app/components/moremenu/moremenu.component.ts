@@ -62,7 +62,6 @@ export class MoremenuComponent implements OnInit {
         console.log(response);
         this.dataService.updateDialogBoxLabel(labelid);
         this.labelEvent.emit("Label added");
-        console.log("labelid in more menu",labelid);
       }, (error) => {
         console.log(error);
         this.messageEvent.emit("Label could not be added");

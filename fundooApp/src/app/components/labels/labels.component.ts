@@ -16,10 +16,11 @@ export class LabelsComponent implements OnInit {
   records:any;
   noteType="labels";
   ngOnInit() {
-    this.dataService.currentMessage.subscribe(message => {
+    this.dataService.currentLabel.subscribe(message => {
       this.labelname=message;
-        this.getNotesByLabelName();
+      this.getNotesByLabelName();
     });
+
   }
 
 
@@ -35,6 +36,30 @@ export class LabelsComponent implements OnInit {
       console.log(error);
     });
   }
+  receiveUpdateMessage($event) {
+    this.dataService.changeMessage($event);
+    this.getNotesByLabelName();
+  }
+receiveColorUpdateMessage($event) {
+  this.dataService.changeMessage($event);
+  this.getNotesByLabelName();
+}
+receiveReminderUpdateMessage($event) {
+  this.dataService.changeMessage($event);
+  this.getNotesByLabelName();
+}
+receiveCollaboratorUpdateMessage($event) {
+  this.dataService.changeMessage($event);
+  this.getNotesByLabelName();
+}
+receiveChecklistCreationMessage($event) {
+  this.dataService.changeMessage($event);
+  this.getNotesByLabelName();
+}
+receiveLabelUpdateMessage($event) {
+  this.dataService.changeMessage($event);
+  this.getNotesByLabelName();
+}
 
 
 

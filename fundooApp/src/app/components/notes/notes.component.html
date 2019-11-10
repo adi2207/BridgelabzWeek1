@@ -1,4 +1,5 @@
 <div class="content">
     <app-takenote [takeNoteType]="takeNoteType" (messageEvent)="receiveUpdateMessage($event)"></app-takenote>
-    <app-displaycards [noteType]="noteType" [records]="records" (messageEvent)="receiveUpdateMessage($event)"></app-displaycards>
+    <app-displaycards [noteType]="noteType" [records]="records" (colorEvent)="receiveColorUpdateMessage($event)" (reminderEvent)="receiveReminderUpdateMessage($event)" (labelEvent)="receiveLabelUpdateMessage($event)" (createChecklistEvent)="receiveChecklistCreationMessage($event)"
+        (collaboratorEvent)="receiveCollaboratorUpdateMessage($event)" (messageEvent)="receiveUpdateMessage($event)"></app-displaycards>
 </div>

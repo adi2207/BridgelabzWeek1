@@ -78,7 +78,7 @@ export class DashboardComponent implements OnInit {
   }
   onClickingLabel(labelname){
     this.router.navigate(["/labels/"+labelname]);
-    this.dataService.changeMessage(labelname)
+    this.dataService.changeLabel(labelname)
   }
   onChangeImage() {
     this.dialogRef = this.dialog.open(ChangeUserImageComponent, {

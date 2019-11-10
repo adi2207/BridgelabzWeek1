@@ -26,8 +26,7 @@ export class IcontrayComponent implements OnInit {
   ngOnInit() {
   }
   receiveUpdateMessage($event) {
-    this.updateMessage=$event;
-    this.messageEvent.emit(this.updateMessage);
+    this.messageEvent.emit($event);
   }
   receiveColorUpdateMessage($event) {
     this.colorEvent.emit($event);
@@ -43,7 +42,6 @@ export class IcontrayComponent implements OnInit {
   }
   receiveLabelUpdateMessage($event) {
     this.labelEvent.emit($event);
-    console.log("in icontray",$event);
 
   }
 

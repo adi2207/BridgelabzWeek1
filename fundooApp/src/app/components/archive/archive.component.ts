@@ -40,9 +40,33 @@ export class ArchiveComponent implements OnInit {
 
   }
   receiveUpdateMessage($event) {
-    this.updateMessage = $event;
     this.getArchivedNotes();
-    this.dataService.changeMessage(this.updateMessage);
+    this.dataService.changeMessage($event);
+
+  }
+  receiveColorUpdateMessage($event) {
+    this.getArchivedNotes();
+    this.dataService.changeMessage($event);
+
+  }
+  receiveReminderUpdateMessage($event) {
+    this.getArchivedNotes();
+    this.dataService.changeMessage($event);
+
+  }
+  receiveCollaboratorUpdateMessage($event) {
+    this.getArchivedNotes();
+    this.dataService.changeMessage($event);
+
+  }
+  receiveChecklistCreationMessage($event) {
+    this.getArchivedNotes();
+    this.dataService.changeMessage($event);
+
+  }
+  receiveLabelUpdateMessage($event) {
+    this.getArchivedNotes();
+    this.dataService.changeMessage($event);
 
   }
 

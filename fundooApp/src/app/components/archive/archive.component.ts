@@ -17,8 +17,10 @@ export class ArchiveComponent implements OnInit {
   constructor(private notesService : NotesService,private dataService:DataService) { }
 
   ngOnInit() {
-    this.dataService.currentMessage.subscribe((message)=>this.message=message)
-    this.getArchivedNotes()
+    this.dataService.currentMessage.subscribe((message)=>{
+      this.message=message;
+      this.getArchivedNotes()
+    })
   }
   filterToGetArchived(records)
   {
@@ -40,33 +42,33 @@ export class ArchiveComponent implements OnInit {
 
   }
   receiveUpdateMessage($event) {
-    this.getArchivedNotes();
     this.dataService.changeMessage($event);
+    this.getArchivedNotes();
 
   }
   receiveColorUpdateMessage($event) {
-    this.getArchivedNotes();
     this.dataService.changeMessage($event);
+    this.getArchivedNotes();
 
   }
   receiveReminderUpdateMessage($event) {
-    this.getArchivedNotes();
     this.dataService.changeMessage($event);
+    this.getArchivedNotes();
 
   }
   receiveCollaboratorUpdateMessage($event) {
-    this.getArchivedNotes();
     this.dataService.changeMessage($event);
+    this.getArchivedNotes();
 
   }
   receiveChecklistCreationMessage($event) {
-    this.getArchivedNotes();
     this.dataService.changeMessage($event);
+    this.getArchivedNotes();
 
   }
   receiveLabelUpdateMessage($event) {
-    this.getArchivedNotes();
     this.dataService.changeMessage($event);
+    this.getArchivedNotes();
 
   }
 

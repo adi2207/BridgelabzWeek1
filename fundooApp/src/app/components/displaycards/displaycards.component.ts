@@ -27,10 +27,8 @@ export class DisplaycardsComponent implements OnInit {
   @Output() collaboratorEvent = new EventEmitter<string>();
   @Output() labelEvent = new EventEmitter<string>();
 
-  questionAsked:string='false';
   displayType:String="grid";
 
-  
   constructor(private notesService: NotesService, public dialog: MatDialog, private dataService: DataService) { }
 
   ngOnInit() {
@@ -69,7 +67,7 @@ export class DisplaycardsComponent implements OnInit {
 
     this.dialogRef.afterClosed().subscribe(
       data =>{ console.log("Dialog output:", data)
-      this.messageEvent.emit("Dialog box closed")
+      //this.messageEvent.emit("Dialog box closed")
     });
   }
   onDeleteLabelFromNote(labelId,noteId){

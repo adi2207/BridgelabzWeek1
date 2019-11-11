@@ -17,8 +17,11 @@ export class NotesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataService.currentMessage.subscribe(message => this.message = message);
-    this.getCards()
+    this.dataService.currentMessage.subscribe(message => {
+      this.message = message;
+      this.getCards()
+
+    });
   }
   filterTrashAndArchives(records)
   {
@@ -60,6 +63,5 @@ receiveLabelUpdateMessage($event) {
   this.dataService.changeMessage($event);
   this.getCards();
 }
-
 
 }

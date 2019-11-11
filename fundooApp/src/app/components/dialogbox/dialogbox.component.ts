@@ -18,7 +18,7 @@ export class DialogboxComponent implements OnInit {
   title=new FormControl();
   data=new FormControl();
   options:any;
-  updateMessage:string="note updated";
+  //updateMessage:string="note updated";
   message:any;
   isArchived:any;
   isDeleted:any;
@@ -74,24 +74,22 @@ export class DialogboxComponent implements OnInit {
 
     this.notesService.updateNote(this.note).subscribe((response)=>{
       console.log(response);
-      this.dataService.changeMessage(this.updateMessage);
+      this.dataService.changeMessage("Note updated");
     },(error)=>{
       console.log(error);
     });
 
   }  
   receiveUpdateMessage($event) {
-    this.dataService.changeMessage(this.updateMessage);
+    this.dataService.changeMessage($event);
   }
   receiveColorUpdateMessage($event){
-    console.log("event",$event)
-
+    this.dataService.changeMessage($event);
     this.dataService.dialogBoxColorUpdate.subscribe(message => this.color = message);
-    console.log("event2",this.color)
-
   }
   receiveLabelUpdateMessage($event){
     this.dataService.dialogBoxLabelUpdate.subscribe(message => {
+      this.dataService.changeMessage($event);
       this.labelid = message
   
     this.notelabelService.getLabels().subscribe((response: any) => {
@@ -101,16 +99,23 @@ export class DialogboxComponent implements OnInit {
           this.noteLabels.push(this.labels[i]);
         }
       }
+      this.dataService.changeMessage($event);
     }, (error) => {
       console.log(error);
+      //this.dataService.changeMessage();
+
     });
   });
   }
   receiveCollaboratorUpdateMessage($event){
     this.dataService.dialogBoxCollaboratorUpdate.subscribe(message => this.collaborators.push(message));
+    this.dataService.changeMessage($event);
+
   }
   receiveReminderUpdateMessage($event){
     this.dataService.dialogBoxReminderUpdate.subscribe(message => {this.reminder = message})
+    this.dataService.changeMessage($event);
+
   }
   createCheckbox(){
   let data={
@@ -120,11 +125,15 @@ export class DialogboxComponent implements OnInit {
   this.notesService.addToChecklist(data,this.noteId).subscribe((response:any)=>{
     console.log(response);
     this.noteCheckLists.push(response.data.details);
+    this.dataService.changeMessage("Checklist added");
   },(error)=>{
     console.log(error);
+    this.dataService.changeMessage("Checklist could not be added");
+
   });
   }
   receiveChecklistCreationMessage($event) {
+    this.dataService.changeMessage($event);
     this.checklist='true';
   }
 

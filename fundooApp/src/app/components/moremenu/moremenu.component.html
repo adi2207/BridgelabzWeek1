@@ -4,8 +4,7 @@
 <mat-menu #menugeneral>
     <button mat-menu-item (click)="trashNote()">Delete Note</button>
     <button mat-menu-item [matMenuTriggerFor]="labelmenu">Add label</button>
-    <button *ngIf="questionAsked=='false'" mat-menu-item (click)="onAskQuestion()">Ask a question</button>
-    <button *ngIf="questionAsked=='true'" mat-menu-item (click)="onAskQuestion()">Show question</button>
+    <button mat-menu-item (click)="onAskQuestion()">Ask a question</button>
     <button mat-menu-item (click)="createChecklist()">Show checkboxes</button>
 </mat-menu>
 

@@ -33,6 +33,10 @@ export class DataService {
   dialogBoxReminderUpdate = this.dialogBoxReminderSource.asObservable();
   private dialogBoxLabelSource = new BehaviorSubject('');
   dialogBoxLabelUpdate = this.dialogBoxLabelSource.asObservable();
+  private takeNoteCollabDataSource = new BehaviorSubject('');
+  takeNoteCollabDataUpdate = this.takeNoteCollabDataSource.asObservable();
+  private questionSource = new BehaviorSubject('');
+  questionAsked = this.questionSource.asObservable();
 
   private labelUpdateSource = new BehaviorSubject('');
   currentLabel = this.labelUpdateSource.asObservable();
@@ -79,6 +83,12 @@ export class DataService {
   }
   updateDialogBoxLabel(message: any){
     this.dialogBoxLabelSource.next(message)
+  }
+  sendCollabDataToTakeNote(message: any){
+    this.takeNoteCollabDataSource.next(message)
+  }
+  askAQuestion(message: any){
+    this.questionSource.next(message)
   }
 
 }

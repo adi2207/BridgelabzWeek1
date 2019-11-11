@@ -29,7 +29,7 @@
             </mat-chip>
         </div>
         <div class="chiplist" fxLayoutGap="5px" fxLayout="row wrap">
-            <div *ngFor="let collaborator of collaborators">
+            <div *ngFor="let collaborator of takeNoteCollaborators">
                 <mat-chip *ngIf="collaborator!=''" class="profilepic" [ngStyle]="{background:color}" matTooltip="{{collaborator.firstName+' '+collaborator.lastName}}">{{collaborator.firstName.charAt(0)+collaborator.lastName.charAt(0)}}</mat-chip>
             </div>
         </div>

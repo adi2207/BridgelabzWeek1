@@ -18,11 +18,8 @@ export class MoremenuComponent implements OnInit {
   note: any;
   records:any;
   labels:any;
-  updateMessage:string="note updated"
   x:any;
   @Input() recordid : any;
-  @Input() questionAsked : any;
-
 
   @Output() messageEvent = new EventEmitter<string>();
   @Output() createChecklistEvent = new EventEmitter<string>();
@@ -106,12 +103,11 @@ export class MoremenuComponent implements OnInit {
     });
   }
   createChecklist(){
-    this.createChecklistEvent.emit("create checklist");
-    console.log("in moremenu")
+    this.createChecklistEvent.emit("Create a checklist!");
   }
   onAskQuestion(){
     this.router.navigate(['/questionanswer/'+this.recordid]);
-    this.dataService.changeMessage(this.recordid)
+    this.dataService.askAQuestion(this.recordid)
   }
   onClickingMenuIcon(){
     this.getLabels();

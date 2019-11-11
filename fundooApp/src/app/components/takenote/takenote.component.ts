@@ -24,8 +24,7 @@ export class TakenoteComponent implements OnInit {
   show: boolean = true;
   color:any;
   reminder:any;
-  collaborator:any;
-  collaborators=[];
+  takeNoteCollaborators=[];
   checklist:any;
   checklistItem:any;
   labelid:any;
@@ -50,8 +49,8 @@ export class TakenoteComponent implements OnInit {
     })
     this.dataService.takeNoteCollaboratorUpdate.subscribe((message)=>{
       if(message!=''){
-        this.collaborator=message;
-        this.collaborators.push(this.collaborator);
+        this.takeNoteCollaborators.push(message);
+        this.dataService.sendCollabDataToTakeNote(this.takeNoteCollaborators);
       }  
     })
     this.dataService.takeNoteLabelUpdate.subscribe((message)=>{
@@ -85,7 +84,7 @@ export class TakenoteComponent implements OnInit {
         color:this.color,
         isArchived: this.isArchived,
         reminder:this.reminder,
-        collaberators:JSON.stringify(this.collaborators),
+        collaberators:JSON.stringify(this.takeNoteCollaborators),
         labelIdList:JSON.stringify(this.labelIdList),
         checklist:JSON.stringify(this.noteCheckLists)
 
@@ -95,7 +94,6 @@ export class TakenoteComponent implements OnInit {
       this.notesService.addNote(this.note).subscribe((response) => {
         console.log(response);
         this.messageEvent.emit("New note created")
-        this.updateMessage = null;
       }, (error) => {
         console.log(error);
         this.messageEvent.emit("Note could not be created")

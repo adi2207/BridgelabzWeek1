@@ -32,9 +32,8 @@ export class QuestionanswerComponent implements OnInit {
     lastName: localStorage.getItem('lastName')
   }
   ngOnInit() {
-    this.dataService.currentMessage.subscribe(message => {
+    this.dataService.questionAsked.subscribe(message => {
       this.recordid = message;
-      console.log("recordid", this.recordid)
       this.getNoteDetails();
     });
   }

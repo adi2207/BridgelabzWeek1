@@ -17,8 +17,10 @@ export class TrashComponent implements OnInit {
 
   constructor(private notesService:NotesService,private dataService:DataService) { }
   ngOnInit() {
-    this.dataService.currentMessage.subscribe(message => this.message = message);
-    this.getTrashNotes();
+    this.dataService.currentMessage.subscribe(message => {
+      this.message = message;
+      this.getTrashNotes();
+    });
   }
   getTrashNotes(){
     return this.notesService.getTrash().subscribe((response: any) => {

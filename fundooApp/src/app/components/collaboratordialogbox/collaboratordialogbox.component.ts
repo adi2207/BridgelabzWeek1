@@ -17,7 +17,8 @@ export class CollaboratordialogboxComponent implements OnInit {
   baseUrl=environment.baseUrlPic;
   imageUrl=localStorage.getItem('profile-pic');
   updateMessage:any;
-  NoteData:any;
+  recordid:any;
+  takeNoteCollaborators:any;
   searchVal:any;
     owner={
     firstName:localStorage.getItem('firstName'),
@@ -29,8 +30,7 @@ export class CollaboratordialogboxComponent implements OnInit {
   myControl=new FormControl();
 
   constructor( private userService:UserService,@Inject(MAT_DIALOG_DATA) dataReceived,private dialogRef: MatDialogRef<CollaboratoriconComponent>,private notesService:NotesService, private dataService:DataService) {
-    this.NoteData= dataReceived.recordid;
-
+    this.recordid= dataReceived.recordid;
    }
   records:any;
   filteredRecords: any;
@@ -38,9 +38,16 @@ export class CollaboratordialogboxComponent implements OnInit {
   note:any;
   recordss=[];
   ngOnInit() {
-    if(this.NoteData!=undefined){
+    if(this.recordid!=undefined){
     this.getCollaborators();
     }
+    else{
+      this.dataService.takeNoteCollabDataUpdate.subscribe((data)=>{
+        console.log("yehi chahie",data)
+        //this.recordss=data;
+      })
+    }
+    
   }
 
   filter(searchText) {
@@ -67,7 +74,7 @@ export class CollaboratordialogboxComponent implements OnInit {
     } 
   onDone(){
 
-    if(this.NoteData==undefined){
+    if(this.recordid==undefined){
       let data={
         firstName:this.x[0].firstName,
         lastName:this.x[0].lastName,
@@ -84,7 +91,7 @@ export class CollaboratordialogboxComponent implements OnInit {
       'firstName':this.x[0].firstName,
       'lastName':this.x[0].lastName,
       'userId':this.x[0].userId,
-      'id':this.NoteData
+      'id':this.recordid
       }
       this.notesService.addCollaboratorsToNote(data).subscribe((response)=>{
         console.log(response);
@@ -101,7 +108,7 @@ export class CollaboratordialogboxComponent implements OnInit {
 
   getCollaborators(){
     let data={
-      id:this.NoteData
+      id:this.recordid
     }
     this.notesService.patchNoteDetails(data).subscribe((response:any) => {
       this.recordss=response.collaborators.reverse();

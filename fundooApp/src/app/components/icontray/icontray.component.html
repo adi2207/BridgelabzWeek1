@@ -8,5 +8,5 @@
 </div>
 
 <div *ngIf="noteType=='deleted'" fxLayout="row" fxFlex="100">
-    <app-moremenu [questionAsked]="questionAsked" [noteType]=noteType [takeNoteType]=takeNoteType [recordid]=recordid (messageEvent)="receiveUpdateMessage($event)"></app-moremenu>
+    <app-moremenu [noteType]=noteType [takeNoteType]=takeNoteType [recordid]=recordid (messageEvent)="receiveUpdateMessage($event)"></app-moremenu>
 </div>

@@ -46,11 +46,11 @@ export class MycartComponent implements OnInit {
     }
     return this.productCartService.placeOrder(data).subscribe((response: any) => {
       console.log(response);
-      //this.dataService.changeMessage("Order placed successfully");
+      this.dataService.changeMessage("Order placed successfully");
 
     }, (error) => {
       console.log(error);
-      //this.dataService.changeMessage("Could not place the order");
+      this.dataService.changeMessage("Could not place the order");
 
     });
   }

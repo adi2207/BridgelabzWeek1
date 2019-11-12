@@ -1,6 +1,5 @@
 var readline = require('readline-sync');
 var T = readline.question('Enter no of test cases T');
-console.log("here")
 while (T > 0) {
     var N = readline.question('Enter length of the array');
     var Q = readline.question('Enter number of queries for each array');

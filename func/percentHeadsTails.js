@@ -36,3 +36,5 @@ console.log("head percent is " + ((counttails / n) * 100));
 
 
 
+
+

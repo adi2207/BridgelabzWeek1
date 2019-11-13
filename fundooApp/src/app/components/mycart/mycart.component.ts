@@ -22,9 +22,6 @@ export class MycartComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder,private productCartService:ProductcartService,private dataService:DataService) {}
  
   ngOnInit() {
-    this.dataService.currentService.subscribe((typeOfService)=>{
-      this.typeOfService = typeOfService;
-    });
     this.firstForm = this._formBuilder.group({});
     this.secondForm = this._formBuilder.group({
       addressControl: ['', Validators.required]
@@ -35,6 +32,7 @@ export class MycartComponent implements OnInit {
     return this.productCartService.getCartDetails().subscribe((response: any) => {
       console.log(response);
       this.cartId=response.data[0].id;
+      this.typeOfService=response.data[0].product.name;
     }, (error) => {
       console.log(error);
     });
